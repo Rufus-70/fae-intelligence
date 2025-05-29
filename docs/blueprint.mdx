@@ -1,0 +1,42 @@
+# Fae Intelligence Blueprint
+
+This is an initial placeholder for the Fae Intelligence Blueprint document.
+
+## **Internal Tools & Dashboards**
+
+This section outlines the internal tools and dashboards integrated into the Fae Intelligence Hub for operational and administrative purposes. These tools are accessible only to authorized administrators via Firebase Authentication.
+
+### **Consultancy Dashboard**
+
+*   **Purpose:** Provides a strategic overview of consultancy phases, key activities, and monitoring tips. It's used for planning and tracking long-term consultancy engagements.
+*   **Access:** Available at `/admin/dashboard` (requires login).
+*   **Data Source:** Utilizes a statically defined dataset (`blueprintData.ts`) representing the core consultancy blueprint.
+*   **Key Features:**
+    *   Visual blueprint of consultancy phases.
+    *   Detailed activity tracking with status, priority, and CRM details.
+    *   Monitoring section for progress and tips.
+
+### **Prompt Management System**
+
+*   **Purpose:** A system for creating, organizing, tagging, and testing AI prompts, particularly for use with generative AI models.
+*   **Access:** Available at `/admin/prompts` (requires login).
+*   **Data Storage:** Prompts are stored and managed in a Firestore collection ('prompts').
+*   **Key Features:**
+    *   Create, edit, and delete prompts with detailed attributes.
+    *   Tagging and filtering capabilities for easy retrieval.
+    *   Direct interaction with Gemini API (or similar) for testing prompts (future enhancement).
+
+### **Workflow Documentation Generator**
+
+*   **Purpose:** Enables the creation, visualization, and documentation of multi-step operational or technical workflows. These workflows can reference prompts from the Prompt Management System.
+*   **Access:** Available at `/admin/workflows` (requires login).
+*   **Data Storage:** Workflows and their steps are stored and managed in a Firestore collection ('workflows').
+*   **Key Features:**
+    *   Define workflow steps, including tools used, inputs/outputs, and human actions.
+    *   Link steps to specific prompts via their IDs.
+    *   Visualize workflows as a sequence of connected nodes.
+    *   Export workflow documentation to PDF.
+
+## **Design and Technical Implementation**
+
+Details about design and technical implementation will go here.
