@@ -5,7 +5,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, ArrowRight } from "lucide-react";
+import { BookOpen, ArrowRight, School } from "lucide-react";
 
 export function ResourcesSection() {
 
@@ -17,12 +17,12 @@ export function ResourcesSection() {
             The Fae Intelligence Resource Hub
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-headline">
-            Unlock Your Teams Full Potential
+            Unlock Your Team's Full Potential
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto mb-16">
-          <Card className="bg-card border-border/50 shadow-lg text-center">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          <Card className="bg-card border-border/50 shadow-lg text-center flex flex-col">
             <CardHeader>
               <div className="flex justify-center mb-4">
                 <BookOpen className="h-12 w-12 text-primary" />
@@ -31,13 +31,34 @@ export function ResourcesSection() {
                 AI Blogs & Case Studies
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-grow flex flex-col justify-between">
               <p className="text-muted-foreground">
                 Explore practical, real-world examples of AI in action. Our blog features insights, how-tos, and success stories relevant to your business.
               </p>
-              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4">
                 <Link href="/blog">
                   Read Our Blog <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card border-border/50 shadow-lg text-center flex flex-col">
+            <CardHeader>
+              <div className="flex justify-center mb-4">
+                <School className="h-12 w-12 text-primary" />
+              </div>
+              <CardTitle className="text-2xl font-semibold font-headline text-card-foreground">
+                Training Resources
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 flex-grow flex flex-col justify-between">
+              <p className="text-muted-foreground">
+                Discover tools, guides, and materials to kickstart your AI journey or advance your existing skills.
+              </p>
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4">
+                <Link href="/training-resources">
+                  Explore Training Materials <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </CardContent>
