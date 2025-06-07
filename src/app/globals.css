@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* Light Gray #F7FAFC */
+    --background: 215 17% 94%; /* #EAECEF - More noticeable gray */
     --foreground: 215 17% 35%; /* Professional Gray #4A5568 */
 
     --card: 0 0% 100%; /* Clean White */
@@ -17,10 +17,10 @@
     --primary: 214 55% 23%; /* Fae Intelligence Blue #1B365D */
     --primary-foreground: 0 0% 100%; /* Clean White */
 
-    --secondary: 210 40% 98%; /* Light Gray #F7FAFC */
-    --secondary-foreground: 214 55% 30%; /* Darker Blue for text on light blue/gray */
+    --secondary: 215 17% 94%; /* #EAECEF - Consistent with new background */
+    --secondary-foreground: 214 55% 30%; /* Darker Blue for text on light gray */
 
-    --muted: 215 17% 94%; /* Lighter Gray #EAECEF */
+    --muted: 217 19% 90%;    /* #DEE2E6 - Slightly darker muted */
     --muted-foreground: 215 17% 55%; /* Medium Gray #7E8A9C */
 
     --accent: 214 55% 23%; /* Fae Intelligence Blue (also accent) */
@@ -30,7 +30,7 @@
     --destructive-foreground: 0 0% 100%; /* Clean White */
 
     --border: 215 17% 88%; /* Light Gray border #DDE1E6 */
-    --input: 0 0% 98%;  /* Input background #FAFAFA */
+    --input: 0 0% 98%;  /* Input background #FAFAFA (remains very light) */
     --ring: 214 55% 45%; /* Brighter Fae Intelligence Blue for focus rings */
 
     --chart-1: 214 55% 23%; /* Fae Blue */
