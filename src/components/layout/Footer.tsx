@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { FaeLogo } from "@/components/FaeLogo";
+import { Linkedin } from "lucide-react"; // Import Linkedin icon
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,13 +17,22 @@ export function Footer() {
           </div>
           <div className="text-sm text-muted-foreground text-center md:text-right">
             <p>&copy; {currentYear} Fae Intelligence. All rights reserved.</p>
-            <div className="mt-2 space-x-4">
+            <div className="mt-2 space-x-4 flex items-center justify-center md:justify-end">
               <Link href="#" className="hover:text-foreground transition-colors">
                 Privacy Policy
               </Link>
               <Link href="#" className="hover:text-foreground transition-colors">
                 Terms of Service
               </Link>
+              <a
+                href="https://www.linkedin.com/company/fae-intelligence/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fae Intelligence LinkedIn"
+                className="hover:text-foreground transition-colors"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>
