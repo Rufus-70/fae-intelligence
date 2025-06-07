@@ -8,95 +8,96 @@
     --background: 0 0% 100%; /* Clean White #FFFFFF */
     --foreground: 215 17% 35%; /* Professional Gray #4A5568 */
 
-    --card: 210 67% 98%; /* Light Gray #F7FAFC */
-    --card-foreground: 215 17% 35%; /* Professional Gray #4A5568 */
+    --card: 0 0% 100%; /* Clean White */
+    --card-foreground: 215 17% 35%; /* Professional Gray */
 
-    --popover: 0 0% 100%; /* Clean White #FFFFFF */
-    --popover-foreground: 215 17% 35%; /* Professional Gray #4A5568 */
+    --popover: 0 0% 100%; /* Clean White */
+    --popover-foreground: 215 17% 35%; /* Professional Gray */
 
-    --primary: 214 55% 24%; /* Fae Intelligence Blue #1B365D */
-    --primary-foreground: 0 0% 100%; /* Clean White #FFFFFF */
+    --primary: 214 55% 23%; /* Fae Intelligence Blue #1B365D */
+    --primary-foreground: 0 0% 100%; /* Clean White */
 
-    --secondary: 210 60% 96%; /* Slightly darker Light Gray for section backgrounds */
-    --secondary-foreground: 214 55% 30%; /* Slightly lighter/desaturated blue for text on secondary */
+    --secondary: 214 55% 97%; /* Very Light Blue tint #F0F4FA */
+    --secondary-foreground: 214 55% 30%; /* Darker Blue for text on light blue */
 
-    --muted: 215 15% 90%; /* Lighter gray than Professional gray #E2E8F0 */
-    --muted-foreground: 215 16% 50%; /* Medium Gray #718096 */
+    --muted: 215 17% 94%; /* Lighter Gray #EAECEF */
+    --muted-foreground: 215 17% 55%; /* Medium Gray #7E8A9C */
 
-    --accent: 145 48% 43%; /* Success Green #38A169 */
-    --accent-foreground: 0 0% 100%; /* Clean White #FFFFFF */
+    --accent: 214 55% 23%; /* Fae Intelligence Blue (also accent) */
+    --accent-foreground: 0 0% 100%; /* Clean White */
 
-    --destructive: 26 76% 50%; /* Warning Orange #DD6B20 */
-    --destructive-foreground: 0 0% 100%; /* Clean White #FFFFFF */
+    --destructive: 0 72% 51%; /* Standard Red #E53E3E */
+    --destructive-foreground: 0 0% 100%; /* Clean White */
 
-    --border: 215 20% 85%; /* Gray border #D1D5DB */
-    --input: 210 30% 94%;  /* Input background #E7EBF0 */
-    --ring: 214 55% 35%; /* Slightly lighter Fae Intelligence Blue for focus rings */
+    --border: 215 17% 88%; /* Light Gray border #DDE1E6 */
+    --input: 0 0% 98%;  /* Input background #FAFAFA */
+    --ring: 214 55% 45%; /* Brighter Fae Intelligence Blue for focus rings */
 
-    --chart-1: 214 55% 24%; /* Primary Blue */
-    --chart-2: 145 48% 43%; /* Success Green */
-    --chart-3: 26 76% 50%; /* Warning Orange */
-    --chart-4: 214 55% 45%; /* Lighter Blue */
-    --chart-5: 145 48% 60%; /* Lighter Green */
+    --chart-1: 214 55% 23%; /* Fae Blue */
+    --chart-2: 215 17% 35%; /* Prof Gray */
+    --chart-3: 214 55% 50%; /* Lighter Blue */
+    --chart-4: 215 17% 60%; /* Lighter Gray */
+    --chart-5: 214 55% 35%; /* Medium Blue */
     --radius: 0.5rem;
 
     /* Sidebar colors adapted for light theme */
-    --sidebar-background: 210 67% 98%; /* Light Gray #F7FAFC */
-    --sidebar-foreground: 215 17% 35%; /* Professional Gray #4A5568 */
-    --sidebar-primary: 214 55% 24%; /* Fae Intelligence Blue */
+    --sidebar-background: 0 0% 100%; /* White */
+    --sidebar-foreground: 215 17% 35%; /* Professional Gray */
+    --sidebar-primary: 214 55% 23%; /* Fae Intelligence Blue */
     --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 145 48% 43%; /* Success Green */
+    --sidebar-accent: 214 55% 23%; /* Fae Intelligence Blue */
     --sidebar-accent-foreground: 0 0% 100%; /* White */
-    --sidebar-border: 215 20% 90%; /* #E2E8F0 */
-    --sidebar-ring: 214 55% 35%; /* Lighter Blue for ring */
+    --sidebar-border: 215 17% 88%; /* Light Gray border */
+    --sidebar-ring: 214 55% 45%; /* Brighter Blue for ring */
 
     --font-inter: 'Inter', sans-serif;
     --font-space-grotesk: 'Space Grotesk', sans-serif;
   }
 
   .dark {
-    --background: 214 55% 15%; /* Very Dark Blue */
-    --foreground: 210 20% 92%; /* Very Light Gray #E2E8F0 */
+    --background: 214 55% 10%; /* Very Dark Blue #0C1A2E */
+    --foreground: 215 17% 85%; /* Light Gray (almost white) #C8CED9 */
 
-    --card: 214 55% 20%; /* Dark Blue, slightly lighter than background */
-    --card-foreground: 210 20% 92%; /* Very Light Gray */
+    --card: 214 55% 15%; /* Dark Blue, slightly lighter than background #12233D */
+    --card-foreground: 215 17% 85%; /* Light Gray */
 
-    --popover: 214 55% 18%; /* Similar to card, slightly darker */
-    --popover-foreground: 210 20% 92%; /* Very Light Gray */
+    --popover: 214 55% 13%; /* Darker Blue for popover #0F1E35 */
+    --popover-foreground: 215 17% 85%; /* Light Gray */
 
-    --primary: 214 55% 45%; /* Brighter/Lighter Fae Intelligence Blue #3D67A3 */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 214 55% 55%; /* Brighter Fae Intelligence Blue for dark mode #5D83C2 */
+    --primary-foreground: 214 55% 10%; /* Dark text for contrast on bright blue */
 
-    --secondary: 214 50% 12%; /* Even darker blue for section backgrounds */
-    --secondary-foreground: 210 20% 80%; /* Lighter Gray for text */
+    --secondary: 214 55% 8%; /* Even darker blue for section backgrounds #0A1524 */
+    --secondary-foreground: 214 55% 70%; /* Lighter Blue for text on dark secondary */
 
-    --muted: 215 20% 28%; /* Dark gray #374151 */
-    --muted-foreground: 210 15% 65%; /* Medium-Light Gray for muted text */
+    --muted: 214 55% 20%; /* Dark muted blue #1A3050 */
+    --muted-foreground: 214 55% 60%; /* Lighter muted blue */
 
-    --accent: 145 48% 55%; /* Brighter Success Green #5DC78C */
-    --accent-foreground: 214 55% 15%; /* Dark Blue text on Green Accent */
+    --accent: 214 55% 60%; /* Bright Blue for accent in dark mode #6F93C9 */
+    --accent-foreground: 214 55% 10%; /* Dark text for contrast on bright accent */
 
-    --destructive: 26 76% 60%; /* Brighter Warning Orange #F58D4D */
-    --destructive-foreground: 214 55% 15%; /* Dark Blue text on Orange Destructive */
+    --destructive: 0 70% 65%; /* Brighter Red for dark mode #E06363 */
+    --destructive-foreground: 0 0% 100%; /* White */
     
-    --border: 214 40% 30%; /* Dark gray-blue border #314463 */
-    --input: 214 40% 25%;  /* Darker input background #283853 */
-    --ring: 214 55% 50%; /* Bright Blue for ring */
+    --border: 214 55% 25%; /* Dark blue-gray border #203656 */
+    --input: 214 55% 18%;  /* Darker input background #162A4A */
+    --ring: 214 55% 60%; /* Bright Blue for ring */
     
-    --chart-1: 214 55% 45%; /* Primary Blue - Dark mode version */
-    --chart-2: 145 48% 55%; /* Success Green - Dark mode version */
-    --chart-3: 26 76% 60%; /* Warning Orange - Dark mode version */
-    --chart-4: 214 55% 60%; /* Even Lighter Blue */
-    --chart-5: 145 48% 70%; /* Even Lighter Green */
+    --chart-1: 214 55% 55%; /* Brighter Blue */
+    --chart-2: 215 17% 70%; /* Light Gray */
+    --chart-3: 214 55% 70%; /* Even Lighter Blue */
+    --chart-4: 215 17% 50%; /* Medium Gray */
+    --chart-5: 0 0% 95%; /* Off-white */
 
-    --sidebar-background: 214 55% 12%; /* Darkest blue */
-    --sidebar-foreground: 210 20% 90%; /* Light Gray text */
-    --sidebar-primary: 214 55% 45%; /* Brighter Blue */
-    --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 145 48% 55%; /* Brighter Green */
-    --sidebar-accent-foreground: 214 55% 15%; /* Dark text on accent */
-    --sidebar-border: 214 40% 25%;
-    --sidebar-ring: 214 55% 50%;
+    /* Sidebar colors for dark theme */
+    --sidebar-background: 214 55% 8%; /* Darkest blue #0A1524 */
+    --sidebar-foreground: 215 17% 85%; /* Light Gray text */
+    --sidebar-primary: 214 55% 55%; /* Brighter Blue */
+    --sidebar-primary-foreground: 214 55% 10%; /* Dark text on bright blue */
+    --sidebar-accent: 214 55% 60%; /* Bright Blue accent */
+    --sidebar-accent-foreground: 214 55% 10%; /* Dark text on bright accent */
+    --sidebar-border: 214 55% 25%; /* Dark blue-gray border */
+    --sidebar-ring: 214 55% 60%; /* Bright Blue for ring */
   }
 }
 
@@ -111,5 +112,3 @@
     /* Ensure headings use foreground color by default, specific components can override */
   }
 }
-
-    
