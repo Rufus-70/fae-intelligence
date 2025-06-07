@@ -15,7 +15,7 @@ export function Footer() {
             </Link>
           </div>
           <div className="text-sm text-muted-foreground text-center md:text-right">
-            <p>&copy; {currentYear} Fae Intelligence Reborn. All rights reserved.</p>
+            <p>&copy; {currentYear} Fae Intelligence. All rights reserved.</p>
             <div className="mt-2 space-x-4">
               <Link href="#" className="hover:text-foreground transition-colors">
                 Privacy Policy

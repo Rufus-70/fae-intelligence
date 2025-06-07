@@ -10,7 +10,7 @@ export function FaeLogo({ className, isFooter = false }: FaeLogoProps) {
   const accentColorClass = isFooter ? "text-muted-foreground" : "text-accent";
   return (
     <div className={cn("font-headline text-2xl font-bold", textColorClass, className)}>
-      Fae<span className={accentColorClass}>Intelligence</span>Reborn
+      Fae<span className={accentColorClass}>Intelligence</span>
     </div>
   );
 }

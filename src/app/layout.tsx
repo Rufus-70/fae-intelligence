@@ -19,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Fae Intelligence Reborn',
+  title: 'Fae Intelligence',
   description: 'Rebuilding our understanding of intelligence.',
 };
 
