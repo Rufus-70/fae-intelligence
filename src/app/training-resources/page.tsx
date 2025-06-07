@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon } from "lucide-react"; // Changed MousePointerSquare to MousePointer2
+import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon, Smile, DatabaseZap, Code } from "lucide-react"; // Changed MousePointerSquare to MousePointer2
 import Link from "next/link";
 
 export default function TrainingResourcesPage() {
@@ -36,19 +36,19 @@ export default function TrainingResourcesPage() {
                 Discover foundational tools that can help automate tasks, generate content, and provide basic insights without a steep learning curve.
               </p>
               <div className="space-y-3 mt-4">
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full justify-start text-left">
                   <Link href="/training-resources/perplexity-ai">
-                    <BookOpen className="mr-2 h-4 w-4" /> Perplexity AI Guide
+                    <Search className="mr-2 h-4 w-4 flex-shrink-0" /> Perplexity AI Guide
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full justify-start text-left">
                   <Link href="/training-resources/genspark-ai">
-                    <Cpu className="mr-2 h-4 w-4" /> GensparK AI Guide
+                    <Cpu className="mr-2 h-4 w-4 flex-shrink-0" /> GensparK AI Guide
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full justify-start text-left">
                   <Link href="/training-resources/claude-3">
-                    <LayersIcon className="mr-2 h-4 w-4" /> Claude 3 Guide
+                    <LayersIcon className="mr-2 h-4 w-4 flex-shrink-0" /> Claude 3 Guide
                   </Link>
                 </Button>
               </div>
@@ -69,9 +69,21 @@ export default function TrainingResourcesPage() {
               <p className="text-muted-foreground text-center">
                 Ready to dive deeper? Explore powerful tools and concepts for more complex AI applications, data analysis, and strategic insights.
               </p>
-              <div className="text-center mt-4">
-                <Button variant="outline" disabled>
-                  Explore Advanced Tools (Coming Soon)
+              <div className="space-y-3 mt-4">
+                 <Button asChild variant="outline" className="w-full justify-start text-left">
+                  <Link href="/training-resources/hugging-face">
+                    <Smile className="mr-2 h-4 w-4 flex-shrink-0" /> Hugging Face for Applied ML
+                  </Link>
+                </Button>
+                 <Button asChild variant="outline" className="w-full justify-start text-left">
+                  <Link href="/training-resources/firebase-firestore">
+                    <DatabaseZap className="mr-2 h-4 w-4 flex-shrink-0" /> Firebase & Firestore Integration
+                  </Link>
+                </Button>
+                 <Button asChild variant="outline" className="w-full justify-start text-left">
+                  <Link href="/training-resources/api-development">
+                    <Code className="mr-2 h-4 w-4 flex-shrink-0" /> API Development Basics
+                  </Link>
                 </Button>
               </div>
             </CardContent>

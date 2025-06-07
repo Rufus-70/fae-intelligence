@@ -1,0 +1,272 @@
+---
+title: "Hugging Face for Applied ML | Fae Intelligence Code Hub"
+description: "A comprehensive guide to leveraging the Hugging Face ecosystem for enterprise applications. Learn to discover, deploy, customize, and optimize state-of-the-art machine learning models."
+---
+
+import { Container } from '@/components/layout/Container';
+import { Footer } from '@/components/layout/Footer';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Smile } from 'lucide-react';
+import React from 'react';
+import { Header } from "@/components/layout/Header";
+
+
+{/* Helper components to structure the content, similar to a component library */}
+const SectionTitle = ({ id, children }) => (
+  <h2 id={id} className="text-3xl font-bold mt-12 mb-6 border-b-2 border-border/30 pb-3 text-primary">{children}</h2>
+);
+
+const SubSectionTitle = ({ id, children }) => (
+  <h3 id={id} className="text-2xl font-semibold mt-8 mb-4 text-primary/90">{children}</h3>
+);
+
+const InfoBox = ({ title, children }) => (
+    <div className="bg-primary/5 border-l-4 border-primary/50 p-6 rounded-r-lg my-6">
+        <h4 className="font-bold text-lg mb-2 text-primary">{title}</h4>
+        <div className="text-primary/90">{children}</div>
+    </div>
+);
+
+const CodeBlock = ({ language, children }) => (
+    <div className="bg-gray-900 dark:bg-black text-white p-4 rounded-lg my-4 overflow-x-auto">
+        <pre><code className={`language-${language}`}>{children.trim()}</code></pre>
+    </div>
+);
+
+const ComparisonCard = ({ title, items }) => (
+    <div className="bg-card p-6 rounded-lg shadow-md border border-border/50">
+        <h4 className="text-xl font-bold mb-3 text-center text-primary">{title}</h4>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+            {items.map((item, index) => <li key={index}>{item}</li>)}
+        </ul>
+    </div>
+);
+
+export default function HuggingFacePage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-grow">
+        <Container className="py-10 md:py-12">
+            <div className="text-center mb-12">
+                <Smile className="h-16 w-16 text-accent mx-auto mb-4" /> 
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary font-headline">Hugging Face for Applied ML</h1>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Harness the power of the Hugging Face ecosystem to integrate state-of-the-art machine learning capabilities into enterprise applications. Learn to discover, deploy, customize, and optimize models for production environments while ensuring security, scalability, and compliance.
+                </p>
+            </div>
+
+            <section id="ecosystem">
+                <SectionTitle>Understanding the Hugging Face Ecosystem</SectionTitle>
+                <p className="mb-4 text-muted-foreground">Hugging Face has evolved from a simple NLP library into a comprehensive ML ecosystem providing infrastructure, tools, and models for building AI-powered applications.</p>
+                
+                <InfoBox title="Key Components of the Hugging Face Ecosystem">
+                    <ul className="list-disc list-inside space-y-2">
+                        <li><strong>Hugging Face Hub:</strong> A central repository for sharing models, datasets, and ML demos.</li>
+                        <li><strong>Transformers Library:</strong> Python library providing thousands of pre-trained models.</li>
+                        <li><strong>Datasets:</strong> Library for efficiently working with ML datasets.</li>
+                        <li><strong>Accelerate:</strong> Tools for distributed training and optimization.</li>
+                        <li><strong>Tokenizers:</strong> Fast and state-of-the-art tokenization.</li>
+                        <li><strong>Inference API:</strong> Serverless way to run inference on hosted models.</li>
+                        <li><strong>Spaces:</strong> Hosted ML demos for showcasing applications.</li>
+                    </ul>
+                </InfoBox>
+
+                <div className="grid md:grid-cols-2 gap-8 my-8">
+                    <ComparisonCard title="Traditional ML Approach" items={[
+                        "Build models from scratch",
+                        "Maintain custom training infrastructure",
+                        "Manually implement latest academic papers",
+                        "Siloed development processes",
+                        "Limited standardization",
+                    ]} />
+                    <ComparisonCard title="Hugging Face-Powered Approach" items={[
+                        "Start with pre-trained foundation models",
+                        "Leverage standardized tools and libraries",
+                        "Benefit from community contributions",
+                        "Access state-of-the-art models immediately",
+                        "Standardized deployment patterns",
+                    ]} />
+                </div>
+            </section>
+
+            <section id="transformers">
+                <SectionTitle>Transformers Library: The Core of Hugging Face</SectionTitle>
+                <p className="text-muted-foreground">The Transformers library provides APIs and tools to download and train state-of-the-art machine learning models for various tasks. Understanding this library is essential for effective Hugging Face integration.</p>
+
+                <SubSectionTitle>Basic Usage: Pipelines</SubSectionTitle>
+                <p className="text-muted-foreground">The <code>pipeline</code> API is the simplest way to use pre-trained models for inference. It abstracts away the complexities of tokenization, model inference, and post-processing.</p>
+                <CodeBlock language="python">{`
+# Installing the library
+pip install transformers
+
+# Using a pipeline for simple tasks
+from transformers import pipeline
+
+# Text classification
+classifier = pipeline("sentiment-analysis")
+result = classifier("I love using Hugging Face in production environments!")
+print(result)
+# Output: [{'label': 'POSITIVE', 'score': 0.9998}]
+
+# Named Entity Recognition
+ner = pipeline("ner", grouped_entities=True)
+entities = ner("Hugging Face Inc. is a company based in New York City.")
+print(entities)
+# Output: [{'entity_group': 'ORG', 'score': 0.99, 'word': 'Hugging Face Inc.'}, {'entity_group': 'LOC', 'score': 0.99, 'word': 'New York City'}]
+                `}</CodeBlock>
+
+                <SubSectionTitle>Direct Model and Tokenizer Usage</SubSectionTitle>
+                <p className="text-muted-foreground">For more control, you can work directly with models and tokenizers. The <code>AutoModelForX</code> and <code>AutoTokenizer</code> classes automatically load the appropriate architecture.</p>
+                 <CodeBlock language="python">{`
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import torch
+
+# Initialize tokenizer and model
+model_name = "distilbert-base-uncased-finetuned-sst-2-english"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
+# Process text
+text = "Hugging Face makes machine learning accessible and efficient."
+inputs = tokenizer(text, return_tensors="pt")
+outputs = model(**inputs)
+predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+
+# Get predicted class and confidence
+predicted_class = torch.argmax(predictions, dim=1).item()
+confidence = predictions[0][predicted_class].item()
+
+print(f"Class: {model.config.id2label[predicted_class]}, Confidence: {confidence:.4f}")
+# Output: Class: POSITIVE, Confidence: 0.9986
+                `}</CodeBlock>
+            </section>
+
+            <section id="fine-tuning">
+                <SectionTitle>Fine-Tuning Models for Enterprise</SectionTitle>
+                <p className="text-muted-foreground">Pre-trained models provide strong baseline capabilities, but fine-tuning on domain-specific data can significantly improve performance for enterprise use cases.</p>
+                <SubSectionTitle>Example: Sentiment Analysis for Customer Feedback</SubSectionTitle>
+                <p className="text-muted-foreground">This example demonstrates fine-tuning a sentiment analysis model on company-specific customer feedback data using the <code>Trainer</code> API.</p>
+                 <CodeBlock language="python">{`
+import pandas as pd
+from datasets import Dataset
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, TrainingArguments, Trainer
+from sklearn.metrics import accuracy_score, f1_score
+
+# 1. Prepare Dataset (mock)
+data = {'feedback': ['The new feature is amazing!', 'The app keeps crashing.', 'It works, but it could be faster.'], 'label': [2, 0, 1]} # Assuming 3 labels: 0=Negative, 1=Neutral, 2=Positive
+df = pd.DataFrame(data)
+dataset = Dataset.from_pandas(df)
+
+# 2. Initialize model and tokenizer
+model_name = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3) # Ensure num_labels matches your data
+
+# 3. Preprocess function
+def tokenize_function(examples):
+    return tokenizer(examples["feedback"], padding="max_length", truncation=True, max_length=512) # Add max_length
+
+tokenized_datasets = dataset.map(tokenize_function, batched=True)
+
+# If you have a separate test set, map it here as well
+# tokenized_test_dataset = test_dataset.map(tokenize_function, batched=True)
+
+# 4. Define metrics
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    predictions = logits.argmax(axis=-1)
+    return {
+        "accuracy": accuracy_score(labels, predictions), 
+        "f1": f1_score(labels, predictions, average="weighted") # Use "weighted" for multi-class
+    }
+
+# 5. Setup training arguments
+training_args = TrainingArguments(
+    output_dir="./results_hf_sentiment", # Unique output directory
+    num_train_epochs=1, # Keep low for demo, increase for real training
+    per_device_train_batch_size=8,
+    # per_device_eval_batch_size=8, # If using evaluation
+    # evaluation_strategy="epoch", # If using evaluation
+    # save_strategy="epoch", # If using evaluation
+    logging_dir='./logs_hf_sentiment', # Unique logging directory
+    logging_steps=10,
+    # load_best_model_at_end=True, # If using evaluation
+)
+
+# 6. Initialize Trainer and train
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_datasets,
+    # eval_dataset=tokenized_test_dataset, # Pass your tokenized test set here for evaluation
+    compute_metrics=compute_metrics,
+)
+
+trainer.train()
+
+# 7. Save the model
+model_path = "./customer-sentiment-model-hf"
+model.save_pretrained(model_path)
+tokenizer.save_pretrained(model_path)
+print(f"Model saved to {model_path}")
+
+# Example of loading and using the fine-tuned model:
+# from transformers import pipeline
+# fine_tuned_classifier = pipeline("sentiment-analysis", model=model_path, tokenizer=model_path)
+# print(fine_tuned_classifier("This service is excellent!"))
+                `}</CodeBlock>
+            </section>
+
+            <section id="deployment">
+                <SectionTitle>Enterprise Deployment Strategies</SectionTitle>
+                <p className="text-muted-foreground">Moving models to production requires robust deployment strategies. A common pattern is to wrap the model in a REST API.</p>
+                <SubSectionTitle>REST API with FastAPI</SubSectionTitle>
+                 <CodeBlock language="python">{`
+from fastapi import FastAPI
+from pydantic import BaseModel
+from transformers import pipeline
+
+# Load the fine-tuned model (ensure the path is correct)
+# model_path_api = "./customer-sentiment-model-hf" 
+# sentiment_analyzer = pipeline("sentiment-analysis", model=model_path_api, tokenizer=model_path_api)
+
+# For demo, using a default model if fine-tuned one isn't immediately available
+sentiment_analyzer = pipeline("sentiment-analysis")
+
+
+app = FastAPI()
+
+class SentimentRequest(BaseModel):
+    text: str
+
+class SentimentResponse(BaseModel):
+    label: str
+    score: float
+
+@app.post("/analyze", response_model=SentimentResponse)
+def analyze_sentiment(request: SentimentRequest):
+    result = sentiment_analyzer(request.text)[0]
+    return SentimentResponse(label=result['label'], score=result['score'])
+
+# To run:
+# 1. Save this as app_hf.py (or similar)
+# 2. Ensure your fine-tuned model exists at "./customer-sentiment-model-hf" or adjust path
+# 3. Run with: uvicorn app_hf:app --reload
+                `}</CodeBlock>
+            </section>
+
+            <div className="text-center mt-16">
+                <Button asChild variant="outline">
+                  <Link href="/training-resources">Back to Training Resources</Link>
+                </Button>
+            </div>
+
+        </Container>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
