@@ -1,27 +1,43 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import React from "react";
+import { ContactModal } from "@/components/ui/ContactModal";
 
 export function HeroSection() {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
   return (
-    <section className="relative py-20 md:py-32 lg:py-40 bg-background text-foreground"> {/* Changed bg-slate-900 to bg-background */}
+    <section className="relative py-20 md:py-32 lg:py-40 bg-background text-foreground">
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-headline animate-fade-in-down">
-          Fae Intelligence Reborn is an <br className="hidden md:block" />AI research and product company.
+          UNLOCK PRACTICAL AI ADVANTAGES <br className="hidden md:block" /> FOR YOUR BUSINESS
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-in-up">
-          We are working to build artificial general intelligence that works for everyone.
+          Leveraging over 30 years of frontline manufacturing expertise, Fae Intelligence guides your team to confidently implement AI-driven improvements. We focus on accessible, low-cost tools to deliver immediate, measurable results.
         </p>
-        <Link href="/#research" passHref>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-colors duration-300 animate-fade-in-up animation-delay-200"
-          >
-            Read our Research
-          </Button>
-        </Link>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-200">
+          <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <Button 
+              size="lg" 
+              className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-300 w-full sm:w-auto"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Request a Consultation
+            </Button>
+          </ContactModal>
+          <Link href="/#about" passHref>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto"
+            >
+              Learn More About Us
+            </Button>
+          </Link>
+        </div>
       </div>
       <style jsx>{`
         .animate-fade-in-down {

@@ -1,42 +1,42 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Zap, Brain, ShieldCheck } from "lucide-react"; // Example icons
+import { TrendingDown, UsersRound, Navigation } from "lucide-react";
 
-const services = [
+const challenges = [
   {
-    icon: <Brain className="h-10 w-10 text-accent" />,
-    title: "AI Research & Development",
-    description: "Pioneering research in core AI, machine learning, and cognitive architectures to push the boundaries of artificial general intelligence.",
+    icon: <TrendingDown className="h-10 w-10 text-accent" />,
+    title: "Operational Costs Rising?",
+    description: "Learn to use AI for process optimization and predictive maintenance. Identify bottlenecks, reduce downtime, and minimize waste with minimal upfront investment.",
   },
   {
-    icon: <Zap className="h-10 w-10 text-accent" />,
-    title: "Custom AI Solutions",
-    description: "Developing tailored AI products and platforms for various industries, leveraging our cutting-edge research and engineering expertise.",
+    icon: <UsersRound className="h-10 w-10 text-accent" />,
+    title: "Skills Gap & Change Resistance?",
+    description: "Our workshops demystify AI with hands-on practice using user-friendly tools. We help your teams overcome AI concerns and realize the benefits.",
   },
   {
-    icon: <ShieldCheck className="h-10 w-10 text-accent" />,
-    title: "AI Ethics & Safety Consulting",
-    description: "Providing guidance and frameworks for the ethical development and deployment of AI systems, ensuring safety and alignment with human values.",
+    icon: <Navigation className="h-10 w-10 text-accent" />,
+    title: "Unsure Where to Start with AI?",
+    description: "We help you identify high-impact pilot projects, for quick wins and building momentum.",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 md:py-24 bg-secondary/20">
+    <section id="services" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 font-headline">Our Services</h2>
-        <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          We offer a range of services to help organizations harness the power of AI responsibly and effectively.
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 font-headline">Overcome Your Business Challenges with AI</h2>
+        <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-12">
+          We understand the hurdles you face. AI is not just for companies with huge IT budgets. Here is how Fae Intelligence consultancy and training can help:
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <Card key={service.title} className="bg-card border-border/50 shadow-lg text-center flex flex-col items-center p-6">
+          {challenges.map((challenge) => (
+            <Card key={challenge.title} className="bg-card border-border/50 shadow-lg text-center flex flex-col items-center p-6">
               <CardHeader className="items-center pb-4">
-                {service.icon}
-                <CardTitle className="text-xl font-semibold text-card-foreground mt-4">{service.title}</CardTitle>
+                {challenge.icon}
+                <CardTitle className="text-xl font-semibold text-card-foreground mt-4">{challenge.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
+                <CardDescription className="text-muted-foreground">{challenge.description}</CardDescription>
               </CardContent>
             </Card>
           ))}
