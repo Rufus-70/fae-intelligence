@@ -2,20 +2,22 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Space_Grotesk } from 'next/font/google';
-import { ThemeProvider } from "@/components/providers/ThemeProvider"; // Added ThemeProvider
+import { Montserrat, Lato } from 'next/font/google'; // Changed from Inter, Space_Grotesk
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
-const inter = Inter({
+// Initialize new fonts
+const lato = Lato({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  weight: ['400', '700'], // Added weights for flexibility
+  variable: '--font-lato',
 });
 
-const spaceGrotesk = Space_Grotesk({
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700'],
-  variable: '--font-space-grotesk',
+  weight: ['400', '700'], // Added weights for flexibility
+  variable: '--font-montserrat',
 });
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${lato.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
       </head>
       <body className="font-body antialiased bg-background text-foreground">
