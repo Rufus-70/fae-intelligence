@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon, Smile, DatabaseZap, Code, Search } from "lucide-react"; // Changed MousePointerSquare to MousePointer2, Added Search
+import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon, Smile, DatabaseZap, Code, Search, Brain, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
 export default function TrainingResourcesPage() {
@@ -23,7 +23,7 @@ export default function TrainingResourcesPage() {
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <Card className="bg-card border-border/50 shadow-lg flex flex-col">
             <CardHeader className="items-center text-center">
-              <MousePointer2 className="h-12 w-12 text-primary mb-4" /> {/* Changed MousePointerSquare to MousePointer2 */}
+              <MousePointer2 className="h-12 w-12 text-primary mb-4" />
               <CardTitle className="text-2xl font-semibold font-headline text-card-foreground">
                 Introductory AI Tools
               </CardTitle>
@@ -49,6 +49,16 @@ export default function TrainingResourcesPage() {
                 <Button asChild variant="outline" className="w-full justify-start text-left">
                   <Link href="/training-resources/claude-3">
                     <LayersIcon className="mr-2 h-4 w-4 flex-shrink-0" /> Claude 3 Guide
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="w-full justify-start text-left">
+                  <Link href="/training-resources/google-gemini-notebooklm">
+                    <Brain className="mr-2 h-4 w-4 flex-shrink-0" /> Google Gemini & NotebookLM
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="w-full justify-start text-left">
+                  <Link href="/training-resources/chatgpt">
+                    <MessageSquare className="mr-2 h-4 w-4 flex-shrink-0" /> ChatGPT Guide
                   </Link>
                 </Button>
               </div>

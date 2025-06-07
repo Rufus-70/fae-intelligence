@@ -1,0 +1,33 @@
+---
+title: "ChatGPT Training Guide | Fae Intelligence Code Hub"
+---
+
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Container } from '@/components/layout/Container';
+import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import { MessageSquare } from "lucide-react";
+
+export default function ChatGPTPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex-grow">
+        <Container className="py-12 text-center">
+          <MessageSquare className="h-16 w-16 text-accent mx-auto mb-4" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">
+            ChatGPT Training Guide
+          </h1>
+          <p className="text-lg text-muted-foreground mb-8">
+            Content for this page is temporarily unavailable. Please check back later.
+          </p>
+          <Button asChild>
+            <Link href="/training-resources">Return to Training Resources</Link>
+          </Button>
+        </Container>
+      </main>
+      <Footer />
+    </>
+  )
+}
