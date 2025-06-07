@@ -1,7 +1,9 @@
+
 "use client";
 
 import React, { useEffect } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react"; // Changed from "react-dom"
+import { useFormStatus } from "react-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -47,7 +49,7 @@ function SubmitButton() {
 
 export function ContactModal({ children, open, onOpenChange }: ContactModalProps) {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(sendEmailAction, { message: null, errors: null });
+  const [state, formAction] = useActionState(sendEmailAction, { message: null, errors: null }); // Changed from useFormState
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
