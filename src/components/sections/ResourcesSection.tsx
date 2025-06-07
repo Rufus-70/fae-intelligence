@@ -1,57 +1,76 @@
 
 "use client";
 
+import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
-import { ContactModal } from "@/components/ui/ContactModal";
-import { CheckCircle } from "lucide-react";
-
-const strengths = [
-  "Deep Industry Knowledge: Practical understanding of manufacturing processes and SME challenges, built over 30+ years.",
-  "Tailored, Low-Cost Solutions: AI strategies and training customized for your specific needs, emphasizing accessible, high-value tools.",
-  "Results-Driven & Empowering: Focused on tangible improvements and upskilling your team for long-term success and AI adoption.",
-];
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { BookOpen, ArrowRight } from "lucide-react";
 
 export function ResourcesSection() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [currentYear, setCurrentYear] = React.useState(new Date().getFullYear());
+
+  React.useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
-    <section id="resources" className="py-16 md:py-24 bg-secondary/20">
+    <section id="resources" className="py-16 md:py-24 bg-background text-foreground">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 font-headline">Key Strengths of Fae Intelligence</h2>
-        <div className="max-w-3xl mx-auto mb-10">
-          <ul className="space-y-4">
-            {strengths.map((strength, index) => (
-              <li key={index} className="flex items-start">
-                <CheckCircle className="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0" />
-                <span className="text-muted-foreground">{strength}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline mb-3">
+            The Fae Intelligence Resource Hub
+          </h2>
+          <p className="text-xl md:text-2xl text-muted-foreground font-headline">
+            Unlock Your Teams Full Potential
+          </p>
         </div>
-        <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          Executive MBA | Commitment to Continuous Learning in AI & Manufacturing Excellence
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-           <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
-            <Button 
-              size="lg" 
-              className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-300 w-full sm:w-auto"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Request a Consultation
-            </Button>
-          </ContactModal>
-          <Link href="/#about" passHref>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto"
-            >
-              More About Our Approach
-            </Button>
-          </Link>
+
+        <div className="max-w-3xl mx-auto mb-16">
+          <Card className="bg-card border-border/50 shadow-lg text-center">
+            <CardHeader>
+              <div className="flex justify-center mb-4">
+                <BookOpen className="h-12 w-12 text-accent" />
+              </div>
+              <CardTitle className="text-2xl font-semibold font-headline text-card-foreground">
+                AI Blogs & Case Studies
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground">
+                Explore practical, real-world examples of AI in action. Our blog features insights, how-tos, and success stories relevant to your business.
+              </p>
+              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link href="/blog">
+                  Read Our Blog <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h3 className="text-2xl font-semibold font-headline text-foreground mb-4">
+            Actionable Insights, Tools, and Training to Master AI in Your Business
+          </h3>
+          <p className="text-lg text-muted-foreground">
+            Dive into the Fae Intelligence Resource Hub. Discover practical AI overviews, explore cutting-edge tools with hands-on training modules, and access expert guides designed to empower your teams. We translate complex AI into actionable strategies for immediate operational improvements and lasting innovation.
+          </p>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground space-y-1">
+          <p>&copy; {currentYear} Fae Intelligence LLC. All rights reserved.</p>
+          <p>Empowering PNW Small to Medium-sized Businesses with Practical AI.</p>
+          <p>
+            <Link href="https://FaeIntelligence.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+              https://FaeIntelligence.com
+            </Link>
+          </p>
+          <p>
+            <Link href="mailto:RSnyder@FaeIntelligence.com" className="hover:text-accent transition-colors">
+              RSnyder@FaeIntelligence.com
+            </Link>
+          </p>
         </div>
       </div>
     </section>
