@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MousePointerSquare, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon } from "lucide-react"; // Added BookOpen, Cpu, LayersIcon
+import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon } from "lucide-react"; // Changed MousePointerSquare to MousePointer2
 import Link from "next/link";
 
 export default function TrainingResourcesPage() {
@@ -23,7 +23,7 @@ export default function TrainingResourcesPage() {
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <Card className="bg-card border-border/50 shadow-lg flex flex-col">
             <CardHeader className="items-center text-center">
-              <MousePointerSquare className="h-12 w-12 text-primary mb-4" />
+              <MousePointer2 className="h-12 w-12 text-primary mb-4" /> {/* Changed MousePointerSquare to MousePointer2 */}
               <CardTitle className="text-2xl font-semibold font-headline text-card-foreground">
                 Introductory AI Tools
               </CardTitle>
