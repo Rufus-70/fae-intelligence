@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon, Smile, DatabaseZap, Code } from "lucide-react"; // Changed MousePointerSquare to MousePointer2
+import { MousePointer2, BrainCircuit, ArrowRight, BookOpen, Cpu, LayersIcon, Smile, DatabaseZap, Code, Search } from "lucide-react"; // Changed MousePointerSquare to MousePointer2, Added Search
 import Link from "next/link";
 
 export default function TrainingResourcesPage() {
