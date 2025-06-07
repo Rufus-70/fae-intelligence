@@ -1,20 +1,21 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Space_Grotesk } from 'next/font/google'; // Added Space_Grotesk
+import { Inter, Space_Grotesk } from 'next/font/google';
+import { ThemeProvider } from "@/components/providers/ThemeProvider"; // Added ThemeProvider
 
-// Configure fonts
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter', // Optional: if you want to use it as a CSS variable
+  variable: '--font-inter',
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700'], // Specify weights you need for headlines
-  variable: '--font-space-grotesk', // Optional: if you want to use it as a CSS variable
+  weight: ['400', '700'],
+  variable: '--font-space-grotesk',
 });
 
 export const metadata: Metadata = {
@@ -28,13 +29,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
-        {/* Removed direct Google Fonts link, relying on next/font */}
       </head>
-      <body className="font-body antialiased">
-        {children}
-        <Toaster />
+      <body className="font-body antialiased bg-background text-foreground">
+        <ThemeProvider>
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
