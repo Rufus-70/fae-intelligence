@@ -12,7 +12,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['var(--font-lato)', 'Lato', 'sans-serif'],
-        headline: ['var(--font-space-grotesk)', 'Space Grotesk', 'sans-serif'], // Reverted from Montserrat
+        headline: ['var(--font-space-grotesk)', 'Space Grotesk', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

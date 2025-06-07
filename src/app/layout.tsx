@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Lato, Space_Grotesk as SpaceGrotesk } from 'next/font/google'; // Reverted Montserrat to Space_Grotesk
+import { Lato, Space_Grotesk as SpaceGrotesk } from 'next/font/google';
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 // Initialize Lato for body
