@@ -13,3 +13,4 @@ export function FaeLogo({ className, isFooter = false }: FaeLogoProps) {
       Fae<span className={accentColorClass}>Intelligence</span>Reborn
     </div>
   );
+}

@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     --background: 222 47% 11%; /* Dark Blue/Charcoal, e.g., #10172A */
@@ -54,13 +50,12 @@ body {
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 222 47% 15%;
     --sidebar-ring: 253 65% 70%;
+
+    /* Next/font variables (if you set them in layout.tsx) */
+    --font-inter: 'Inter', sans-serif;
+    --font-space-grotesk: 'Space Grotesk', sans-serif;
   }
 
-  /* 
-    Since the primary theme is now dark, the .dark class below will inherit these values.
-    If a separate, distinct dark mode was needed, these HSL values would be different.
-    For now, this ensures consistency if .dark is applied.
-  */
   .dark {
     --background: 222 47% 11%;
     --foreground: 210 40% 96%;
@@ -104,6 +99,9 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body; /* Ensure font-body is applied */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline; /* Ensure font-headline is applied to headings */
   }
 }

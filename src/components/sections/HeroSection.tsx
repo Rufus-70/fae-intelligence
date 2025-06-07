@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative py-20 md:py-32 lg:py-40 bg-background text-foreground">
+    <section className="relative py-20 md:py-32 lg:py-40 bg-background text-foreground"> {/* Changed bg-slate-900 to bg-background */}
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-headline animate-fade-in-down">
           Fae Intelligence Reborn is an <br className="hidden md:block" />AI research and product company.

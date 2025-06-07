@@ -1,6 +1,21 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { Inter, Space_Grotesk } from 'next/font/google'; // Added Space_Grotesk
+
+// Configure fonts
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter', // Optional: if you want to use it as a CSS variable
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'], // Specify weights you need for headlines
+  variable: '--font-space-grotesk', // Optional: if you want to use it as a CSS variable
+});
 
 export const metadata: Metadata = {
   title: 'Fae Intelligence Reborn',
@@ -13,11 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+        {/* Removed direct Google Fonts link, relying on next/font */}
       </head>
       <body className="font-body antialiased">
         {children}
