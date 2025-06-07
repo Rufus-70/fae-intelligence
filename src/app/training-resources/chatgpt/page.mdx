@@ -1,33 +1,30 @@
 ---
 title: "ChatGPT Training Guide | Fae Intelligence Code Hub"
 ---
-
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from '@/components/layout/Container';
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
-import { MessageSquare } from "lucide-react";
+import { Button } from '@/components/ui/button'; // Added Button import
+import { MessageSquare } from 'lucide-react'; // Added MessageSquare import
+import React from 'react';
 
-export default function ChatGPTPage() {
-  return (
-    <>
-      <Header />
-      <main className="flex-grow">
-        <Container className="py-12 text-center">
-          <MessageSquare className="h-16 w-16 text-accent mx-auto mb-4" />
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">
-            ChatGPT Training Guide
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            Content for this page is temporarily unavailable. Please check back later.
-          </p>
-          <Button asChild>
-            <Link href="/training-resources">Return to Training Resources</Link>
-          </Button>
-        </Container>
-      </main>
-      <Footer />
-    </>
-  )
-}
+
+<Header />
+<main>
+  <Container className="py-12 text-center">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-20rem)]"> {/* Adjusted for vertical centering */}
+      <MessageSquare className="h-16 w-16 text-accent mx-auto mb-4" />
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">
+        ChatGPT Training Guide
+      </h1>
+      <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+        Content for this page is temporarily unavailable. We are working on providing a comprehensive guide to using ChatGPT effectively. Please check back later.
+      </p>
+      <Button asChild variant="link" className="text-accent hover:underline">
+        <Link href="/training-resources">Return to Training Resources</Link>
+      </Button>
+    </div>
+  </Container>
+</main>
+<Footer />

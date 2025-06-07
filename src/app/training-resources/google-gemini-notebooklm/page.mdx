@@ -1,33 +1,29 @@
 ---
 title: "Google Gemini & NotebookLM Guide | Fae Intelligence Code Hub"
 ---
-
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from '@/components/layout/Container';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Brain } from 'lucide-react';
+import React from 'react';
 
-export default function GoogleGeminiNotebookLMPage() {
-  return (
-    <>
-      <Header />
-      <main>
-        <Container className="py-12 text-center">
-          <Brain className="h-16 w-16 text-accent mx-auto mb-4" />
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">
-            Google Gemini & NotebookLM Training Guide
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            Content for this guide is currently under construction. Please check back soon.
-          </p>
-          <Button asChild>
-            <Link href="/training-resources">Back to Training Resources</Link>
-          </Button>
-        </Container>
-      </main>
-      <Footer />
-    </>
-  )
-}
+<Header />
+<main>
+  <Container className="py-12 text-center">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-20rem)]"> {/* Adjusted for vertical centering */}
+      <Brain className="h-16 w-16 text-accent mx-auto mb-4" />
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">
+        Google Gemini & NotebookLM Training Guide
+      </h1>
+      <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+        Content for this guide is currently under construction. Please check back soon for updates on leveraging Google's Gemini models and NotebookLM for advanced AI research and development.
+      </p>
+      <Button asChild variant="link" className="text-accent hover:underline">
+        <Link href="/training-resources">Back to Training Resources</Link>
+      </Button>
+    </div>
+  </Container>
+</main>
+<Footer />

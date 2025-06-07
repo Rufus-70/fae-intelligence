@@ -2,18 +2,17 @@
 title: "API Development Basics | Fae Intelligence Code Hub"
 description: "A comprehensive guide to designing, implementing, securing, and optimizing production-ready APIs using Python and TypeScript frameworks. Master industry best practices for building scalable, maintainable API solutions."
 ---
-
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { Container } from '@/components/layout/Container';
-import { Footer } from '@/components/layout/Footer';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Code } from 'lucide-react';
 import React from 'react';
-import { Header } from "@/components/layout/Header";
 
 {/* Helper components for styling and structure */}
 const SectionTitle = ({ id, children }) => (
-  <h2 id={id} className="text-3xl font-bold mt-12 mb-6 border-b-2 border-border/30 pb-3 text-primary">{children}</h2>
+  <h2 id={id} className="text-3xl font-bold mt-12 mb-6 border-b-2 border-border pb-3 text-primary">{children}</h2>
 );
 
 const SubSectionTitle = ({ id, children }) => (
@@ -21,197 +20,162 @@ const SubSectionTitle = ({ id, children }) => (
 );
 
 const CodeBlock = ({ language, children }) => (
-    <div className="bg-gray-900 dark:bg-black text-white p-4 rounded-lg my-4 overflow-x-auto">
+    <div className="bg-gray-900 dark:bg-gray-800 text-white p-4 rounded-lg my-4 overflow-x-auto">
         <pre><code className={`language-${language}`}>{children.trim()}</code></pre>
     </div>
 );
 
 const InfoCard = ({ title, children }) => (
-    <div className="bg-card p-6 rounded-lg shadow-md border border-border/50 my-4">
+    <div className="bg-card p-6 rounded-lg shadow-md border my-4">
         <h4 className="text-xl font-bold mb-3 text-primary">{title}</h4>
         <div className="text-muted-foreground space-y-2">{children}</div>
     </div>
 );
 
-export default function ApiDevelopmentPage() {
-  return (
-    <>
-      <Header />
-      <main className="flex-grow">
-        <Container className="py-10 md:py-12">
-            <div className="text-center mb-12">
-                <Code className="h-16 w-16 text-accent mx-auto mb-4" />
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary font-headline">Enterprise API Development</h1>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Comprehensive guide to designing, implementing, securing, and optimizing production-ready APIs using Python and TypeScript frameworks. Master industry best practices for building scalable, maintainable API solutions.
-                </p>
+<Header />
+<main>
+    <Container className="py-10 md:py-12">
+        <div className="text-center mb-12">
+            <Code className="h-16 w-16 text-accent mx-auto mb-4" />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary">Enterprise API Development</h1>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Comprehensive guide to designing, implementing, securing, and optimizing production-ready APIs using Python and TypeScript frameworks. Master industry best practices for building scalable, maintainable API solutions.
+            </p>
+        </div>
+
+        <section id="api-foundations">
+            <SectionTitle id="api-fundamentals-title">API Fundamentals & Architecture</SectionTitle>
+            <p className="mb-4 text-muted-foreground">Application Programming Interfaces (APIs) serve as the communication layer between different software systems, enabling seamless integration of diverse applications and services. This section explores the core principles, architectural patterns, and design considerations for enterprise-grade API development.</p>
+            
+            <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+                <InfoCard title="REST API Architecture">
+                    <p>Representational State Transfer (REST) is an architectural style that defines constraints for creating web services. RESTful APIs use standard HTTP methods (GET, POST, PUT, DELETE) and are designed around resources.</p>
+                    <ul className="list-disc list-inside">
+                        <li>Resource identification with URIs</li>
+                        <li>Stateless communication</li>
+                        <li>Uses standard HTTP methods</li>
+                    </ul>
+                </InfoCard>
+                <InfoCard title="GraphQL Architecture">
+                    <p>GraphQL is a query language for APIs that enables clients to request exactly the data they need, making it possible to get all required data in a single request.</p>
+                    <ul className="list-disc list-inside">
+                        <li>Strongly typed schema</li>
+                        <li>Single endpoint for all queries</li>
+                        <li>No over-fetching or under-fetching</li>
+                    </ul>
+                </InfoCard>
+                <InfoCard title="gRPC Architecture">
+                    <p>gRPC is a high-performance, open-source RPC framework that uses Protocol Buffers for efficient communication between distributed systems.</p>
+                     <ul className="list-disc list-inside">
+                        <li>High performance with Protocol Buffers</li>
+                        <li>Bi-directional streaming</li>
+                        <li>Built on HTTP/2</li>
+                    </ul>
+                </InfoCard>
             </div>
+        </section>
 
-            <section id="api-fundamentals">
-                <SectionTitle>API Fundamentals & Architecture</SectionTitle>
-                <p className="mb-4 text-muted-foreground">Application Programming Interfaces (APIs) serve as the communication layer between different software systems, enabling seamless integration of diverse applications and services. This section explores the core principles, architectural patterns, and design considerations for enterprise-grade API development.</p>
-                
-                <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-                    <InfoCard title="REST API Architecture">
-                        <p>Representational State Transfer (REST) is an architectural style that defines constraints for creating web services. RESTful APIs use standard HTTP methods (GET, POST, PUT, DELETE) and are designed around resources.</p>
-                        <ul className="list-disc list-inside">
-                            <li>Resource identification with URIs</li>
-                            <li>Stateless communication</li>
-                            <li>Uses standard HTTP methods</li>
-                        </ul>
-                    </InfoCard>
-                    <InfoCard title="GraphQL Architecture">
-                        <p>GraphQL is a query language for APIs that enables clients to request exactly the data they need, making it possible to get all required data in a single request.</p>
-                        <ul className="list-disc list-inside">
-                            <li>Strongly typed schema</li>
-                            <li>Single endpoint for all queries</li>
-                            <li>No over-fetching or under-fetching</li>
-                        </ul>
-                    </InfoCard>
-                    <InfoCard title="gRPC Architecture">
-                        <p>gRPC is a high-performance, open-source RPC framework that uses Protocol Buffers for efficient communication between distributed systems.</p>
-                         <ul className="list-disc list-inside">
-                            <li>High performance with Protocol Buffers</li>
-                            <li>Bi-directional streaming</li>
-                            <li>Built on HTTP/2</li>
-                        </ul>
-                    </InfoCard>
-                </div>
-            </section>
-
-            <section id="api-security">
-                <SectionTitle>Security & Authentication</SectionTitle>
-                <p className="text-muted-foreground">Security is a critical aspect of API development. This section covers common authentication mechanisms and security best practices for protecting your APIs.</p>
-                
-                <SubSectionTitle>JWT Authentication</SubSectionTitle>
-                <p className="text-muted-foreground">JSON Web Tokens (JWT) provide a compact, self-contained way to securely transmit information between parties as a JSON object.</p>
-                <CodeBlock language="python">{`
+        <section id="api-sec">
+            <SectionTitle id="api-security-title">Security & Authentication</SectionTitle>
+            <p className="text-muted-foreground">Security is a critical aspect of API development. This section covers common authentication mechanisms and security best practices for protecting your APIs.</p>
+            
+            <SubSectionTitle id="jwt-auth-subtitle">JWT Authentication</SubSectionTitle>
+            <p className="text-muted-foreground">JSON Web Tokens (JWT) provide a compact, self-contained way to securely transmit information between parties as a JSON object.</p>
+            <CodeBlock language="python">{`
 import jwt
-from datetime import datetime, timedelta, timezone # Ensure timezone is imported for UTC
+from datetime import datetime, timedelta, timezone # Added timezone
 
-# --- Configuration ---
-SECRET_KEY = "your-super-secret-key" # Store this securely, e.g., in environment variables
+# Ensure your SECRET_KEY is strong and kept secret
+SECRET_KEY = "your-super-secret-key" # Replace with a strong, random key
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-def create_access_token(data: dict, expires_delta: timedelta = None):
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
         expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire, "iat": datetime.now(timezone.utc)})
+    to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def decode_access_token(token: str):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload
-    except jwt.ExpiredSignatureError:
-        # Handle expired token
-        return None
-    except jwt.InvalidTokenError:
-        # Handle invalid token
-        return None
+# Example usage:
+user_data = {"user_id": 123, "username": "testuser"}
+token = create_access_token(user_data)
+print(f"Generated Token: {token}")
 
-# --- Example Usage ---
-# user_data = {"sub": "user123", "role": "admin"}
-# access_token = create_access_token(data=user_data)
-# print(f"Access Token: {access_token}")
+# To decode (example, typically done on server when receiving token)
+try:
+    decoded_payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    print(f"Decoded Payload: {decoded_payload}")
+except jwt.ExpiredSignatureError:
+    print("Token has expired")
+except jwt.InvalidTokenError:
+    print("Invalid token")
+            `}</CodeBlock>
+        </section>
 
-# decoded_payload = decode_access_token(access_token)
-# if decoded_payload:
-#     print(f"Decoded Payload: {decoded_payload}")
-# else:
-#     print("Token is invalid or expired.")
-                `}</CodeBlock>
-            </section>
+        <section id="api-examples">
+            <SectionTitle id="implementation-examples-title">Implementation Examples</SectionTitle>
 
-            <section id="implementation-examples">
-                <SectionTitle>Implementation Examples</SectionTitle>
-
-                <SubSectionTitle>RESTful API with Python FastAPI</SubSectionTitle>
-                <p className="text-muted-foreground">FastAPI is a modern Python web framework that enables rapid development of high-performance APIs with automatic OpenAPI documentation.</p>
-                <CodeBlock language="python">{`
-from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel, Field
+            <SubSectionTitle id="fastapi-example-subtitle">RESTful API with Python FastAPI</SubSectionTitle>
+            <p className="text-muted-foreground">FastAPI is a modern Python web framework that enables rapid development of high-performance APIs with automatic OpenAPI documentation.</p>
+            <CodeBlock language="python">{`
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 from typing import List, Optional, Dict
 
-app = FastAPI(
-    title="Product API",
-    description="A simple API to manage products.",
-    version="1.0.0"
-)
+app = FastAPI(title="Product API", version="1.0.0")
+
+class ProductSchema(BaseModel): # Renamed for clarity
+    id: Optional[int] = None
+    name: str
+    price: float
+    description: Optional[str] = None
 
 # In-memory database for demonstration
-products_db: Dict[int, Product] = {} 
+products_db: Dict[int, ProductSchema] = {}
 next_product_id = 1
 
-class ProductCreate(BaseModel):
-    name: str = Field(..., min_length=3, example="Laptop Pro")
-    price: float = Field(..., gt=0, example=999.99)
-    description: Optional[str] = Field(None, example="High-performance laptop")
-
-class Product(ProductCreate):
-    id: int = Field(..., example=1)
-
-
-@app.post("/products/", response_model=Product, status_code=status.HTTP_201_CREATED, tags=["Products"])
-def create_product(product_in: ProductCreate):
+@app.post("/products/", response_model=ProductSchema, status_code=201, summary="Create a new product")
+def create_product_api(product: ProductSchema): # Renamed for clarity
     global next_product_id
-    product_id = next_product_id
-    products_db[product_id] = Product(id=product_id, **product_in.dict())
+    product.id = next_product_id
+    products_db[next_product_id] = product
     next_product_id += 1
+    return product
+
+@app.get("/products/", response_model=List[ProductSchema], summary="Get all products")
+def read_products_api(): # Renamed for clarity
+    return list(products_db.values())
+
+@app.get("/products/{product_id}", response_model=ProductSchema, summary="Get a specific product by ID")
+def read_product_api(product_id: int): # Renamed for clarity
+    if product_id not in products_db:
+        raise HTTPException(status_code=404, detail="Product not found")
     return products_db[product_id]
 
-@app.get("/products/", response_model=List[Product], tags=["Products"])
-def read_products(skip: int = 0, limit: int = 10):
-    return list(products_db.values())[skip : skip + limit]
+# To run: uvicorn your_api_file:app --reload
+            `}</CodeBlock>
 
-@app.get("/products/{product_id}", response_model=Product, tags=["Products"])
-def read_product(product_id: int):
-    if product_id not in products_db:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
-    return products_db[product_id]
-
-@app.put("/products/{product_id}", response_model=Product, tags=["Products"])
-def update_product(product_id: int, product_in: ProductCreate):
-    if product_id not in products_db:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
-    products_db[product_id] = Product(id=product_id, **product_in.dict())
-    return products_db[product_id]
-
-@app.delete("/products/{product_id}", status_code=status.HTTP_204_NO_CONTENT, tags=["Products"])
-def delete_product(product_id: int):
-    if product_id not in products_db:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
-    del products_db[product_id]
-    return None
-
-# To run this:
-# 1. Save as main.py (or any other name)
-# 2. Install FastAPI and Uvicorn: pip install fastapi "uvicorn[standard]"
-# 3. Run server: uvicorn main:app --reload
-# Access docs at http://127.0.0.1:8000/docs
-                `}</CodeBlock>
-
-                <SubSectionTitle>GraphQL API with TypeScript & Apollo Server</SubSectionTitle>
-                <p className="text-muted-foreground">Apollo Server provides a production-ready GraphQL server with TypeScript support for building scalable APIs.</p>
-                <CodeBlock language="typescript">{`
-// Install dependencies: npm install apollo-server graphql
-// Create a tsconfig.json if you don't have one (e.g., npx tsc --init)
-// Run with: npx ts-node your-file-name.ts (after installing ts-node: npm install -g ts-node typescript)
-
+            <SubSectionTitle id="graphql-example-subtitle">GraphQL API with TypeScript & Apollo Server</SubSectionTitle>
+            <p className="text-muted-foreground">Apollo Server provides a production-ready GraphQL server with TypeScript support for building scalable APIs.</p>
+            <CodeBlock language="typescript">{`
+// Install: npm install apollo-server graphql
 import { ApolloServer, gql } from 'apollo-server';
 
-// Define your GraphQL schema
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+}
+
 const typeDefs = gql\`
   type Product {
     id: ID!
     name: String!
     price: Float!
-    description: String
   }
 
   type Query {
@@ -220,38 +184,28 @@ const typeDefs = gql\`
   }
 
   type Mutation {
-    addProduct(name: String!, price: Float!, description: String): Product
+    addProduct(name: String!, price: Float!): Product
   }
 \`;
 
-// Sample data store (in-memory for this example)
-interface ProductType {
-  id: string;
-  name: string;
-  price: number;
-  description?: string;
-}
-
-let products: ProductType[] = [
-  { id: '1', name: 'Laptop Pro', price: 999.99, description: 'High-performance laptop' },
-  { id: '2', name: 'Wireless Mouse', price: 29.99, description: 'Ergonomic wireless mouse' },
+const products: Product[] = [
+  { id: '1', name: 'Laptop Pro', price: 1299.99 },
+  { id: '2', name: 'Wireless Mouse', price: 29.99 },
 ];
 
-// Define resolvers for your schema
 const resolvers = {
   Query: {
-    products: (): ProductType[] => products,
-    product: (_: any, { id }: { id: string }): ProductType | undefined => {
+    products: (): Product[] => products,
+    product: (_: any, { id }: { id: string }): Product | undefined => {
       return products.find(p => p.id === id);
     },
   },
   Mutation: {
-    addProduct: (_: any, { name, price, description }: { name: string; price: number; description?: string }): ProductType => {
-      const newProduct: ProductType = {
+    addProduct: (_: any, { name, price }: { name: string; price: number }): Product => {
+      const newProduct: Product = {
         id: String(products.length + 1),
         name,
         price,
-        description,
       };
       products.push(newProduct);
       return newProduct;
@@ -259,54 +213,43 @@ const resolvers = {
   },
 };
 
-// Create an Apollo Server instance
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  // You can enable introspection for development/testing
-  // introspection: process.env.NODE_ENV !== 'production', 
-});
+const server = new ApolloServer({ typeDefs, resolvers });
 
-// Start the server
-server.listen({ port: 4000 }).then(({ url }) => {
-  console.log(\`🚀 Server ready at \${url}\`);
-  console.log(\`Access GraphQL Playground at \${url}graphql\`);
+server.listen({ port: 4000 }).then(({ url }) => { // Specify port
+  console.log(\`🚀 GraphQL Server ready at \${url}\`);
 });
-                `}</CodeBlock>
-            </section>
+            `}</CodeBlock>
+        </section>
 
-            <section id="best-practices">
-                <SectionTitle>Enterprise API Best Practices</SectionTitle>
-                <div className="grid md:grid-cols-2 gap-8">
-                    <InfoCard title="Rate Limiting & Throttling">
-                        <p>Implement rate limiting to protect APIs from abuse and ensure fair usage. Define limits based on consumer identity, endpoint sensitivity, and resource consumption. Consider using token bucket or leaky bucket algorithms.</p>
-                    </InfoCard>
-                    <InfoCard title="Caching Strategies">
-                        <p>Implement appropriate caching to improve performance and reduce server load. Use HTTP caching headers (Cache-Control, ETag, Last-Modified), application-level caching, or distributed caches like Redis or Memcached.</p>
-                    </InfoCard>
-                    <InfoCard title="API Versioning">
-                        <p>Implement a consistent versioning strategy (e.g., in the URL path like <code>/v1/products</code>, or via custom headers) to manage API evolution while maintaining backward compatibility for existing clients.</p>
-                    </InfoCard>
-                     <InfoCard title="Comprehensive Testing">
-                        <p>Ensure API reliability with a full suite of tests: unit tests for individual components, integration tests for service interactions, contract tests (e.g., Pact) for consumer-driven contracts, load tests for performance, and security penetration testing.</p>
-                    </InfoCard>
-                    <InfoCard title="Idempotency">
-                        <p>Design POST, PUT, and DELETE operations to be idempotent where possible. This means multiple identical requests have the same effect as a single request, preventing unintended side effects from retries or network issues.</p>
-                    </InfoCard>
-                    <InfoCard title="Clear Error Handling">
-                        <p>Provide consistent and informative error responses. Use standard HTTP status codes and include a machine-readable error code and human-readable message in the response body to aid debugging.</p>
-                    </InfoCard>
-                </div>
-            </section>
-            
-            <div className="text-center mt-16">
-                <Button asChild variant="outline">
-                  <Link href="/training-resources">Back to Training Resources</Link>
-                </Button>
+        <section id="api-best-practices-section">
+            <SectionTitle id="best-practices-title">Enterprise API Best Practices</SectionTitle>
+            <div className="grid md:grid-cols-2 gap-8">
+                <InfoCard title="Rate Limiting & Throttling">
+                    <p>Implement rate limiting to protect APIs from abuse and ensure fair usage. Define limits based on consumer identity, endpoint sensitivity, and resource consumption.</p>
+                </InfoCard>
+                <InfoCard title="Caching Strategies">
+                    <p>Implement appropriate caching to improve performance and reduce server load. Use HTTP caching headers, application-level caching, or distributed caches like Redis.</p>
+                </InfoCard>
+                <InfoCard title="API Versioning">
+                    <p>Implement a consistent versioning strategy (e.g., in the URL like <code>/v1/products</code> or via HTTP headers) to manage API evolution while maintaining backward compatibility for clients.</p>
+                </InfoCard>
+                 <InfoCard title="Comprehensive Testing">
+                    <p>Ensure API reliability with a full suite of tests: unit, integration, contract, load, and security testing are all essential for enterprise-grade APIs.</p>
+                </InfoCard>
+                 <InfoCard title="Detailed Logging & Monitoring">
+                    <p>Implement robust logging for requests, responses, and errors. Use monitoring tools to track API performance, availability, and usage patterns.</p>
+                </InfoCard>
+                 <InfoCard title="Clear Documentation (OpenAPI/Swagger)">
+                    <p>Provide comprehensive and interactive API documentation using standards like OpenAPI (Swagger). This is crucial for developer experience and API adoption.</p>
+                </InfoCard>
             </div>
-        </Container>
-      </main>
-      <Footer />
-    </>
-  );
-}
+        </section>
+        
+        <div className="text-center mt-16">
+            <Button asChild>
+              <Link href="/training-resources">Back to Curriculum</Link>
+            </Button>
+        </div>
+    </Container>
+</main>
+<Footer />
