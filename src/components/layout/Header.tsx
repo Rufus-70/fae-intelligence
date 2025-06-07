@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ui/ContactModal";
 import { FaeLogo } from "@/components/FaeLogo";
 import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"; // Added SheetHeader and SheetTitle
 import React from "react";
 
 const navItems = [
@@ -58,6 +58,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-background">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              </SheetHeader>
               <nav className="flex flex-col space-y-4 pt-6">
                 {commonNavLinks}
               </nav>
