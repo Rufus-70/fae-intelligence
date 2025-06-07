@@ -1,9 +1,3 @@
-"use client";
-
----
-title: "Firebase & Firestore Integration | Fae Intelligence Code Hub"
-description: "Master Google's powerful platform for building scalable, serverless applications with real-time data synchronization. Learn to integrate Firebase and Firestore into Python and TypeScript applications while implementing enterprise-grade security and data modeling."
----
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from '@/components/layout/Container';
@@ -35,7 +29,7 @@ const CodeBlock = ({ language, children }) => (
 );
 
 const ComparisonCard = ({ title, items }) => (
-    <div className="bg-card p-6 rounded-lg shadow-md border border-border/50">
+    <div className="bg-card p-6 rounded-lg shadow-md border border-border">
         <h4 className="text-xl font-bold mb-3 text-center text-primary">{title}</h4>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
             {items.map((item, index) => <li key={index}>{item}</li>)}
@@ -48,55 +42,55 @@ export default function FirebaseFirestorePage() {
     <>
       <Header />
       <main>
-        <Container className="py-10 md:py-12">
-            <div className="text-center mb-12">
-                <DatabaseZap className="h-16 w-16 text-accent mx-auto mb-4" />
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary font-headline">Firebase & Firestore for Enterprise Applications</h1>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Master Google's powerful platform for building scalable, serverless applications with real-time data synchronization. Learn how to integrate Firebase and Firestore into Python and TypeScript applications while implementing enterprise-grade security, data modeling, and offline capabilities.
-                </p>
-            </div>
+          <Container className="py-10 md:py-12">
+              <div className="text-center mb-12">
+                  <DatabaseZap className="h-16 w-16 text-accent mx-auto mb-4" />
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary">Firebase & Firestore for Enterprise Applications</h1>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                      Master Google's powerful platform for building scalable, serverless applications with real-time data synchronization. Learn how to integrate Firebase and Firestore into Python and TypeScript applications while implementing enterprise-grade security, data modeling, and offline capabilities.
+                  </p>
+              </div>
 
-            <section id="ecosystem-overview">
-                <SectionTitle id="ecosystem-title">Understanding the Firebase Ecosystem</SectionTitle>
-                <p className="mb-4 text-muted-foreground">Firebase is a comprehensive development platform that provides a suite of tools and services to build, improve, and grow applications. At its core is Firestore, a flexible, scalable NoSQL cloud database that synchronizes data across clients in real-time.</p>
-                
-                <InfoBox title="Key Components of Firebase">
-                    <ul className="list-disc list-inside space-y-2">
-                        <li><strong>Cloud Firestore:</strong> NoSQL document database with real-time capabilities.</li>
-                        <li><strong>Authentication:</strong> Multi-provider user authentication system.</li>
-                        <li><strong>Cloud Functions:</strong> Serverless compute for backend operations.</li>
-                        <li><strong>Hosting:</strong> Fast and secure web hosting.</li>
-                        <li><strong>Storage:</strong> Object storage for user-generated content.</li>
-                        <li><strong>Security Rules:</strong> Declarative security model for data access.</li>
-                    </ul>
-                </InfoBox>
+              <section id="ecosystem-overview">
+                  <SectionTitle id="ecosystem-title">Understanding the Firebase Ecosystem</SectionTitle>
+                  <p className="mb-4 text-muted-foreground">Firebase is a comprehensive development platform that provides a suite of tools and services to build, improve, and grow applications. At its core is Firestore, a flexible, scalable NoSQL cloud database that synchronizes data across clients in real-time.</p>
+                  
+                  <InfoBox title="Key Components of Firebase">
+                      <ul className="list-disc list-inside space-y-2">
+                          <li><strong>Cloud Firestore:</strong> NoSQL document database with real-time capabilities.</li>
+                          <li><strong>Authentication:</strong> Multi-provider user authentication system.</li>
+                          <li><strong>Cloud Functions:</strong> Serverless compute for backend operations.</li>
+                          <li><strong>Hosting:</strong> Fast and secure web hosting.</li>
+                          <li><strong>Storage:</strong> Object storage for user-generated content.</li>
+                          <li><strong>Security Rules:</strong> Declarative security model for data access.</li>
+                      </ul>
+                  </InfoBox>
 
-                <div className="grid md:grid-cols-2 gap-8 my-8">
-                    <ComparisonCard title="Traditional Backend Architecture" items={[
-                        "Server provisioning and maintenance",
-                        "Database administration",
-                        "Authentication system implementation",
-                        "Custom scaling solutions",
-                        "Manual security implementation",
-                    ]} />
-                    <ComparisonCard title="Firebase Architecture" items={[
-                        "Serverless, managed infrastructure",
-                        "Auto-scaling database",
-                        "Built-in authentication",
-                        "Automatic scaling based on demand",
-                        "Declarative security rules",
-                    ]} />
-                </div>
-            </section>
+                  <div className="grid md:grid-cols-2 gap-8 my-8">
+                      <ComparisonCard title="Traditional Backend Architecture" items={[
+                          "Server provisioning and maintenance",
+                          "Database administration",
+                          "Authentication system implementation",
+                          "Custom scaling solutions",
+                          "Manual security implementation",
+                      ]} />
+                      <ComparisonCard title="Firebase Architecture" items={[
+                          "Serverless, managed infrastructure",
+                          "Auto-scaling database",
+                          "Built-in authentication",
+                          "Automatic scaling based on demand",
+                          "Declarative security rules",
+                      ]} />
+                  </div>
+              </section>
 
-            <section id="firestore-fundamentals">
-                <SectionTitle id="firestore-title">Firestore Fundamentals</SectionTitle>
-                <p className="text-muted-foreground">Cloud Firestore is Firebase's flagship NoSQL database solution, designed for flexibility, scalability, and real-time synchronization.</p>
-                
-                <SubSectionTitle id="firestore-data-modeling">Data Modeling in Firestore</SubSectionTitle>
-                <p className="text-muted-foreground">Firestore uses a document-collection model. Documents are like JSON objects, and they live inside collections.</p>
-                <CodeBlock language="javascript">{`
+              <section id="firestore-fundamentals">
+                  <SectionTitle id="firestore-fundamentals-title">Firestore Fundamentals</SectionTitle>
+                  <p className="text-muted-foreground">Cloud Firestore is Firebase's flagship NoSQL database solution, designed for flexibility, scalability, and real-time synchronization.</p>
+                  
+                  <SubSectionTitle id="firestore-datamodeling-title">Data Modeling in Firestore</SubSectionTitle>
+                  <p className="text-muted-foreground">Firestore uses a document-collection model. Documents are like JSON objects, and they live inside collections.</p>
+                  <CodeBlock language="javascript">{`
 // Example Firestore document for a user
 {
   name: "John Smith",
@@ -108,22 +102,22 @@ export default function FirebaseFirestorePage() {
     notifications: true
   }
 }
-                `}</CodeBlock>
-                <p className="font-semibold mt-4 text-foreground">Data Modeling Best Practices:</p>
-                <ul className="list-disc list-inside space-y-2 mt-2 text-muted-foreground">
-                    <li>Denormalize data for faster reads, even if it means duplicating information.</li>
-                    <li>Keep documents small (under the 1MB limit) to optimize performance.</li>
-                    <li>Use subcollections for one-to-many relationships to keep data organized.</li>
-                    <li>Design your data structure based on how you will query it.</li>
-                </ul>
-            </section>
+                  `}</CodeBlock>
+                  <p className="font-semibold mt-4 text-foreground">Data Modeling Best Practices:</p>
+                  <ul className="list-disc list-inside space-y-2 mt-2 text-muted-foreground">
+                      <li>Denormalize data for faster reads, even if it means duplicating information.</li>
+                      <li>Keep documents small (under the 1MB limit) to optimize performance.</li>
+                      <li>Use subcollections for one-to-many relationships to keep data organized.</li>
+                      <li>Design your data structure based on how you will query it.</li>
+                  </ul>
+              </section>
 
-            <section id="integration">
-                <SectionTitle id="integration-title">Firebase Integration in TypeScript & Python</SectionTitle>
-                
-                <SubSectionTitle id="integration-typescript">TypeScript Integration (Web/Node.js)</SubSectionTitle>
-                <p className="text-muted-foreground">Firebase's JavaScript/TypeScript SDK enables seamless integration in web and Node.js applications with strong typing support.</p>
-                <CodeBlock language="typescript">{`
+              <section id="integration">
+                  <SectionTitle id="integration-title">Firebase Integration in TypeScript & Python</SectionTitle>
+                  
+                  <SubSectionTitle id="typescript-integration-title">TypeScript Integration (Web/Node.js)</SubSectionTitle>
+                  <p className="text-muted-foreground">Firebase's JavaScript/TypeScript SDK enables seamless integration in web and Node.js applications with strong typing support.</p>
+                  <CodeBlock language="typescript">{`
 // Install: npm install firebase
 
 import { initializeApp } from "firebase/app";
@@ -146,11 +140,11 @@ async function addUser(name: string, email: string) {
     console.error("Error adding document: ", e);
   }
 }
-                `}</CodeBlock>
+                  `}</CodeBlock>
 
-                <SubSectionTitle id="integration-realtime-ts">Real-time Updates in TypeScript</SubSectionTitle>
-                <p className="text-muted-foreground">One of Firestore's most powerful features is real-time data synchronization using \`onSnapshot\`.</p>
-                 <CodeBlock language="typescript">{`
+                  <SubSectionTitle id="realtime-updates-title">Real-time Updates in TypeScript</SubSectionTitle>
+                  <p className="text-muted-foreground">One of Firestore's most powerful features is real-time data synchronization using \`onSnapshot\`.</p>
+                  <CodeBlock language="typescript">{`
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 
 // Listen to a query
@@ -166,11 +160,11 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 
 // To stop listening, call the unsubscribe function:
 // unsubscribe();
-                `}</CodeBlock>
+                  `}</CodeBlock>
 
-                <SubSectionTitle id="integration-python">Python Integration (Server-side)</SubSectionTitle>
-                <p className="text-muted-foreground">The Firebase Admin SDK for Python provides server-side capabilities for backend processing and administrative tasks.</p>
-                <CodeBlock language="python">{`
+                  <SubSectionTitle id="python-integration-title">Python Integration (Server-side)</SubSectionTitle>
+                  <p className="text-muted-foreground">The Firebase Admin SDK for Python provides server-side capabilities for backend processing and administrative tasks.</p>
+                  <CodeBlock language="python">{`
 # Install: pip install firebase-admin
 
 import firebase_admin
@@ -187,13 +181,13 @@ doc_ref.set({
     u'last': u'Lovelace',
     u'born': 1815
 })
-                `}</CodeBlock>
-            </section>
+                  `}</CodeBlock>
+              </section>
 
-            <section id="security-rules">
-                <SectionTitle id="security-rules-title">Firestore Security Rules</SectionTitle>
-                <p className="text-muted-foreground">Security rules are a critical component of Firestore, providing declarative access control directly in the database to protect your data from unauthorized access.</p>
-                <CodeBlock language="javascript">{`
+              <section id="security-rules">
+                  <SectionTitle id="security-rules-title">Firestore Security Rules</SectionTitle>
+                  <p className="text-muted-foreground">Security rules are a critical component of Firestore, providing declarative access control directly in the database to protect your data from unauthorized access.</p>
+                  <CodeBlock language="javascript">{`
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -208,13 +202,13 @@ service cloud.firestore {
     }
   }
 }
-                `}</CodeBlock>
-            </section>
+                  `}</CodeBlock>
+              </section>
 
-            <section id="cloud-functions">
-                <SectionTitle id="cloud-functions-title">Firebase Cloud Functions</SectionTitle>
-                <p className="text-muted-foreground">Cloud Functions for Firebase allows you to run backend code in response to events triggered by Firebase features (like a new document being created) and HTTPS requests, without managing servers.</p>
-                <CodeBlock language="typescript">{`
+              <section id="cloud-functions">
+                  <SectionTitle id="cloud-functions-title">Firebase Cloud Functions</SectionTitle>
+                  <p className="text-muted-foreground">Cloud Functions for Firebase allows you to run backend code in response to events triggered by Firebase features (like a new document being created) and HTTPS requests, without managing servers.</p>
+                  <CodeBlock language="typescript">{`
 // Deployed via Firebase CLI: firebase deploy --only functions
 // functions/src/index.ts
 
@@ -240,16 +234,16 @@ export const processNewOrder = functions.firestore
     console.log('Processing new order:', context.params.orderId, newOrder);
     return snap.ref.set({ processed: true }, { merge: true });
   });
-                `}</CodeBlock>
-            </section>
-            
-            <div className="text-center mt-16">
-                <Button asChild>
-                  <Link href="/training-resources">Back to Curriculum</Link>
-                </Button>
-            </div>
+                  `}</CodeBlock>
+              </section>
+              
+              <div className="text-center mt-16">
+                  <Button asChild>
+                    <Link href="/training-resources">Back to Curriculum</Link>
+                  </Button>
+              </div>
 
-        </Container>
+          </Container>
       </main>
       <Footer />
     </>
