@@ -11,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-lato)', 'Lato', 'sans-serif'], // Changed from Inter
-        headline: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'], // Changed from Space Grotesk
+        body: ['var(--font-lato)', 'Lato', 'sans-serif'],
+        headline: ['var(--font-space-grotesk)', 'Space Grotesk', 'sans-serif'], // Reverted from Montserrat
         code: ['monospace'],
       },
       colors: {

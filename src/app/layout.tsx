@@ -2,22 +2,23 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Montserrat, Lato } from 'next/font/google'; // Changed from Inter, Space_Grotesk
+import { Lato, Space_Grotesk as SpaceGrotesk } from 'next/font/google'; // Reverted Montserrat to Space_Grotesk
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
-// Initialize new fonts
+// Initialize Lato for body
 const lato = Lato({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700'], // Added weights for flexibility
+  weight: ['400', '700'],
   variable: '--font-lato',
 });
 
-const montserrat = Montserrat({
+// Initialize Space Grotesk for headlines
+const spaceGrotesk = SpaceGrotesk({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700'], // Added weights for flexibility
-  variable: '--font-montserrat',
+  weight: ['400', '700'],
+  variable: '--font-space-grotesk',
 });
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lato.variable} ${montserrat.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${lato.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
       </head>
       <body className="font-body antialiased bg-background text-foreground">
