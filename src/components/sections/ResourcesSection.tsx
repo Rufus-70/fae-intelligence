@@ -8,11 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { BookOpen, ArrowRight } from "lucide-react";
 
 export function ResourcesSection() {
-  const [currentYear, setCurrentYear] = React.useState(new Date().getFullYear());
-
-  React.useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
 
   return (
     <section id="resources" className="py-16 md:py-24 bg-background text-foreground">
@@ -55,21 +50,6 @@ export function ResourcesSection() {
           </h3>
           <p className="text-lg text-muted-foreground">
             Dive into the Fae Intelligence Resource Hub. Discover practical AI overviews, explore cutting-edge tools with hands-on training modules, and access expert guides designed to empower your teams. We translate complex AI into actionable strategies for immediate operational improvements and lasting innovation.
-          </p>
-        </div>
-
-        <div className="mt-16 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground space-y-1">
-          <p>&copy; {currentYear} Fae Intelligence LLC. All rights reserved.</p>
-          <p>Empowering PNW Small to Medium-sized Businesses with Practical AI.</p>
-          <p>
-            <Link href="https://FaeIntelligence.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-              https://FaeIntelligence.com
-            </Link>
-          </p>
-          <p>
-            <Link href="mailto:RSnyder@FaeIntelligence.com" className="hover:text-accent transition-colors">
-              RSnyder@FaeIntelligence.com
-            </Link>
           </p>
         </div>
       </div>

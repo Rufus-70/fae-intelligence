@@ -84,12 +84,6 @@ const trainingOfferings = [
 
 export function ServicesSection() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [currentYear, setCurrentYear] = React.useState(new Date().getFullYear());
-
-  React.useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
-
 
   return (
     <section id="services" className="py-16 md:py-24 bg-secondary/20">
@@ -188,21 +182,7 @@ export function ServicesSection() {
                 </Button>
             </ContactModal>
         </div>
-
-        <div className="mt-16 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground space-y-1">
-            <p>&copy; {currentYear} Fae Intelligence LLC. All rights reserved.</p>
-            <p>Empowering PNW Small to Medium-sized Businesses with Practical AI.</p>
-            <p>
-                <a href="https://FaeIntelligence.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">https://FaeIntelligence.com</a>
-            </p>
-            <p>
-                <a href="mailto:RSnyder@FaeIntelligence.com" className="hover:text-accent transition-colors">RSnyder@FaeIntelligence.com</a>
-            </p>
-        </div>
-
       </div>
     </section>
   );
 }
-
-    
