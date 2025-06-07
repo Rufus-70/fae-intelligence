@@ -5,53 +5,51 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%; /* Dark Blue/Charcoal, e.g., #10172A */
-    --foreground: 210 40% 96%; /* Light Gray/Off-White, e.g., #F5F7FA */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222 47% 11%; /* Dark Blue/Charcoal */
 
-    --card: 222 47% 15%; /* Slightly Lighter Dark Blue, e.g., #1A233A */
-    --card-foreground: 210 40% 96%; /* Light Gray/Off-White */
+    --card: 0 0% 98%; /* Very Light Gray */
+    --card-foreground: 222 47% 11%; /* Dark Blue/Charcoal */
 
-    --popover: 222 47% 13%; /* Similar to card or slightly darker */
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 222 47% 11%; /* Dark Blue/Charcoal */
 
-    --primary: 260 80% 70%; /* Vibrant Purple, e.g., #A875F0 */
-    --primary-foreground: 210 40% 98%; /* White/Very Light Gray */
+    --primary: 260 80% 65%; /* Vibrant Purple (slightly adjusted for light mode) */
+    --primary-foreground: 0 0% 98%; /* White/Very Light Gray */
 
-    --secondary: 222 30% 25%; /* Muted Dark Blue, e.g., #2D3748 */
-    --secondary-foreground: 210 40% 88%; /* Lighter Gray */
+    --secondary: 210 40% 94%; /* Light Gray */
+    --secondary-foreground: 222 47% 20%; /* Darker Blue */
 
-    --muted: 222 20% 35%; /* Softer Dark Blue/Gray, e.g., #4A5568 */
-    --muted-foreground: 210 30% 70%; /* Medium Gray */
+    --muted: 210 40% 90%; /* Light Gray */
+    --muted-foreground: 222 20% 45%; /* Medium-Dark Gray */
 
-    --accent: 253 65% 65%; /* Lavender/Violet, e.g., #9F7AEA */
+    --accent: 253 65% 60%; /* Lavender/Violet (slightly adjusted for light mode) */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 72% 51%; /* Red */
     --destructive-foreground: 0 0% 98%; /* White */
 
-    --border: 222 30% 28%; /* Border color derived from theme, e.g., #38455A */
-    --input: 222 30% 22%;  /* Input background, e.g., #2A3347 */
-    --ring: 253 65% 70%; /* Accent color for rings, slightly lighter violet */
+    --border: 210 40% 88%; /* Light Gray Border */
+    --input: 210 40% 92%;  /* Light Gray Input Background */
+    --ring: 260 80% 70%; /* Primary color for rings */
 
-    --chart-1: 260 80% 70%;
-    --chart-2: 250 70% 60%;
-    --chart-3: 220 60% 65%;
-    --chart-4: 210 50% 55%;
-    --chart-5: 200 40% 50%;
+    --chart-1: 260 80% 65%;
+    --chart-2: 250 70% 55%;
+    --chart-3: 220 60% 60%;
+    --chart-4: 210 50% 50%;
+    --chart-5: 200 40% 45%;
     --radius: 0.5rem;
 
-    /* Sidebar colors adapted from main theme for consistency */
-    /* Keeping sidebar distinct, can be adjusted further if needed */
-    --sidebar-background: 222 47% 9%; /* Even darker for sidebar */
-    --sidebar-foreground: 210 40% 90%;
-    --sidebar-primary: 253 65% 65%; /* Accent color for sidebar primary */
+    /* Sidebar colors adapted for light theme */
+    --sidebar-background: 210 40% 96%; /* Light Gray for sidebar */
+    --sidebar-foreground: 222 47% 15%; /* Dark Blue for sidebar text */
+    --sidebar-primary: 253 65% 60%; 
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 80% 70%; /* Primary color for sidebar accent */
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 47% 15%;
-    --sidebar-ring: 253 65% 70%;
+    --sidebar-accent: 260 80% 65%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 210 40% 85%;
+    --sidebar-ring: 253 65% 60%;
 
-    /* Next/font variables (if you set them in layout.tsx) */
     --font-inter: 'Inter', sans-serif;
     --font-space-grotesk: 'Space Grotesk', sans-serif;
   }
@@ -99,9 +97,9 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body; /* Ensure font-body is applied */
+    @apply bg-background text-foreground font-body;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline; /* Ensure font-headline is applied to headings */
+    @apply font-headline;
   }
 }
