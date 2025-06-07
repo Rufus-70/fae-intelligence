@@ -138,4 +138,7 @@ export function ContactModal({ children, open, onOpenChange }: ContactModalProps
             <SubmitButton />
           </DialogFooter>
         </form>
-      </DialogContent
+      </DialogContent>
+    </Dialog>
+  );
+}
