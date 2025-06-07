@@ -9,22 +9,22 @@ import { CheckCircle, Brain, Lightbulb, Users, Zap, ChevronRight } from 'lucide-
 
 const whyChooseItems = [
   {
-    icon: <Brain className="h-8 w-8 text-accent" />,
+    icon: <Brain className="h-8 w-8 text-primary" />, // Changed to primary to stand out on card
     title: "Real-World Focus",
     text: "Our training is grounded in decades of operational experience and current AI application development.",
   },
   {
-    icon: <Lightbulb className="h-8 w-8 text-accent" />,
+    icon: <Lightbulb className="h-8 w-8 text-primary" />, // Changed to primary
     title: "Practical & Actionable",
     text: "You'll gain skills and insights you can apply immediately to your job.",
   },
   {
-    icon: <Users className="h-8 w-8 text-accent" />,
+    icon: <Users className="h-8 w-8 text-primary" />, // Changed to primary
     title: "Accessible to All",
     text: "We break down complex topics into understandable concepts – no deep technical background needed.",
   },
   {
-    icon: <Zap className="h-8 w-8 text-accent" />,
+    icon: <Zap className="h-8 w-8 text-primary" />, // Changed to primary
     title: "Empowering",
     text: "Our goal is to build your confidence and capability to leverage AI effectively.",
   },
@@ -86,101 +86,107 @@ export function ServicesSection() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-secondary/20">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline mb-3 text-foreground">Fae Intelligence Training Programs</h2>
-          <p className="text-xl md:text-2xl text-muted-foreground font-headline mb-6">
+    <section id="services" className="bg-background"> {/* Removed py-16 md:py-24 from here, will apply to inner divs */}
+      <div className="bg-secondary text-secondary-foreground text-center py-16 md:py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline mb-4">Fae Intelligence Training Programs</h2>
+          <p className="text-xl md:text-2xl font-headline mb-6 max-w-4xl mx-auto">
             Unlock Your Business Potential with Practical AI Skills
           </p>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
-            At Fae Intelligence, we believe that the transformative power of Artificial Intelligence should be accessible to everyone, not just technical specialists. Our training programs are meticulously designed for operations professionals, business teams, and all knowledge workers – from the shop floor to the front office – who are ready to leverage AI to solve real-world problems, boost their effectiveness, and drive innovation.
-          </p>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Led by Richard Snyder, an operations veteran with 30+ years of experience and current, hands-on AI development expertise, our workshops cut through the hype. We focus on practical application, tangible results, and empowering you with skills you can use immediately. No advanced coding expertise is required – just a desire to learn and make a real impact.
-          </p>
-        </div>
-
-        <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold font-headline text-center mb-8 text-foreground">Why Choose Fae Intelligence Training?</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChooseItems.map((item) => (
-              <div key={item.title} className="flex flex-col items-center text-center p-4 rounded-lg bg-card shadow-sm">
-                {item.icon}
-                <h4 className="text-xl font-semibold font-headline mt-4 mb-2 text-card-foreground">{item.title}</h4>
-                <p className="text-muted-foreground text-sm">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold font-headline text-center mb-10 text-foreground">Our Foundational Training Offerings</h3>
-          <div className="space-y-12">
-            {trainingOfferings.map((offering, index) => (
-              <Card key={index} className="bg-card border-border/50 shadow-lg overflow-hidden">
-                <CardHeader className="bg-muted/30 p-6">
-                  <CardTitle className="text-2xl font-bold font-headline text-primary">{offering.title}</CardTitle>
-                  {offering.description && <CardDescription className="text-muted-foreground pt-2">{offering.description}</CardDescription>}
-                </CardHeader>
-                <CardContent className="p-6 space-y-6">
-                  <div>
-                    <h4 className="text-lg font-semibold font-headline mb-3 text-card-foreground">Is This Training For You?</h4>
-                    <ul className="space-y-2">
-                      {offering.isForYou.map((point, i) => (
-                        <li key={i} className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold font-headline mb-3 text-card-foreground">What You'll Walk Away With (Key Learning Outcomes):</h4>
-                    <ul className="space-y-2">
-                      {offering.outcomes.map((point, i) => (
-                        <li key={i} className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold font-headline mb-3 text-card-foreground">The Fae Intelligence Difference:</h4>
-                    <p className="text-muted-foreground italic">{offering.difference}</p>
-                  </div>
-                  <div className="pt-2">
-                    <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
-                      <Button 
-                        variant="outline" 
-                        className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                        onClick={() => setIsModalOpen(true)}
-                      >
-                        Learn More <ChevronRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </ContactModal>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-        
-        <div className="text-center pt-8 border-t border-border/50 mt-16">
-            <h3 className="text-xl md:text-2xl font-bold font-headline text-foreground mb-4">Ready to take the next step in your professional development and harness the power of AI?</h3>
-            <p className="text-lg text-muted-foreground mb-8">
-             Explore our upcoming sessions or contact us to discuss customized training for your team.
+          <div className="max-w-3xl mx-auto space-y-4 text-lg">
+            <p>
+              At Fae Intelligence, we believe that the transformative power of Artificial Intelligence should be accessible to everyone, not just technical specialists. Our training programs are meticulously designed for operations professionals, business teams, and all knowledge workers – from the shop floor to the front office – who are ready to leverage AI to solve real-world problems, boost their effectiveness, and drive innovation.
             </p>
-            <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
-                <Button 
-                  size="lg" 
-                  className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-300"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  Contact Us About Training
-                </Button>
-            </ContactModal>
+            <p>
+              Led by Richard Snyder, an operations veteran with 30+ years of experience and current, hands-on AI development expertise, our workshops cut through the hype. We focus on practical application, tangible results, and empowering you with skills you can use immediately. No advanced coding expertise is required – just a desire to learn and make a real impact.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="py-16 md:py-24"> {/* Added padding here for content below colored block */}
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-16">
+            <h3 className="text-2xl md:text-3xl font-bold font-headline text-center mb-8 text-foreground">Why Choose Fae Intelligence Training?</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {whyChooseItems.map((item) => (
+                <div key={item.title} className="flex flex-col items-center text-center p-6 rounded-lg bg-card shadow-lg">
+                  {item.icon}
+                  <h4 className="text-xl font-semibold font-headline mt-4 mb-2 text-card-foreground">{item.title}</h4>
+                  <p className="text-muted-foreground text-sm">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-16">
+            <h3 className="text-2xl md:text-3xl font-bold font-headline text-center mb-10 text-foreground">Our Foundational Training Offerings</h3>
+            <div className="space-y-12">
+              {trainingOfferings.map((offering, index) => (
+                <Card key={index} className="bg-card border-border/50 shadow-xl overflow-hidden">
+                  <CardHeader className="bg-card p-6"> {/* Changed from bg-muted/30 */}
+                    <CardTitle className="text-2xl font-bold font-headline text-primary">{offering.title}</CardTitle>
+                    {offering.description && <CardDescription className="text-muted-foreground pt-2">{offering.description}</CardDescription>}
+                  </CardHeader>
+                  <CardContent className="p-6 space-y-6">
+                    <div>
+                      <h4 className="text-lg font-semibold font-headline mb-3 text-card-foreground">Is This Training For You?</h4>
+                      <ul className="space-y-2">
+                        {offering.isForYou.map((point, i) => (
+                          <li key={i} className="flex items-start">
+                            <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
+                            <span className="text-muted-foreground">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold font-headline mb-3 text-card-foreground">What You'll Walk Away With (Key Learning Outcomes):</h4>
+                      <ul className="space-y-2">
+                        {offering.outcomes.map((point, i) => (
+                          <li key={i} className="flex items-start">
+                            <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
+                            <span className="text-muted-foreground">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold font-headline mb-3 text-card-foreground">The Fae Intelligence Difference:</h4>
+                      <p className="text-muted-foreground italic">{offering.difference}</p>
+                    </div>
+                    <div className="pt-2">
+                      <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
+                        <Button 
+                          variant="outline" 
+                          className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" // Changed from accent
+                          onClick={() => setIsModalOpen(true)}
+                        >
+                          Learn More <ChevronRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </ContactModal>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+          
+          <div className="text-center pt-8 border-t border-border/50 mt-16">
+              <h3 className="text-xl md:text-2xl font-bold font-headline text-foreground mb-4">Ready to take the next step in your professional development and harness the power of AI?</h3>
+              <p className="text-lg text-muted-foreground mb-8">
+               Explore our upcoming sessions or contact us to discuss customized training for your team.
+              </p>
+              <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
+                  <Button 
+                    size="lg" 
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300" // Changed from accent
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    Contact Us About Training
+                  </Button>
+              </ContactModal>
+          </div>
         </div>
       </div>
     </section>
