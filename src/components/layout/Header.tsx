@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -12,7 +13,7 @@ const navItems = [
   { href: "/#research", label: "Research" },
   { href: "/#founders", label: "Founders" },
   { href: "/#team", label: "Team" },
-  { href: "/#join-us", label: "Careers" },
+  { href: "/#join-us", label: "Join Us" },
 ];
 
 export function Header() {
@@ -32,16 +33,13 @@ export function Header() {
         </Link>
       ))}
       <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <Button variant="outline" onClick={() => { setIsModalOpen(true); setIsSheetOpen(false); }}>Contact</Button>
+        <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground" onClick={() => { setIsModalOpen(true); setIsSheetOpen(false); }}>Contact</Button>
       </ContactModal>
-       <Link href="/admin" passHref>
-          <Button variant="ghost" size="sm" onClick={() => setIsSheetOpen(false)}>Admin</Button>
-        </Link>
     </>
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" passHref>
           <FaeLogo className="cursor-pointer" />
@@ -59,7 +57,7 @@ export function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="bg-background">
               <nav className="flex flex-col space-y-4 pt-6">
                 {commonNavLinks}
               </nav>
