@@ -10,10 +10,10 @@ export function AboutSection() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-background">
+    <section id="about" className="py-16 md:py-24 bg-muted">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline mb-3">ABOUT FAE INTELLIGENCE</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline mb-3 text-foreground">ABOUT FAE INTELLIGENCE</h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-headline mb-2">
             Practical AI, Real-World Results Across Your Organization
           </p>
@@ -92,7 +92,7 @@ export function AboutSection() {
               <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <Button
                   size="lg"
-                  className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-300 w-full sm:w-auto"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 w-full sm:w-auto"
                   onClick={() => setIsModalOpen(true)}
                 >
                   Contact Us Today
