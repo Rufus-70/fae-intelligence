@@ -5,15 +5,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ui/ContactModal";
 import { FaeLogo } from "@/components/FaeLogo";
-import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"; // Added SheetHeader and SheetTitle
+import { Menu, LogIn } from "lucide-react"; // Added LogIn for Admin
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import React from "react";
 
-const navItems = [
-  { href: "/#research", label: "Research" },
-  { href: "/#founders", label: "Founders" },
-  { href: "/#team", label: "Team" },
-  { href: "/#join-us", label: "Join Us" },
+const publicNavItems = [
+  { href: "/", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#resources", label: "Resources" },
 ];
 
 export function Header() {
@@ -22,7 +22,7 @@ export function Header() {
 
   const commonNavLinks = (
     <>
-      {navItems.map((item) => (
+      {publicNavItems.map((item) => (
         <Link
           key={item.label}
           href={item.href}
@@ -35,6 +35,11 @@ export function Header() {
       <ContactModal open={isModalOpen} onOpenChange={setIsModalOpen}>
         <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground" onClick={() => { setIsModalOpen(true); setIsSheetOpen(false); }}>Contact</Button>
       </ContactModal>
+      <Link href="/admin" passHref>
+        <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" onClick={() => setIsSheetOpen(false)}>
+          <LogIn className="mr-2 h-4 w-4 md:hidden lg:inline-block" /> Admin
+        </Button>
+      </Link>
     </>
   );
 
