@@ -20,7 +20,7 @@
     --secondary: 195 27% 44%; /* Muted Blue/Teal (#527F8D) */
     --secondary-foreground: 0 0% 100%; /* Clean White */
 
-    --muted: 195 17% 90%;    /* Slightly darker than background for muted elements */
+    --muted: 195 15% 88%;    /* More distinct light gray for muted elements (#DAE1E3) */
     --muted-foreground: 215 17% 50%; /* Medium Gray for muted text (#718096) */
 
     --accent: 195 27% 44%; /* Muted Blue/Teal (#527F8D) */
@@ -50,7 +50,7 @@
     --sidebar-border: 195 15% 88%; /* Light Gray border */
     --sidebar-ring: 214 55% 45%; /* Brighter Blue for ring */
 
-    --font-lato: 'Lato', sans-serif; /* Changed from Inter to Lato */
+    --font-lato: 'Lato', sans-serif;
     --font-space-grotesk: 'Space Grotesk', sans-serif;
   }
 
