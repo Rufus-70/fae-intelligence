@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fae Intelligence - Complete Training Curriculum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.75in;
+            background: white;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 3px solid #0ea5e9;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #0f172a;
+            margin-bottom: 0.5em;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            color: #64748b;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            padding: 1.5em;
+            border-radius: 8px;
+            margin-bottom: 2em;
+        }
+        
+        .toc h2 {
+            color: #0f172a;
+            margin-bottom: 1em;
+            font-size: 1.5em;
+        }
+        
+        .toc ol {
+            margin-left: 1.5em;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5em;
+        }
+        
+        .module {
+            margin-bottom: 3em;
+            border-left: 4px solid #0ea5e9;
+            padding-left: 1.5em;
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1.5em;
+            margin-left: -1.5em;
+        }
+        
+        .module-header h1 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+        }
+        
+        .module-header p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+        
+        .module-meta {
+            background: #f1f5f9;
+            padding: 1em;
+            border-radius: 6px;
+            margin-bottom: 1.5em;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1em;
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-item strong {
+            display: block;
+            color: #0f172a;
+            font-size: 0.9em;
+        }
+        
+        .meta-item span {
+            color: #64748b;
+            font-size: 0.8em;
+        }
+        
+        .objectives {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1.5em 0;
+        }
+        
+        .objectives h3 {
+            color: #15803d;
+            margin-bottom: 1em;
+        }
+        
+        .objectives ul {
+            margin-left: 1.5em;
+        }
+        
+        .objectives li {
+            color: #166534;
+            margin-bottom: 0.5em;
+        }
+        
+        .content-section {
+            margin: 2em 0;
+        }
+        
+        .content-section h2 {
+            color: #1e293b;
+            margin-bottom: 1em;
+            font-size: 1.4em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5em;
+        }
+        
+        .content-section h3 {
+            color: #334155;
+            margin-bottom: 0.8em;
+            margin-top: 1.5em;
+            font-size: 1.2em;
+        }
+        
+        .content-section h4 {
+            color: #475569;
+            margin-bottom: 0.6em;
+            margin-top: 1.2em;
+            font-size: 1.1em;
+        }
+        
+        .highlight-box {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        
+        .highlight-box h4 {
+            color: #1d4ed8;
+            margin-bottom: 0.5em;
+        }
+        
+        .highlight-box p {
+            color: #1e40af;
+        }
+        
+        .tip-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        
+        .tip-box strong {
+            color: #0369a1;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        
+        .warning-box strong {
+            color: #92400e;
+        }
+        
+        .step-list {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1em 0;
+        }
+        
+        .step-list h4 {
+            color: #0f172a;
+            margin-bottom: 1em;
+        }
+        
+        .step-list ol {
+            margin-left: 1.5em;
+        }
+        
+        .step-list li {
+            margin-bottom: 0.8em;
+            color: #475569;
+        }
+        
+        .step-list ul {
+            margin-left: 1em;
+            margin-top: 0.5em;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1em;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+            margin: 1em 0;
+            white-space: pre-wrap;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1em;
+            margin: 1.5em 0;
+        }
+        
+        .tool-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .tool-card h4 {
+            color: #0f172a;
+            margin-bottom: 0.5em;
+            font-size: 1em;
+        }
+        
+        .tool-card .price {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 0.2em 0.5em;
+            border-radius: 0.5em;
+            font-size: 0.8em;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5em;
+        }
+        
+        .tool-card p {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-bottom: 0.8em;
+        }
+        
+        .tool-card ul {
+            margin-left: 1em;
+            font-size: 0.85em;
+            color: #475569;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            font-size: 0.9em;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75em;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .comparison-table td {
+            color: #475569;
+        }
+        
+        .quick-win {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 2em 0;
+        }
+        
+        .quick-win h3 {
+            color: #15803d;
+            margin-bottom: 1em;
+        }
+        
+        .progress-indicator {
+            background: #e2e8f0;
+            height: 6px;
+            border-radius: 3px;
+            margin: 1em 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #22c55e;
+            height: 100%;
+            border-radius: 3px;
+        }
+        
+        .knowledge-check {
+            background: #fef7cd;
+            border: 2px solid #eab308;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 2em 0;
+        }
+        
+        .knowledge-check h4 {
+            color: #a16207;
+            margin-bottom: 1em;
+        }
+        
+        .question {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        
+        .question h5 {
+            color: #374151;
+            margin-bottom: 0.8em;
+        }
+        
+        .question ol {
+            margin-left: 1.5em;
+        }
+        
+        .question li {
+            color: #6b7280;
+            margin-bottom: 0.3em;
+        }
+        
+        .answer {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 0.8em;
+            margin-top: 0.8em;
+        }
+        
+        .answer strong {
+            color: #0369a1;
+        }
+        
+        @media print {
+            body {
+                font-size: 10px;
+                line-height: 1.4;
+                padding: 0.5in;
+            }
+            
+            .tool-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Fae Intelligence</h1>
+        <p>Complete AI Training Curriculum</p>
+        <p style="font-size: 0.9em; color: #94a3b8;">All Training Courses, Modules, and Quick Wins Projects</p>
+        <p style="font-size: 0.8em; color: #94a3b8;">Generated: <script>document.write(new Date().toLocaleDateString())</script></p>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h2>📚 Complete Training Curriculum</h2>
+        <ol>
+            <li><strong>Quick Wins Projects (Immediately Actionable)</strong>
+                <ol style="margin-left: 1em;">
+                    <li>ChatGPT for Documentation (7 minutes)</li>
+                    <li>Voice-to-Text Quality Reports (9 minutes)</li>
+                    <li>Smart Inventory Tracking (15 minutes)</li>
+                </ol>
+            </li>
+            <li><strong>Beginner Training Modules</strong>
+                <ol style="margin-left: 1em;">
+                    <li>AI Fundamentals for Business (46 minutes)</li>
+                    <li>Prompt Engineering for Leaders (35 minutes)</li>
+                    <li>AI Tools for Daily Productivity (40 minutes)</li>
+                </ol>
+            </li>
+            <li><strong>Intermediate Training Modules</strong>
+                <ol style="margin-left: 1em;">
+                    <li>Engineering Alignment (55 minutes)</li>
+                    <li>Top 20 AI Tools Under $20/Month (60 minutes)</li>
+                    <li>Using Claude and ChatGPT for Projects (45 minutes)</li>
+                </ol>
+            </li>
+            <li><strong>Advanced Training Modules</strong>
+                <ol style="margin-left: 1em;">
+                    <li>Utilizing Notebook LM (50 minutes)</li>
+                    <li>Understanding AI Research Platforms (45 minutes)</li>
+                    <li>AI Project Hubs and Collaboration (40 minutes)</li>
+                    <li>MCP & Docker Desktop Training (90 minutes)</li>
+                </ol>
+            </li>
+            <li><strong>Technical Bridge Modules</strong>
+                <ol style="margin-left: 1em;">
+                    <li>API Fundamentals & Web Services (60 minutes)</li>
+                    <li>No-Code Integration Tools (75 minutes)</li>
+                </ol>
+            </li>
+        </ol>
+        
+        <div style="margin-top: 1.5em; padding: 1em; background: white; border-radius: 6px; border: 1px solid #d1d5db;">
+            <p><strong>📊 Total Training Time:</strong> ~8.5 hours of comprehensive AI education</p>
+            <p><strong>🎯 Immediate Value:</strong> 3 Quick Wins projects deliver results in under 30 minutes</p>
+            <p><strong>🏭 Focus:</strong> Manufacturing applications with 30+ years industry expertise</p>
+        </div>
+    </div>
+
+    <!-- Quick Wins Section -->
+    <div class="module page-break">
+        <div class="module-header">
+            <h1>⚡ Quick Wins Projects</h1>
+            <p>Immediately actionable projects that deliver results in minutes, not months</p>
+        </div>
+
+        <!-- ChatGPT Documentation -->
+        <div class="quick-win">
+            <h3>📄 Project 1: ChatGPT for Documentation</h3>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Time Required</strong>
+                    <span>7 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Difficulty</strong>
+                    <span>Very Easy</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💰 ROI</strong>
+                    <span>High</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🏭 Application</strong>
+                    <span>SOPs, Procedures</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 What You'll Accomplish</h3>
+                <ul>
+                    <li>Transform messy meeting notes into professional Standard Operating Procedures</li>
+                    <li>Create consistent, professional documentation in minutes instead of hours</li>
+                    <li>Establish a repeatable process for all documentation tasks</li>
+                    <li>Save 15+ minutes per procedure document</li>
+                </ul>
+            </div>
+
+            <div class="step-list">
+                <h4>🔄 Complete Implementation Process</h4>
+                <ol>
+                    <li><strong>Setup ChatGPT Account (2 minutes)</strong>
+                        <ul>
+                            <li>Go to chat.openai.com</li>
+                            <li>Click "Sign up" and create account with email</li>
+                            <li>Verify email address</li>
+                            <li>Log in to ChatGPT (free tier is sufficient)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Prepare Your Notes (1 minute)</strong>
+                        <ul>
+                            <li>Find messy notes from meetings or project documentation</li>
+                            <li>Copy the text exactly as-is (typos and all)</li>
+                            <li>Don't worry about formatting - messier is better for demonstration</li>
+                        </ul>
+                    </li>
+                    <li><strong>Apply Proven Template (30 seconds)</strong>
+                        <ul>
+                            <li>Paste your notes into ChatGPT</li>
+                            <li>Copy and paste the prompt template below</li>
+                            <li>Press Enter and watch the transformation</li>
+                        </ul>
+                    </li>
+                    <li><strong>Review and Implement (3 minutes)</strong>
+                        <ul>
+                            <li>Review the generated SOP for accuracy</li>
+                            <li>Fill in any [NEEDS CLARIFICATION] markers</li>
+                            <li>Copy to your documentation system</li>
+                            <li>Share with team and start using immediately</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <h4>📋 Copy-Paste Prompt Template</h4>
+                <div class="code-block">Please convert these rough notes into a professional Standard Operating Procedure (SOP) with the following format:
+
+**Title:** [Clear, descriptive title]
+**Purpose:** [Why this procedure exists]
+**Scope:** [When and where this applies]
+**Procedure Steps:**
+1. [Step-by-step instructions]
+2. [Each step should be clear and actionable]
+3. [Include any safety or quality requirements]
+
+**Quality Checks:** [How to verify work was done correctly]
+**Documentation:** [What records to keep]
+
+Please make language clear, professional, and easy to follow. Mark unclear items with [NEEDS CLARIFICATION].</div>
+            </div>
+
+            <div class="warning-box">
+                <strong>💡 Sample Practice Notes:</strong>
+                <div class="code-block" style="background: #fef3c7; color: #92400e; margin-top: 0.5em;">Meeting notes 3/15 - Machine setup procedure
+- turn on main power switch (red button on left side)
+- wait for green light
+- check oil levels in gauges 1,2,3
+- if low add hydraulic oil from cabinet
+- run calibration cycle (press blue button hold for 3 sec)
+- machine will beep 3 times when ready
+- load material on conveyor
+- set speed to 150 for aluminum, 200 for steel
+- press start
+- monitor first 10 pieces for quality
+- adjust as needed
+- log production numbers in daily sheet
+- shutdown: press stop, wait for full stop, turn off power
+
+Safety stuff:
+- always wear safety glasses
+- dont put hands near moving parts
+- emergency stop button is big red button on front
+- if anything looks wrong stop immediately and call supervisor</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>🚀 Pro Results:</strong> This template works for almost any process - manufacturing, quality control, maintenance, or administrative procedures. Most SOPs need only 1-2 rounds of minor edits, but ChatGPT gets you 90% there instantly.
+            </div>
+        </div>
+
+        <!-- Voice-to-Text Reports -->
+        <div class="quick-win">
+            <h3>🎤 Project 2: Voice-to-Text Quality Reports</h3>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Time Required</strong>
+                    <span>9 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Difficulty</strong>
+                    <span>Easy</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💰 ROI</strong>
+                    <span>Medium-High</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🏭 Application</strong>
+                    <span>Quality, Inspections</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 What You'll Accomplish</h3>
+                <ul>
+                    <li>Turn 20-minute written reports into 5-minute voice recordings</li>
+                    <li>Capture inspection details while they're fresh and accurate</li>
+                    <li>Generate professional, consistent report formatting</li>
+                    <li>Reduce transcription errors and improve report quality</li>
+                </ul>
+            </div>
+
+            <div class="step-list">
+                <h4>🔄 Complete Implementation Workflow</h4>
+                <ol>
+                    <li><strong>Record with Smartphone (2 minutes)</strong>
+                        <ul>
+                            <li>Open Voice Memos (iPhone) or Voice Recorder (Android)</li>
+                            <li>Hold phone 6-12 inches from mouth</li>
+                            <li>Speak clearly at normal conversational pace</li>
+                            <li>Record quality inspection findings, maintenance notes, or meeting summary</li>
+                            <li>Speak in short sentences, pause between different topics</li>
+                        </ul>
+                    </li>
+                    <li><strong>Transcribe with Free Tools (3 minutes)</strong>
+                        <ul>
+                            <li><strong>Option 1:</strong> Google Docs voice typing (docs.google.com → Tools → Voice typing)</li>
+                            <li><strong>Option 2:</strong> Otter.ai free tier (600 minutes/month free)</li>
+                            <li><strong>Option 3:</strong> WhatsApp voice message transcription</li>
+                            <li>Upload or play your recording and copy the transcribed text</li>
+                        </ul>
+                    </li>
+                    <li><strong>Format with ChatGPT (2 minutes)</strong>
+                        <ul>
+                            <li>Open ChatGPT and paste your transcribed text</li>
+                            <li>Use the proven formatting prompt below</li>
+                            <li>Review the generated professional report</li>
+                            <li>Make any necessary corrections for accuracy</li>
+                        </ul>
+                    </li>
+                    <li><strong>Save as Template (2 minutes)</strong>
+                        <ul>
+                            <li>Save formatted report in your quality management system</li>
+                            <li>Create a template document with the report structure</li>
+                            <li>Save the ChatGPT prompt for future use</li>
+                            <li>Share this process with your quality team</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <h4>📋 Quality Report Formatting Prompt</h4>
+                <div class="code-block">Please convert this voice transcription into a professional quality inspection report with the following format:
+
+**QUALITY INSPECTION REPORT**
+
+**Date:** [Extract date]
+**Inspector:** [Extract name] 
+**Batch/Lot Number:** [Extract if mentioned]
+**Location/Line:** [Extract if mentioned]
+
+**INSPECTION SUMMARY:**
+[Brief overview of what was inspected]
+
+**FINDINGS:**
+• [List each finding as clear bullet point]
+• [Include specific details like quantities, measurements, locations]
+• [Separate defects from observations]
+
+**QUALITY ASSESSMENT:**
+Pass/Fail: [Based on findings]
+Overall Rating: [Extract or infer rating]
+
+**RECOMMENDATIONS:**
+• [List any suggested actions]
+• [Include preventive measures if mentioned]
+
+**NEXT STEPS:**
+[Any follow-up actions needed]
+
+Please clean up speech-to-text errors and organize information logically. Mark missing critical information with [NEEDS CLARIFICATION].</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>🏭 Real Impact:</strong> Most quality systems see 70% time savings when switching from handwritten to voice-to-AI reports. This same format works for maintenance reports, safety inspections, and production summaries.
+            </div>
+        </div>
+
+        <!-- Smart Inventory Tracking -->
+        <div class="quick-win">
+            <h3>📦 Project 3: Smart Inventory Tracking</h3>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Time Required</strong>
+                    <span>15 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Difficulty</strong>
+                    <span>Medium</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💰 ROI</strong>
+                    <span>High</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🏭 Application</strong>
+                    <span>Inventory, Supplies</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 What You'll Build</h3>
+                <ul>
+                    <li>Smartphone camera system for automated inventory counts</li>
+                    <li>Barcode/QR code scanning with automatic spreadsheet updates</li>
+                    <li>Real-time inventory tracking without expensive software</li>
+                    <li>Integration with existing Google Sheets or Excel workflows</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>📋 Implementation Status:</strong> Detailed step-by-step guide coming soon. This project will use Google Lens, Zapier, and Google Sheets to create a complete inventory tracking system using just your smartphone.
+            </div>
+        </div>
+    </div>
+
+    <!-- Beginner Training Modules -->
+    <div class="module page-break">
+        <div class="module-header">
+            <h1>🟢 Beginner Training Modules</h1>
+            <p>Foundation skills for business teams new to AI - no technical background required</p>
+        </div>
+
+        <!-- AI Fundamentals -->
+        <div class="content-section">
+            <h2>📚 Module 1: AI Fundamentals for Business</h2>
+            
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>46 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>📊 Sections</strong>
+                    <span>6 learning sections</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <strong>✅ Features</strong>
+                    <span>Interactive, Certificate</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <p>By completing this module, you will be able to:</p>
+                <ul>
+                    <li>Define artificial intelligence and explain what it can and cannot do</li>
+                    <li>Distinguish between different types of AI systems (Narrow, General, Machine Learning)</li>
+                    <li>Understand how modern AI systems like neural networks function</li>
+                    <li>Use proper AI terminology when discussing technology with your team</li>
+                    <li>Identify AI applications already present in your daily work and life</li>
+                    <li>Take confident first steps with AI tools for business applications</li>
+                </ul>
+            </div>
+
+            <h3>Section 1: What is AI? (8 minutes)</h3>
+            <p><strong>Simple Definition:</strong> AI is technology that allows computers to mimic human-like thinking and problem-solving.</p>
+            
+            <div class="highlight-box">
+                <h4>✅ AI IS:</h4>
+                <ul>
+                    <li>Software that can analyze information and learn from data</li>
+                    <li>Systems that can recognize patterns and make predictions</li>
+                    <li>Technology that can communicate in natural language</li>
+                    <li>Tools that can automate complex cognitive tasks</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>❌ AI IS NOT:</strong>
+                <ul style="margin-top: 0.5em;">
+                    <li>A replacement for human intelligence or creativity</li>
+                    <li>Conscious, self-aware, or capable of true understanding</li>
+                    <li>Magic or infallible - it makes mistakes and has limitations</li>
+                    <li>Ready to replace all human workers</li>
+                </ul>
+            </div>
+
+            <h3>Section 2: Types of AI (6 minutes)</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>🎯 Narrow AI (Current Reality)</h4>
+                    <p>AI designed for specific tasks and excels in limited domains.</p>
+                    <ul>
+                        <li>Voice assistants (Siri, Alexa)</li>
+                        <li>Recommendation systems (Netflix, Amazon)</li>
+                        <li>Image recognition and translation</li>
+                        <li>ChatGPT and language models</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>🧠 General AI (Future Goal)</h4>
+                    <p>Hypothetical AI that matches human intelligence across all domains.</p>
+                    <ul>
+                        <li>Currently theoretical</li>
+                        <li>Would match human cognitive abilities</li>
+                        <li>Could learn any task humans can</li>
+                        <li>Timeline uncertain (decades away)</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>📈 Machine Learning (Subset)</h4>
+                    <p>AI systems that improve performance by learning from data.</p>
+                    <ul>
+                        <li>Quality control systems that improve over time</li>
+                        <li>Predictive maintenance algorithms</li>
+                        <li>Fraud detection systems</li>
+                        <li>Personalization engines</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Section 3: How AI Works (10 minutes)</h3>
+            <p>Modern AI systems, particularly neural networks, work by processing information through layers of interconnected nodes that mimic simplified brain neurons.</p>
+
+            <div class="step-list">
+                <h4>🧠 Neural Network Basics</h4>
+                <ol>
+                    <li><strong>Input Layer:</strong> Receives data (text, images, numbers)</li>
+                    <li><strong>Hidden Layers:</strong> Process and transform the data through mathematical operations</li>
+                    <li><strong>Output Layer:</strong> Produces the final result (classification, prediction, generated text)</li>
+                    <li><strong>Training:</strong> System learns by adjusting connections based on millions of examples</li>
+                </ol>
+            </div>
+
+            <h3>Section 4: Key Terminology (5 minutes)</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>Algorithm</h4>
+                    <p>A set of rules or instructions that tell the computer how to solve a problem.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Training Data</h4>
+                    <p>The examples used to teach an AI system how to perform its task.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Prompt</h4>
+                    <p>The input or question you give to an AI system to get a response.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Large Language Model (LLM)</h4>
+                    <p>AI trained on vast amounts of text to understand and generate human-like language.</p>
+                </div>
+            </div>
+
+            <h3>Section 5: AI in Everyday Life (7 minutes)</h3>
+            <p>You likely interact with AI multiple times daily without realizing it:</p>
+            <ul>
+                <li><strong>Email:</strong> Spam filtering, smart replies, priority inbox</li>
+                <li><strong>Navigation:</strong> Real-time traffic routing, ETA predictions</li>
+                <li><strong>Shopping:</strong> Product recommendations, price optimization</li>
+                <li><strong>Entertainment:</strong> Netflix recommendations, Spotify playlists</li>
+                <li><strong>Work:</strong> Auto-correct, grammar checking, calendar scheduling</li>
+            </ul>
+
+            <h3>Section 6: Getting Started (10 minutes)</h3>
+            <div class="step-list">
+                <h4>🚀 Your First Steps with AI</h4>
+                <ol>
+                    <li><strong>Start Simple:</strong> Try ChatGPT for basic questions and document help</li>
+                    <li><strong>Practice Prompting:</strong> Learn to communicate clearly with AI systems</li>
+                    <li><strong>Experiment Safely:</strong> Use AI for non-critical tasks while learning</li>
+                    <li><strong>Verify Information:</strong> Always fact-check important AI-generated content</li>
+                    <li><strong>Build Gradually:</strong> Add one AI tool at a time to your workflow</li>
+                </ol>
+            </div>
+
+            <div class="knowledge-check">
+                <h4>📝 Knowledge Check</h4>
+                <div class="question">
+                    <h5>Question 1: Which best describes artificial intelligence?</h5>
+                    <ol>
+                        <li>A conscious computer system that thinks like humans</li>
+                        <li>Technology that enables computers to perform tasks requiring human-like intelligence</li>
+                        <li>A replacement for all human workers</li>
+                        <li>Software that can only follow pre-programmed instructions</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Answer: B.</strong> AI is technology that enables computers to perform tasks that typically require human intelligence, like learning, reasoning, and problem-solving.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h5>Question 2: What is the main difference between Narrow AI and General AI?</h5>
+                    <ol>
+                        <li>Narrow AI is smaller in size than General AI</li>
+                        <li>Narrow AI performs specific tasks, while General AI would match human intelligence across all domains</li>
+                        <li>Narrow AI is slower than General AI</li>
+                        <li>There is no difference between them</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Answer: B.</strong> Narrow AI (which we have today) excels at specific tasks, while General AI (still theoretical) would match human intelligence across all cognitive domains.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prompt Engineering -->
+        <div class="content-section">
+            <h2>💬 Module 2: Prompt Engineering for Leaders</h2>
+            
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>35 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Business Applications</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Communication with AI</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <ul>
+                    <li>Master the fundamentals of effective prompt construction</li>
+                    <li>Apply proven prompt patterns for business scenarios</li>
+                    <li>Troubleshoot and improve poor AI responses</li>
+                    <li>Create prompts that deliver consistent, professional results</li>
+                </ul>
+            </div>
+
+            <h3>Core Prompt Components</h3>
+            <div class="step-list">
+                <h4>🧩 Essential Elements of Effective Prompts</h4>
+                <ol>
+                    <li><strong>Task Instruction:</strong> Clearly state what you want the AI to do</li>
+                    <li><strong>Context Information:</strong> Provide relevant background details</li>
+                    <li><strong>Format Specification:</strong> Define how the output should be structured</li>
+                    <li><strong>Examples:</strong> Show the AI what good output looks like</li>
+                    <li><strong>Constraints:</strong> Set boundaries and limitations</li>
+                    <li><strong>Persona:</strong> Define the role the AI should adopt</li>
+                </ol>
+            </div>
+
+            <h3>Proven Prompt Patterns</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>🎭 Persona-Based Pattern</h4>
+                    <div class="code-block">Act as a [specific role] with [years] of experience in [domain]. 
+
+Your task is to [specific request].
+
+Please provide your response in [format] and include [specific elements].</div>
+                    <p><strong>Example:</strong> "Act as a quality manager with 15 years in manufacturing..."</p>
+                </div>
+                <div class="tool-card">
+                    <h4>📝 Step-by-Step Pattern</h4>
+                    <div class="code-block">I need you to [task] by following these steps:
+
+1. First, [step 1]
+2. Then, [step 2]  
+3. Finally, [step 3]
+
+Please show your work for each step.</div>
+                    <p><strong>Best for:</strong> Complex problem-solving, process creation</p>
+                </div>
+                <div class="tool-card">
+                    <h4>📊 Few-Shot Learning Pattern</h4>
+                    <div class="code-block">Here are examples of the format I want:
+
+Example 1: [input] → [desired output]
+Example 2: [input] → [desired output]
+
+Now please apply this same format to: [your input]</div>
+                    <p><strong>Best for:</strong> Establishing consistent formatting</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Start with a basic prompt, then add specificity and structure. The most effective prompts are often 3-5 sentences that clearly define the task, context, and desired output format.
+            </div>
+        </div>
+
+        <!-- AI Tools for Daily Productivity -->
+        <div class="content-section">
+            <h2>⚡ Module 3: AI Tools for Daily Productivity</h2>
+            
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>40 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Practical Applications</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Workflow Integration</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <ul>
+                    <li>Integrate AI tools into daily manufacturing workflows</li>
+                    <li>Automate routine documentation and communication tasks</li>
+                    <li>Improve meeting efficiency with AI-powered summaries</li>
+                    <li>Create consistent, professional output across all business communications</li>
+                </ul>
+            </div>
+
+            <h3>Daily AI Applications</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>📝 Document Creation</h4>
+                    <ul>
+                        <li>Meeting agendas and minutes</li>
+                        <li>Project status reports</li>
+                        <li>Process documentation</li>
+                        <li>Training materials</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>📧 Communication</h4>
+                    <ul>
+                        <li>Email responses and templates</li>
+                        <li>Internal announcements</li>
+                        <li>Customer communications</li>
+                        <li>Team updates and notifications</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>📊 Data Analysis</h4>
+                    <ul>
+                        <li>Report summarization</li>
+                        <li>Trend identification</li>
+                        <li>Performance metrics interpretation</li>
+                        <li>Decision support insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>🚀 Implementation Strategy:</strong> Start with one tool for one specific task. Master it completely before adding the next tool. Success with AI comes from consistent application, not trying everything at once.
+            </div>
+        </div>
+    </div>
+
+    <!-- Intermediate Training Modules -->
+    <div class="module page-break">
+        <div class="module-header">
+            <h1>🟡 Intermediate Training Modules</h1>
+            <p>Advanced implementation skills for technical teams and system integrators</p>
+        </div>
+
+        <!-- Engineering Alignment -->
+        <div class="content-section">
+            <h2>⚙️ Module 4: Engineering Alignment</h2>
+            
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>55 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Intermediate</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🔧 Focus</strong>
+                    <span>Technical Optimization</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Model Selection</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <ul>
+                    <li>Understand the relationship between context, prompts, and model capabilities</li>
+                    <li>Create properly aligned prompts for manufacturing tasks</li>
+                    <li>Troubleshoot and improve alignment issues</li>
+                    <li>Select appropriate models based on task requirements</li>
+                </ul>
+            </div>
+
+            <h3>The Alignment Framework</h3>
+            <div class="step-list">
+                <h4>🎯 6-Step Alignment Process</h4>
+                <ol>
+                    <li><strong>Task Analysis:</strong> Define precise objectives, identify required knowledge, determine complexity level, establish success criteria</li>
+                    <li><strong>Context Engineering:</strong> Gather essential information, structure information logically, prioritize key details, remove noise and distractions</li>
+                    <li><strong>Model Selection:</strong> Match model to task requirements, consider context window needs, evaluate reasoning complexity, assess specialized knowledge needs</li>
+                    <li><strong>Prompt Crafting:</strong> Apply appropriate prompt pattern, structure clear instructions, include examples if helpful, specify output format</li>
+                    <li><strong>Execution:</strong> Run the prompt, monitor model behavior, observe initial results, note any misalignments</li>
+                    <li><strong>Iterative Refinement:</strong> Analyze output quality, identify alignment issues, adjust context/prompt/model, test and repeat as needed</li>
+                </ol>
+            </div>
+
+            <h3>Model Comparison for Manufacturing</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Strengths</th>
+                        <th>Best Manufacturing Use Cases</th>
+                        <th>Limitations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ChatGPT (GPT-4)</strong></td>
+                        <td>Advanced reasoning, multimodal, web access</td>
+                        <td>Complex analysis, real-time data, creative problem-solving</td>
+                        <td>Cost, occasional hallucination</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Claude</strong></td>
+                        <td>Long context, document analysis, safety</td>
+                        <td>Large document processing, detailed SOPs, compliance</td>
+                        <td>Limited real-time data access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini</strong></td>
+                        <td>Google integration, technical knowledge</td>
+                        <td>Research, technical documentation, data analysis</td>
+                        <td>Newer platform, evolving capabilities</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Common Alignment Issues</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>⚠️ Insufficient Context</h4>
+                    <p><strong>Signs:</strong> Model asks clarifying questions or makes incorrect assumptions</p>
+                    <p><strong>Solution:</strong> Add relevant background information and constraints</p>
+                </div>
+                <div class="tool-card">
+                    <h4>⚠️ Vague Instructions</h4>
+                    <p><strong>Signs:</strong> Inconsistent or unfocused responses</p>
+                    <p><strong>Solution:</strong> Provide specific task descriptions and output requirements</p>
+                </div>
+                <div class="tool-card">
+                    <h4>⚠️ Model Capability Mismatch</h4>
+                    <p><strong>Signs:</strong> Responses show reasoning errors or knowledge gaps</p>
+                    <p><strong>Solution:</strong> Switch to more capable model or simplify requirements</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top 20 AI Tools -->
+        <div class="content-section">
+            <h2>🛠️ Module 5: Top 20 AI Tools Under $20/Month</h2>
+            
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>60 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Intermediate</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💰 Focus</strong>
+                    <span>Cost-Effective Tools</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Tool Evaluation</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <ul>
+                    <li>Evaluate and select cost-effective AI tools for specific business needs</li>
+                    <li>Understand the capabilities and limitations of budget-friendly AI solutions</li>
+                    <li>Create integrated tool stacks that maximize productivity</li>
+                    <li>Calculate ROI and make informed purchasing decisions</li>
+                </ul>
+            </div>
+
+            <h3>Text & Writing Tools</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>ChatGPT</h4>
+                    <div class="price">Free / $20/mo Plus</div>
+                    <p>Versatile text-based AI assistant for writing, coding, research, and creative tasks.</p>
+                    <ul>
+                        <li>Text generation and editing</li>
+                        <li>Code writing and debugging</li>
+                        <li>Web browsing (Plus)</li>
+                        <li>Plugin ecosystem</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Copy.ai</h4>
+                    <div class="price">Free / $12/mo Pro</div>
+                    <p>AI-powered copywriting platform specialized for marketing content creation.</p>
+                    <ul>
+                        <li>90+ content templates</li>
+                        <li>Blog writing tools</li>
+                        <li>Email copy generation</li>
+                        <li>Social media captions</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Grammarly</h4>
+                    <div class="price">Free / $12/mo Premium</div>
+                    <p>AI writing assistant for grammar, clarity, engagement, and delivery.</p>
+                    <ul>
+                        <li>Grammar and spelling correction</li>
+                        <li>Tone adjustment suggestions</li>
+                        <li>Clarity improvements</li>
+                        <li>Plagiarism detection (Premium)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Image Generation & Design</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>Midjourney</h4>
+                    <div class="price">$10/mo Basic</div>
+                    <p>AI image generation known for artistic quality and photorealistic outputs.</p>
+                    <ul>
+                        <li>High-quality artistic images</li>
+                        <li>Discord-based interface</li>
+                        <li>Style variation options</li>
+                        <li>Commercial usage rights</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Canva Pro</h4>
+                    <div class="price">$12.99/mo</div>
+                    <p>Design platform with integrated AI features for graphic creation.</p>
+                    <ul>
+                        <li>Magic Write text generation</li>
+                        <li>Background removal</li>
+                        <li>Text-to-image generation</li>
+                        <li>Brand kit and templates</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Adobe Firefly</h4>
+                    <div class="price">Free Limited / $4.99/mo</div>
+                    <p>Adobe's generative AI with commercial usage rights.</p>
+                    <ul>
+                        <li>Creative Cloud integration</li>
+                        <li>Text-to-image generation</li>
+                        <li>No copyright concerns</li>
+                        <li>Professional quality output</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Audio & Video Creation</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>Descript</h4>
+                    <div class="price">Free / $15/mo Creator</div>
+                    <p>All-in-one audio/video editing with AI capabilities.</p>
+                    <ul>
+                        <li>Text-based video editing</li>
+                        <li>AI voice cloning (Overdub)</li>
+                        <li>Automatic transcription</li>
+                        <li>Filler word removal</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Murf.ai</h4>
+                    <div class="price">Free / $19/mo Basic</div>
+                    <p>AI voice generator with studio-quality voices.</p>
+                    <ul>
+                        <li>120+ natural voices</li>
+                        <li>20+ languages supported</li>
+                        <li>Voice customization</li>
+                        <li>Background music integration</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Otter.ai</h4>
+                    <div class="price">Free / $16.99/mo Pro</div>
+                    <p>AI meeting assistant for transcription and summaries.</p>
+                    <ul>
+                        <li>Real-time transcription</li>
+                        <li>Meeting summaries</li>
+                        <li>Speaker identification</li>
+                        <li>Zoom/Teams integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Research & Knowledge Tools</h3>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>Perplexity AI</h4>
+                    <div class="price">Free / $19.99/mo Pro</div>
+                    <p>AI-powered answer engine with cited research.</p>
+                    <ul>
+                        <li>Real-time internet search</li>
+                        <li>Source citations</li>
+                        <li>Custom collections (Spaces)</li>
+                        <li>GPT-4 integration (Pro)</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>Elicit</h4>
+                    <div class="price">Free / $10/mo Plus</div>
+                    <p>AI research assistant for academic literature.</p>
+                    <ul>
+                        <li>Scientific paper searches</li>
+                        <li>Research question breakdown</li>
+                        <li>Paper comparison analysis</li>
+                        <li>Citation management</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>You.com</h4>
+                    <div class="price">Free / $19.99/mo Pro</div>
+                    <p>AI search engine with chat and app integrations.</p>
+                    <ul>
+                        <li>Chat-based search</li>
+                        <li>Code assistance (YouCode)</li>
+                        <li>App integrations</li>
+                        <li>Personalized experience</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Selection Strategy:</strong> Start with free tiers to test compatibility with your workflow. Look for tools that integrate well together rather than seeking one all-in-one solution. Consider annual discounts and educational pricing if applicable.
+            </div>
+        </div>
+
+        <!-- Claude and ChatGPT Projects -->
+        <div class="content-section">
+            <h2>🤖 Module 6: Using Claude and ChatGPT for Projects</h2>
+            
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>45 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Intermediate</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Project Management</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>AI Orchestration</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <ul>
+                    <li>Understand the unique strengths of Claude vs ChatGPT</li>
+                    <li>Choose the right AI assistant for specific project tasks</li>
+                    <li>Create workflows that leverage both systems effectively</li>
+                    <li>Manage large-scale projects using AI assistance</li>
+                </ul>
+            </div>
+
+            <h3>When to Choose Claude</h3>
+            <div class="highlight-box">
+                <h4>🎯 Claude's Strengths</h4>
+                <ul>
+                    <li><strong>Document Analysis:</strong> Processing multiple documents and extracting insights</li>
+                    <li><strong>Complex Reasoning:</strong> Multi-step reasoning and nuanced understanding</li>
+                    <li><strong>Large Context:</strong> Working with extensive information throughout conversations</li>
+                    <li><strong>Safety-Critical:</strong> Tasks where accuracy and avoiding hallucinations is crucial</li>
+                </ul>
+            </div>
+
+            <h3>When to Choose ChatGPT</h3>
+            <div class="highlight-box">
+                <h4>🎯 ChatGPT's Strengths</h4>
+                <ul>
+                    <li><strong>Current Information:</strong> Real-time data through web browsing capabilities</li>
+                    <li><strong>Creative Content:</strong> Writing, brainstorming, and content generation</li>
+                    <li><strong>Visual Content:</strong> Image generation and analysis capabilities</li>
+                    <li><strong>Code Execution:</strong> Running and debugging code with interpreter</li>
+                </ul>
+            </div>
+
+            <h3>Combined Workflow Strategies</h3>
+            <div class="step-list">
+                <h4>📋 Project Management Workflow</h4>
+                <ol>
+                    <li><strong>Planning Phase:</strong> Use Claude for comprehensive document analysis and strategic planning</li>
+                    <li><strong>Research Phase:</strong> Use ChatGPT for current market data and competitive intelligence</li>
+                    <li><strong>Execution Phase:</strong> Alternate between both based on task requirements</li>
+                    <li><strong>Review Phase:</strong> Use Claude for thorough analysis and ChatGPT for presentation creation</li>
+                </ol>
+            </div>
+
+            <div class="tip-box">
+                <strong>🚀 Best Practice:</strong> Use both models for different aspects of complex projects. Their complementary strengths can cover virtually any business requirement when used strategically.
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced & Technical Modules -->
+    <div class="module page-break">
+        <div class="module-header">
+            <h1>🔴 Advanced Training Modules</h1>
+            <p>Strategic implementation and technical development for AI leaders</p>
+        </div>
+
+        <!-- Advanced Module Summaries -->
+        <div class="content-section">
+            <h2>📈 Module 7: Utilizing Notebook LM</h2>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>50 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Advanced</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Knowledge Management</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Enterprise AI</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Module Overview</h3>
+                <p>Master Google's NotebookLM for enterprise knowledge management, document analysis, and team collaboration. Learn to create intelligent knowledge repositories that grow smarter over time.</p>
+                <ul>
+                    <li>Enterprise knowledge system architecture</li>
+                    <li>Advanced document analysis workflows</li>
+                    <li>Team collaboration strategies</li>
+                    <li>Strategic planning integration</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🔍 Module 8: AI Research Platforms</h2>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>45 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Advanced</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Research & Intelligence</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Information Architecture</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Module Overview</h3>
+                <p>Explore Perplexity Spaces and Gemini Advanced Features for manufacturing insights. Build competitive intelligence systems and research workflows.</p>
+                <ul>
+                    <li>Platform comparison and selection</li>
+                    <li>Research methodology development</li>
+                    <li>Competitive intelligence gathering</li>
+                    <li>Market analysis frameworks</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🏗️ Module 9: AI Project Hubs</h2>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>40 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Advanced</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Team Collaboration</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Project Orchestration</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Module Overview</h3>
+                <p>Transform AI platforms into central collaboration hubs for manufacturing projects. Enable cross-functional teams to work together effectively.</p>
+                <ul>
+                    <li>Hub architecture design</li>
+                    <li>Cross-functional workflows</li>
+                    <li>Knowledge sharing protocols</li>
+                    <li>Decision support systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🐳 Module 10: MCP & Docker Desktop Training</h2>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>90 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Advanced</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>System Integration</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Technical Implementation</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Module Overview</h3>
+                <p>Master the Model Context Protocol (MCP) and Docker Desktop for secure, efficient AI system integration in production environments.</p>
+                <ul>
+                    <li>MCP protocol specification and implementation</li>
+                    <li>Docker containerization for AI services</li>
+                    <li>Security protocols and best practices</li>
+                    <li>Production deployment strategies</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Bridge Modules -->
+    <div class="module page-break">
+        <div class="module-header">
+            <h1>🌉 Technical Bridge Modules</h1>
+            <p>Bridge the gap between business AI tools and programming - solving the #1 problem in AI education</p>
+        </div>
+
+        <div class="content-section">
+            <h2>🔗 Module 11: API Fundamentals & Web Services</h2>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>60 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Bridge</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Technical Foundation</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>System Communication</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Module Overview</h3>
+                <p>Learn how AI systems communicate behind the scenes. Understand APIs, data formats, and integration patterns without requiring programming experience.</p>
+                <ul>
+                    <li>REST API basics and HTTP methods</li>
+                    <li>JSON data format and structure</li>
+                    <li>Authentication and security</li>
+                    <li>Testing APIs with simple tools</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <strong>🎯 Prerequisites:</strong> Complete "Using Claude and ChatGPT for Projects" module first. This bridge module prepares you for custom development without requiring prior programming knowledge.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>⚡ Module 12: No-Code Integration Tools</h2>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <strong>⏱️ Duration</strong>
+                    <span>75 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🎯 Level</strong>
+                    <span>Bridge</span>
+                </div>
+                <div class="meta-item">
+                    <strong>💼 Focus</strong>
+                    <span>Automation</span>
+                </div>
+                <div class="meta-item">
+                    <strong>🛠️ Skills</strong>
+                    <span>Workflow Integration</span>
+                </div>
+            </div>
+
+            <div class="objectives">
+                <h3>🎯 Module Overview</h3>
+                <p>Build powerful automation workflows using Zapier, Power Automate, and IFTTT. Create sophisticated integrations without writing code.</p>
+                <ul>
+                    <li>Zapier workflow automation</li>
+                    <li>Microsoft Power Automate for business processes</li>
+                    <li>IFTTT for trigger-based automation</li>
+                    <li>Google Apps Script basics for Sheets integration</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4>🚀 Bridge Module Innovation</h4>
+                <p>These modules solve the biggest problem in AI education: the massive skill gap between using business AI tools and building custom solutions. You'll gain technical understanding without the complexity of traditional programming courses.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Implementation Guide -->
+    <div class="module page-break">
+        <div class="module-header">
+            <h1>🚀 Implementation Guide</h1>
+            <p>Practical roadmap for implementing AI in your manufacturing environment</p>
+        </div>
+
+        <div class="content-section">
+            <h2>📊 Recommended Learning Paths</h2>
+            
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>🧠 AI Newcomer Path (Total: ~3 hours)</h4>
+                    <ol style="margin-left: 1em; font-size: 0.9em;">
+                        <li>ChatGPT Documentation Quick Win (7 min)</li>
+                        <li>AI Fundamentals for Business (46 min)</li>
+                        <li>Prompt Engineering for Leaders (35 min)</li>
+                        <li>Voice-to-Text Reports Quick Win (9 min)</li>
+                        <li>AI Tools for Daily Productivity (40 min)</li>
+                    </ol>
+                </div>
+                <div class="tool-card">
+                    <h4>🔧 Tech Explorer Path (Total: ~4 hours)</h4>
+                    <ol style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Engineering Alignment (55 min)</li>
+                        <li>Top 20 AI Tools Under $20/Month (60 min)</li>
+                        <li>Claude and ChatGPT for Projects (45 min)</li>
+                        <li>Smart Inventory Tracking Quick Win (15 min)</li>
+                        <li>API Fundamentals (60 min)</li>
+                        <li>No-Code Integration Tools (75 min)</li>
+                    </ol>
+                </div>
+                <div class="tool-card">
+                    <h4>👥 Implementation Leader Path (Total: ~5 hours)</h4>
+                    <ol style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Utilizing Notebook LM (50 min)</li>
+                        <li>AI Research Platforms (45 min)</li>
+                        <li>AI Project Hubs (40 min)</li>
+                        <li>MCP & Docker Training (90 min)</li>
+                        <li>All Quick Wins projects (31 min)</li>
+                        <li>Advanced planning and strategy</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>⏱️ 30-60-90 Day Implementation Plan</h2>
+            
+            <div class="step-list">
+                <h4>📅 First 30 Days: Foundation & Quick Wins</h4>
+                <ol>
+                    <li><strong>Week 1:</strong> Complete user assessment, implement ChatGPT Documentation Quick Win</li>
+                    <li><strong>Week 2:</strong> Complete AI Fundamentals module, share results with 2-3 team members</li>
+                    <li><strong>Week 3:</strong> Add Voice-to-Text Reports, train additional team members</li>
+                    <li><strong>Week 4:</strong> Document processes, measure time savings, plan next phase</li>
+                </ol>
+            </div>
+
+            <div class="step-list">
+                <h4>📅 Days 31-60: Skill Building & Tool Integration</h4>
+                <ol>
+                    <li><strong>Week 5-6:</strong> Complete your designated learning path modules</li>
+                    <li><strong>Week 7:</strong> Implement 2-3 tools from the Top 20 list</li>
+                    <li><strong>Week 8:</strong> Create integrated workflows, measure ROI</li>
+                </ol>
+            </div>
+
+            <div class="step-list">
+                <h4>📅 Days 61-90: Scaling & Optimization</h4>
+                <ol>
+                    <li><strong>Week 9-10:</strong> Train additional team members, standardize processes</li>
+                    <li><strong>Week 11:</strong> Implement advanced modules or bridge training</li>
+                    <li><strong>Week 12:</strong> Evaluate results, plan future AI initiatives</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>💰 ROI Calculation Framework</h2>
+            
+            <div class="highlight-box">
+                <h4>📊 ROI Formula</h4>
+                <div class="code-block">ROI = ((Time Saved × Hourly Rate) + Quality Improvements + Cost Reductions - Implementation Costs) / Implementation Costs × 100</div>
+            </div>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>⏱️ Time Savings Metrics</h4>
+                    <ul style="font-size: 0.9em;">
+                        <li>Documentation creation time</li>
+                        <li>Report generation time</li>
+                        <li>Email and communication time</li>
+                        <li>Data analysis and research time</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>📈 Quality Improvements</h4>
+                    <ul style="font-size: 0.9em;">
+                        <li>Reduced error rates</li>
+                        <li>Improved consistency</li>
+                        <li>Better documentation quality</li>
+                        <li>Enhanced decision making</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>💵 Cost Reductions</h4>
+                    <ul style="font-size: 0.9em;">
+                        <li>Reduced external consulting</li>
+                        <li>Lower training costs</li>
+                        <li>Decreased software licensing</li>
+                        <li>Improved resource utilization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🎯 Success Metrics & KPIs</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric Category</th>
+                        <th>Key Performance Indicators</th>
+                        <th>Measurement Method</th>
+                        <th>Target Improvement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Efficiency</strong></td>
+                        <td>Time to complete documentation tasks</td>
+                        <td>Before/after time tracking</td>
+                        <td>50-70% reduction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quality</strong></td>
+                        <td>Error rates in reports and procedures</td>
+                        <td>Quality audit scores</td>
+                        <td>25-40% improvement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consistency</strong></td>
+                        <td>Standardization across team outputs</td>
+                        <td>Template usage and compliance</td>
+                        <td>80%+ standardization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adoption</strong></td>
+                        <td>Team member AI tool usage</td>
+                        <td>Usage analytics and surveys</td>
+                        <td>75%+ active usage</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="content-section" style="border-top: 3px solid #0ea5e9; margin-top: 3em; padding-top: 2em;">
+        <div style="text-align: center;">
+            <h2 style="color: #0f172a; margin-bottom: 1em;">📚 Training Curriculum Summary</h2>
+            
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>📊 Total Training Content</h4>
+                    <ul style="font-size: 0.9em;">
+                        <li>3 Quick Wins Projects (31 minutes)</li>
+                        <li>12 Comprehensive Training Modules</li>
+                        <li>~8.5 hours of focused learning</li>
+                        <li>Interactive elements and certificates</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>🎯 Immediate Value</h4>
+                    <ul style="font-size: 0.9em;">
+                        <li>Professional SOPs in 7 minutes</li>
+                        <li>Quality reports in 9 minutes</li>
+                        <li>70% time savings on documentation</li>
+                        <li>Consistent, professional output</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h4>🏭 Manufacturing Focus</h4>
+                    <ul style="font-size: 0.9em;">
+                        <li>30+ years industry expertise</li>
+                        <li>SMB-specific solutions</li>
+                        <li>Practical, cost-effective tools</li>
+                        <li>Team empowerment emphasis</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2em; padding: 1em; background: #f8fafc; border-radius: 8px;">
+                <p style="color: #64748b; font-size: 0.9em;">
+                    <strong>Website:</strong> faeintelligence.com | 
+                    <strong>Focus:</strong> Practical AI solutions for Pacific Northwest SMBs | 
+                    <strong>Expertise:</strong> Manufacturing operations + AI implementation
+                </p>
+                <p style="color: #64748b; font-size: 0.9em; margin-top: 1em;">
+                    This complete training curriculum is designed specifically for manufacturing teams, combining deep industry knowledge with practical AI implementation strategies.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

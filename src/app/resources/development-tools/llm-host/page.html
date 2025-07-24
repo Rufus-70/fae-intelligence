@@ -1,0 +1,1794 @@
+Thinking
+Copy<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local LLM Installation & MCP System Integration Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .code-block {
+            background: #1a1a1a;
+            color: #e6e6e6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .command {
+            background: #2d3748;
+            color: #68d391;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        .warning-box {
+            background: #fef5e7;
+            border-left: 4px solid #f6ad55;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .step-number {
+            background: #4299e1;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        
+        .platform-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .platform-tab.active {
+            background: #4299e1;
+            color: white;
+        }
+        
+        .platform-content {
+            display: none;
+        }
+        
+        .platform-content.active {
+            display: block;
+        }
+        
+        .toc-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: block;
+            padding: 4px 0;
+        }
+        
+        .toc-link:hover {
+            color: #2b6cb0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: #2d3748;
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto bg-white shadow-lg">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">
+                    <i class="fas fa-robot mr-3"></i>
+                    Local LLM Installation & MCP System Integration Guide
+                </h1>
+                <p class="text-xl opacity-90">Complete guide to setting up LLMs locally and connecting to system files via Model Context Protocol</p>
+            </div>
+        </header>
+
+        <div class="flex">
+            <!-- Table of Contents -->
+            <nav class="w-1/4 bg-gray-100 p-6 no-print">
+                <h3 class="text-lg font-semibold mb-4 text-gray-800">Table of Contents</h3>
+                <ul class="space-y-2">
+                    <li><a href="#introduction" class="toc-link">1. Introduction</a></li>
+                    <li><a href="#prerequisites" class="toc-link">2. Prerequisites</a></li>
+                    <li><a href="#llm-installation" class="toc-link">3. LLM Installation</a></li>
+                    <li><a href="#mcp-setup" class="toc-link">4. MCP Setup</a></li>
+                    <li><a href="#system-integration" class="toc-link">5. System File Integration</a></li>
+                    <li><a href="#security" class="toc-link">6. Security Configuration</a></li>
+                    <li><a href="#examples" class="toc-link">7. Practical Examples</a></li>
+                    <li><a href="#troubleshooting" class="toc-link">8. Troubleshooting</a></li>
+                    <li><a href="#best-practices" class="toc-link">9. Best Practices</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="w-3/4 p-8">
+                <!-- Introduction -->
+                <section id="introduction" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-info-circle mr-3"></i>
+                        1. Introduction
+                    </h2>
+                    
+                    <p class="text-lg mb-6">This comprehensive guide will teach you how to install Large Language Models (LLMs) on your local machine and establish secure connections to system files through the Model Context Protocol (MCP). You'll learn to create powerful AI assistants with direct system access while maintaining security best practices.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-box">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-brain mr-2"></i>What is a Local LLM?</h4>
+                            <p>A Large Language Model running entirely on your hardware, providing privacy, customization, and offline capabilities without sending data to external services.</p>
+                        </div>
+                        
+                        <div class="info-box">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-plug mr-2"></i>What is MCP?</h4>
+                            <p>Model Context Protocol enables secure, structured communication between LLMs and external systems, including file access, tool execution, and data retrieval.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold mt-8 mb-4">Key Benefits</h3>
+                    <ul class="grid md:grid-cols-2 gap-4">
+                        <li class="flex items-center"><i class="fas fa-shield-alt text-green-500 mr-3"></i>Complete data privacy</li>
+                        <li class="flex items-center"><i class="fas fa-bolt text-yellow-500 mr-3"></i>Faster response times</li>
+                        <li class="flex items-center"><i class="fas fa-cogs text-blue-500 mr-3"></i>Full customization control</li>
+                        <li class="flex items-center"><i class="fas fa-wifi-slash text-gray-500 mr-3"></i>Offline functionality</li>
+                    </ul>
+                </section>
+
+                <!-- Prerequisites -->
+                <section id="prerequisites" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-list-check mr-3"></i>
+                        2. Prerequisites
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3"><i class="fas fa-memory text-blue-600 mr-2"></i>Hardware Requirements</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li><strong>RAM:</strong> 8GB minimum, 16GB+ recommended</li>
+                                <li><strong>Storage:</strong> 50GB+ free space</li>
+                                <li><strong>CPU:</strong> Modern multi-core processor</li>
+                                <li><strong>GPU:</strong> Optional but recommended for performance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3"><i class="fas fa-desktop text-green-600 mr-2"></i>Supported Platforms</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li><i class="fab fa-windows mr-2"></i>Windows 10/11</li>
+                                <li><i class="fab fa-apple mr-2"></i>macOS 10.15+</li>
+                                <li><i class="fab fa-linux mr-2"></i>Ubuntu 18.04+</li>
+                                <li><i class="fab fa-linux mr-2"></i>Other Linux distributions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3"><i class="fas fa-tools text-purple-600 mr-2"></i>Required Tools</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>Terminal/Command Prompt</li>
+                                <li>Git (for version control)</li>
+                                <li>Python 3.8+ (for MCP)</li>
+                                <li>Node.js 16+ (optional)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-box mt-6">
+                        <h4 class="font-semibold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Important Notes</h4>
+                        <ul class="space-y-1">
+                            <li>• Some models require significant disk space (7B models ~4GB, 13B models ~7GB, 70B models ~40GB)</li>
+                            <li>• GPU acceleration requires compatible NVIDIA or AMD graphics cards</li>
+                            <li>• System file access requires appropriate permissions and security considerations</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- LLM Installation -->
+                <section id="llm-installation" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-download mr-3"></i>
+                        3. LLM Installation
+                    </h2>
+                    
+                    <!-- Platform Tabs -->
+                    <div class="mb-6">
+                        <div class="flex border-b">
+                            <button class="platform-tab active px-6 py-3 border-b-2 border-blue-500" onclick="showPlatform('windows')">
+                                <i class="fab fa-windows mr-2"></i>Windows
+                            </button>
+                            <button class="platform-tab px-6 py-3" onclick="showPlatform('macos')">
+                                <i class="fab fa-apple mr-2"></i>macOS
+                            </button>
+                            <button class="platform-tab px-6 py-3" onclick="showPlatform('linux')">
+                                <i class="fab fa-linux mr-2"></i>Linux
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Windows Installation -->
+                    <div id="windows-content" class="platform-content active">
+                        <h3 class="text-2xl font-semibold mb-4">Windows Installation</h3>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-semibold mb-4">Option 1: Ollama (Recommended)</h4>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <h5 class="font-semibold">Download Ollama</h5>
+                                    <p class="mb-2">Visit <a href="https://ollama.ai" class="text-blue-600 underline">ollama.ai</a> and download the Windows installer.</p>
+                                    <div class="code-block">ollama-windows-amd64.exe</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <h5 class="font-semibold">Install Ollama</h5>
+                                    <p class="mb-2">Run the installer and follow the setup wizard. Ollama will be added to your system PATH.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">3</span>
+                                <div>
+                                    <h5 class="font-semibold">Verify Installation</h5>
+                                    <p class="mb-2">Open Command Prompt or PowerShell and run:</p>
+                                    <div class="code-block">ollama --version</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">4</span>
+                                <div>
+                                    <h5 class="font-semibold">Install Your First Model</h5>
+                                    <p class="mb-2">Install a popular model like Llama 2:</p>
+                                    <div class="code-block">ollama pull llama2:7b</div>
+                                    <p class="text-sm text-gray-600 mt-2">This will download the 7-billion parameter Llama 2 model (~4GB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-semibold mb-4">Option 2: LM Studio</h4>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <h5 class="font-semibold">Download LM Studio</h5>
+                                    <p class="mb-2">Visit <a href="https://lmstudio.ai" class="text-blue-600 underline">lmstudio.ai</a> and download the Windows version.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <h5 class="font-semibold">Install and Launch</h5>
+                                    <p class="mb-2">Install LM Studio and launch the application. The GUI will guide you through model selection and download.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- macOS Installation -->
+                    <div id="macos-content" class="platform-content">
+                        <h3 class="text-2xl font-semibold mb-4">macOS Installation</h3>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-semibold mb-4">Option 1: Ollama via Homebrew</h4>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <h5 class="font-semibold">Install Homebrew (if not installed)</h5>
+                                    <div class="code-block">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <h5 class="font-semibold">Install Ollama</h5>
+                                    <div class="code-block">brew install ollama</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">3</span>
+                                <div>
+                                    <h5 class="font-semibold">Start Ollama Service</h5>
+                                    <div class="code-block">brew services start ollama</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">4</span>
+                                <div>
+                                    <h5 class="font-semibold">Pull a Model</h5>
+                                    <div class="code-block">ollama pull mistral:7b</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-semibold mb-4">Option 2: Direct Download</h4>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <h5 class="font-semibold">Download Ollama for macOS</h5>
+                                    <p class="mb-2">Download the .dmg file from ollama.ai and install it by dragging to Applications.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Linux Installation -->
+                    <div id="linux-content" class="platform-content">
+                        <h3 class="text-2xl font-semibold mb-4">Linux Installation</h3>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-semibold mb-4">Ubuntu/Debian Installation</h4>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <h5 class="font-semibold">Install Ollama</h5>
+                                    <div class="code-block">curl -fsSL https://ollama.ai/install.sh | sh</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <h5 class="font-semibold">Verify Installation</h5>
+                                    <div class="code-block">ollama --version</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <span class="step-number">3</span>
+                                <div>
+                                    <h5 class="font-semibold">Pull Your First Model</h5>
+                                    <div class="code-block">ollama pull codellama:7b</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-lightbulb mr-2"></i>GPU Support on Linux</h4>
+                            <p>For NVIDIA GPU support, ensure you have CUDA drivers installed:</p>
+                            <div class="code-block mt-2">
+sudo apt update<br>
+sudo apt install nvidia-cuda-toolkit<br>
+nvidia-smi  # Verify GPU detection
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="success-box mt-8">
+                        <h4 class="font-semibold mb-2"><i class="fas fa-check-circle mr-2"></i>Testing Your Installation</h4>
+                        <p class="mb-2">Test your LLM installation with a simple query:</p>
+                        <div class="code-block">ollama run llama2:7b "Hello, how are you?"</div>
+                    </div>
+                </section>
+
+                <!-- MCP Setup -->
+                <section id="mcp-setup" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-plug mr-3"></i>
+                        4. MCP Setup
+                    </h2>
+                    
+                    <p class="text-lg mb-6">Model Context Protocol (MCP) enables your LLM to interact with external systems, including file access, tool execution, and data retrieval. Let's set up MCP for system integration.</p>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Installing MCP Server</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Install Python and pip</h5>
+                                <p class="mb-2">Ensure Python 3.8+ is installed on your system.</p>
+                                <div class="code-block">python --version<br>pip --version</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">2</span>
+                            <div>
+                                <h5 class="font-semibold">Install MCP Server</h5>
+                                <p class="mb-2">Install the MCP server package:</p>
+                                <div class="code-block">pip install mcp-server</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">3</span>
+                            <div>
+                                <h5 class="font-semibold">Create MCP Configuration</h5>
+                                <p class="mb-2">Create a configuration file <span class="command">mcp-config.json</span>:</p>
+                                <div class="code-block">{
+  "name": "filesystem-server",
+  "version": "1.0.0",
+  "description": "MCP server for filesystem access",
+  "capabilities": {
+    "resources": true,
+    "tools": true,
+    "prompts": false
+  },
+  "server": {
+    "command": "python",
+    "args": ["-m", "mcp_server.filesystem"],
+    "env": {}
+  }
+}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">4</span>
+                            <div>
+                                <h5 class="font-semibold">Create Filesystem Server</h5>
+                                <p class="mb-2">Create a simple filesystem MCP server <span class="command">filesystem_server.py</span>:</p>
+                                <div class="code-block">#!/usr/bin/env python3
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Any, Dict, List
+
+class FilesystemMCPServer:
+    def __init__(self, allowed_paths: List[str] = None):
+        self.allowed_paths = allowed_paths or [str(Path.home())]
+    
+    def is_path_allowed(self, path: str) -> bool:
+        """Check if path is within allowed directories"""
+        try:
+            resolved_path = Path(path).resolve()
+            for allowed in self.allowed_paths:
+                if resolved_path.is_relative_to(Path(allowed).resolve()):
+                    return True
+            return False
+        except:
+            return False
+    
+    def list_directory(self, path: str) -> Dict[str, Any]:
+        """List directory contents"""
+        if not self.is_path_allowed(path):
+            return {"error": "Access denied to this path"}
+        
+        try:
+            path_obj = Path(path)
+            if not path_obj.exists():
+                return {"error": "Path does not exist"}
+            
+            if not path_obj.is_dir():
+                return {"error": "Path is not a directory"}
+            
+            items = []
+            for item in path_obj.iterdir():
+                items.append({
+                    "name": item.name,
+                    "type": "directory" if item.is_dir() else "file",
+                    "size": item.stat().st_size if item.is_file() else None,
+                    "modified": item.stat().st_mtime
+                })
+            
+            return {"items": items}
+        except Exception as e:
+            return {"error": str(e)}
+    
+    def read_file(self, path: str, encoding: str = "utf-8") -> Dict[str, Any]:
+        """Read file contents"""
+        if not self.is_path_allowed(path):
+            return {"error": "Access denied to this path"}
+        
+        try:
+            path_obj = Path(path)
+            if not path_obj.exists():
+                return {"error": "File does not exist"}
+            
+            if not path_obj.is_file():
+                return {"error": "Path is not a file"}
+            
+            with open(path_obj, 'r', encoding=encoding) as f:
+                content = f.read()
+            
+            return {"content": content, "size": len(content)}
+        except Exception as e:
+            return {"error": str(e)}
+    
+    def handle_request(self, request: Dict[str, Any]) -> Dict[str, Any]:
+        """Handle MCP requests"""
+        method = request.get("method")
+        params = request.get("params", {})
+        
+        if method == "list_directory":
+            return self.list_directory(params.get("path", "."))
+        elif method == "read_file":
+            return self.read_file(params.get("path"), params.get("encoding", "utf-8"))
+        else:
+            return {"error": f"Unknown method: {method}"}
+
+if __name__ == "__main__":
+    server = FilesystemMCPServer()
+    
+    # Read requests from stdin
+    for line in sys.stdin:
+        try:
+            request = json.loads(line.strip())
+            response = server.handle_request(request)
+            print(json.dumps(response))
+            sys.stdout.flush()
+        except json.JSONDecodeError:
+            print(json.dumps({"error": "Invalid JSON"}))
+        except Exception as e:
+            print(json.dumps({"error": str(e)}))</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">5</span>
+                            <div>
+                                <h5 class="font-semibold">Test MCP Server</h5>
+                                <p class="mb-2">Test your MCP server with a simple request:</p>
+                                <div class="code-block">echo '{"method": "list_directory", "params": {"path": "."}}' | python filesystem_server.py</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4 class="font-semibold mb-2"><i class="fas fa-shield-alt mr-2"></i>Security Note</h4>
+                        <p>The filesystem server above includes basic path validation. Always implement proper security measures in production environments to prevent unauthorized access to sensitive files.</p>
+                    </div>
+                </section>
+
+                <!-- System Integration -->
+                <section id="system-integration" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-link mr-3"></i>
+                        5. System File Integration
+                    </h2>
+                    
+                    <p class="text-lg mb-6">Now let's connect your LLM to the MCP server for secure system file access. This enables your AI assistant to read files, browse directories, and interact with your local filesystem.</p>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Creating an LLM Client with MCP Integration</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Install Required Dependencies</h5>
+                                <div class="code-block">pip install requests subprocess-run asyncio</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">2</span>
+                            <div>
+                                <h5 class="font-semibold">Create LLM-MCP Bridge</h5>
+                                <p class="mb-2">Create <span class="command">llm_mcp_client.py</span>:</p>
+                                <div class="code-block">#!/usr/bin/env python3
+import json
+import subprocess
+import requests
+from typing import Dict, Any, List
+
+class LLMMCPClient:
+    def __init__(self, ollama_host="http://localhost:11434", mcp_server_script="filesystem_server.py"):
+        self.ollama_host = ollama_host
+        self.mcp_server_script = mcp_server_script
+        self.mcp_process = None
+    
+    def start_mcp_server(self):
+        """Start the MCP server process"""
+        self.mcp_process = subprocess.Popen(
+            ["python", self.mcp_server_script],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            bufsize=1
+        )
+    
+    def call_mcp_server(self, method: str, params: Dict[str, Any]) -> Dict[str, Any]:
+        """Call MCP server with a method and parameters"""
+        if not self.mcp_process:
+            self.start_mcp_server()
+        
+        request = json.dumps({"method": method, "params": params})
+        self.mcp_process.stdin.write(request + "\n")
+        self.mcp_process.stdin.flush()
+        
+        response_line = self.mcp_process.stdout.readline()
+        return json.loads(response_line.strip())
+    
+    def call_ollama(self, model: str, prompt: str) -> str:
+        """Send prompt to Ollama LLM"""
+        url = f"{self.ollama_host}/api/generate"
+        data = {
+            "model": model,
+            "prompt": prompt,
+            "stream": False
+        }
+        
+        response = requests.post(url, json=data)
+        if response.status_code == 200:
+            return response.json().get("response", "")
+        else:
+            return f"Error: {response.status_code}"
+    
+    def process_user_query(self, model: str, user_query: str) -> str:
+        """Process user query with file system access capabilities"""
+        
+        # Check if query involves file operations
+        file_operations = {
+            "list": "list_directory",
+            "read": "read_file",
+            "show": "read_file",
+            "browse": "list_directory"
+        }
+        
+        # Enhanced prompt with file system capabilities
+        enhanced_prompt = f"""
+You are an AI assistant with access to the local file system. You can:
+1. List directory contents using list_directory
+2. Read file contents using read_file
+
+User Query: {user_query}
+
+If the user is asking about files or directories, I can help you access them.
+Available commands:
+- To list directory: use list_directory with path parameter
+- To read file: use read_file with path parameter
+
+Please provide a helpful response to the user's query.
+"""
+        
+        # First, get LLM response
+        llm_response = self.call_ollama(model, enhanced_prompt)
+        
+        # Parse if LLM suggests file operations (simplified logic)
+        if any(op in user_query.lower() for op in file_operations.keys()):
+            # Extract path from query (simplified extraction)
+            words = user_query.split()
+            path = "."  # default to current directory
+            
+            for i, word in enumerate(words):
+                if word.lower() in file_operations and i + 1 < len(words):
+                    path = words[i + 1]
+                    break
+            
+            # Determine operation
+            operation = None
+            for op_word, op_method in file_operations.items():
+                if op_word in user_query.lower():
+                    operation = op_method
+                    break
+            
+            if operation:
+                # Call MCP server
+                mcp_result = self.call_mcp_server(operation, {"path": path})
+                
+                # Combine LLM response with MCP result
+                combined_prompt = f"""
+{enhanced_prompt}
+
+File system operation result:
+{json.dumps(mcp_result, indent=2)}
+
+Please provide a comprehensive response based on both your knowledge and the file system data.
+"""
+                final_response = self.call_ollama(model, combined_prompt)
+                return final_response
+        
+        return llm_response
+    
+    def interactive_session(self, model: str = "llama2:7b"):
+        """Start an interactive session"""
+        print(f"🤖 AI Assistant with File System Access (Model: {model})")
+        print("Type 'quit' to exit\n")
+        
+        while True:
+            user_input = input("You: ").strip()
+            
+            if user_input.lower() in ['quit', 'exit']:
+                break
+            
+            if not user_input:
+                continue
+            
+            print("🤔 Processing...")
+            response = self.process_user_query(model, user_input)
+            print(f"🤖 Assistant: {response}\n")
+    
+    def cleanup(self):
+        """Clean up MCP server process"""
+        if self.mcp_process:
+            self.mcp_process.terminate()
+            self.mcp_process.wait()
+
+if __name__ == "__main__":
+    client = LLMMCPClient()
+    try:
+        client.interactive_session()
+    finally:
+        client.cleanup()</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">3</span>
+                            <div>
+                                <h5 class="font-semibold">Test the Integration</h5>
+                                <p class="mb-2">Run the integrated client:</p>
+                                <div class="code-block">python llm_mcp_client.py</div>
+                                <p class="text-sm text-gray-600 mt-2">Try queries like "list current directory" or "read setup.py"</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4 class="font-semibold mb-2"><i class="fas fa-info-circle mr-2"></i>How It Works</h4>
+                        <p>The integration works by:</p>
+                        <ol class="list-decimal list-inside mt-2 space-y-1">
+                            <li>User sends a query to the LLM client</li>
+                            <li>Client analyzes if file operations are needed</li>
+                            <li>If needed, calls MCP server for file system access</li>
+                            <li>Combines file system data with LLM response</li>
+                            <li>Returns comprehensive answer to user</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Security Configuration -->
+                <section id="security" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-shield-alt mr-3"></i>
+                        6. Security Configuration
+                    </h2>
+                    
+                    <p class="text-lg mb-6">Security is crucial when giving LLMs access to your file system. Let's implement robust security measures to protect your data while enabling useful functionality.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-red-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-red-800"><i class="fas fa-exclamation-triangle mr-2"></i>Security Risks</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• Unauthorized file access</li>
+                                <li>• Data exfiltration</li>
+                                <li>• System file modification</li>
+                                <li>• Privilege escalation</li>
+                                <li>• Malicious prompt injection</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-green-800"><i class="fas fa-shield-alt mr-2"></i>Security Measures</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• Path sandboxing</li>
+                                <li>• File type restrictions</li>
+                                <li>• Access logging</li>
+                                <li>• Permission validation</li>
+                                <li>• Input sanitization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Enhanced Security Implementation</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Create Secure MCP Server</h5>
+                                <p class="mb-2">Enhanced <span class="command">secure_filesystem_server.py</span>:</p>
+                                <div class="code-block">#!/usr/bin/env python3
+import json
+import os
+import sys
+import logging
+import hashlib
+from pathlib import Path
+from typing import Any, Dict, List, Set
+from datetime import datetime
+
+# Configure logging
+logging.basicConfig(
+    filename='mcp_access.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+class SecureFilesystemMCPServer:
+    def __init__(self, config_file: str = "mcp_security_config.json"):
+        self.load_config(config_file)
+        self.access_log = []
+    
+    def load_config(self, config_file: str):
+        """Load security configuration"""
+        default_config = {
+            "allowed_paths": [str(Path.home() / "Documents"), str(Path.home() / "Desktop")],
+            "blocked_paths": ["/etc", "/sys", "/proc", "C:\\Windows", "C:\\System32"],
+            "allowed_extensions": [".txt", ".md", ".py", ".js", ".html", ".css", ".json", ".yaml", ".yml"],
+            "max_file_size": 10485760,  # 10MB
+            "read_only": True,
+            "log_all_access": True
+        }
+        
+        try:
+            with open(config_file, 'r') as f:
+                self.config = json.load(f)
+        except FileNotFoundError:
+            self.config = default_config
+            self.save_config(config_file)
+        
+        # Convert paths to Path objects
+        self.allowed_paths = [Path(p).resolve() for p in self.config["allowed_paths"]]
+        self.blocked_paths = [Path(p).resolve() for p in self.config["blocked_paths"]]
+    
+    def save_config(self, config_file: str):
+        """Save current configuration"""
+        with open(config_file, 'w') as f:
+            json.dump(self.config, f, indent=2, default=str)
+    
+    def log_access(self, action: str, path: str, success: bool, error: str = None):
+        """Log all access attempts"""
+        if self.config.get("log_all_access", True):
+            entry = {
+                "timestamp": datetime.now().isoformat(),
+                "action": action,
+                "path": path,
+                "success": success,
+                "error": error
+            }
+            self.access_log.append(entry)
+            logging.info(f"{action} - {path} - {'SUCCESS' if success else 'FAILED'}")
+    
+    def is_path_allowed(self, path: str) -> tuple[bool, str]:
+        """Enhanced path validation with detailed error reporting"""
+        try:
+            resolved_path = Path(path).resolve()
+            
+            # Check blocked paths first
+            for blocked in self.blocked_paths:
+                try:
+                    if resolved_path.is_relative_to(blocked):
+                        return False, f"Access denied: Path is in blocked directory {blocked}"
+                except ValueError:
+                    continue
+            
+            # Check allowed paths
+            for allowed in self.allowed_paths:
+                try:
+                    if resolved_path.is_relative_to(allowed):
+                        return True, "Access granted"
+                except ValueError:
+                    continue
+            
+            return False, "Access denied: Path not in allowed directories"
+            
+        except Exception as e:
+            return False, f"Path resolution error: {str(e)}"
+    
+    def is_file_allowed(self, path: Path) -> tuple[bool, str]:
+        """Check if file type and size are allowed"""
+        if not path.exists():
+            return False, "File does not exist"
+        
+        if not path.is_file():
+            return True, "Directory access"
+        
+        # Check file extension
+        if self.config.get("allowed_extensions"):
+            if path.suffix.lower() not in self.config["allowed_extensions"]:
+                return False, f"File extension {path.suffix} not allowed"
+        
+        # Check file size
+        try:
+            file_size = path.stat().st_size
+            max_size = self.config.get("max_file_size", 10485760)
+            if file_size > max_size:
+                return False, f"File too large: {file_size} bytes (max: {max_size})"
+        except:
+            return False, "Cannot determine file size"
+        
+        return True, "File allowed"
+    
+    def sanitize_input(self, text: str) -> str:
+        """Basic input sanitization"""
+        # Remove potentially dangerous characters
+        dangerous_chars = ['<', '>', '&', '"', "'", '\\x00']
+        for char in dangerous_chars:
+            text = text.replace(char, '')
+        return text.strip()
+    
+    def list_directory(self, path: str) -> Dict[str, Any]:
+        """Secure directory listing"""
+        path = self.sanitize_input(path)
+        allowed, error_msg = self.is_path_allowed(path)
+        
+        if not allowed:
+            self.log_access("list_directory", path, False, error_msg)
+            return {"error": error_msg}
+        
+        try:
+            path_obj = Path(path)
+            if not path_obj.exists():
+                self.log_access("list_directory", path, False, "Path does not exist")
+                return {"error": "Path does not exist"}
+            
+            if not path_obj.is_dir():
+                self.log_access("list_directory", path, False, "Path is not a directory")
+                return {"error": "Path is not a directory"}
+            
+            items = []
+            for item in path_obj.iterdir():
+                # Skip hidden files and system files
+                if item.name.startswith('.') or item.name.startswith('~'):
+                    continue
+                
+                item_info = {
+                    "name": item.name,
+                    "type": "directory" if item.is_dir() else "file",
+                    "size": item.stat().st_size if item.is_file() else None,
+                    "modified": item.stat().st_mtime,
+                    "readable": os.access(item, os.R_OK)
+                }
+                items.append(item_info)
+            
+            self.log_access("list_directory", path, True)
+            return {"items": items, "count": len(items)}
+            
+        except PermissionError:
+            self.log_access("list_directory", path, False, "Permission denied")
+            return {"error": "Permission denied"}
+        except Exception as e:
+            self.log_access("list_directory", path, False, str(e))
+            return {"error": f"Error listing directory: {str(e)}"}
+    
+    def read_file(self, path: str, encoding: str = "utf-8", max_lines: int = 1000) -> Dict[str, Any]:
+        """Secure file reading with limits"""
+        path = self.sanitize_input(path)
+        allowed, error_msg = self.is_path_allowed(path)
+        
+        if not allowed:
+            self.log_access("read_file", path, False, error_msg)
+            return {"error": error_msg}
+        
+        try:
+            path_obj = Path(path)
+            file_allowed, file_error = self.is_file_allowed(path_obj)
+            
+            if not file_allowed:
+                self.log_access("read_file", path, False, file_error)
+                return {"error": file_error}
+            
+            # Read file with limits
+            with open(path_obj, 'r', encoding=encoding) as f:
+                lines = []
+                for i, line in enumerate(f):
+                    if i >= max_lines:
+                        break
+                    lines.append(line.rstrip('\n\r'))
+            
+            content = '\n'.join(lines)
+            truncated = i >= max_lines - 1
+            
+            result = {
+                "content": content,
+                "size": len(content),
+                "lines": len(lines),
+                "truncated": truncated,
+                "encoding": encoding,
+                "checksum": hashlib.md5(content.encode()).hexdigest()
+            }
+            
+            self.log_access("read_file", path, True)
+            return result
+            
+        except PermissionError:
+            self.log_access("read_file", path, False, "Permission denied")
+            return {"error": "Permission denied"}
+        except UnicodeDecodeError:
+            self.log_access("read_file", path, False, "File encoding error")
+            return {"error": f"Cannot decode file with {encoding} encoding"}
+        except Exception as e:
+            self.log_access("read_file", path, False, str(e))
+            return {"error": f"Error reading file: {str(e)}"}
+    
+    def get_access_log(self) -> Dict[str, Any]:
+        """Return access log (for admin purposes)"""
+        return {
+            "total_requests": len(self.access_log),
+            "recent_entries": self.access_log[-10:],  # Last 10 entries
+            "config": self.config
+        }
+    
+    def handle_request(self, request: Dict[str, Any]) -> Dict[str, Any]:
+        """Handle MCP requests with security validation"""
+        method = request.get("method")
+        params = request.get("params", {})
+        
+        if method == "list_directory":
+            return self.list_directory(params.get("path", "."))
+        elif method == "read_file":
+            return self.read_file(
+                params.get("path"), 
+                params.get("encoding", "utf-8"),
+                params.get("max_lines", 1000)
+            )
+        elif method == "get_access_log":
+            return self.get_access_log()
+        else:
+            self.log_access("unknown_method", method, False, "Unknown method")
+            return {"error": f"Unknown method: {method}"}
+
+if __name__ == "__main__":
+    server = SecureFilesystemMCPServer()
+    
+    # Read requests from stdin
+    for line in sys.stdin:
+        try:
+            request = json.loads(line.strip())
+            response = server.handle_request(request)
+            print(json.dumps(response))
+            sys.stdout.flush()
+        except json.JSONDecodeError:
+            print(json.dumps({"error": "Invalid JSON"}))
+        except Exception as e:
+            print(json.dumps({"error": str(e)}))</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">2</span>
+                            <div>
+                                <h5 class="font-semibold">Create Security Configuration</h5>
+                                <p class="mb-2">Create <span class="command">mcp_security_config.json</span>:</p>
+                                <div class="code-block">{
+  "allowed_paths": [
+    "~/Documents",
+    "~/Desktop",
+    "~/Projects"
+  ],
+  "blocked_paths": [
+    "/etc",
+    "/sys",
+    "/proc",
+    "C:\\Windows",
+    "C:\\System32",
+    "~/.ssh",
+    "~/.*"
+  ],
+  "allowed_extensions": [
+    ".txt", ".md", ".py", ".js", ".html", ".css", 
+    ".json", ".yaml", ".yml", ".log", ".csv"
+  ],
+  "max_file_size": 10485760,
+  "read_only": true,
+  "log_all_access": true
+}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">3</span>
+                            <div>
+                                <h5 class="font-semibold">Set Up User Permissions</h5>
+                                <p class="mb-2">Create a dedicated user account for MCP operations (Linux/macOS):</p>
+                                <div class="code-block"># Create dedicated user
+sudo useradd -m -s /bin/bash mcpuser
+
+# Set up restricted directories
+sudo mkdir /home/mcpuser/safe_workspace
+sudo chown mcpuser:mcpuser /home/mcpuser/safe_workspace
+
+# Run MCP server as restricted user
+sudo -u mcpuser python secure_filesystem_server.py</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="success-box">
+                        <h4 class="font-semibold mb-2"><i class="fas fa-check-shield mr-2"></i>Security Checklist</h4>
+                        <ul class="space-y-1">
+                            <li>✅ Path sandboxing implemented</li>
+                            <li>✅ File type restrictions in place</li>
+                            <li>✅ File size limits configured</li>
+                            <li>✅ Access logging enabled</li>
+                            <li>✅ Input sanitization active</li>
+                            <li>✅ Permission validation working</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Practical Examples -->
+                <section id="examples" class="section">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                        <i class="fas fa-code mr-3"></i>
+                        7. Practical Examples
+                    </h2>
+                    
+                    <p class="text-lg mb-6">Let's explore practical use cases for your LLM with system file access. These examples demonstrate real-world applications and common workflows.</p>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Example 1: Code Analysis Assistant</h3>
+                        
+                        <div class="info-box mb-4">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-lightbulb mr-2"></i>Use Case</h4>
+                            <p>An AI assistant that can analyze your code files, suggest improvements, and help with debugging.</p>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Sample Interaction</h5>
+                                <div class="code-block">User: "Analyze the Python files in my project directory and suggest optimizations"
+
+AI Assistant: "I'll examine your Python files for optimization opportunities."
+
+[AI reads project files via MCP]
+
+AI Response: "Based on my analysis of your Python files:
+
+1. **main.py**: 
+   - Line 45: Consider using f-strings instead of .format() for better performance
+   - Function 'process_data' could benefit from type hints
+   - Memory usage could be optimized in the data processing loop
+
+2. **utils.py**:
+   - Import statements could be reorganized
+   - Function 'calculate_metrics' has potential for vectorization with NumPy
+
+3. **config.py**:
+   - Consider using environment variables for sensitive configuration
+   - Add validation for required configuration keys
+
+Would you like detailed suggestions for any specific file?"</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Example 2: Document Summarization</h3>
+                        
+                        <div class="info-box mb-4">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-lightbulb mr-2"></i>Use Case</h4>
+                            <p>Automatically summarize documents, research papers, or meeting notes stored on your system.</p>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Enhanced Client for Document Processing</h5>
+                                <p class="mb-2">Create <span class="command">document_assistant.py</span>:</p>
+                                <div class="code-block">#!/usr/bin/env python3
+import os
+import glob
+from pathlib import Path
+from llm_mcp_client import LLMMCPClient
+
+class DocumentAssistant(LLMMCPClient):
+    def __init__(self):
+        super().__init__()
+        
+    def summarize_document(self, file_path: str, model: str = "mistral:7b") -> str:
+        """Summarize a single document"""
+        # Read file content via MCP
+        mcp_result = self.call_mcp_server("read_file", {"path": file_path})
+        
+        if "error" in mcp_result:
+            return f"Error reading file: {mcp_result['error']}"
+        
+        content = mcp_result["content"]
+        
+        # Create summarization prompt
+        prompt = f"""Please provide a comprehensive summary of the following document. 
+Include key points, main themes, and important conclusions:
+
+Document: {file_path}
+Content:
+{content}
+
+Summary:"""
+        
+        return self.call_ollama(model, prompt)
+    
+    def batch_summarize(self, directory: str, pattern: str = "*.txt", model: str = "mistral:7b"):
+        """Summarize multiple documents in a directory"""
+        # List directory via MCP
+        mcp_result = self.call_mcp_server("list_directory", {"path": directory})
+        
+        if "error" in mcp_result:
+            print(f"Error accessing directory: {mcp_result['error']}")
+            return
+        
+        # Filter files by pattern
+        files = [item["name"] for item in mcp_result["items"] 
+                if item["type"] == "file" and item["name"].endswith(pattern.replace("*", ""))]
+        
+        summaries = {}
+        for filename in files:
+            file_path = os.path.join(directory, filename)
+            print(f"📄 Summarizing: {filename}")
+            
+            summary = self.summarize_document(file_path, model)
+            summaries[filename] = summary
+            
+            print(f"✅ Summary for {filename}:")
+            print(f"{summary}\n" + "="*50 + "\n")
+        
+        return summaries
+    
+    def create_meeting_notes_summary(self, notes_directory: str, output_file: str = "meeting_summary.md"):
+        """Create a consolidated summary of meeting notes"""
+        summaries = self.batch_summarize(notes_directory, "*.md")
+        
+        # Create consolidated summary
+        consolidated_prompt = f"""Based on the following meeting summaries, create a consolidated report 
+highlighting key decisions, action items, and recurring themes:
+
+{chr(10).join([f"Meeting: {k}{chr(10)}{v}{chr(10)}" for k, v in summaries.items()])}
+
+Consolidated Report:"""
+        
+        consolidated = self.call_ollama("mistral:7b", consolidated_prompt)
+        
+        # Save to output file (would need write permissions)
+        print(f"📋 Consolidated Meeting Summary:\n{consolidated}")
+        return consolidated
+
+# Example usage
+if __name__ == "__main__":
+    assistant = DocumentAssistant()
+    
+    # Example commands
+    print("Document Assistant Commands:")
+    print("1. Summarize single document: assistant.summarize_document('path/to/document.txt')")
+    print("2. Batch summarize: assistant.batch_summarize('~/Documents/reports')")
+    print("3. Meeting notes summary: assistant.create_meeting_notes_summary('~/Documents/meetings')")
+    
+    try:
+        assistant.interactive_session()
+    finally:
+        assistant.cleanup()</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Example 3: System Configuration Helper</h3>
+                        
+                        <div class="info-box mb-4">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-lightbulb mr-2"></i>Use Case</h4>
+                            <p>An AI assistant that helps analyze and optimize system configuration files while maintaining security.</p>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Configuration Analysis</h5>
+                                <div class="code-block">User: "Check my nginx configuration for potential issues"
+
+AI Assistant: [Reads nginx.conf via MCP]
+
+"I've analyzed your nginx configuration file. Here are my findings:
+
+✅ **Good Practices Found:**
+- SSL/TLS properly configured
+- Gzip compression enabled
+- Security headers present
+
+⚠️  **Potential Issues:**
+1. **Line 23**: worker_processes set to 1 - consider 'auto' for multi-core systems
+2. **Line 45**: client_max_body_size might be too restrictive for file uploads
+3. **Line 67**: Missing rate limiting for API endpoints
+
+🔧 **Optimization Suggestions:**
+- Enable HTTP/2 for better performance
+- Consider adding caching headers for static assets
+- Add fail2ban rules for additional security
+
+Would you like me to explain any specific configuration directive?"</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Example 4: Development Workflow Assistant</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <span class="step-number">1</span>
+                            <div>
+                                <h5 class="font-semibold">Project Structure Analysis</h5>
+                                <div class="code-block">User: "Help me understand the structure of this new codebase"
+
+AI Assistant: [Recursively explores project directory via MCP]
+
+"📁 **Project Structure Analysis:**
+
+**Root Directory:** /home/user/new-project/
+├── src/ │ ├── components/ # React components (12 files) │ ├── utils/ # Utility functions (5 files) │ ├── api/ # API integration (3 files) │ └── styles/ # CSS and styling (8 files) ├── tests/ # Test files (15 files) ├── docs/ # Documentation (6 files) ├── config/ # Configuration files └── package.json # Node.js dependencies
+
+Key Files Analysis:
+
+package.json: React app with TypeScript, using modern tooling
+README.md: Good documentation with setup instructions
+src/index.js: Entry point uses React 18 with StrictMode
+Architecture Notes:
+
+Follows modern React patterns with hooks
+Well-organized component structure
+Comprehensive test coverage (80%+ based on file count)
+Uses TypeScript for type safety
+Getting Started Recommendations:
+
+Start with README.md for setup instructions
+Explore src/components/App.js for main application logic
+Check tests/ directory to understand expected behavior
+Would you like me to dive deeper into any specific part of the codebase?"
+
+                <div class="success-box">
+                    <h4 class="font-semibold mb-2"><i class="fas fa-rocket mr-2"></i>Advanced Usage Tips</h4>
+                    <ul class="space-y-2">
+                        <li><strong>Custom Prompts:</strong> Create specialized prompts for your domain (code review, document analysis, etc.)</li>
+                        <li><strong>File Type Handlers:</strong> Implement specific logic for different file types (.py, .js, .md, .json)</li>
+                        <li><strong>Batch Processing:</strong> Process multiple files efficiently with summary reports</li>
+                        <li><strong>Template Generation:</strong> Use AI to generate boilerplate code or documentation templates</li>
+                        <li><strong>Change Detection:</strong> Monitor file changes and provide automated analysis</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section id="troubleshooting" class="section">
+                <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                    <i class="fas fa-tools mr-3"></i>
+                    8. Troubleshooting
+                </h2>
+                
+                <p class="text-lg mb-6">Common issues and their solutions when setting up and using LLMs with MCP system integration.</p>
+                
+                <div class="space-y-8">
+                    <!-- Installation Issues -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-red-700">🔧 Installation Issues</h3>
+                        
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
+                            <h4 class="font-semibold text-red-800">Problem: Ollama installation fails</h4>
+                            <p class="text-red-700 mb-2"><strong>Symptoms:</strong> Download errors, permission issues, missing dependencies</p>
+                            <p class="text-red-700 mb-2"><strong>Solutions:</strong></p>
+                            <div class="code-block">
+Check system requirements
+uname -a # Linux architecture system_profiler SPHardwareDataType # macOS hardware info
+
+Clear previous installation attempts
+rm -rf ~/.ollama # Remove user data sudo rm -rf /usr/local/bin/ollama # Remove system binary
+
+Reinstall with verbose output
+curl -fsSL https://ollama.ai/install.sh | sh -x
+
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
+                            <h4 class="font-semibold text-red-800">Problem: Model download fails or is slow</h4>
+                            <p class="text-red-700 mb-2"><strong>Solutions:</strong></p>
+                            <div class="code-block">
+Check available disk space
+df -h
+
+Monitor download progress
+ollama pull llama2:7b --verbose
+
+Use smaller models if needed
+ollama pull phi:2.7b # Smaller, faster model
+
+Set download location (if needed)
+export OLLAMA_MODELS="/path/to/models" ollama pull llama2:7b
+
+                    <!-- Connection Issues -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-orange-700">🌐 Connection Issues</h3>
+                        
+                        <div class="bg-orange-50 border-l-4 border-orange-400 p-4 mb-4">
+                            <h4 class="font-semibold text-orange-800">Problem: Cannot connect to Ollama server</h4>
+                            <p class="text-orange-700 mb-2"><strong>Symptoms:</strong> Connection refused, timeout errors</p>
+                            <div class="code-block">
+Check if Ollama is running
+ollama list
+
+Start Ollama service (if not running)
+ollama serve
+
+Check process status
+ps aux | grep ollama
+
+Test connection
+curl http://localhost:11434/api/version
+
+Check firewall settings (if needed)
+sudo ufw status # Linux sudo iptables -L # Linux advanced
+
+                        <div class="bg-orange-50 border-l-4 border-orange-400 p-4 mb-4">
+                            <h4 class="font-semibold text-orange-800">Problem: MCP server not responding</h4>
+                            <div class="code-block">
+Test MCP server directly
+echo '{"method": "list_directory", "params": {"path": "."}}' | python filesystem_server.py
+
+Check Python version and dependencies
+python --version pip list | grep -E "(json|subprocess|pathlib)"
+
+Debug MCP server with logging
+python -u filesystem_server.py # Unbuffered output
+
+Check file permissions
+ls -la filesystem_server.py chmod +x filesystem_server.py
+
+                    <!-- Permission Issues -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-700">🔒 Permission Issues</h3>
+                        
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+                            <h4 class="font-semibold text-blue-800">Problem: File access denied</h4>
+                            <div class="code-block">
+Check file permissions
+ls -la /path/to/file
+
+Check directory permissions
+ls -ld /path/to/directory
+
+Fix permissions (if safe to do so)
+chmod 644 /path/to/file # Read/write for owner, read for others chmod 755 /path/to/directory # Execute permission for directory
+
+Check if running as correct user
+whoami id
+
+Run with appropriate user context
+sudo -u targetuser python llm_mcp_client.py
+
+                    <!-- Performance Issues -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-purple-700">⚡ Performance Issues</h3>
+                        
+                        <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-4">
+                            <h4 class="font-semibold text-purple-800">Problem: Slow response times</h4>
+                            <div class="code-block">
+Monitor system resources
+htop # Overall system performance nvidia-smi # GPU utilization (if applicable)
+
+Check model size vs available RAM
+ollama show llama2:7b # Model information free -h # Available memory
+
+Use smaller models for faster response
+ollama pull phi:2.7b # 2.7B parameters ollama pull tinyllama # Even smaller
+
+Optimize Ollama settings
+export OLLAMA_NUM_PARALLEL=2 # Parallel requests export OLLAMA_MAX_LOADED_MODELS=1 # Memory management
+
+                    <!-- Security Issues -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-700">🛡️ Security Issues</h3>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+                            <h4 class="font-semibold text-green-800">Problem: Unauthorized file access attempts</h4>
+                            <div class="code-block">
+Check access logs
+tail -f mcp_access.log
+
+Review security configuration
+cat mcp_security_config.json
+
+Test path validation
+python -c " from secure_filesystem_server import SecureFilesystemMCPServer server = SecureFilesystemMCPServer() print(server.is_path_allowed('/etc/passwd')) print(server.is_path_allowed('~/Documents/test.txt')) "
+
+Update blocked paths
+Edit mcp_security_config.json to add more restricted paths
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="warning-box mt-8">
+                    <h4 class="font-semibold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Getting Help</h4>
+                    <p>If you're still experiencing issues:</p>
+                    <ul class="mt-2 space-y-1">
+                        <li>• Check the official Ollama documentation: <a href="https://ollama.ai/docs" class="text-blue-600 underline">ollama.ai/docs</a></li>
+                        <li>• Review your security configuration and logs</li>
+                        <li>• Test components individually (LLM, MCP server, client)</li>
+                        <li>• Check system resource availability</li>
+                        <li>• Verify network connectivity and firewall settings</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Best Practices -->
+            <section id="best-practices" class="section">
+                <h2 class="text-3xl font-bold mb-6 text-blue-800">
+                    <i class="fas fa-star mr-3"></i>
+                    9. Best Practices
+                </h2>
+                
+                <p class="text-lg mb-6">Follow these best practices to ensure secure, efficient, and maintainable LLM-MCP integrations.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Security Best Practices -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-red-700"><i class="fas fa-shield-alt mr-2"></i>Security</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🔒 Access Control</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Use dedicated user accounts for MCP operations</li>
+                                    <li>• Implement strict path sandboxing</li>
+                                    <li>• Regularly audit access logs</li>
+                                    <li>• Apply principle of least privilege</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🛡️ Data Protection</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Never expose sensitive files (passwords, keys)</li>
+                                    <li>• Implement file size and type restrictions</li>
+                                    <li>• Use read-only access when possible</li>
+                                    <li>• Encrypt sensitive data at rest</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🔍 Monitoring</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Log all file access attempts</li>
+                                    <li>• Monitor for unusual access patterns</li>
+                                    <li>• Set up alerts for security violations</li>
+                                    <li>• Regular security audits</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Best Practices -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-700"><i class="fas fa-bolt mr-2"></i>Performance</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🚀 Model Optimization</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Choose appropriate model size for your hardware</li>
+                                    <li>• Use GPU acceleration when available</li>
+                                    <li>• Consider quantized models for better performance</li>
+                                    <li>• Keep models loaded to avoid startup delays</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">⚡ System Resources</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Monitor RAM and disk usage</li>
+                                    <li>• Implement file size limits</li>
+                                    <li>• Use caching for frequently accessed files</li>
+                                    <li>• Optimize MCP server for concurrent requests</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🔄 Workflow Efficiency</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Batch similar operations together</li>
+                                    <li>• Use streaming responses for large outputs</li>
+                                    <li>• Implement smart retry mechanisms</li>
+                                    <li>• Cache expensive computations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700"><i class="fas fa-cogs mr-2"></i>Development & Maintenance</h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3">📝 Code Quality</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• Use type hints in Python</li>
+                                <li>• Implement comprehensive error handling</li>
+                                <li>• Write unit tests for MCP functions</li>
+                                <li>• Use consistent coding standards</li>
+                                <li>• Document all configuration options</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3">🔄 Version Control</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• Track configuration changes</li>
+                                <li>• Use semantic versioning</li>
+                                <li>• Maintain deployment documentation</li>
+                                <li>• Keep security configs separate</li>
+                                <li>• Regular backup strategies</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-semibold mb-3">🚀 Deployment</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• Use containerization (Docker)</li>
+                                <li>• Implement health checks</li>
+                                <li>• Set up monitoring and alerting</li>
+                                <li>• Plan for scaling and load balancing</li>
+                                <li>• Regular updates and patches</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-box mt-8">
+                    <h4 class="font-semibold mb-2"><i class="fas fa-graduation-cap mr-2"></i>Success Checklist</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-semibold mb-2">Before Production:</h5>
+                            <ul class="space-y-1 text-sm">
+                                <li>☐ Security configuration reviewed</li>
+                                <li>☐ Access controls tested</li>
+                                <li>☐ Performance benchmarks established</li>
+                                <li>☐ Error handling validated</li>
+                                <li>☐ Logging and monitoring configured</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-2">Ongoing Maintenance:</h5>
+                            <ul class="space-y-1 text-sm">
+                                <li>☐ Regular security audits</li>
+                                <li>☐ Performance monitoring</li>
+                                <li>☐ Model updates when needed</li>
+                                <li>☐ Backup verification</li>
+                                <li>☐ Documentation updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="section">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-lg">
+                    <h2 class="text-3xl font-bold mb-4">
+                        <i class="fas fa-flag-checkered mr-3"></i>
+                        Congratulations!
+                    </h2>
+                    <p class="text-xl mb-6">You've successfully learned how to install and configure LLMs with MCP system integration. You now have the knowledge to:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-3">✅ Technical Skills Gained:</h4>
+                            <ul class="space-y-2">
+                                <li>• Install and manage local LLMs</li>
+                                <li>• Set up secure MCP servers</li>
+                                <li>• Implement file system integration</li>
+                                <li>• Configure security measures</li>
+                                <li>• Troubleshoot common issues</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-3">🚀 What You Can Build:</h4>
+                            <ul class="space-y-2">
+                                <li>• Code analysis assistants</li>
+                                <li>• Document summarization tools</li>
+                                <li>• Configuration helpers</li>
+                                <li>• Development workflow assistants</li>
+                                <li>• Custom AI applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-white bg-opacity-20 rounded-lg">
+                        <h4 class="font-semibold mb-2">🎯 Next Steps:</h4>
+                        <ul class="space-y-1">
+                            <li>• Experiment with different LLM models</li>
+                            <li>• Build custom MCP servers for your specific needs</li>
+                            <li>• Explore advanced security configurations</li>
+                            <li>• Share your experience with the community</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6 text-center">
+        <p class="mb-2">© 2024 Local LLM & MCP Integration Guide</p>
+        <p class="text-sm opacity-75">Built with security, performance, and best practices in mind</p>
+    </footer>
+</div>
+
+<script>
+    function showPlatform(platform) {
+        // Hide all platform content
+        const contents = document.querySelectorAll('.platform-content');
+        contents.forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Remove active class from all tabs
+        const tabs = document.querySelectorAll('.platform-tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Show selected platform content
+        document.getElementById(platform + '-content').classList.add('active');
+        
+        // Add active class to clicked tab
+        event.target.classList.add('active');
+    }
+    
+    // Smooth scrolling for table of contents links
+    document.querySelectorAll('.toc-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Add copy functionality to code blocks
+    document.querySelectorAll('.code-block').forEach(block => {
+        block.addEventListener('click', function() {
+            navigator.clipboard.writeText(this.textContent).then(() => {
+                const originalBg = this.style.backgroundColor;
+                this.style.backgroundColor = '#4ade80';
+                setTimeout(() => {
+                    this.style.backgroundColor = originalBg;
+                }, 200);
+            });
+        });
+    });
+</script>

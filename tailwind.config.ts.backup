@@ -1,0 +1,80 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // Fae Intelligence Brand System
+        primary: {
+          DEFAULT: '#00ACC1', // Fae Teal
+          foreground: '#FFFFFF',
+        },
+        secondary: {
+          DEFAULT: '#2C2C2C', // Gray Dark
+          foreground: '#FFFFFF',
+        },
+        accent: {
+          DEFAULT: '#1A237E', // Blue Dark
+          foreground: '#FFFFFF',
+        },
+        background: '#FFFFFF',
+        foreground: '#2C2C2C',
+        muted: {
+          DEFAULT: '#ECEFF1', // Gray Light
+          foreground: '#546E7A',
+        },
+        card: {
+          DEFAULT: '#FFFFFF',
+          foreground: '#2C2C2C',
+        },
+        border: '#E5E7EB',
+        // Fae brand colors for backward compatibility
+        'fae': {
+          'teal': '#00ACC1',
+          'gray-light': '#ECEFF1', 
+          'gray-dark': '#2C2C2C',
+          'blue-dark': '#1A237E',
+        },
+        // Cyan utilities
+        'cyan': {
+          500: '#00ACC1', // Fae teal
+          600: '#0097A7', // Darker teal for hover
+        },
+        // Add missing standard colors
+        'slate': {
+          700: '#334155',
+          900: '#0f172a',
+        },
+        'gray': {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          300: '#d1d5db',
+          600: '#4b5563',
+          700: '#374151',
+          900: '#111827',
+        },
+        'white': '#ffffff',
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      },
+      fontSize: {
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+      },
+    },
+  },
+}
+
+export default config

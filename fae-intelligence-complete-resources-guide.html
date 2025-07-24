@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fae Intelligence - Complete Resources Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            background: white;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 3px solid #0ea5e9;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #0f172a;
+            margin-bottom: 0.5em;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #64748b;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            padding: 1.5em;
+            border-radius: 8px;
+            margin-bottom: 2em;
+        }
+        
+        .toc h2 {
+            color: #0f172a;
+            margin-bottom: 1em;
+            font-size: 1.5em;
+        }
+        
+        .toc ol {
+            margin-left: 1.5em;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5em;
+        }
+        
+        .toc a {
+            color: #0ea5e9;
+            text-decoration: none;
+        }
+        
+        .section {
+            margin-bottom: 3em;
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1.5em;
+        }
+        
+        .section-header h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+        
+        .section-header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .subsection {
+            margin-bottom: 2em;
+            padding: 1.5em;
+            border-left: 4px solid #e2e8f0;
+            background: #f8fafc;
+        }
+        
+        .subsection h2 {
+            color: #1e293b;
+            margin-bottom: 1em;
+            font-size: 1.4em;
+        }
+        
+        .subsection h3 {
+            color: #334155;
+            margin-bottom: 0.8em;
+            margin-top: 1.5em;
+            font-size: 1.2em;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5em;
+            margin: 1.5em 0;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .card h4 {
+            color: #0f172a;
+            margin-bottom: 0.8em;
+            font-size: 1.1em;
+        }
+        
+        .card p {
+            color: #64748b;
+            font-size: 0.95em;
+            margin-bottom: 1em;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 0.25em 0.75em;
+            border-radius: 1em;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-bottom: 0.5em;
+        }
+        
+        .badge.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .badge.orange {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+        
+        .badge.yellow {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .steps {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1em 0;
+        }
+        
+        .steps h4 {
+            color: #0f172a;
+            margin-bottom: 1em;
+        }
+        
+        .steps ol {
+            margin-left: 1.5em;
+        }
+        
+        .steps li {
+            margin-bottom: 0.5em;
+            color: #475569;
+        }
+        
+        .tip-box {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        
+        .tip-box strong {
+            color: #0369a1;
+        }
+        
+        .quick-win {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1em 0;
+        }
+        
+        .quick-win h3 {
+            color: #15803d;
+            margin-bottom: 1em;
+        }
+        
+        .framework {
+            background: #fefce8;
+            border: 1px solid #eab308;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1em 0;
+        }
+        
+        .framework h4 {
+            color: #a16207;
+            margin-bottom: 0.8em;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1em;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        
+        .learning-path {
+            border: 2px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1em 0;
+            background: #faf5ff;
+        }
+        
+        .learning-path h3 {
+            color: #7c3aed;
+            margin-bottom: 1em;
+        }
+        
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #22c55e;
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        @media print {
+            body {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Fae Intelligence</h1>
+        <p>Complete AI Training Resources Guide</p>
+        <p style="font-size: 1em; color: #94a3b8;">Comprehensive documentation of all training materials, learning paths, and quick wins</p>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h2>📋 Table of Contents</h2>
+        <ol>
+            <li><a href="#overview">Resources Overview</a></li>
+            <li><a href="#learning-paths">Learning Paths</a>
+                <ol style="margin-left: 1em;">
+                    <li><a href="#ai-newcomer">AI Newcomer Path</a></li>
+                    <li><a href="#tech-explorer">Tech Explorer Path</a></li>
+                    <li><a href="#implementation-leader">Implementation Leader Path</a></li>
+                </ol>
+            </li>
+            <li><a href="#quick-wins">Quick Wins Projects</a>
+                <ol style="margin-left: 1em;">
+                    <li><a href="#chatgpt-docs">ChatGPT for Documentation</a></li>
+                    <li><a href="#voice-reports">Voice-to-Text Reports</a></li>
+                    <li><a href="#inventory-tracking">Smart Inventory Tracking</a></li>
+                </ol>
+            </li>
+            <li><a href="#training-modules">Training Modules</a>
+                <ol style="margin-left: 1em;">
+                    <li><a href="#beginner-modules">Beginner Modules</a></li>
+                    <li><a href="#intermediate-modules">Intermediate Modules</a></li>
+                    <li><a href="#advanced-modules">Advanced Modules</a></li>
+                </ol>
+            </li>
+            <li><a href="#programming-training">Programming Training</a></li>
+            <li><a href="#implementation-guide">Implementation Guide</a></li>
+        </ol>
+    </div>
+
+    <!-- Resources Overview -->
+    <div class="section" id="overview">
+        <div class="section-header">
+            <h1>🎯 Resources Overview</h1>
+            <p>Your AI Learning Journey Starts Here - Personalized learning paths designed for manufacturing teams</p>
+        </div>
+
+        <div class="subsection">
+            <h2>🎓 Progressive Learning System</h2>
+            <p>Our curriculum follows proven CS education principles with proper skill scaffolding from business AI to technical development.</p>
+            
+            <div class="framework">
+                <h4>🔧 Key Innovation: Technical Bridge</h4>
+                <p>Our Level 2 "Technical Bridge" modules solve the #1 problem in AI education - the massive skill gap between business AI tools and programming. No more hitting a brick wall!</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="badge">Level 0: AI Literacy</div>
+                    <h4>Business Foundations</h4>
+                    <p>AI Fundamentals → Prompting → Productivity</p>
+                </div>
+                <div class="card">
+                    <div class="badge green">Level 1: AI Integration</div>
+                    <h4>Technical Implementation</h4>
+                    <p>Engineering → Tools → Projects</p>
+                </div>
+                <div class="card">
+                    <div class="badge yellow">Level 2: Technical Bridge</div>
+                    <h4>Development Preparation</h4>
+                    <p>APIs → Automation → Command Line</p>
+                </div>
+                <div class="card">
+                    <div class="badge orange">Level 3: AI Development</div>
+                    <h4>Custom AI Solutions</h4>
+                    <p>API Integration → Databases → Cloud Deploy</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h2>👥 User Types</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="badge">AI Newcomer</div>
+                    <h4>🧠 New to AI but curious</h4>
+                    <p>Perfect for: Team leaders, supervisors, and anyone curious about manufacturing applications of AI</p>
+                    <p><strong>Path:</strong> AI Fundamentals → Prompt Engineering → Daily Productivity</p>
+                </div>
+                <div class="card">
+                    <div class="badge green">Tech Explorer</div>
+                    <h4>🔧 Some technical background</h4>
+                    <p>Perfect for: Engineers, technicians, and those ready to implement AI tools directly</p>
+                    <p><strong>Path:</strong> Engineering Alignment → AI Tools → Claude/ChatGPT Projects</p>
+                </div>
+                <div class="card">
+                    <div class="badge orange">Implementation Leader</div>
+                    <h4>👥 Leading AI initiatives</h4>
+                    <p>Perfect for: Managers, executives, and those developing AI strategies for their organizations</p>
+                    <p><strong>Path:</strong> Notebook LM → Research Platforms → Project Hubs → MCP Docker</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Paths -->
+    <div class="section page-break" id="learning-paths">
+        <div class="section-header">
+            <h1>🛤️ Learning Paths</h1>
+            <p>Structured progressions designed for different experience levels and roles</p>
+        </div>
+
+        <!-- AI Newcomer Path -->
+        <div class="subsection" id="ai-newcomer">
+            <h2>🧠 AI Newcomer Training Path</h2>
+            <p>New to AI but curious about manufacturing applications? Start here with our beginner-friendly approach.</p>
+            
+            <div class="learning-path">
+                <h3>Your Learning Journey</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Phase 1: Foundation</h4>
+                        <p><strong>Focus:</strong> Understanding AI Basics</p>
+                        <ul style="margin-left: 1em; color: #64748b;">
+                            <li>Complete AI Fundamentals</li>
+                            <li>Try ChatGPT for first time</li>
+                            <li>Create first AI-assisted document</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Phase 2: Communication</h4>
+                        <p><strong>Focus:</strong> Learning to Communicate with AI</p>
+                        <ul style="margin-left: 1em; color: #64748b;">
+                            <li>Master prompt engineering</li>
+                            <li>Practice with 5 different prompts</li>
+                            <li>Improve documentation workflow</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Phase 3: Integration</h4>
+                        <p><strong>Focus:</strong> Integrating AI into Daily Work</p>
+                        <ul style="margin-left: 1em; color: #64748b;">
+                            <li>Complete productivity module</li>
+                            <li>Implement 2 quick wins</li>
+                            <li>Share success with team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Success Tips:</strong>
+                <ul style="margin-left: 1em; margin-top: 0.5em;">
+                    <li>Start Small: Pick one simple task and master it before moving on</li>
+                    <li>Practice Daily: Even 10 minutes a day builds confidence quickly</li>
+                    <li>Share Your Wins: Show colleagues what you've accomplished to build team buy-in</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tech Explorer Path -->
+        <div class="subsection" id="tech-explorer">
+            <h2>🔧 Tech Explorer Training Path</h2>
+            <p>Ready to implement AI tools in your manufacturing environment? This path is designed for those with technical background.</p>
+            
+            <div class="learning-path">
+                <h3>Implementation Journey</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Phase 1: Foundation Building</h4>
+                        <p><strong>Skills:</strong> Advanced prompt engineering, tool evaluation, basic automation</p>
+                        <p><strong>Deliverables:</strong> First automated workflow, tool selection framework, ROI measurement plan</p>
+                    </div>
+                    <div class="card">
+                        <h4>Phase 2: Implementation</h4>
+                        <p><strong>Skills:</strong> API integration, data pipeline creation, dashboard development</p>
+                        <p><strong>Deliverables:</strong> Live dashboard, automated reporting, integration documentation</p>
+                    </div>
+                    <div class="card">
+                        <h4>Phase 3: Optimization</h4>
+                        <p><strong>Skills:</strong> Performance tuning, advanced analytics, team training</p>
+                        <p><strong>Deliverables:</strong> Optimized workflows, training materials, scale-up plan</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="framework">
+                <h4>Ready-to-Build Projects</h4>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Smart Inventory Management</h4>
+                        <p>Build an AI-powered inventory tracking system using free tools</p>
+                        <p><strong>Tools:</strong> Google Sheets, Zapier, ChatGPT API, Barcode Scanner</p>
+                        <p><strong>ROI:</strong> High</p>
+                    </div>
+                    <div class="card">
+                        <h4>Quality Control Dashboard</h4>
+                        <p>Create automated quality metrics tracking and reporting</p>
+                        <p><strong>Tools:</strong> Power BI, Microsoft Forms, Power Automate, AI Builder</p>
+                        <p><strong>ROI:</strong> Very High</p>
+                    </div>
+                    <div class="card">
+                        <h4>Predictive Maintenance Alert System</h4>
+                        <p>Set up AI-driven maintenance scheduling and alerts</p>
+                        <p><strong>Tools:</strong> Google Cloud, Teachable Machine, IFTTT, Slack/Teams</p>
+                        <p><strong>ROI:</strong> Very High</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Leader Path -->
+        <div class="subsection" id="implementation-leader">
+            <h2>👥 Implementation Leader Training Path</h2>
+            <p>Leading AI initiatives in your organization? Get strategic insights, leadership frameworks, and advanced implementation strategies.</p>
+            
+            <div class="learning-path">
+                <h3>Executive Implementation Roadmap</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Strategic Assessment</h4>
+                        <p><strong>Leadership Focus:</strong> Vision alignment, stakeholder buy-in, resource planning</p>
+                        <p><strong>Key Decisions:</strong> Priority use cases, budget allocation, team structure</p>
+                        <p><strong>Deliverables:</strong> AI strategy document, implementation roadmap, success criteria</p>
+                    </div>
+                    <div class="card">
+                        <h4>Pilot Execution</h4>
+                        <p><strong>Leadership Focus:</strong> Progress monitoring, obstacle removal, team support</p>
+                        <p><strong>Key Decisions:</strong> Scope adjustments, resource reallocation, timeline modifications</p>
+                        <p><strong>Deliverables:</strong> Working pilot system, performance metrics, lessons learned</p>
+                    </div>
+                    <div class="card">
+                        <h4>Scale & Optimize</h4>
+                        <p><strong>Leadership Focus:</strong> Change management, knowledge transfer, culture building</p>
+                        <p><strong>Key Decisions:</strong> Scaling approach, training investments, process standardization</p>
+                        <p><strong>Deliverables:</strong> Enterprise deployment, training programs, governance framework</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="framework">
+                <h4>Strategic Implementation Frameworks</h4>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>AI Readiness Assessment</h4>
+                        <p>Evaluate your organization's current AI maturity and identify implementation priorities</p>
+                        <p><strong>Components:</strong> Technology Infrastructure, Team Skills, Data Quality, Change Management</p>
+                        <p><strong>Outcome:</strong> Comprehensive readiness report with priority roadmap</p>
+                    </div>
+                    <div class="card">
+                        <h4>ROI Calculation Framework</h4>
+                        <p>Quantify the business impact of AI initiatives with proven measurement methods</p>
+                        <p><strong>Components:</strong> Cost-Benefit Analysis, Risk Assessment, Timeline Planning, Success Metrics</p>
+                        <p><strong>Outcome:</strong> Executive-ready business case with projected ROI</p>
+                    </div>
+                    <div class="card">
+                        <h4>Change Management Strategy</h4>
+                        <p>Guide your team through AI adoption with structured change management</p>
+                        <p><strong>Components:</strong> Stakeholder Analysis, Communication Plan, Training Strategy, Resistance Management</p>
+                        <p><strong>Outcome:</strong> Complete change management plan and communication materials</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Wins -->
+    <div class="section page-break" id="quick-wins">
+        <div class="section-header">
+            <h1>⚡ Quick Wins Projects</h1>
+            <p>Start seeing immediate value with these fast-implementation AI solutions</p>
+        </div>
+
+        <!-- ChatGPT for Documentation -->
+        <div class="subsection" id="chatgpt-docs">
+            <h2>📄 ChatGPT for Documentation</h2>
+            <div class="quick-win">
+                <h3>Transform messy notes into professional SOPs in under 10 minutes</h3>
+                <p><strong>Difficulty:</strong> Very Easy | <strong>Time:</strong> ~7 minutes | <strong>ROI:</strong> High</p>
+                
+                <div class="steps">
+                    <h4>Step-by-Step Process:</h4>
+                    <ol>
+                        <li><strong>Sign up for ChatGPT (2 min)</strong>
+                            <ul style="margin-left: 1em;">
+                                <li>Go to chat.openai.com</li>
+                                <li>Create account with email</li>
+                                <li>Verify email and log in</li>
+                            </ul>
+                        </li>
+                        <li><strong>Paste your rough notes (1 min)</strong>
+                            <ul style="margin-left: 1em;">
+                                <li>Copy messy notes from meetings or projects</li>
+                                <li>Don't worry about formatting</li>
+                                <li>The messier the better for demonstration</li>
+                            </ul>
+                        </li>
+                        <li><strong>Use proven prompt template (30 sec)</strong>
+                            <div class="code-block">
+Please convert these rough notes into a professional Standard Operating Procedure (SOP) with the following format:
+
+**Title:** [Clear, descriptive title]
+**Purpose:** [Why this procedure exists]
+**Scope:** [When and where this applies]
+**Procedure Steps:**
+1. [Step-by-step instructions]
+2. [Each step should be clear and actionable]
+3. [Include any safety or quality requirements]
+
+**Quality Checks:** [How to verify work was done correctly]
+**Documentation:** [What records to keep]
+
+Please make language clear, professional, and easy to follow. Mark unclear items with [NEEDS CLARIFICATION].
+                            </div>
+                        </li>
+                        <li><strong>Review and save (3 min)</strong>
+                            <ul style="margin-left: 1em;">
+                                <li>Review generated SOP carefully</li>
+                                <li>Fill in any [NEEDS CLARIFICATION] markers</li>
+                                <li>Copy to your documentation system</li>
+                                <li>Share with team for feedback</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> This template works for almost any process - manufacturing, quality control, maintenance, or administrative procedures. Most SOPs need 1-2 rounds of minor edits, but ChatGPT gets you 90% there instantly.
+                </div>
+
+                <div class="framework">
+                    <h4>Sample Practice Notes:</h4>
+                    <div class="code-block">
+Meeting notes 3/15 - Machine setup procedure
+- turn on main power switch (red button on left side)
+- wait for green light
+- check oil levels in gauges 1,2,3
+- if low add hydraulic oil from cabinet
+- run calibration cycle (press blue button hold for 3 sec)
+- machine will beep 3 times when ready
+- load material on conveyor
+- set speed to 150 for aluminum, 200 for steel
+- press start
+- monitor first 10 pieces for quality
+- adjust as needed
+- log production numbers in daily sheet
+- shutdown: press stop, wait for full stop, turn off power
+
+Safety stuff:
+- always wear safety glasses
+- dont put hands near moving parts
+- emergency stop button is big red button on front
+- if anything looks wrong stop immediately and call supervisor
+
+Quality checks:
+- check dimensions every 50 pieces
+- look for burrs or rough edges
+- if quality issues stop and check setup
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice-to-Text Reports -->
+        <div class="subsection" id="voice-reports">
+            <h2>🎤 Voice-to-Text Quality Reports</h2>
+            <div class="quick-win">
+                <h3>Dictate inspection findings directly to professional reports</h3>
+                <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> ~9 minutes | <strong>ROI:</strong> Medium to High</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Why This Matters</h4>
+                        <p><strong>Save Time:</strong> Turn 20-minute written reports into 5-minute voice recordings</p>
+                        <p><strong>Better Accuracy:</strong> Capture details while fresh, reduce transcription errors</p>
+                        <p><strong>Professional Format:</strong> AI ensures consistent report formatting</p>
+                    </div>
+                </div>
+
+                <div class="steps">
+                    <h4>Complete Workflow:</h4>
+                    <ol>
+                        <li><strong>Record with phone (2 min)</strong>
+                            <ul style="margin-left: 1em;">
+                                <li>Use Voice Memos (iPhone) or Voice Recorder (Android)</li>
+                                <li>Hold phone 6-12 inches from mouth</li>
+                                <li>Speak clearly at normal pace</li>
+                                <li>Record inspection findings naturally</li>
+                            </ul>
+                        </li>
+                        <li><strong>Transcribe with free tools (3 min)</strong>
+                            <ul style="margin-left: 1em;">
+                                <li>Option 1: Google Docs voice typing</li>
+                                <li>Option 2: Otter.ai free tier (600 min/month)</li>
+                                <li>Option 3: WhatsApp voice message transcription</li>
+                            </ul>
+                        </li>
+                        <li><strong>Format with ChatGPT (2 min)</strong>
+                            <div class="code-block">
+Please convert this voice transcription into a professional quality inspection report with the following format:
+
+**QUALITY INSPECTION REPORT**
+
+**Date:** [Extract date]
+**Inspector:** [Extract name] 
+**Batch/Lot Number:** [Extract if mentioned]
+**Location/Line:** [Extract if mentioned]
+
+**INSPECTION SUMMARY:**
+[Brief overview of what was inspected]
+
+**FINDINGS:**
+• [List each finding as clear bullet point]
+• [Include specific details like quantities, measurements, locations]
+• [Separate defects from observations]
+
+**QUALITY ASSESSMENT:**
+Pass/Fail: [Based on findings]
+Overall Rating: [Extract or infer rating]
+
+**RECOMMENDATIONS:**
+• [List any suggested actions]
+• [Include preventive measures if mentioned]
+
+**NEXT STEPS:**
+[Any follow-up actions needed]
+
+Please clean up speech-to-text errors and organize information logically. Mark missing critical information with [NEEDS CLARIFICATION].
+                            </div>
+                        </li>
+                        <li><strong>Save as template (2 min)</strong>
+                            <ul style="margin-left: 1em;">
+                                <li>Save formatted report in quality management system</li>
+                                <li>Create template document with report structure</li>
+                                <li>Save ChatGPT prompt for future use</li>
+                                <li>Share process with team</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Results:</strong> Most quality systems see 70% time savings when switching from handwritten to voice-to-AI reports. This same format works for maintenance reports, safety inspections, and production summaries.
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Inventory Tracking -->
+        <div class="subsection" id="inventory-tracking">
+            <h2>📦 Smart Inventory Tracking</h2>
+            <div class="quick-win">
+                <h3>Use smartphone camera for automated inventory counts</h3>
+                <p><strong>Difficulty:</strong> Medium | <strong>Time:</strong> ~15 minutes setup | <strong>ROI:</strong> High</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>What You'll Build</h4>
+                        <p>A system that uses your smartphone camera to scan items and automatically update inventory counts in a spreadsheet</p>
+                    </div>
+                    <div class="card">
+                        <h4>Tools Required</h4>
+                        <ul style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Smartphone with camera</li>
+                            <li>Google Sheets (free)</li>
+                            <li>Google Lens or similar app</li>
+                            <li>Zapier (free tier)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Coming Soon:</strong> Complete step-by-step implementation guide for smart inventory tracking with barcode scanning and automatic spreadsheet updates.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Training Modules -->
+    <div class="section page-break" id="training-modules">
+        <div class="section-header">
+            <h1>📚 Training Modules</h1>
+            <p>Comprehensive modules organized by skill level with interactive elements and completion tracking</p>
+        </div>
+
+        <!-- Beginner Modules -->
+        <div class="subsection" id="beginner-modules">
+            <h2>🟢 Beginner Level Modules</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="badge">Beginner</div>
+                    <h4>AI Fundamentals for Business</h4>
+                    <p>Essential AI concepts, terminology, and applications for business teams.</p>
+                    <p><strong>Features:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Interactive progress tracking</li>
+                        <li>Section-by-section completion</li>
+                        <li>Knowledge check with scoring</li>
+                        <li>Downloadable completion certificate</li>
+                        <li>6 learning objectives</li>
+                        <li>~46 minutes total</li>
+                    </ul>
+                    <div class="tip-box">
+                        <strong>Learning Objectives:</strong>
+                        <ol style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Define AI and explain capabilities/limitations</li>
+                            <li>Distinguish between different AI types</li>
+                            <li>Understand how neural networks function</li>
+                            <li>Use proper AI terminology</li>
+                            <li>Identify AI in daily applications</li>
+                            <li>Take confident first steps with AI tools</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="badge">Beginner</div>
+                    <h4>Prompt Engineering for Leaders</h4>
+                    <p>Master the art of crafting effective prompts for business AI applications.</p>
+                    <p><strong>Key Topics:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Prompt structure and components</li>
+                        <li>Context engineering techniques</li>
+                        <li>Common prompt patterns</li>
+                        <li>Business-focused examples</li>
+                        <li>Troubleshooting poor responses</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="badge">Beginner</div>
+                    <h4>AI Tools for Daily Productivity</h4>
+                    <p>Practical applications of AI for everyday manufacturing tasks and productivity.</p>
+                    <p><strong>Applications:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Document creation and editing</li>
+                        <li>Email and communication</li>
+                        <li>Meeting notes and summaries</li>
+                        <li>Data analysis basics</li>
+                        <li>Process documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intermediate Modules -->
+        <div class="subsection" id="intermediate-modules">
+            <h2>🟡 Intermediate Level Modules</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="badge green">Intermediate</div>
+                    <h4>Engineering Alignment</h4>
+                    <p>Aligning context, prompts, and AI models for optimal manufacturing results.</p>
+                    <p><strong>Core Concepts:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Context engineering principles</li>
+                        <li>Model capability matching</li>
+                        <li>Prompt optimization strategies</li>
+                        <li>Performance troubleshooting</li>
+                        <li>Real-world case studies</li>
+                    </ul>
+                    <div class="framework">
+                        <h4>The Alignment Framework</h4>
+                        <ol style="margin-left: 1em; font-size: 0.9em;">
+                            <li><strong>Task Analysis:</strong> Define objectives, identify knowledge requirements, determine complexity</li>
+                            <li><strong>Context Engineering:</strong> Gather essential information, structure logically, prioritize details</li>
+                            <li><strong>Model Selection:</strong> Match model to task requirements, consider context window needs</li>
+                            <li><strong>Prompt Crafting:</strong> Apply appropriate patterns, structure clear instructions</li>
+                            <li><strong>Execution:</strong> Run prompt, monitor behavior, observe results</li>
+                            <li><strong>Iterative Refinement:</strong> Analyze output, identify issues, adjust and repeat</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="badge green">Intermediate</div>
+                    <h4>Top 20 AI Tools Under $20/Month</h4>
+                    <p>Comprehensive guide to cost-effective AI tools perfect for SMBs.</p>
+                    <p><strong>Tool Categories:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Text & Writing Tools (ChatGPT, Copy.ai, Grammarly, Jasper)</li>
+                        <li>Image Generation & Design (Midjourney, Canva Pro, Leonardo.ai)</li>
+                        <li>Audio & Video Creation (Descript, Murf.ai, Runway, Otter.ai)</li>
+                        <li>Research & Knowledge (Perplexity, Elicit, Consensus, You.com)</li>
+                        <li>Productivity & Workflow (Notion AI, Taskade, Mem.ai)</li>
+                    </ul>
+                    <div class="tip-box">
+                        <strong>Selection Strategy:</strong> Start with free tiers, combine complementary tools, look for annual discounts, choose based on specific needs rather than popularity.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="badge green">Intermediate</div>
+                    <h4>Using Claude and ChatGPT for Projects</h4>
+                    <p>Leveraging AI assistants for manufacturing project management and workflow optimization.</p>
+                    <p><strong>When to Choose Claude:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Document analysis and processing</li>
+                        <li>Complex reasoning tasks</li>
+                        <li>Large context requirements</li>
+                        <li>Safety-critical content</li>
+                    </ul>
+                    <p><strong>When to Choose ChatGPT:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Current information via web browsing</li>
+                        <li>Creative content generation</li>
+                        <li>Visual content analysis</li>
+                        <li>Data analysis with code interpreter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Modules -->
+        <div class="subsection" id="advanced-modules">
+            <h2>🔴 Advanced Level Modules</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="badge orange">Advanced</div>
+                    <h4>Utilizing Notebook LM</h4>
+                    <p>In-depth guide to setting up and using Notebook LM for knowledge management.</p>
+                    <p><strong>Enterprise Applications:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Knowledge system architecture</li>
+                        <li>Document analysis workflows</li>
+                        <li>Team collaboration strategies</li>
+                        <li>Strategic planning integration</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="badge orange">Advanced</div>
+                    <h4>Understanding Perplexity Spaces and Gemini Advanced Features</h4>
+                    <p>Exploration of AI research and knowledge platforms for manufacturing insights.</p>
+                    <p><strong>Platform Comparison:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li><strong>Perplexity Spaces:</strong> Topic-centric organization, source verification, research continuity</li>
+                        <li><strong>Gemini Advanced Features:</strong> Content-based organization, versioning, Google ecosystem integration</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="badge orange">Advanced</div>
+                    <h4>Using Perplexity and Gemini as Project Hubs</h4>
+                    <p>Leveraging these platforms as team collaboration centers for manufacturing projects.</p>
+                    <p><strong>Hub Strategies:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Project-based organization</li>
+                        <li>Cross-functional team coordination</li>
+                        <li>Knowledge sharing workflows</li>
+                        <li>Decision support systems</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="badge orange">Advanced</div>
+                    <h4>MCP & Docker Desktop Training</h4>
+                    <p>Master the Model Context Protocol (MCP) and Docker Desktop for secure, efficient system access.</p>
+                    <p><strong>Technical Focus:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>System integration protocols</li>
+                        <li>Security implementation</li>
+                        <li>Container management</li>
+                        <li>Advanced automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Programming Training -->
+    <div class="section page-break" id="programming-training">
+        <div class="section-header">
+            <h1>💻 Programming Training</h1>
+            <p>Advanced AI & Programming Training for custom solutions and technical implementation</p>
+        </div>
+
+        <div class="subsection">
+            <h2>🔗 Technical Bridge Modules</h2>
+            <p>These modules bridge the gap between business AI tools and programming, solving the #1 problem in AI education.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="badge yellow">Bridge</div>
+                    <h4>API Fundamentals & Web Services</h4>
+                    <p>Learn how AI systems communicate behind the scenes.</p>
+                    <p><strong>Prerequisites:</strong> Claude ChatGPT Projects</p>
+                    <p><strong>Topics:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>REST API basics and HTTP methods</li>
+                        <li>JSON data format and structure</li>
+                        <li>Authentication and API keys</li>
+                        <li>Testing APIs with simple tools</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="badge yellow">Bridge</div>
+                    <h4>No-Code Integration Tools</h4>
+                    <p>Build powerful automation workflows using Zapier, Power Automate, and IFTTT.</p>
+                    <p><strong>Prerequisites:</strong> API Fundamentals</p>
+                    <p><strong>Tools Covered:</strong></p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Zapier workflow automation</li>
+                        <li>Microsoft Power Automate</li>
+                        <li>IFTTT trigger-based automation</li>
+                        <li>Google Apps Script basics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h2>🚀 Advanced Development Tracks</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>ChatGPT API Development</h4>
+                    <p>Build custom applications using OpenAI's API</p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>API authentication and setup</li>
+                        <li>Prompt engineering for APIs</li>
+                        <li>Building simple applications</li>
+                        <li>Cost optimization strategies</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>Claude API Integration</h4>
+                    <p>Leverage Anthropic's Claude for document processing</p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Large document processing</li>
+                        <li>Complex reasoning tasks</li>
+                        <li>Safety and content filtering</li>
+                        <li>Integration patterns</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>Local LLM Deployment</h4>
+                    <p>Run AI models on your own infrastructure</p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Model selection and setup</li>
+                        <li>Hardware requirements</li>
+                        <li>Privacy and security benefits</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>Firebase AI Integration</h4>
+                    <p>Cloud-native AI applications with Google Firebase</p>
+                    <ul style="margin-left: 1em; font-size: 0.9em;">
+                        <li>Real-time database integration</li>
+                        <li>User authentication</li>
+                        <li>Cloud functions for AI</li>
+                        <li>Scalable architecture patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h2>🔧 Development Tools & Workflows</h2>
+            
+            <div class="framework">
+                <h4>MCP (Model Context Protocol) & Docker</h4>
+                <p>Master advanced system integration for production AI deployments</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>MCP Protocol Mastery</h4>
+                        <ul style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Protocol specification understanding</li>
+                            <li>Secure communication patterns</li>
+                            <li>Context management strategies</li>
+                            <li>Multi-model coordination</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Docker Desktop Integration</h4>
+                        <ul style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Container architecture for AI</li>
+                            <li>Service orchestration</li>
+                            <li>Development environment setup</li>
+                            <li>Production deployment patterns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Development Philosophy:</strong> Start with no-code tools, understand the underlying APIs, then gradually build custom solutions. This progression ensures you understand both the business value and technical implementation.
+            </div>
+        </div>
+    </div>
+
+    <!-- Implementation Guide -->
+    <div class="section page-break" id="implementation-guide">
+        <div class="section-header">
+            <h1>🚀 Implementation Guide</h1>
+            <p>Practical guidance for implementing AI solutions in your manufacturing environment</p>
+        </div>
+
+        <div class="subsection">
+            <h2>📊 Getting Started Checklist</h2>
+            
+            <div class="steps">
+                <h4>Phase 1: Assessment & Planning (Week 1-2)</h4>
+                <ol>
+                    <li><strong>Complete User Type Assessment</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Determine if you're an AI Newcomer, Tech Explorer, or Implementation Leader</li>
+                            <li>Assess your team's current AI knowledge and comfort level</li>
+                            <li>Identify key stakeholders and decision makers</li>
+                        </ul>
+                    </li>
+                    <li><strong>Identify Priority Use Cases</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Document current pain points in your processes</li>
+                            <li>Prioritize by impact vs. implementation difficulty</li>
+                            <li>Start with one Quick Win to build confidence</li>
+                        </ul>
+                    </li>
+                    <li><strong>Set Success Metrics</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Define measurable outcomes (time saved, quality improved, etc.)</li>
+                            <li>Establish baseline measurements</li>
+                            <li>Set realistic timelines for implementation</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="steps">
+                <h4>Phase 2: Learning & Skill Building (Week 3-6)</h4>
+                <ol>
+                    <li><strong>Follow Your Learning Path</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Complete modules in sequence for optimal skill building</li>
+                            <li>Take knowledge checks to validate understanding</li>
+                            <li>Practice with real work examples, not just tutorials</li>
+                        </ul>
+                    </li>
+                    <li><strong>Implement Quick Wins</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Start with ChatGPT for Documentation</li>
+                            <li>Add Voice-to-Text Reports for quality processes</li>
+                            <li>Share results with team to build buy-in</li>
+                        </ul>
+                    </li>
+                    <li><strong>Build Team Capabilities</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Train 2-3 team members on the same Quick Wins</li>
+                            <li>Create internal documentation of your processes</li>
+                            <li>Establish best practices and quality standards</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="steps">
+                <h4>Phase 3: Scaling & Optimization (Week 7-12)</h4>
+                <ol>
+                    <li><strong>Advanced Tool Implementation</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Evaluate and implement tools from the Top 20 list</li>
+                            <li>Build automated workflows using no-code tools</li>
+                            <li>Integrate AI tools with existing business systems</li>
+                        </ul>
+                    </li>
+                    <li><strong>Process Standardization</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Document all AI-enhanced processes</li>
+                            <li>Train additional team members</li>
+                            <li>Establish governance and quality controls</li>
+                        </ul>
+                    </li>
+                    <li><strong>Continuous Improvement</strong>
+                        <ul style="margin-left: 1em;">
+                            <li>Measure and report on success metrics</li>
+                            <li>Identify next opportunities for AI implementation</li>
+                            <li>Plan for advanced training and custom development</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h2>⚠️ Common Pitfalls & Solutions</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Pitfall: Trying to do everything at once</h4>
+                    <p><strong>Solution:</strong> Start with one Quick Win, master it completely, then add the next tool. Success builds on success.</p>
+                </div>
+                <div class="card">
+                    <h4>Pitfall: Focusing on technology before understanding business value</h4>
+                    <p><strong>Solution:</strong> Always start with the problem you're solving, not the tool you want to use. ROI justifies everything.</p>
+                </div>
+                <div class="card">
+                    <h4>Pitfall: Skipping team training and change management</h4>
+                    <p><strong>Solution:</strong> People adoption is harder than technical implementation. Invest in training and celebrate early wins.</p>
+                </div>
+                <div class="card">
+                    <h4>Pitfall: Not measuring results</h4>
+                    <p><strong>Solution:</strong> Track time savings, quality improvements, and cost reductions. Data drives continued investment and support.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h2>🎯 Success Metrics & ROI Calculation</h2>
+            
+            <div class="framework">
+                <h4>ROI Calculation Framework</h4>
+                <p><strong>Formula:</strong> ((Time Saved × Hourly Rate) + Quality Improvements + Cost Reductions - Implementation Costs) / Implementation Costs × 100</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Time Savings Metrics</h4>
+                        <ul style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Documentation creation time</li>
+                            <li>Report generation time</li>
+                            <li>Data analysis time</li>
+                            <li>Communication and coordination time</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Quality Improvements</h4>
+                        <ul style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Reduced error rates</li>
+                            <li>Improved consistency</li>
+                            <li>Better documentation quality</li>
+                            <li>Enhanced decision making</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Cost Reductions</h4>
+                        <ul style="margin-left: 1em; font-size: 0.9em;">
+                            <li>Reduced external consulting</li>
+                            <li>Lower training costs</li>
+                            <li>Decreased software licensing</li>
+                            <li>Improved resource utilization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h2>📞 Getting Additional Support</h2>
+            
+            <div class="tip-box">
+                <strong>When to Seek Professional Guidance:</strong>
+                <ul style="margin-left: 1em; margin-top: 0.5em;">
+                    <li>You need custom AI solutions beyond available tools</li>
+                    <li>Integration with legacy manufacturing systems is required</li>
+                    <li>You're planning organization-wide AI transformation</li>
+                    <li>Compliance and regulatory requirements need consideration</li>
+                    <li>You want to accelerate implementation with expert guidance</li>
+                </ul>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>🎯 AI Productivity Kickstarter</h4>
+                    <p>Entry-level service offering for teams just getting started with AI</p>
+                    <p><strong>Includes:</strong> Assessment, quick wins implementation, team training</p>
+                </div>
+                <div class="card">
+                    <h4>🔧 Custom AI Strategy Development</h4>
+                    <p>Bespoke strategies tailored to your specific manufacturing environment</p>
+                    <p><strong>Includes:</strong> Deep assessment, custom roadmap, implementation support</p>
+                </div>
+                <div class="card">
+                    <h4>👥 Hands-On AI Training Workshops</h4>
+                    <p>Practical skills training with free and low-cost tools</p>
+                    <p><strong>Includes:</strong> Live instruction, hands-on practice, ongoing support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="section" style="border-top: 3px solid #0ea5e9; margin-top: 3em; padding-top: 2em;">
+        <div class="text-center">
+            <h2 style="color: #0f172a; margin-bottom: 1em;">📚 Document Information</h2>
+            <p><strong>Document:</strong> Fae Intelligence Complete Resources Guide</p>
+            <p><strong>Generated:</strong> <script>document.write(new Date().toLocaleDateString())</script></p>
+            <p><strong>Version:</strong> 1.0 - Comprehensive Training Materials</p>
+            <p><strong>Total Pages:</strong> All Resources, Learning Paths, Modules, and Implementation Guides</p>
+            
+            <div style="margin-top: 2em; padding: 1em; background: #f8fafc; border-radius: 8px;">
+                <p style="color: #64748b; font-size: 0.9em;">
+                    This document contains the complete Fae Intelligence training curriculum designed specifically for manufacturing teams. 
+                    It includes all learning paths, training modules, quick wins projects, and implementation guidance.
+                </p>
+                <p style="color: #64748b; font-size: 0.9em; margin-top: 1em;">
+                    <strong>Website:</strong> faeintelligence.com | 
+                    <strong>Focus:</strong> Practical AI solutions for Pacific Northwest SMBs | 
+                    <strong>Expertise:</strong> 30+ years manufacturing experience + AI implementation
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
