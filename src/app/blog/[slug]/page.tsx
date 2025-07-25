@@ -9,9 +9,52 @@ import { Container } from '@/components/layout/Container'
 import { Badge } from '@/components/ui/badge'
 import { BlogService } from '@/lib/blog'
 import { BlogPost } from '@/types/blog'
-import { Calendar, User, Eye, Tag, ArrowLeft, Share2 } from 'lucide-react'
+import { Calendar, User, Eye, Tag, ArrowLeft, Share2, MessageSquare, Search } from 'lucide-react' // Import Lucide icons
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+
+import ReactMarkdown from 'react-markdown' // Import ReactMarkdown
+import remarkGfm from 'remark-gfm' // Import remarkGfm for GitHub Flavored Markdown
+
+// Custom components to render Markdown elements
+const MarkdownComponents = {
+  h1: ({ node, ...props }) => <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-8 mb-4" {...props} />,
+  h2: ({ node, children, ...props }) => {
+    // Custom logic to inject icons based on heading text
+    const textContent = Array.isArray(children) ? children.join('') : children;
+    let Icon = null;
+    if (textContent.includes('ChatGPT Data Analysis')) {
+      Icon = MessageSquare;
+    } else if (textContent.includes('Gemini in Google Sheets')) {
+      Icon = Search; // Using Search for Google Gemini for illustrative purposes
+    
+    }
+
+    return (
+      <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 mt-6 mb-3 flex items-center" {...props}>
+        {Icon && <Icon className="mr-2 h-6 w-6 text-cyan-600 flex-shrink-0" />} {/* Render icon if found */}
+        {children}
+      </h2>
+    );
+  },
+  h3: ({ node, ...props }) => <h3 className="text-xl lg:text-2xl font-semibold text-gray-700 mt-5 mb-2" {...props} />,
+  p: ({ node, ...props }) => <p className="text-base text-gray-700 leading-relaxed mb-4" {...props} />,
+  ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2" {...props} />,
+  ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-2" {...props} />,
+  li: ({ node, ...props }) => <li className="text-gray-700" {...props} />,
+  a: ({ node, ...props }) => <a className="text-cyan-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+  blockquote: ({ node, children, ...props }) => {
+    const isHighlight = Array.isArray(children) && typeof children[0] === 'string' && children[0].startsWith('[HIGHLIGHT]');
+
+    return (
+      <blockquote className={`border-l-4 pl-4 py-2 my-6 ${isHighlight ? 'border-yellow-500 bg-yellow-50 text-yellow-800' : 'border-gray-300 bg-gray-50 text-gray-600'}`}>
+        {isHighlight ? children[0].substring('[HIGHLIGHT]'.length).trim() : children}
+      </blockquote>
+    );
+  },
+  // Optionally, add custom components for images, tables, etc. if needed
+  // img: ({ node, ...props }) => <Image {...props} width={props.width || 800} height={props.height || 400} className="w-full h-auto object-cover rounded-lg my-6" />,
+};
 
 export default function BlogPostPage() {
   const params = useParams()
@@ -29,28 +72,28 @@ export default function BlogPostPage() {
   const fetchPost = async (slug: string) => {
     try {
       setLoading(true)
-      
+
       // Fetch the post
-      const postData = await BlogService.getPostBySlug(slug)
-      
+      const postData = await BlogService.getPostBySlug(slug) // IMPORTANT: BlogService.getPostBySlug must return raw markdown in postData.content
+
       if (postData) {
         setPost(postData)
-        
+
         // Increment view count
         await BlogService.incrementViewCount(postData.id)
-        
+
         // Fetch related posts (same category)
         const relatedResult = await BlogService.getPublishedPosts({
           limit: 3,
-          filters: { 
-            category: postData.category 
+          filters: {
+            category: postData.category
           }
         })
-        
+
         // Filter out current post from related posts
         const filteredRelated = relatedResult.posts.filter(p => p.id !== postData.id)
         setRelatedPosts(filteredRelated)
-        
+
       } else {
         setError('Post not found')
       }
@@ -85,7 +128,7 @@ export default function BlogPostPage() {
         alert('URL copied to clipboard!')
       }
     } else {
-      // Fallback for browsers that don&apos;t support Web Share API
+      // Fallback for browsers that don't support Web Share API
       navigator.clipboard.writeText(window.location.href)
       alert('URL copied to clipboard!')
     }
@@ -125,7 +168,7 @@ export default function BlogPostPage() {
   return (
     <>
       {/* Breadcrumb */}
-      <section className="bg-gray-50 py-4">
+      <section className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-4">
         <Container>
           <nav className="flex text-sm">
             <Link href="/" className="text-gray-500 hover:text-gray-700">
@@ -144,8 +187,8 @@ export default function BlogPostPage() {
       </section>
 
       {/* Article */}
-      <article className="py-12">
-        <Container className="max-w-4xl">
+      <article className="py-12 bg-white">
+        <Container className="max-w-4xl"> {/* You might try max-w-3xl or max-w-2xl for narrower content */}
           {/* Header */}
           <header className="mb-8">
             <div className="mb-4">
@@ -158,34 +201,34 @@ export default function BlogPostPage() {
                 </Badge>
               )}
             </div>
-            
+
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
               {post.title}
             </h1>
-            
+
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
               {post.excerpt}
             </p>
-            
+
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200">
               <div className="flex items-center space-x-6 text-sm text-gray-500">
                 <div className="flex items-center">
                   <User className="mr-2 h-4 w-4" />
                   <span>{post.author.name}</span>
                 </div>
-                
+
                 <div className="flex items-center">
                   <Calendar className="mr-2 h-4 w-4" />
                   <span>{formatDate(post.publishedAt || post.createdAt)}</span>
-                
+
                 </div>
-                
+
                 <div className="flex items-center">
                   <Eye className="mr-2 h-4 w-4" />
                   <span>{post.viewCount || 0} views</span>
                 </div>
               </div>
-              
+
               <Button
                 variant="outline"
                 size="sm"
@@ -212,7 +255,10 @@ export default function BlogPostPage() {
 
           {/* Content */}
           <div className="prose prose-lg max-w-none mb-8">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            {/* Using ReactMarkdown to render the content */}
+            <ReactMarkdown components={MarkdownComponents} remarkPlugins={[remarkGfm]}>
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           {/* Tags */}
@@ -244,7 +290,7 @@ export default function BlogPostPage() {
                   Founder of Fae Intelligence | 30+ Years Manufacturing Excellence
                 </p>
                 <p className="text-gray-700 text-sm">
-                  Richard brings over three decades of hands-on manufacturing experience to help SMBs 
+                  Richard brings over three decades of hands-on manufacturing experience to help SMBs
                   implement practical AI solutions that deliver immediate, measurable results.
                 </p>
               </div>
@@ -263,7 +309,7 @@ export default function BlogPostPage() {
                         {relatedPost.category}
                       </Badge>
                       <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
-                        <Link 
+                        <Link
                           href={`/blog/${relatedPost.slug}`}
                           className="hover:text-cyan-600 transition-colors"
                         >

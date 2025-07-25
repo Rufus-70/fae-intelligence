@@ -102,8 +102,7 @@ export default function HomePage() {
 
       {/* Expert Profile */}
       <section className="py-16 bg-gray-50">
-        <Container maxWidth="4xl">
-          {/* Removed the problematic max-w-5xl mx-auto div */}
+        <Container maxWidth="6xl"> {/* Changed maxWidth to 6xl */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">

@@ -1,0 +1,21 @@
+write a file for Blog maker script Convert the following blog post content into Markdown format.
+Include a YAML front matter block at the top with these fields:
+- title: The main title of the blog post.
+- author: The author's name.
+- date: The publication date in 'YYYY-MM-DD' format.
+- excerpt: A brief summary of the post (1-2 sentences).
+- category: The main category of the post (e.g., 'AI in Manufacturing').
+- tags: A YAML list of relevant keywords (e.g., ['AI', 'Decision Making']).
+- featuredImage: (Leave this blank or as a placeholder like '/assets/images/your-featured-image.jpg' for now. You will fill this
+manually later.)
+- slug: A URL-friendly slug for the post (e.g., 'your-blog-post-title-here').
+
+For any sections that visually resemble a 'highlight' or 'blockquote' in the original content, format them in Markdown as:
+> [HIGHLIGHT]
+> Your highlight content here.
+
+For any sections that describe a 'feature' with an associated icon, format the heading as a standard Markdown heading, and if an icon is implied, describe it in parentheses at the end of the heading. For example:
+### Your Feature Title (e.g., ChatGPT Data Analysis)
+
+Ensure all other content (headings, paragraphs, lists, bold/italic text, links, etc.) is converted using standard Markdown syntax.
+Here is the blog post content to convert:
