@@ -18,7 +18,6 @@ export default function SitemapPage() {
               <li><Link href="/services" className="text-blue-600 hover:underline">Services</Link></li>
               <li><Link href="/consultation" className="text-blue-600 hover:underline">Consultation</Link></li>
               <li><Link href="/contact" className="text-blue-600 hover:underline">Contact</Link></li>
-              <li><Link href="/blog" className="text-blue-600 hover:underline">Blog</Link></li>
             </ul>
           </div>
 
@@ -73,8 +72,6 @@ export default function SitemapPage() {
             <ul className="space-y-2">
               <li><Link href="/dashboard" className="text-blue-600 hover:underline">Dashboard Home</Link></li>
               <li><Link href="/dashboard/analytics" className="text-blue-600 hover:underline">Analytics</Link></li>
-              <li><Link href="/dashboard/blog" className="text-blue-600 hover:underline">Blog Management</Link></li>
-              <li><Link href="/dashboard/blog/create" className="text-blue-600 hover:underline">Create Blog Post</Link></li>
               <li><Link href="/dashboard/categories" className="text-blue-600 hover:underline">Categories</Link></li>
               <li><Link href="/dashboard/files" className="text-blue-600 hover:underline">File Management</Link></li>
               <li><Link href="/dashboard/knowledge" className="text-blue-600 hover:underline">Knowledge Base</Link></li>

@@ -39,9 +39,6 @@ export default function Header() {
               Services
             </Link>
             
-            <Link href="/blog" className="text-gray-700 hover:text-cyan-500 transition-colors">
-              Blog
-            </Link>
             <Link href="/consultation" className="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600 transition-colors">
               Get Started
             </Link>
@@ -83,9 +80,6 @@ export default function Header() {
                 Services
               </Link>
               
-              <Link href="/blog" className="text-gray-700 hover:text-cyan-500 py-2">
-                Blog
-              </Link>
               <Link href="/consultation" className="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600 transition-colors inline-block text-center mt-2">
                 Get Started
               </Link>

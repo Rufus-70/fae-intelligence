@@ -7,10 +7,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { 
   LayoutDashboard, 
-  FileText, 
-  Plus, 
   Settings, 
-  Users, 
   BarChart3,
   Menu,
   X,
@@ -48,18 +45,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       href: '/dashboard/knowledge',
       icon: Brain,
       current: pathname === '/dashboard/knowledge'
-    },
-    {
-      name: 'All Posts',
-      href: '/dashboard/blog',
-      icon: FileText,
-      current: pathname === '/dashboard/blog'
-    },
-    {
-      name: 'Create Post',
-      href: '/dashboard/blog/create',
-      icon: Plus,
-      current: pathname === '/dashboard/blog/create'
     },
     {
       name: 'Categories',
@@ -189,13 +174,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 className="text-sm text-gray-500 hover:text-gray-700"
               >
                 View Site
-              </Link>
-              <Link 
-                href="/blog"
-                target="_blank"
-                className="text-sm text-gray-500 hover:text-gray-700"
-              >
-                View Blog
               </Link>
             </div>
           </div>
