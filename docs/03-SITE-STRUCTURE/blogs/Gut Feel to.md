@@ -19,8 +19,7 @@ In today's competitive manufacturing landscape, the difference between thriving 
 
 Consider this common scenario: A growing manufacturing company consistently makes staffing decisions based on "how busy things feel" rather than analyzing actual production data and workflow patterns. While this approach may have worked during simpler times, it can become costly as operations scale and market pressures intensify.
 
-> [HIGHLIGHT]
-> Recently, a mid-sized manufacturing operation discovered they were overstaffing certain shifts by 20% based on perceived activity levels rather than data-driven analysis. With today's labor costs and competitive pressures, this intuition-based approach was costing them approximately $15,000 annually in unnecessary expenses—money that could have been reinvested in growth initiatives or operational improvements.
+Recently, a mid-sized manufacturing operation discovered they were overstaffing certain shifts by 20% based on perceived activity levels rather than data-driven analysis. With today's labor costs and competitive pressures, this intuition-based approach was costing them approximately $15,000 annually in unnecessary expenses—money that could have been reinvested in growth initiatives or operational improvements.
 
 ## AI Tools That Transform Decision-Making
 
@@ -34,7 +33,7 @@ Upload your customer feedback or quality control data and ask specific questions
 
 Transform your existing spreadsheets into powerful analytical tools. Simply ask questions like "Which product lines showed the highest profit margins last quarter?" and watch as AI sorts through your production and sales data to surface actionable insights that inform strategic decisions.
 
-###Microsoft Copilot
+### Microsoft Copilot
 
 Integrate AI directly into your existing workflow tools to analyze scheduling patterns, identify bottlenecks, and optimize resource allocation based on historical performance data.
 

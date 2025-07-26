@@ -1,4 +1,3 @@
-// GEMINI TEST COMMENT: 2025-06-28T15:30:00 - Attempt 4 NOT back to 2
 'use client'
 
 import Image from 'next/image'
@@ -43,18 +42,18 @@ const MarkdownComponents = {
   ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-2" {...props} />,
   li: ({ node, ...props }) => <li className="text-gray-700" {...props} />,
   a: ({ node, ...props }) => <a className="text-cyan-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
-  blockquote: ({ node, children, ...props }) => {
-    const isHighlight = Array.isArray(children) && typeof children[0] === 'string' && children[0].startsWith('[HIGHLIGHT]');
 
+  blockquote: ({ node, children, ...props }) => {
     return (
-      <blockquote className={`border-l-4 pl-4 py-2 my-6 ${isHighlight ? 'border-yellow-500 bg-yellow-50 text-yellow-800' : 'border-gray-300 bg-gray-50 text-gray-600'}`}>
-        {isHighlight ? children[0].substring('[HIGHLIGHT]'.length).trim() : children}
+      <blockquote className="border-l-4 pl-4 py-2 my-6 border-gray-300 bg-gray-50 text-gray-600">
+        {children}
       </blockquote>
     );
   },
+};
   // Optionally, add custom components for images, tables, etc. if needed
   // img: ({ node, ...props }) => <Image {...props} width={props.width || 800} height={props.height || 400} className="w-full h-auto object-cover rounded-lg my-6" />,
-};
+
 
 export default function BlogPostPage() {
   const params = useParams()

@@ -132,3 +132,54 @@ node scripts/ingest-blog-posts.js
 ```
 
 This will upload all new and updated content, making it live in your Firestore database.
+
+## Part 3: Troubleshooting Blog Display Issues
+
+### 1. `[object Object]` in Blockquotes
+
+**Issue:** Content within blockquotes appears as `[object Object]`.
+
+**Resolution:** This occurs when the `blockquote` component in `src/app/blog/[slug]/page.tsx` attempts to perform string operations on React elements. The fix involves simplifying the `blockquote` component to directly render its `children` prop.
+
+**Manual Change Required:**
+
+Open `/home/rosie/projects/fae-intelligence/src/app/blog/[slug]/page.tsx` and find the `blockquote` component within `MarkdownComponents`. It will look similar to this:
+
+```typescript
+  blockquote: ({ node, children, ...props }) => {
+    const isHighlight = Array.isArray(children) && typeof children[0] === 'string' && children[0].startsWith('[HIGHLIGHT]');
+
+    return (
+      <blockquote className={`border-l-4 pl-4 py-2 my-6 ${isHighlight ? 'border-yellow-500 bg-yellow-50 text-yellow-800' : 'border-gray-300 bg-gray-50 text-gray-600'}`}>
+        {isHighlight ? children[0].substring('[HIGHLIGHT]'.length).trim() : children}
+      </blockquote>
+  },
+```
+
+Replace that entire block with this simplified version:
+
+```typescript
+  blockquote: ({ node, children, ...props }) => {
+    return (
+      <blockquote className="border-l-4 pl-4 py-2 my-6 border-gray-300 bg-gray-50 text-gray-600">
+        {children}
+      </blockquote>
+    );
+  },
+```
+
+### 2. Raw HTML Tags Displaying in Content
+
+**Issue:** HTML tags (e.g., `<i class="ri-...">`) are displayed directly in the blog post content.
+
+**Resolution:** This happens because the Markdown source file contains embedded HTML. The `ReactMarkdown` component renders raw HTML as-is. The solution is to ensure your Markdown files contain **only Markdown syntax**.
+
+**Action Required:**
+
+Manually edit your Markdown files in `/home/rosie/projects/fae-intelligence/docs/03-SITE-STRUCTURE/blogs/` and remove all embedded HTML tags. After cleaning, re-run the ingestion script (`node scripts/ingest-blog-posts.js`) and hard refresh your browser.
+
+### 3. Related Posts Showing Current Post
+
+**Issue:** The currently viewed blog post appears in the "Related Posts" section.
+
+**Resolution:** (Pending Investigation) This will be addressed after the content rendering issues are fully resolved.
