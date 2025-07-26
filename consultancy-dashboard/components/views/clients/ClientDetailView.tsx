@@ -48,7 +48,7 @@ const localFormatDate = (dateString?: string, options?: Intl.DateTimeFormatOptio
   }
 };
 
-const DetailItem: React.FC<{ label: string; value?: string | number | null | JSX.Element; icon?: JSX.Element; className?: string; isBeingDeveloped?: boolean; isClickable?: boolean; onClick?: () => void; }> = ({ label, value, icon, className = '', isBeingDeveloped, isClickable, onClick }) => (
+const DetailItem: React.FC<{ label: string; value?: string | number | null | React.ReactElement; icon?: React.ReactElement; className?: string; isBeingDeveloped?: boolean; isClickable?: boolean; onClick?: () => void; }> = ({ label, value, icon, className = '', isBeingDeveloped, isClickable, onClick }) => (
   <div className={`mb-3 ${className}`}>
     <h4 className="text-sm font-semibold text-[#1B365D] mb-0.5 flex items-center"> {/* Fae Blue label */}
       {icon && <span className="mr-2 h-5 w-5 opacity-80">{icon}</span>}

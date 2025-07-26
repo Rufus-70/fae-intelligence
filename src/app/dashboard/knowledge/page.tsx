@@ -70,7 +70,7 @@ export default function KnowledgePage() {
   }
 
   const getCategoryDisplayName = (categoryKey: string) => {
-    return FAE_INTELLIGENCE_CATEGORIES[categoryKey]?.name || categoryKey
+    return (FAE_INTELLIGENCE_CATEGORIES as any)[categoryKey]?.name || categoryKey
   }
 
   const getCategoryColor = (categoryKey: string) => {
@@ -108,7 +108,7 @@ export default function KnowledgePage() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Knowledge Base</h1>
           <p className="text-gray-600">
-            Search and explore your organization's knowledge chunks
+            Search and explore your organization&apos;s knowledge chunks
           </p>
         </div>
         <div className="flex items-center space-x-2">

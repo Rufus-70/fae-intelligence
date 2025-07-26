@@ -168,8 +168,8 @@ export default function DebugIntegrationPage() {
             <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
               <p><strong>Steps to test:</strong></p>
               <ol className="list-decimal list-inside space-y-1 mt-2">
-                <li>Upload a file first (if you haven't already)</li>
-                <li>Click "Manually Create Analysis" to simulate faes-web backend</li>
+                <li>Upload a file first (if you haven&apos;t already)</li>
+                <li>Click &quot;Manually Create Analysis&quot; to simulate faes-web backend</li>
                 <li>Watch console for integration service logs</li>
                 <li>Check Firestore for new knowledge chunks</li>
               </ol>

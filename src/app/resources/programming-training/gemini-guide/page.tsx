@@ -4,7 +4,7 @@ export default function GeminiGuidePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Understanding Perplexity Spaces and Gemini Advanced Features</h1>
-      <p className="text-lg mb-6">This module covers two powerful AI platforms: Perplexity Spaces and Gemini Advanced Features. You'll learn how these tools function and how they can enhance your AI interactions for research, knowledge management, and collaboration.</p>
+      <p className="text-lg mb-6">This module covers two powerful AI platforms: Perplexity Spaces and Gemini Advanced Features. You&apos;ll learn how these tools function and how they can enhance your AI interactions for research, knowledge management, and collaboration.</p>
 
       <h2 className="text-2xl font-semibold mb-3">Introduction</h2>
       <p className="mb-4">As AI tools become more sophisticated, new platforms are emerging that transform how we interact with information and collaborate on complex tasks. Both Perplexity Spaces and Gemini Advanced Features represent significant advancements in AI-assisted knowledge management and collaboration.</p>
@@ -100,7 +100,7 @@ export default function GeminiGuidePage() {
       <ul className="list-disc list-inside mb-4">
         <li><strong>Content-Based Organization:</strong> Focuses on organizing individual pieces of generated content.</li>
         <li><strong>Versioning:</strong> Tracks changes to gems over time with version history.</li>
-        <li><strong>Integration:</strong> Connects with Google's ecosystem for enhanced functionality.</li>
+        <li><strong>Integration:</strong> Connects with Google&apos;s ecosystem for enhanced functionality.</li>
         <li><strong>Multimodal Support:</strong> Handles text, images, and other content types in unified gems.</li>
       </ul>
 
@@ -156,8 +156,8 @@ export default function GeminiGuidePage() {
       <p className="mb-4">This search query finds an exact phrase within a specific space, only from academic sources, published after January 1, 2023.</p>
 
       <h5 className="text-md font-medium mb-1">Gemini Gems</h5>
-      <p className="mb-4"><code>tag:marketing "campaign strategy" by:username type:image</code></p>
-      <p className="mb-4">This search finds gems with the marketing tag containing "campaign strategy," created by a specific user, that include images.</p>
+      <p className="mb-4"><code>tag:marketing &quot;campaign strategy&quot; by:username type:image</code></p>
+      <p className="mb-4">This search finds gems with the marketing tag containing &quot;campaign strategy,&quot; created by a specific user, that include images.</p>
 
       <h3 className="text-xl font-medium mb-2">Content Organization</h3>
       <p className="mb-4">Effective organization is key to getting the most value from either platform:</p>
@@ -215,7 +215,7 @@ export default function GeminiGuidePage() {
       </ul>
 
       <h3 className="text-xl font-medium mb-2">Practice Exercise</h3>
-      <p className="mb-4">Choose either platform and create a small knowledge base around a topic of interest. Include at least three subtopics with relevant information for each. Practice organizing the content using the platform's features, and try performing different types of searches to retrieve specific information.</p>
+      <p className="mb-4">Choose either platform and create a small knowledge base around a topic of interest. Include at least three subtopics with relevant information for each. Practice organizing the content using the platform&apos;s features, and try performing different types of searches to retrieve specific information.</p>
 
       <h2 className="text-2xl font-semibold mb-3">Summary and Next Steps</h2>
       <h3 className="text-xl font-medium mb-2">Key Takeaways</h3>
@@ -227,7 +227,7 @@ export default function GeminiGuidePage() {
       </ul>
 
       <h3 className="text-xl font-medium mb-2">Next Module Preview</h3>
-      <p className="mb-4">In the next module, "Using Perplexity Spaces and Gemini Advanced Features as Project Hubs," we'll explore how these tools can serve as central hubs for cross-functional team projects, with examples of different space configurations for various tasks.</p>
+      <p className="mb-4">In the next module, &quot;Using Perplexity Spaces and Gemini Advanced Features as Project Hubs,&quot; we&apos;ll explore how these tools can serve as central hubs for cross-functional team projects, with examples of different space configurations for various tasks.</p>
 
       <h3 className="text-xl font-medium mb-2">Return To:</h3>
       <p className="mb-4">Course Homepage</p>

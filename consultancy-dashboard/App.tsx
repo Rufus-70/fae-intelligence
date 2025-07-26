@@ -7,7 +7,7 @@ import { Sidebar } from './components/Sidebar';
 import { 
   BlueprintData, Activity, ViewName, ViewConfig, Project, Task, NewProjectData, NewTaskData, Client, ProjectFilterStatus, 
   CrmBlueprintActivity, Expense, NewExpenseData, RevenueItem, NewRevenueData, Invoice, NewInvoiceData, InvoiceStatus, 
-  InvoiceLineItem, RevenueSource, Deal, FinanceSubViewTarget, ParsedProjectPlan, ParsedTask 
+  InvoiceLineItem, RevenueSource, Deal, NewDealData, FinanceSubViewTarget, ParsedProjectPlan, ParsedTask 
 } from './types';
 import { StructuredViewLayout } from './components/StructuredViewLayout';
 import { ImportProjectModal } from './components/views/projects/ImportProjectModal'; // Added
@@ -255,7 +255,7 @@ const App: React.FC = () => {
     setActiveSubViewId('communication'); // Switch to communication log
   }, [activeView]);
 
-  const handleSaveProject = useCallback(async (projectData: NewProjectData, idToUpdate?: string): Promise<string> => {
+  const handleSaveProject = useCallback(async (projectData: NewProjectData, idToUpdate?: string): Promise<void> => {
     let projectId = idToUpdate;
     try {
       let response;
@@ -284,7 +284,7 @@ const App: React.FC = () => {
           return [savedProject, ...prev];
         }
       });
-      return savedProject.id;
+      // Removed return statement to make it void
     } catch (error) {
       console.error("Error saving project:", error);
       throw error; // Re-throw to be handled by caller
@@ -713,7 +713,7 @@ const App: React.FC = () => {
         clientId: undefined, // AI import doesn't specify client yet
         status: 'Planning',
         startDate: parsedPlan.startDate || undefined,
-        dueDate: parsedPlan.dueDate || undefined,
+        dueDate: parsedPlan.endDate || undefined,
         teamMembers: [], // AI doesn't parse team members at project level yet
       };
 

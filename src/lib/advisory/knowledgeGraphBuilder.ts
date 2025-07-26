@@ -165,7 +165,7 @@ export class AdvisoryKnowledgeGraphBuilder {
       console.error('Error building knowledge graph:', error);
       return { 
         success: false, 
-        error: error.message,
+        error: error instanceof Error ? error.message : 'Unknown error occurred',
         nodes_created: 0,
         relationships_created: 0
       };
@@ -228,7 +228,7 @@ export class AdvisoryKnowledgeGraphBuilder {
       // This would be a complex query in a real graph database
       // For Firestore, we'll implement a simplified version
       
-      const solutions = [];
+      const solutions: any[] = [];
       // Implementation would query for solutions that solve the given pain points
       
       return solutions;

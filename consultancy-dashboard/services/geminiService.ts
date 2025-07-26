@@ -78,10 +78,14 @@ export async function parseProjectPlanWithGemini(planText: string): Promise<Pars
       }
     });
     
+    if (!response.text) {
+      throw new Error('No response text received from Gemini API');
+    }
+    
     let jsonStr = response.text.trim();
     
     // Remove markdown fences if present
-    const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
+    const fenceRegex = /^```(\w*)?\s*\n?([\s\S]*?)\n?\s*```$/;
     const match = jsonStr.match(fenceRegex);
     if (match && match[2]) {
       jsonStr = match[2].trim();

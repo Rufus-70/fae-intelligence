@@ -2,16 +2,17 @@
 
 /* Tailwind v4 CSS-first configuration */
 @theme {
-  --color-cyan-500: #00ACC1;
-  --color-cyan-600: #0097A7;
+  --color-cyan-500: #008C9E;
+  --color-cyan-600: #007A8A;
   --color-slate-700: #334155;
   --color-slate-900: #0f172a;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-300: #d1d5db;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-900: #111827;
+  --color-gray-50: #f0f0f0;
+  --color-gray-100: #e0e0e0;
+  --color-gray-300: #c0c0c0;
+  --color-gray-600: #3a4452;
+  --color-gray-700: #2c3440;
+  --color-gray-900: #0a101a;
+
   --color-white: #ffffff;
   
   /* Fae Intelligence Brand Colors */

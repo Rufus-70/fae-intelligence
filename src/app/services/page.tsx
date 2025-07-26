@@ -153,7 +153,7 @@ export default function ServicesPage() {
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Operations?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Let's discuss how Fae Intelligence can help your team implement practical AI solutions that deliver real results.
+              Let&apos;s discuss how Fae Intelligence can help your team implement practical AI solutions that deliver real results.
             </p>
             <div className="space-x-4">
               <Button href="/consultation" variant="outline" size="lg" className="bg-white text-cyan-500 hover:bg-gray-100">

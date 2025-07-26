@@ -26,9 +26,9 @@ export default function VoiceReportsQuickWinPage() {
         "Hold your phone 6-12 inches from your mouth",
         "Speak clearly and at normal pace",
         "Record your quality inspection findings, maintenance notes, or meeting summary",
-        "Don't worry about perfect grammar - just speak naturally"
+        "Don&apos;t worry about perfect grammar - just speak naturally"
       ],
-      template: "Sample recording script: 'Quality inspection for batch 247, performed by [your name] on [date]. Checked 25 units from production line 2. Found minor surface scratches on units 5, 12, and 18. All within acceptable tolerance. Recommended polishing adjustment for next batch. Overall quality rating: acceptable. End inspection.'",
+      template: "Sample recording script: &apos;Quality inspection for batch 247, performed by [your name] on [date]. Checked 25 units from production line 2. Found minor surface scratches on units 5, 12, and 18. All within acceptable tolerance. Recommended polishing adjustment for next batch. Overall quality rating: acceptable. End inspection.&apos;",
       result: "A voice recording of your findings on your phone",
       tips: "Speak in short sentences and pause between different topics. This makes transcription more accurate."
     },
@@ -37,7 +37,7 @@ export default function VoiceReportsQuickWinPage() {
       description: "Convert your voice recording to text using free transcription",
       timeEstimate: "3 minutes", 
       instructions: [
-        "Option 1: Use Google Docs voice typing (go to docs.google.com, click Tools > Voice typing)",
+        "Option 1: Use Google Docs voice typing (go to docs.google.com, click Tools &gt; Voice typing)",
         "Option 2: Use Otter.ai free tier (otter.ai - 600 minutes/month free)",
         "Option 3: Use WhatsApp voice message transcription",
         "Upload or play your recording and let the tool transcribe it",
@@ -252,7 +252,7 @@ Please clean up any unclear speech-to-text errors and organize the information l
                       <Button 
                         size="sm"
                         onClick={() => setCurrentStep(index)}
-                        variant={isCurrent ? "default" : "outline"}
+                        variant={isCurrent ? "primary" : "outline"}
                       >
                         {isCurrent ? "Working on this" : "Start Step"}
                       </Button>

@@ -173,7 +173,7 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity, phaseId, o
 
     // Process CRM Details
     // formCrmDetailsData is always initialized as an object in formData
-    if (!formCrmDetailsData.isCrmActivity) {
+    if (!formCrmDetailsData || !formCrmDetailsData.isCrmActivity) {
       activityToSave.crmDetails = undefined;
     } else {
       // Create a mutable copy for saving, ensuring `estimatedValue` is valid
@@ -186,22 +186,26 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity, phaseId, o
 
     // Process Improvement Details
     // formImprovementDetailsData is always initialized as an object in formData
-    const { feedbackLogString, improvementIdeasString, actionItems } = formImprovementDetailsData;
-    const processedImprovementDetails: ImprovementDetails = {
-      feedbackLog: feedbackLogString ? feedbackLogString.split('\n').filter(s => s.trim() !== '') : [],
-      improvementIdeas: improvementIdeasString ? improvementIdeasString.split('\n').filter(s => s.trim() !== '') : [],
-      actionItems: actionItems || [], // actionItems in formImprovementDetailsData are already ImprovementActionItem[]
-    };
-    
-    const isEmptyProcessedImprovementDetails =
-      processedImprovementDetails.feedbackLog.length === 0 &&
-      processedImprovementDetails.improvementIdeas.length === 0 &&
-      (!processedImprovementDetails.actionItems || processedImprovementDetails.actionItems.length === 0);
-
-    if (isEmptyProcessedImprovementDetails) {
+    if (!formImprovementDetailsData) {
       activityToSave.improvementDetails = undefined;
     } else {
-      activityToSave.improvementDetails = processedImprovementDetails;
+      const { feedbackLogString, improvementIdeasString, actionItems } = formImprovementDetailsData;
+      const processedImprovementDetails: ImprovementDetails = {
+        feedbackLog: feedbackLogString ? feedbackLogString.split('\n').filter((s: string) => s.trim() !== '') : [],
+        improvementIdeas: improvementIdeasString ? improvementIdeasString.split('\n').filter((s: string) => s.trim() !== '') : [],
+        actionItems: actionItems || [], // actionItems in formImprovementDetailsData are already ImprovementActionItem[]
+      };
+      
+      const isEmptyProcessedImprovementDetails =
+        processedImprovementDetails.feedbackLog.length === 0 &&
+        processedImprovementDetails.improvementIdeas.length === 0 &&
+        (!processedImprovementDetails.actionItems || processedImprovementDetails.actionItems.length === 0);
+
+      if (isEmptyProcessedImprovementDetails) {
+        activityToSave.improvementDetails = undefined;
+      } else {
+        activityToSave.improvementDetails = processedImprovementDetails;
+      }
     }
     
     onUpdateActivity(phaseId, activity.id, activityToSave);
@@ -219,7 +223,7 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity, phaseId, o
       const date = new Date(dateString);
       if (isNaN(date.getTime())) return '';
       return date.toISOString().split('T')[0];
-    } catch (e) {
+    } catch {
       return ''; 
     }
   };

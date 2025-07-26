@@ -13,7 +13,7 @@ interface FormErrors {
 }
 
 const getInitialFormData = (expense?: Expense): NewExpenseData => ({
-  expenseName: expense?.expenseName || '', // Add expenseName
+  expenseName: expense?.description ? expense.description.substring(0, 50) + ' - ' + expense.date : '', // Derive expenseName from description and date
   date: expense?.date ? expense.date.split('T')[0] : new Date().toISOString().split('T')[0],
   category: expense?.category || expenseCategories[0],
   description: expense?.description || '',

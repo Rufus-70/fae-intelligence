@@ -355,7 +355,7 @@ export default function AINewcomerPage() {
             <h2 className="text-4xl font-bold mb-6">Ready to Begin Your AI Journey?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Start with the quick wins above, then follow the structured learning path. 
-              You'll quickly develop practical AI skills that make a real difference.
+              You&apos;ll quickly develop practical AI skills that make a real difference.
             </p>
             <div className="space-x-4">
               <Button 

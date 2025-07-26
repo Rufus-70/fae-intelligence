@@ -101,14 +101,14 @@ export class BusinessIntelligenceService {
         
         filesByCategory[category] = (filesByCategory[category] || 0) + 1
         filesByDocumentType[docType] = (filesByDocumentType[docType] || 0) + 1
-        totalSize += file.size || 0
+        totalSize += (file as any).size || 0
         
         recentActivity.push({
           id: file.id,
-          fileName: file.fileName,
-          contentType: file.contentType,
-          sizeBytes: file.size,
-          uploadedAt: file.uploadedAt.toDate(),
+          fileName: (file as any).fileName,
+          contentType: (file as any).contentType,
+          sizeBytes: (file as any).size,
+          uploadedAt: (file as any).uploadedAt.toDate(),
           analysisType: 'filename_analysis_v1',
           businessCategory: category,
           documentType: docType,
@@ -572,16 +572,16 @@ export class BusinessIntelligenceService {
   /**
    * Get recent file activity
    */
-  private async getRecentFileActivity(limit: number = 10) {
+  private async getRecentFileActivity(limitCount: number = 10) {
     if (!faesWebDb) {
-      return this.getDemoBusinessMetrics().recentActivity.slice(0, limit)
+      return this.getDemoBusinessMetrics().recentActivity.slice(0, limitCount)
     }
 
     try {
       const filesQuery = query(
         collection(faesWebDb, 'files'),
         orderBy('uploadedAt', 'desc'),
-        limit(limit)
+        limit(limitCount)
       )
       
       const snapshot = await getDocs(filesQuery)
@@ -592,7 +592,7 @@ export class BusinessIntelligenceService {
       }))
     } catch (error) {
       console.warn('Recent file activity failed, using demo data:', error)
-      return this.getDemoBusinessMetrics().recentActivity.slice(0, limit)
+      return this.getDemoBusinessMetrics().recentActivity.slice(0, limitCount)
     }
   }
 }

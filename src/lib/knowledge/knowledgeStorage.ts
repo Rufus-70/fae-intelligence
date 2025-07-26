@@ -79,7 +79,7 @@ export class KnowledgeStorageService {
         targetAudience: documentKnowledge.targetAudience,
         extractedAt: documentKnowledge.extractedAt,
         chunkCount: documentKnowledge.chunks.length,
-        totalWordCount: documentKnowledge.chunks.reduce((sum, chunk) => sum + chunk.metadata.wordCount, 0),
+        totalWordCount: documentKnowledge.chunks.reduce((sum: number, chunk) => sum + chunk.metadata.wordCount, 0),
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
       })

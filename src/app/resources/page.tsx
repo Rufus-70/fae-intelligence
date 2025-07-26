@@ -160,15 +160,23 @@ export default function ResourcesPage() {
               const IconComponent = type.icon
               const isSelected = selectedUserType === type.id
               return (
-                <Card 
+                <div 
                   key={type.id}
-                  className={`cursor-pointer transition-all duration-300 ${
-                    isSelected 
-                      ? 'ring-4 ring-cyan-400 bg-white transform scale-105' 
-                      : 'bg-white/90 hover:bg-white hover:scale-102'
-                  }`}
-                  onClick={() => setSelectedUserType(type.id)}
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    // Only set selection if clicking on the card, not the button
+                    if (e.target === e.currentTarget || !(e.target as HTMLElement).closest('button')) {
+                      setSelectedUserType(type.id)
+                    }
+                  }}
                 >
+                  <Card 
+                    className={`transition-all duration-300 ${
+                      isSelected 
+                        ? 'ring-4 ring-cyan-400 bg-white transform scale-105' 
+                        : 'bg-white/90 hover:bg-white hover:scale-102'
+                    }`}
+                  >
                   <CardContent className="p-6 text-center">
                     <IconComponent className={`h-12 w-12 mx-auto mb-4 text-${type.color}-600`} />
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{type.title}</h3>
@@ -176,8 +184,7 @@ export default function ResourcesPage() {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation()
+                      onClick={() => {
                         const routes = {
                           beginner: '/resources/ai-newcomer',
                           explorer: '/resources/tech-explorer',
@@ -191,6 +198,7 @@ export default function ResourcesPage() {
                     </Button>
                   </CardContent>
                 </Card>
+                </div>
               )
             })}
           </div>
@@ -262,12 +270,9 @@ export default function ResourcesPage() {
                   const canStart = !step.prerequisite || completedModules.includes(step.prerequisite)
                   
                   return (
-                    <Card 
+                    <div 
                       key={step.module}
-                      className={`transition-all duration-300 ${
-                        isCompleted ? 'bg-green-50 border-green-200' : 
-                        canStart ? 'hover:shadow-lg cursor-pointer' : 'opacity-60'
-                      }`}
+                      className="cursor-pointer"
                       onClick={() => {
                         if (canStart) {
                           if (step.url.startsWith('http')) {
@@ -279,6 +284,12 @@ export default function ResourcesPage() {
                         }
                       }}
                     >
+                      <Card 
+                        className={`transition-all duration-300 ${
+                          isCompleted ? 'bg-green-50 border-green-200' : 
+                          canStart ? 'hover:shadow-lg' : 'opacity-60'
+                        }`}
+                      >
                       <CardContent className="p-6">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-4">
@@ -311,6 +322,7 @@ export default function ResourcesPage() {
                         </div>
                       </CardContent>
                     </Card>
+                    </div>
                   )
                 })}
               </div>

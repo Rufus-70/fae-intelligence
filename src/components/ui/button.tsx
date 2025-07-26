@@ -43,10 +43,11 @@ export function Button({
   
   // If asChild is true, render children directly with className applied
   if (asChild) {
-    return React.cloneElement(children as React.ReactElement, {
-      className: classes,
+    const child = children as React.ReactElement<any>
+    return React.cloneElement(child, {
+      className: `${child.props.className || ''} ${classes}`.trim(),
       ...props
-    })
+    } as any)
   }
   
   if (href) {

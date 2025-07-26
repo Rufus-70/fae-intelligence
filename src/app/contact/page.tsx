@@ -15,7 +15,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-xl mb-8 max-w-4xl mx-auto">
               Ready to explore how AI can transform your manufacturing operations? 
-              Let's discuss your specific challenges and opportunities.
+              Let&apos;s discuss your specific challenges and opportunities.
             </p>
           </div>
         </Container>
@@ -30,7 +30,7 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="text-2xl">Request Your Free Consultation</CardTitle>
                 <p className="text-gray-600">
-                  Fill out the form below and we'll get back to you within 24 hours.
+                  Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </p>
               </CardHeader>
               <CardContent>

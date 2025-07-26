@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react' // Import useState and useEffect
 import { BlogService } from '@/lib/blog' // Import your BlogService
 import { BlogPost } from '@/types/blog' // Import your BlogPost type
+import { Timestamp } from 'firebase/firestore' // Import Timestamp from Firestore
 
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
@@ -97,12 +98,19 @@ export default function BlogPage() {
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
                         <span>
-                          {post.publishedAt ?
-                            (post.publishedAt as unknown as Timestamp).toDate().toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            }) :
+                          {post.publishedAt ? 
+                            (post.publishedAt instanceof Timestamp ? 
+                              post.publishedAt.toDate().toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              }) :
+                              new Date(post.publishedAt).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              })
+                            ) :
                             'Unknown Date'}
                         </span>
                       </div>

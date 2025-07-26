@@ -215,7 +215,7 @@ export default function MCPDockerGuidePage() {
               {['request', 'response', 'error'].map((tab) => (
                 <Button
                   key={tab}
-                  variant={activeTab === tab ? "default" : "outline"}
+                  variant={activeTab === tab ? "primary" : "outline"}
                   onClick={() => setActiveTab(tab)}
                   className="capitalize"
                 >
@@ -381,7 +381,7 @@ export default function MCPDockerGuidePage() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    {securityChecklists[selectedEnvironment].map((item, index) => (
+                    {(securityChecklists as any)[selectedEnvironment].map((item: string, index: number) => (
                       <li key={index} className="text-sm">{item}</li>
                     ))}
                   </ul>
@@ -469,14 +469,14 @@ export default function MCPDockerGuidePage() {
               </select>
             </div>
 
-            {selectedIssue && troubleshootingSolutions[selectedIssue] && (
+            {selectedIssue && (troubleshootingSolutions as any)[selectedIssue] && (
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-red-600">{troubleshootingSolutions[selectedIssue].title}</CardTitle>
+                  <CardTitle className="text-red-600">{(troubleshootingSolutions as any)[selectedIssue].title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ol className="space-y-2">
-                    {troubleshootingSolutions[selectedIssue].steps.map((step, index) => (
+                    {(troubleshootingSolutions as any)[selectedIssue].steps.map((step: string, index: number) => (
                       <li key={index} className="text-sm">{step}</li>
                     ))}
                   </ol>

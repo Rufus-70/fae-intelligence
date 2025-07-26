@@ -19,7 +19,7 @@ const getInitialFormData = (item?: RevenueItem): NewRevenueData => ({
   date: item?.date ? item.date.split('T')[0] : new Date().toISOString().split('T')[0],
   source: item?.source || revenueSources.find(s => s === 'Invoice Payment') || revenueSources[0],
   description: item?.description || '',
-  amount: item?.amount === undefined ? undefined : item.amount,
+  amount: item?.amount || 0,
   projectId: item?.projectId || undefined,
   clientId: item?.clientId || undefined,
   invoiceId: item?.invoiceId || undefined,

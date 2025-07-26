@@ -193,15 +193,18 @@ export default function TrainingHubPage() {
             const isSelected = selectedTrack === track.id
             
             return (
-              <Card 
+              <div 
                 key={track.id}
-                className={`cursor-pointer transition-all duration-300 h-full ${
-                  isSelected 
-                    ? 'ring-4 ring-cyan-400 transform scale-105' 
-                    : 'hover:shadow-lg hover:scale-102'
-                }`}
+                className="cursor-pointer"
                 onClick={() => setSelectedTrack(track.id)}
               >
+                <Card 
+                  className={`transition-all duration-300 h-full ${
+                    isSelected 
+                      ? 'ring-4 ring-cyan-400 transform scale-105' 
+                      : 'hover:shadow-lg hover:scale-102'
+                  }`}
+                >
                 <CardHeader className="text-center">
                   <div className="flex items-center justify-between mb-2">
                     <IconComponent className={`h-10 w-10 text-${track.color}-600`} />
@@ -230,9 +233,8 @@ export default function TrainingHubPage() {
                   </div>
                   <Button 
                     className="w-full"
-                    variant={isSelected ? "default" : "outline"}
-                    onClick={(e) => {
-                      e.stopPropagation()
+                    variant={isSelected ? "primary" : "outline"}
+                    onClick={() => {
                       if (track.modules.length > 0) {
                         const firstModule = allModules[track.modules[0] as keyof typeof allModules]
                         window.location.href = firstModule.url
@@ -244,6 +246,7 @@ export default function TrainingHubPage() {
                   </Button>
                 </CardContent>
               </Card>
+              </div>
             )
           })}
         </div>
@@ -258,25 +261,28 @@ export default function TrainingHubPage() {
             </h3>
             <div className="space-y-4">
               {trainingTracks.find(t => t.id === selectedTrack)?.modules.map((moduleId, index) => {
-                const module = allModules[moduleId as keyof typeof allModules]
-                const IconComponent = module.icon
+                const moduleInfo = allModules[moduleId as keyof typeof allModules]
+                const IconComponent = moduleInfo.icon
                 const isCompleted = completedModules.includes(moduleId)
                 const canStart = index === 0 || completedModules.includes(trainingTracks.find(t => t.id === selectedTrack)?.modules[index - 1] || '')
                 
                 return (
-                  <Card 
+                  <div 
                     key={moduleId}
-                    className={`transition-all duration-300 ${
-                      isCompleted ? 'bg-green-50 border-green-200' : 
-                      canStart ? 'hover:shadow-md cursor-pointer' : 'opacity-60'
-                    }`}
+                    className="cursor-pointer"
                     onClick={() => {
                       if (canStart) {
-                        window.location.href = module.url
+                        window.location.href = moduleInfo.url
                         toggleModule(moduleId)
                       }
                     }}
                   >
+                    <Card 
+                      className={`transition-all duration-300 ${
+                        isCompleted ? 'bg-green-50 border-green-200' : 
+                        canStart ? 'hover:shadow-md' : 'opacity-60'
+                      }`}
+                    >
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
@@ -288,8 +294,8 @@ export default function TrainingHubPage() {
                           </div>
                           <IconComponent className="h-6 w-6 text-gray-600" />
                           <div>
-                            <h4 className="font-semibold text-gray-900">{module.title}</h4>
-                            <p className="text-sm text-gray-600">{module.description}</p>
+                            <h4 className="font-semibold text-gray-900">{moduleInfo.title}</h4>
+                            <p className="text-sm text-gray-600">{moduleInfo.description}</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
@@ -303,6 +309,7 @@ export default function TrainingHubPage() {
                       </div>
                     </CardContent>
                   </Card>
+                  </div>
                 )
               })}
             </div>
@@ -352,7 +359,7 @@ export default function TrainingHubPage() {
                       {isCompleted ? 'Review Module' : 'Start Learning'}
                     </Button>
                     <Button 
-                      variant="ghost" 
+                      variant="outline" 
                       size="sm" 
                       className="w-full"
                       onClick={() => toggleModule(moduleId)}

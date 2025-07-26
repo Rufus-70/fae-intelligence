@@ -13,7 +13,7 @@ export default function NotebookLMPage() {
         </div>
         <h1 className="text-4xl font-bold mb-4">Utilizing Notebook LM</h1>
         <p className="text-lg text-gray-700 mb-6">
-          Master Google's NotebookLM for advanced knowledge management, document analysis, and research synthesis in manufacturing environments.
+          Master Google&apos;s NotebookLM for advanced knowledge management, document analysis, and research synthesis in manufacturing environments.
         </p>
       </div>
 

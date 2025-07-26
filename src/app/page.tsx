@@ -12,7 +12,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-20">
-        <Container maxWidth="4xl">
+        <Container maxWidth="2xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-6">
               Practical AI Solutions for Manufacturers
@@ -34,7 +34,7 @@ export default function HomePage() {
 
       {/* Services Overview */}
       <section className="py-16 bg-gray-50">
-        <Container maxWidth="4xl">
+        <Container maxWidth="2xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Our Expertise: AI, Made Practical
@@ -68,7 +68,7 @@ export default function HomePage() {
 
       {/* Pain Points */}
       <section className="py-16 bg-white">
-        <Container maxWidth="4xl">
+        <Container maxWidth="2xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Overcome Your Business Challenges with AI
@@ -102,8 +102,8 @@ export default function HomePage() {
 
       {/* Expert Profile */}
       <section className="py-16 bg-gray-50">
-        <Container maxWidth="6xl"> {/* Changed maxWidth to 6xl */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <Container maxWidth="7xl"> {/* Changed maxWidth to 7xl */}
+          <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
                 From Shop Floor to Smart Factory – Your AI Advantage Starts Here.
@@ -112,7 +112,7 @@ export default function HomePage() {
                 My consultancy, Fae Intelligence, bridges three decades of hands-on manufacturing operations experience with a passion for practical AI. I partner with you to demystify artificial intelligence and implement sustainable, impactful solutions.
               </p>
               <div className="border-l-4 border-cyan-500 pl-4 mb-6 italic text-gray-700">
-                "It is not necessary to change. Survival is not mandatory." - W. Edwards Deming
+                &quot;It is not necessary to change. Survival is not mandatory.&quot; - W. Edwards Deming
               </div>
               <h3 className="text-lg font-semibold mb-4 text-gray-900">Key Strengths of Fae Intelligence:</h3>
               <div className="space-y-2 mb-6">
@@ -140,7 +140,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-16 bg-cyan-500 text-white">
-        <Container maxWidth="4xl">
+        <Container maxWidth="2xl">
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Operations with AI?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">

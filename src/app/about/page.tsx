@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -71,10 +70,10 @@ export default function AboutPage() {
               </h2>
             </div>
             <p className="text-lg normal-case text-gray-700 leading-relaxed">
-              We cut through the hype and the paradox of too many choices. <strong>Fae Intelligence</strong> focuses on getting you <strong>results *today*</strong>. Our training isn't theoretical; it's <strong>hands-on</strong>, using the very AI tools your teams can implement immediately (often for free). We work with you to identify the specific operational or departmental bottlenecks &ndash; <em>you</em> face and show you exactly how these tools can provide solutions, freeing up valuable employee time (even a conservative estimate is <strong>5-10% or more</strong>) and making your entire organization more efficient and competitive, starting from day one after the training.
+              We cut through the hype and the paradox of too many choices. <strong>Fae Intelligence</strong> focuses on getting you <strong>results *today*</strong>. Our training isn&apos;t theoretical; it&apos;s <strong>hands-on</strong>, using the very AI tools your teams can implement immediately (often for free). We work with you to identify the specific operational or departmental bottlenecks &ndash; <em>you</em> face and show you exactly how these tools can provide solutions, freeing up valuable employee time (even a conservative estimate is <strong>5-10% or more</strong>) and making your entire organization more efficient and competitive, starting from day one after the training.
             </p>
             <p className="text-lg normal-case text-gray-700 leading-relaxed">
-              This isn't about replacing people; it's about <strong>empowering your entire team</strong>. It's about giving your people the tools to be more effective, more efficient, and more valuable in a changing world, no matter their department.
+              This isn&apos;t about replacing people; it&apos;s about <strong>empowering your entire team</strong>. It&apos;s about giving your people the tools to be more effective, more efficient, and more valuable in a changing world, no matter their department.
             </p>
           </Grid>
         </Container>
@@ -91,10 +90,10 @@ export default function AboutPage() {
               </h2>
             </div>
             <p className="text-lg normal-case text-gray-700 leading-relaxed">
-              As I explored the world of Artificial Intelligence, I had an 'aha!' moment. Not with futuristic, million-dollar systems, but with the incredibly powerful, yet <strong>accessible</strong>, tools available *right now* &ndash; many for free or minimal cost. These weren't just tech toys; they were practical instruments that could solve the very problems faced daily by *all* your teams: streamlining workflows in planning, accelerating research for engineering, improving communication in logistics, instantly accessing information across administration, boosting productivity everywhere.
+              As I explored the world of Artificial Intelligence, I had an &apos;aha!&apos; moment. Not with futuristic, million-dollar systems, but with the incredibly powerful, yet <strong>accessible</strong>, tools available *right now* &ndash; many for free or minimal cost. These weren&apos;t just tech toys; they were practical instruments that could solve the very problems faced daily by *all* your teams: streamlining workflows in planning, accelerating research for engineering, improving communication in logistics, instantly accessing information across administration, boosting productivity everywhere.
             </p>
             <p className="text-lg normal-case text-gray-700 leading-relaxed">
-              I realized this wasn't just technology; as Arthur C. Clarke said,
+              I realized this wasn&apos;t just technology; as Arthur C. Clarke said,
             </p>
             <blockquote className="my-4 p-4 border-l-4 border-cyan-500 bg-gray-100 text-gray-700 italic rounded-md text-lg shadow relative leading-relaxed">
               <QuoteIcon className="absolute top-2 left-2 w-6 h-6 text-cyan-500/50 transform -translate-x-1/2 -translate-y-1/2" />
@@ -123,13 +122,13 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="space-y-4 text-lg normal-case text-gray-700 leading-relaxed">
                 <p>
-                  That's why I created <strong>Fae Intelligence</strong>. My mission is to bridge the gap between the powerful potential of AI and the real-world needs of small and medium businesses, impacting <strong>all their departments</strong>. I'm not a salesperson; I'm an <strong>operations professional</strong> who understands your organizational pain points because I've been <strong>in the trenches</strong> &ndash; dealing with the interconnected challenges that affect quality control, production flow, resource allocation, planning efficiency, and the daily demands across your entire business environment.
+                  That&apos;s why I created <strong>Fae Intelligence</strong>. My mission is to bridge the gap between the powerful potential of AI and the real-world needs of small and medium businesses, impacting <strong>all their departments</strong>. I&apos;m not a salesperson; I&apos;m an <strong>operations professional</strong> who understands your organizational pain points because I&apos;ve been <strong>in the trenches</strong> &ndash; dealing with the interconnected challenges that affect quality control, production flow, resource allocation, planning efficiency, and the daily demands across your entire business environment.
                 </p>
                 <p>
                   Therefore, the purpose of Fae intelligence extends beyond simply teaching people about AI prompting. While that is a crucial element, our core mission is to <strong>empower individuals and organizations to unlock immediate and tangible value through the strategic and effective use of AI.</strong> We aim to bridge the gap between the readily available power of AI and its practical application in everyday workflows, particularly in demanding operational environments where efficiency is paramount.
                 </p>
                 <p>
-                  We understand the pressures of tight resources and the urgency of improving productivity. Fae Intelligence is dedicated to providing accessible knowledge and tools that enable teams to reclaim their time, optimize their processes, and ultimately thrive in an increasingly AI-driven world. We're not just about theory; we're about delivering practical, impactful solutions rooted in real-world operational experience.
+                  We understand the pressures of tight resources and the urgency of improving productivity. Fae Intelligence is dedicated to providing accessible knowledge and tools that enable teams to reclaim their time, optimize their processes, and ultimately thrive in an increasingly AI-driven world. We&apos;re not just about theory; we&apos;re about delivering practical, impactful solutions rooted in real-world operational experience.
                 </p>
               </CardContent>
             </Card>
@@ -151,7 +150,7 @@ export default function AboutPage() {
         <Container className="text-center max-w-3xl mx-auto space-y-6 !pt-6 !pb-8">
             <div className="max-w-4xl mx-auto space-y-6 text-left"> {/* Adjusted for quote block */}
               <p className="text-lg text-gray-700 normal-case leading-relaxed">
-                  My experiences in manufacturing showed me a harsh truth about today's market:
+                  My experiences in manufacturing showed me a harsh truth about today&apos;s market:
               </p>
               <blockquote className="my-4 p-4 border-l-4 border-cyan-500 bg-gray-100 text-gray-700 italic rounded-md text-lg shadow relative leading-relaxed">
                 <QuoteIcon className="absolute top-2 left-2 w-6 h-6 text-cyan-500/50 transform -translate-x-1/2 -translate-y-1/2" />
@@ -159,7 +158,7 @@ export default function AboutPage() {
                 <cite className="block text-right text-sm not-italic text-gray-600 mt-2">- W. Edwards Deming</cite>
               </blockquote>
               <p className="text-lg text-gray-700 normal-case leading-relaxed">
-                The experience learned is that Deming was right. We don't have to change; survival is not mandatory. The stark reality is that those who do not get on board with adapting and evolving will inevitably fade away. This unavoidable consequence <em>is</em> the very sense of urgency. It's this truth, witnessed firsthand, that fuels my passion to help businesses like yours not just survive, but thrive.
+                The experience learned is that Deming was right. We don&apos;t have to change; survival is not mandatory. The stark reality is that those who do not get on board with adapting and evolving will inevitably fade away. This unavoidable consequence <em>is</em> the very sense of urgency. It&apos;s this truth, witnessed firsthand, that fuels my passion to help businesses like yours not just survive, but thrive.
               </p>
             </div>
 
@@ -167,7 +166,7 @@ export default function AboutPage() {
               Ready to Empower Your Teams?
             </h2>
             <p className="text-lg text-gray-600 max-w-xl mx-auto normal-case leading-relaxed">
-              Welcome to Fae Intelligence. Let's unlock the hidden potential across your organization, starting today.
+              Welcome to Fae Intelligence. Let&apos;s unlock the hidden potential across your organization, starting today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
               <Button asChild size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white shadow-md px-8 py-3">
@@ -186,6 +185,3 @@ export default function AboutPage() {
     </div>
   )
 }
-
-
-    

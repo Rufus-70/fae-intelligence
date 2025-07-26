@@ -72,7 +72,7 @@ export default function ProgrammingTrainingPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700 mb-4">
-                  Leverage Claude's advanced reasoning for complex manufacturing projects, documentation, and strategic planning. Perfect for detailed analysis.
+                  Master Claude&apos;s advanced reasoning for complex manufacturing projects, documentation, and strategic planning. Perfect for detailed analysis.
                 </p>
                 <div className="space-y-2 mb-4">
                   <div className="text-sm text-gray-600">• Technical documentation</div>

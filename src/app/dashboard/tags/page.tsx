@@ -92,7 +92,6 @@ export default function TagsPage() {
     try {
       await addDoc(collection(db, 'tags'), {
         name: cleanTagName,
-        displayName: formData.name.trim(),
         description: formData.description.trim(),
         color: formData.color,
         createdAt: serverTimestamp()
@@ -301,15 +300,15 @@ export default function TagsPage() {
                     <div key={tag.id} className="flex items-center space-x-2">
                       <Badge className={`${tag.color} border-0 text-sm px-3 py-1`}>
                         <Hash className="h-3 w-3 mr-1" />
-                        {tag.displayName || tag.name}
+                        {tag.name}
                         <span className="ml-2 text-xs opacity-75">
                           {tag.fileCount || 0}
                         </span>
                       </Badge>
                       <Button
                         size="sm"
-                        variant="ghost"
-                        onClick={() => handleDelete(tag.id, tag.displayName || tag.name)}
+                        variant="outline"
+                        onClick={() => handleDelete(tag.id, tag.name)}
                         className="h-6 w-6 p-0 text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
                         <Trash2 className="h-3 w-3" />
@@ -338,7 +337,7 @@ export default function TagsPage() {
                           <td className="py-3">
                             <Badge className={`${tag.color} border-0`}>
                               <Hash className="h-3 w-3 mr-1" />
-                              {tag.displayName || tag.name}
+                              {tag.name}
                             </Badge>
                           </td>
                           <td className="py-3 text-gray-600">
@@ -354,7 +353,7 @@ export default function TagsPage() {
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => handleDelete(tag.id, tag.displayName || tag.name)}
+                              onClick={() => handleDelete(tag.id, tag.name)}
                               className="text-red-600 hover:text-red-700"
                             >
                               <Trash2 className="h-4 w-4" />

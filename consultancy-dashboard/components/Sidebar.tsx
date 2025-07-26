@@ -13,7 +13,7 @@ const NavItem: React.FC<{
   viewName: ViewName;
   currentView: ViewName;
   onClick: () => void;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   label: string;
 }> = ({ viewName, currentView, onClick, icon, label }) => {
   const isActive = viewName === currentView;

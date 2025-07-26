@@ -251,9 +251,9 @@ export default function EngineeringAlignmentPage() {
       <h4 className="text-lg font-medium mb-2">Improved Prompt (Aligned):</h4>
       <p className="mb-4">Create comprehensive documentation for my weather forecast API. The API has the following endpoints:</p>
       <ol className="list-decimal list-inside mb-4">
-        <li>GET /forecast/{city} - Returns 5-day weather forecast for specified city</li>
-        <li>GET /current/{city} - Returns current weather conditions for specified city</li>
-        <li>GET /historical/{city}/{date} - Returns historical weather data for specified city and date</li>
+        <li>GET /forecast/&#123;city&#125; - Returns 5-day weather forecast for specified city</li>
+        <li>GET /current/&#123;city&#125; - Returns current weather conditions for specified city</li>
+        <li>GET /historical/&#123;city&#125;/&#123;date&#125; - Returns historical weather data for specified city and date</li>
       </ol>
       <p className="mb-4">Each endpoint requires API key authentication via header: "X-API-Key". Response format is JSON.</p>
       <p className="mb-4">Please organize the documentation with these sections:</p>
@@ -319,15 +319,15 @@ export default function EngineeringAlignmentPage() {
       <p className="mb-4">For each scenario below, identify the alignment issue and recommend a solution:</p>
 
       <h4 className="text-lg font-medium mb-2">Scenario 1:</h4>
-      <p className="mb-4">You ask a model to "analyze the latest financial report" but receive a response saying "I don't have specific information about your financial report. Could you provide more details?"</p>
+      <p className="mb-4">You ask a model to &quot;analyze the latest financial report&quot; but receive a response saying &quot;I don&apos;t have specific information about your financial report. Could you provide more details?&quot;</p>
       <p className="mb-4">Identify the issue and solution...</p>
 
       <h4 className="text-lg font-medium mb-2">Scenario 2:</h4>
-      <p className="mb-4">You ask a model to "create a complex mathematical model for predicting stock prices" but get a simplified explanation of general stock price factors instead.</p>
+      <p className="mb-4">You ask a model to &quot;create a complex mathematical model for predicting stock prices&quot; but get a simplified explanation of general stock price factors instead.</p>
       <p className="mb-4">Identify the issue and solution...</p>
 
       <h4 className="text-lg font-medium mb-2">Scenario 3:</h4>
-      <p className="mb-4">You ask for "ideas for my project" and get a scattered response covering multiple unrelated project types.</p>
+      <p className="mb-4">You ask for &quot;ideas for my project&quot; and get a scattered response covering multiple unrelated project types.</p>
       <p className="mb-4">Identify the issue and solution...</p>
 
       <h2 className="text-2xl font-semibold mb-3">Summary and Key Takeaways</h2>

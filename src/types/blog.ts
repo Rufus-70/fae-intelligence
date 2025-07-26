@@ -52,7 +52,7 @@ export interface BlogPostFormData {
   featuredImage?: File | string
   category: string
   tags: string[]
-  status: 'draft' | 'published'
+  status: 'draft' | 'published' | 'archived'
   featured: boolean
   seo: {
     metaTitle?: string

@@ -76,6 +76,9 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
       const postData = {
         ...formData,
         status: publishNow ? 'published' as const : formData.status,
+        slug: formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+        viewCount: 0,
+        featuredImage: typeof formData.featuredImage === 'string' ? formData.featuredImage : undefined,
         author: {
           id: user.uid,
           name: user.displayName || user.email?.split('@')[0] || 'Admin',
@@ -248,16 +251,18 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
             {/* SEO Settings */}
             <Card>
               <CardHeader>
-                <CardTitle 
+                <div 
                   className="flex items-center cursor-pointer"
                   onClick={() => setShowSEO(!showSEO)}
                 >
-                  <Globe className="mr-2 h-5 w-5" />
-                  SEO Settings
-                  <span className="ml-auto text-sm">
+                  <CardTitle className="flex items-center">
+                    <Globe className="mr-2 h-5 w-5" />
+                    SEO Settings
+                    <span className="ml-auto text-sm">
                     {showSEO ? '−' : '+'}
                   </span>
                 </CardTitle>
+                </div>
               </CardHeader>
               {showSEO && (
                 <CardContent className="space-y-4">

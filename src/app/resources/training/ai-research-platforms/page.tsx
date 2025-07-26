@@ -120,17 +120,17 @@ export default function AIResearchPlatformsPage() {
         <div className="space-y-4 my-6">
           <div className="bg-blue-50 p-4 rounded-lg">
             <h5 className="font-semibold mb-2">Competitive Intelligence</h5>
-            <p className="text-sm italic">"Research [Competitor Name]'s recent product launches, market expansion, and manufacturing investments in the past 12 months. Include analysis of their strategic direction and potential impact on our market position."</p>
+            <p className="text-sm italic">&quot;Research [Competitor Name]&apos;s recent product launches, market expansion, and manufacturing investments in the past 12 months. Include analysis of their strategic direction and potential impact on our market position.&quot;</p>
           </div>
           
           <div className="bg-green-50 p-4 rounded-lg">
             <h5 className="font-semibold mb-2">Technology Assessment</h5>
-            <p className="text-sm italic">"Analyze the current state of [Technology/Process] adoption in manufacturing, including leading vendors, implementation costs, ROI data, and case studies from similar companies in our industry."</p>
+            <p className="text-sm italic">&quot;Analyze the current state of [Technology/Process] adoption in manufacturing, including leading vendors, implementation costs, ROI data, and case studies from similar companies in our industry.&quot;</p>
           </div>
           
           <div className="bg-yellow-50 p-4 rounded-lg">
             <h5 className="font-semibold mb-2">Regulatory Monitoring</h5>
-            <p className="text-sm italic">"Track recent changes to [Specific Regulation] requirements, including implementation timelines, compliance costs, and industry responses. Identify any upcoming changes or proposed modifications."</p>
+            <p className="text-sm italic">&quot;Track recent changes to [Specific Regulation] requirements, including implementation timelines, compliance costs, and industry responses. Identify any upcoming changes or proposed modifications.&quot;</p>
           </div>
         </div>
 

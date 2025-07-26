@@ -394,10 +394,10 @@ export default function ChatGPTGuidePage() {
                   <div className="bg-gray-100 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold mb-2">Prompt:</h4>
                     <p className="text-sm font-mono text-gray-800">
-                      "You are an experienced manufacturing engineer creating standard operating procedures. 
+                      &quot;You are an experienced manufacturing engineer creating standard operating procedures. 
                       Create a detailed SOP for [specific process] that includes: safety requirements, 
                       required tools and materials, step-by-step instructions, quality checkpoints, 
-                      and troubleshooting steps. Format as a numbered procedure with clear headings."
+                      and troubleshooting steps. Format as a numbered procedure with clear headings.&quot;
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -414,10 +414,10 @@ export default function ChatGPTGuidePage() {
                   <div className="bg-gray-100 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold mb-2">Prompt:</h4>
                     <p className="text-sm font-mono text-gray-800">
-                      "Create a quality control inspection checklist for [product/process]. Include: 
+                      &quot;Create a quality control inspection checklist for [product/process]. Include: 
                       visual inspection points, measurement requirements with tolerances, 
                       pass/fail criteria, required documentation, and escalation procedures for defects. 
-                      Format as a checklist with checkboxes and signature lines."
+                      Format as a checklist with checkboxes and signature lines.&quot;
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -434,10 +434,10 @@ export default function ChatGPTGuidePage() {
                   <div className="bg-gray-100 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold mb-2">Prompt:</h4>
                     <p className="text-sm font-mono text-gray-800">
-                      "Design a 30-minute training session for new employees on [topic]. Include: 
+                      &quot;Design a 30-minute training session for new employees on [topic]. Include: 
                       learning objectives, key safety points, hands-on activities, 
                       knowledge check questions, and required materials. 
-                      Structure for easy delivery by supervisors."
+                      Structure for easy delivery by supervisors.&quot;
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">

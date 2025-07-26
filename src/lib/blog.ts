@@ -15,7 +15,8 @@ import {
   increment,
   serverTimestamp,
   DocumentSnapshot,
-  QueryConstraint
+  QueryConstraint,
+  Timestamp
 } from 'firebase/firestore'
 import { db } from './firebase'
 import { BlogPost, BlogCategory, BlogTag, BlogListOptions, BlogFilters } from '@/types/blog'
@@ -33,7 +34,7 @@ export class BlogService {
       .replace(/[^a-z0-9 -]/g, '') // Remove special characters
       .replace(/\s+/g, '-') // Replace spaces with hyphens
       .replace(/-+/g, '-') // Replace multiple hyphens with single
-      .trim('-') // Remove leading/trailing hyphens
+      .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
   }
 
   // Create a new blog post
@@ -255,16 +256,19 @@ export class BlogService {
         author: {
           id: 'richard-snyder',
           name: 'Richard Snyder',
-          email: 'richard@faeintelligence.com',
-          avatar: '/images/richard-snyder.png'
+          email: 'richard@faeintelligence.com'
         },
         category: 'AI Fundamentals',
         tags: ['AI', 'Manufacturing', 'Getting Started'],
-        publishedAt: new Date('2025-06-15'),
-        createdAt: new Date('2025-06-10'),
-        updatedAt: new Date('2025-06-15'),
-        viewCount: 245,
-        readingTime: 8
+        seo: {
+          metaTitle: 'Getting Started with AI in Manufacturing',
+          metaDescription: 'Learn the fundamentals of implementing AI solutions in manufacturing environments with practical examples and real-world case studies.',
+          focusKeyword: 'AI manufacturing'
+        },
+        publishedAt: Timestamp.fromDate(new Date('2025-06-15')),
+        createdAt: Timestamp.fromDate(new Date('2025-06-10')),
+        updatedAt: Timestamp.fromDate(new Date('2025-06-15')),
+        viewCount: 245
       },
       {
         id: 'demo-2',
@@ -277,16 +281,19 @@ export class BlogService {
         author: {
           id: 'richard-snyder',
           name: 'Richard Snyder',
-          email: 'richard@faeintelligence.com',
-          avatar: '/images/richard-snyder.png'
+          email: 'richard@faeintelligence.com'
         },
         category: 'Predictive Maintenance',
         tags: ['Predictive Maintenance', 'AI Tools', 'Cost-Effective'],
-        publishedAt: new Date('2025-06-12'),
-        createdAt: new Date('2025-06-08'),
-        updatedAt: new Date('2025-06-12'),
-        viewCount: 189,
-        readingTime: 12
+        seo: {
+          metaTitle: 'Predictive Maintenance with Low-Cost AI Tools',
+          metaDescription: 'Discover how to implement predictive maintenance using accessible AI tools and IoT sensors without breaking the budget.',
+          focusKeyword: 'predictive maintenance AI'
+        },
+        publishedAt: Timestamp.fromDate(new Date('2025-06-12')),
+        createdAt: Timestamp.fromDate(new Date('2025-06-08')),
+        updatedAt: Timestamp.fromDate(new Date('2025-06-12')),
+        viewCount: 189
       },
       {
         id: 'demo-3',
@@ -299,16 +306,19 @@ export class BlogService {
         author: {
           id: 'richard-snyder',
           name: 'Richard Snyder',
-          email: 'richard@faeintelligence.com',
-          avatar: '/images/richard-snyder.png'
+          email: 'richard@faeintelligence.com'
         },
         category: 'Quality Control',
         tags: ['Quality Control', 'Automation', 'Computer Vision'],
-        publishedAt: new Date('2025-06-10'),
-        createdAt: new Date('2025-06-05'),
-        updatedAt: new Date('2025-06-10'),
-        viewCount: 167,
-        readingTime: 15
+        seo: {
+          metaTitle: 'Quality Control Automation: A Step-by-Step Guide',
+          metaDescription: 'Transform your quality control processes with AI-powered automation, computer vision, and smart sensors for consistent results.',
+          focusKeyword: 'quality control automation'
+        },
+        publishedAt: Timestamp.fromDate(new Date('2025-06-10')),
+        createdAt: Timestamp.fromDate(new Date('2025-06-05')),
+        updatedAt: Timestamp.fromDate(new Date('2025-06-10')),
+        viewCount: 167
       }
     ]
     

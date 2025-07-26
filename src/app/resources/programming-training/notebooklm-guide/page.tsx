@@ -4,7 +4,7 @@ export default function NotebookLMGuidePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Utilizing Notebook LM</h1>
-      <p className="text-lg mb-6">A comprehensive guide to Google's Notebook LM technology.</p>
+      <p className="text-lg mb-6">A comprehensive guide to Google&apos;s Notebook LM technology.</p>
 
       <h2 className="text-2xl font-semibold mb-3">In This Module</h2>
       <ul className="list-disc list-inside mb-6">
@@ -18,11 +18,11 @@ export default function NotebookLMGuidePage() {
       </ul>
 
       <h2 className="text-2xl font-semibold mb-3">Introduction to Notebook LM</h2>
-      <p className="mb-4">Notebook LM (Language Model) is a powerful AI-powered note-taking tool developed by Google that combines the capabilities of traditional note-taking with the intelligence of large language models. Unlike conventional AI assistants that operate in a chat interface, Notebook LM works within a document-style environment that's familiar to users of tools like Google Docs or Notion.</p>
+      <p className="mb-4">Notebook LM (Language Model) is a powerful AI-powered note-taking tool developed by Google that combines the capabilities of traditional note-taking with the intelligence of large language models. Unlike conventional AI assistants that operate in a chat interface, Notebook LM works within a document-style environment that&apos;s familiar to users of tools like Google Docs or Notion.</p>
 
       <h3 className="text-xl font-medium mb-2">What Makes Notebook LM Different?</h3>
       <p className="mb-4">Notebook LM stands out by allowing you to upload your own documents as context. This means the AI assistant can provide insights, summaries, and answers based specifically on your data, rather than just its pre-trained knowledge.</p>
-      <p className="mb-4">This module will guide you through using Notebook LM effectively, from basic setup to advanced integrations and techniques. By the end, you'll have a comprehensive understanding of how to leverage this tool for research, content creation, data analysis, and more.</p>
+      <p className="mb-4">This module will guide you through using Notebook LM effectively, from basic setup to advanced integrations and techniques. By the end, you&apos;ll have a comprehensive understanding of how to leverage this tool for research, content creation, data analysis, and more.</p>
 
       <h3 className="text-xl font-medium mb-2">Key Benefits of Notebook LM</h3>
       <ul className="list-disc list-inside mb-4">
@@ -96,7 +96,7 @@ export default function NotebookLMGuidePage() {
           </ul>
         </li>
       </ul>
-      <p className="mb-4"><strong>Pro Tip: Ask Follow-Up Questions:</strong> Notebook LM maintains context within your working session. After asking an initial question, you can ask follow-up questions without repeating all the context. For example, after asking about key findings, you could simply ask "Can you elaborate on the third point?" and the AI will understand the reference.</p>
+      <p className="mb-4"><strong>Pro Tip: Ask Follow-Up Questions:</strong> Notebook LM maintains context within your working session. After asking an initial question, you can ask follow-up questions without repeating all the context. For example, after asking about key findings, you could simply ask &quot;Can you elaborate on the third point?&quot; and the AI will understand the reference.</p>
 
       <h2 className="text-2xl font-semibold mb-3">Notebook Structures for Different Use Cases</h2>
       <p className="mb-4">Notebook LM can be configured in various ways to support different workflows. Here are some effective structures for common use cases:</p>
@@ -141,7 +141,7 @@ export default function NotebookLMGuidePage() {
         <li><strong>Risk Assessment:</strong> Ask the AI to analyze documented risks and suggest mitigation strategies.</li>
         <li><strong>Status Updates:</strong> Track progress and have the AI summarize changes since the last update.</li>
       </ul>
-      <p className="mb-4"><strong>Template Tip:</strong> Once you've created a notebook structure that works well for a particular use case, save it as a template by duplicating the notebook and removing specific content while keeping the structure. This allows you to quickly start new projects with your preferred organization.</p>
+      <p className="mb-4"><strong>Template Tip:</strong> Once you&apos;ve created a notebook structure that works well for a particular use case, save it as a template by duplicating the notebook and removing specific content while keeping the structure. This allows you to quickly start new projects with your preferred organization.</p>
 
       <h2 className="text-2xl font-semibold mb-3">Advanced Techniques</h2>
       <p className="mb-4">Once you're comfortable with the basic functionality, these advanced techniques will help you get even more out of Notebook LM:</p>
@@ -193,8 +193,8 @@ export default function NotebookLMGuidePage() {
         <li>Request cross-referencing of data points across multiple sources</li>
         <li>Have the AI highlight discrepancies or inconsistencies between sources</li>
       </ul>
-      <p className="mb-4">Example Query: "The first document claims a 15% market growth rate. Please verify this claim by checking if other uploaded documents support this figure, and note any contradictory data."</p>
-      <p className="mb-4"><strong>Important Limitation:</strong> Remember that Notebook LM can only work with the documents you've uploaded. If important context or counter-evidence exists in documents you haven't provided, the AI won't be able to include this in its analysis.</p>
+      <p className="mb-4">Example Query: &quot;The first document claims a 15% market growth rate. Please verify this claim by checking if other uploaded documents support this figure, and note any contradictory data.&quot;</p>
+      <p className="mb-4"><strong>Important Limitation:</strong> Remember that Notebook LM can only work with the documents you&apos;ve uploaded. If important context or counter-evidence exists in documents you haven&apos;t provided, the AI won&apos;t be able to include this in its analysis.</p>
 
       <h2 className="text-2xl font-semibold mb-3">Integration with Other Tools</h2>
       <p className="mb-4">While Notebook LM doesn't have direct API integrations yet, you can effectively combine it with other tools in your workflow:</p>
@@ -290,7 +290,7 @@ export default function NotebookLMGuidePage() {
         <li>Have the AI suggest 3 different possible outlines for your content</li>
         <li>Select one outline and work with the AI to develop each section</li>
         <li>Ask the AI to review your draft for clarity, coherence, and accuracy</li>
-        <li>Refine the content based on the AI's suggestions</li>
+        <li>Refine the content based on the AI&apos;s suggestions</li>
       </ul>
 
       <h2 className="text-2xl font-semibold mb-3">Knowledge Check</h2>

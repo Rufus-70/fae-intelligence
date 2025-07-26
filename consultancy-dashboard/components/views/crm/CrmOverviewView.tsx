@@ -9,7 +9,7 @@ interface QuickNavButtonProps {
   label: string;
   subViewId: string;
   onClick: (id: string) => void;
-  icon: JSX.Element;
+  icon: React.ReactElement;
 }
 
 const QuickNavButton: React.FC<QuickNavButtonProps> = ({ label, subViewId, onClick, icon }) => (
@@ -46,7 +46,7 @@ const DealStageBadge: React.FC<{ stage: CrmDealStage, count: number }> = ({ stag
 };
 
 
-const KeyMetric: React.FC<{ title: string; value: string | number; icon?: JSX.Element; onClick?: () => void; description?: string }> = ({ title, value, icon, onClick, description }) => {
+const KeyMetric: React.FC<{ title: string; value: string | number; icon?: React.ReactElement; onClick?: () => void; description?: string }> = ({ title, value, icon, onClick, description }) => {
   const content = (
     <>
       {icon && <div className="text-3xl text-[#1B365D] mb-2">{icon}</div>}

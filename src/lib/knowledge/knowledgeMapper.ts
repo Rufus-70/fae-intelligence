@@ -239,7 +239,7 @@ export class KnowledgeMapper {
     
     if (fileMetadata.category) {
       const category = Object.keys(FAE_INTELLIGENCE_CATEGORIES).find(key => 
-        FAE_INTELLIGENCE_CATEGORIES[key].name.toLowerCase().includes(fileMetadata.category!.toLowerCase())
+        (FAE_INTELLIGENCE_CATEGORIES as any)[key].name.toLowerCase().includes(fileMetadata.category!.toLowerCase())
       )
       if (category) return { category, confidence: 0.8 }
     }

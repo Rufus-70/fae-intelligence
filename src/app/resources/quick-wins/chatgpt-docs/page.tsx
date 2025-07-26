@@ -22,13 +22,13 @@ export default function ChatgptDocsQuickWinPage() {
       timeEstimate: "2 minutes",
       instructions: [
         "Go to chat.openai.com",
-        "Click 'Sign up' and create an account with your email",
+        "Click &apos;Sign up&apos; and create an account with your email",
         "Verify your email address",
         "Log in to ChatGPT"
       ],
       template: "",
-      result: "You now have access to ChatGPT's free tier with unlimited messages",
-      tips: "The free version is perfect for documentation tasks. You don't need ChatGPT Plus for this Quick Win."
+      result: "You now have access to ChatGPT&apos;s free tier with unlimited messages",
+      tips: "The free version is perfect for documentation tasks. You don&apos;t need ChatGPT Plus for this Quick Win."
     },
     {
       title: "Paste your rough notes",
@@ -36,13 +36,13 @@ export default function ChatgptDocsQuickWinPage() {
       timeEstimate: "1 minute", 
       instructions: [
         "Find some rough notes, bullet points, or meeting minutes from your work",
-        "Copy the text (even if it's messy, incomplete, or has typos)",
+        "Copy the text (even if it&apos;s messy, incomplete, or has typos)",
         "Paste it into ChatGPT",
-        "Don't worry about formatting - the messier the better for this demo!"
+        "Don&apos;t worry about formatting - the messier the better for this demo!"
       ],
       template: "",
       result: "Your raw notes are now ready to be transformed",
-      tips: "If you don't have notes handy, you can use our sample notes below to practice."
+      tips: "If you don&apos;t have notes handy, you can use our sample notes below to practice."
     },
     {
       title: "Ask for SOP format",
@@ -231,7 +231,7 @@ Quality checks:
                       <Button 
                         size="sm"
                         onClick={() => setCurrentStep(index)}
-                        variant={isCurrent ? "default" : "outline"}
+                        variant={isCurrent ? "primary" : "outline"}
                       >
                         {isCurrent ? "Working on this" : "Start Step"}
                       </Button>

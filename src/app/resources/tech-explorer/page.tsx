@@ -437,7 +437,7 @@ export default function TechExplorerPage() {
             <h2 className="text-4xl font-bold mb-6">Ready to Build Your First AI Solution?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Start with the engineering alignment module, then choose an implementation project that fits your needs. 
-              You'll have a working AI solution within hours.
+              You&apos;ll have a working AI solution within hours.
             </p>
             <div className="space-x-4">
               <Button 

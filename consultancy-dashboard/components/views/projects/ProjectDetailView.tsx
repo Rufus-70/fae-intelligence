@@ -49,7 +49,7 @@ const formatCurrency = (value?: number) => {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
 };
 
-const DetailItem: React.FC<{ label: string; value?: string | string[] | JSX.Element | null; icon?: JSX.Element; className?: string; }> = ({ label, value, icon, className = "" }) => (
+const DetailItem: React.FC<{ label: string; value?: string | string[] | React.ReactElement | null; icon?: React.ReactElement; className?: string; }> = ({ label, value, icon, className = "" }) => (
   <div className={`mb-3 ${className}`}>
     <h4 className="text-sm font-semibold text-sky-400 mb-0.5 flex items-center">
       {icon && <span className="mr-2 h-5 w-5 opacity-80">{icon}</span>}

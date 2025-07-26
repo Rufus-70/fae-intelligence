@@ -72,7 +72,8 @@ export class AdvisoryQueryEngine {
       }
     } catch (error) {
       console.error('Error processing advisory query:', error);
-      return this.generateErrorResponse(userQuery, error.message);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+      return this.generateErrorResponse(userQuery, errorMessage);
     }
   }
   

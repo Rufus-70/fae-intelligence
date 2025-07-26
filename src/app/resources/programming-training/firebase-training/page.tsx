@@ -4,7 +4,7 @@ export default function FirebaseTrainingPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Firebase & Database Integration: Scalable Solutions for Manufacturing</h1>
-      <p className="text-lg mb-6">This module focuses on mastering Firebase and Firestore, Google's powerful backend-as-a-service platforms, for building scalable and real-time manufacturing applications. You will learn how to leverage Firestore for flexible NoSQL data storage, Firebase Authentication for secure user management, and Firebase Functions for serverless backend logic, enabling efficient data synchronization and robust application development.</p>
+      <p className="text-lg mb-6">This module focuses on mastering Firebase and Firestore, Google&apos;s powerful backend-as-a-service platforms, for building scalable and real-time manufacturing applications. You will learn how to leverage Firestore for flexible NoSQL data storage, Firebase Authentication for secure user management, and Firebase Functions for serverless backend logic, enabling efficient data synchronization and robust application development.</p>
 
       <h2 className="text-2xl font-semibold mb-3">Key Learning Outcomes:</h2>
       <ul className="list-disc list-inside mb-6">

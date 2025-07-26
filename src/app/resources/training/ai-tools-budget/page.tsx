@@ -12,7 +12,7 @@ export default function AiToolsBudgetPage() {
       <p className="text-lg text-gray-700 mb-8">A comprehensive guide to affordable AI tools for different use cases.</p>
 
       <div className="prose lg:prose-xl max-w-none">
-        <h2 className="text-2xl font-semibold mb-4">In this module, you'll learn:</h2>
+        <h2 className="text-2xl font-semibold mb-4">In this module, you&apos;ll learn:</h2>
         <ul className="list-disc list-inside ml-4">
           <li>Top AI tools available for under $20 per month</li>
           <li>Features and use cases for each tool</li>
@@ -61,7 +61,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>General-purpose AI assistance, writing help, coding, brainstorming, and content creation.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -84,7 +84,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Marketing teams, content creators, social media managers, and small business owners.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.copy.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -107,7 +107,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Writers, students, professionals, and anyone who writes regularly and wants to improve quality.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -130,7 +130,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Marketing agencies, content creators, and businesses needing consistent content production.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.jasper.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -158,7 +158,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Artists, designers, marketers, and creative professionals needing unique visuals.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.midjourney.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -181,7 +181,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Social media managers, marketers, small businesses, and non-designers needing professional graphics.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -204,7 +204,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Game developers, artists, and designers needing consistent character and environment visuals.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://leonardo.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -217,7 +217,7 @@ export default function AiToolsBudgetPage() {
             <p className="text-sm text-gray-600">Free (Limited) $4.99/mo</p>
           </CardHeader>
           <CardContent>
-            <p>Adobe's generative AI tool for creating and editing images with commercial usage rights.</p>
+            <p>Adobe&apos;s generative AI tool for creating and editing images with commercial usage rights.</p>
             <h4 className="text-lg font-semibold mt-4 mb-2">Key Features:</h4>
             <ul className="list-disc list-inside ml-4">
               <li>Integration with Adobe Creative Cloud</li>
@@ -227,7 +227,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Creative professionals already using Adobe products who need AI-generated images without copyright concerns.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://firefly.adobe.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -297,7 +297,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Podcasters, video creators, and anyone needing to edit audio or video content efficiently.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.descript.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -320,7 +320,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>eLearning creators, marketers, video producers, and anyone needing professional voiceovers.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://murf.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -343,7 +343,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Filmmakers, content creators, marketers, and anyone needing to generate video content quickly.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -366,7 +366,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Professionals who attend many meetings, journalists, researchers, and students.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://otter.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -391,7 +391,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Researchers, students, writers, and professionals needing reliable information with citations.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -414,7 +414,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Academic researchers, scientists, students, and professionals needing to review academic literature.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://elicit.org/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -437,7 +437,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Scientists, journalists, medical professionals, and anyone seeking evidence-based information.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://consensus.app/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -460,7 +460,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>General users looking for an AI-powered search alternative, developers, and researchers.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://you.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -485,7 +485,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Notion users, productivity enthusiasts, project managers, and team collaborators.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -508,7 +508,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Customer support teams, sales professionals, and anyone who types repetitive text.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://textexpander.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -531,7 +531,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Remote teams, project managers, students, and entrepreneurs managing multiple projects.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://www.taskade.com/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -554,7 +554,7 @@ export default function AiToolsBudgetPage() {
             </ul>
             <h4 className="text-lg font-semibold mt-4 mb-2">Best For:</h4>
             <p>Knowledge workers, researchers, students, and professionals who take lots of notes.</p>
-            <Button variant="link" asChild className="px-0 mt-2">
+            <Button variant="outline" asChild className="px-0 mt-2">
               <a href="https://mem.ai/" target="_blank" rel="noopener noreferrer">Visit Website <ExternalLink className="ml-1 h-4 w-4" /></a>
             </Button>
           </CardContent>
@@ -570,7 +570,7 @@ export default function AiToolsBudgetPage() {
         </ul>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Conclusion: Getting Started with Budget-Friendly AI Tools</h2>
-        <p>As we've seen, there's a vast ecosystem of powerful AI tools available for under $20 per month. To make the most of these tools:</p>
+        <p>As we&apos;ve seen, there&apos;s a vast ecosystem of powerful AI tools available for under $20 per month. To make the most of these tools:</p>
         <ul className="list-disc list-inside ml-4">
           <li>Start with free tiers to test which tools best fit your workflow before committing to subscriptions.</li>
           <li>Combine complementary tools rather than looking for an all-in-one solution. For example, pair a research tool like Perplexity with a writing tool like Copy.ai.</li>

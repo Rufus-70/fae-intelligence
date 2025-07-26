@@ -96,7 +96,7 @@ export default function PerplexityGuidePage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Perplexity for Manufacturing Research?</h2>
             <p className="text-lg text-gray-700 mb-8">
-              Perplexity's ability to synthesize information from diverse sources and provide cited answers makes it an indispensable tool for manufacturing 
+              Perplexity&apos;s ability to synthesize information from diverse sources and provide cited answers makes it an indispensable tool for manufacturing 
               professionals needing rapid, accurate, and comprehensive research for strategic decisions, market analysis, and technology evaluation.
             </p>
 
@@ -289,10 +289,10 @@ export default function PerplexityGuidePage() {
                   <div className="bg-gray-100 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold mb-2">Prompt:</h4>
                     <p className="text-sm font-mono text-gray-800">
-                      "You are a market researcher specializing in the [specific manufacturing sector]. 
+                      &quot;You are a market researcher specializing in the [specific manufacturing sector]. 
                       Identify the top 5 emerging trends in [specific technology or market segment] over the last 2 years. 
                       For each trend, provide: key drivers, potential impact on manufacturing operations, 
-                      and leading companies in this space. Cite your sources."
+                      and leading companies in this space. Cite your sources.&quot;
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -309,11 +309,11 @@ export default function PerplexityGuidePage() {
                   <div className="bg-gray-100 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold mb-2">Prompt:</h4>
                     <p className="text-sm font-mono text-gray-800">
-                      "You are a manufacturing innovation consultant. 
+                      &quot;You are a manufacturing innovation consultant. 
                       Research and evaluate the feasibility of implementing [specific technology, e.g., collaborative robots] 
                       in a [type of manufacturing, e.g., small-batch assembly] environment. 
                       Include: initial investment, potential ROI, integration challenges, 
-                      and case studies of successful implementations. Cite your sources."
+                      and case studies of successful implementations. Cite your sources.&quot;
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -330,10 +330,10 @@ export default function PerplexityGuidePage() {
                   <div className="bg-gray-100 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold mb-2">Prompt:</h4>
                     <p className="text-sm font-mono text-gray-800">
-                      "You are a supply chain risk analyst. 
+                      &quot;You are a supply chain risk analyst. 
                       Conduct a due diligence report on [Supplier Name]. 
                       Include: financial stability, quality certifications, ethical sourcing practices, 
-                      and any recent news or controversies. Assess potential risks to our supply chain. Cite your sources."
+                      and any recent news or controversies. Assess potential risks to our supply chain. Cite your sources.&quot;
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">

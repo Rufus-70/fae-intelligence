@@ -253,7 +253,7 @@ export default function NoCodeIntegrationPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">What You'll Build:</h3>
+                  <h3 className="text-lg font-semibold mb-3">What You&apos;ll Build:</h3>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <p className="text-gray-700 mb-4">
                       An automation workflow that:
@@ -332,7 +332,7 @@ export default function NoCodeIntegrationPage() {
         <Container>
           <div className="text-center mb-12">
             <ChevronRight className="h-16 w-16 text-yellow-600 mx-auto mb-4" />
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">What's Next?</h2>
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">What&apos;s Next?</h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               Continue building your technical foundation
             </p>

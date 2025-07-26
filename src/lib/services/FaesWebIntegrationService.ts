@@ -208,7 +208,9 @@ class FaesWebIntegrationService {
           tags: this.extractTags(chunkContent),
           category: this.determineCategory(chunkContent),
           priority: this.determinePriority(analysis, chunkContent),
-          userId: analysis.userId
+          userId: analysis.userId,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
         })
       }
     }
@@ -237,7 +239,9 @@ class FaesWebIntegrationService {
       tags: ['analysis', 'insights', 'ai-generated'],
       category: 'business-intelligence',
       priority: 'high',
-      userId: analysis.userId
+      userId: analysis.userId,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
     }
   }
 
@@ -262,7 +266,9 @@ class FaesWebIntegrationService {
       tags: ['metadata', 'file-info'],
       category: 'system',
       priority: 'low',
-      userId: analysis.userId
+      userId: analysis.userId,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
     }
   }
 
@@ -469,5 +475,5 @@ This file was processed through the faes-web AI analysis pipeline and contains b
 }
 
 // Export singleton instance
-export const FaesWebIntegrationService = new FaesWebIntegrationService()
-export default FaesWebIntegrationService
+export const faesWebIntegrationService = new FaesWebIntegrationService()
+export default faesWebIntegrationService

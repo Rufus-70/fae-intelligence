@@ -182,7 +182,7 @@ export default function AIFundamentalsPage() {
           return (
             <Button
               key={section.id}
-              variant={isCurrent ? "default" : isCompleted ? "outline" : "ghost"}
+              variant={isCurrent ? "primary" : isCompleted ? "outline" : "outline"}
               size="sm"
               onClick={() => setCurrentSection(section.id)}
               className={`text-xs p-2 h-auto flex-col ${
@@ -419,7 +419,7 @@ export default function AIFundamentalsPage() {
 
               <div className="bg-yellow-50 p-4 rounded-lg mb-6">
                 <h4 className="font-semibold text-yellow-800 mb-2">💡 Key Insight:</h4>
-                <p className="text-yellow-700 text-sm">AI doesn't "understand" like humans do. It finds statistical patterns in data. This is why it can be incredibly useful for consistent, repetitive tasks but needs human oversight for complex decisions.</p>
+                <p className="text-yellow-700 text-sm">AI doesn&apos;t &quot;understand&quot; like humans do. It finds statistical patterns in data. This is why it can be incredibly useful for consistent, repetitive tasks but needs human oversight for complex decisions.</p>
               </div>
 
               <Button 
@@ -487,11 +487,11 @@ export default function AIFundamentalsPage() {
               <div className="bg-blue-50 p-4 rounded-lg mb-6">
                 <h4 className="font-semibold text-blue-800 mb-2">🗣️ Speaking AI with Confidence:</h4>
                 <div className="text-blue-700 text-sm space-y-2">
-                  <p><strong>Instead of:</strong> "Can this magic computer thing help us?"</p>
-                  <p><strong>Say:</strong> "Can this AI algorithm analyze our quality data to identify patterns in defects?"</p>
+                  <p><strong>Instead of:</strong> &quot;Can this magic computer thing help us?&quot;</p>
+                  <p><strong>Say:</strong> &quot;Can this AI algorithm analyze our quality data to identify patterns in defects?&quot;</p>
                   <br/>
-                  <p><strong>Instead of:</strong> "The computer is broken."</p>
-                  <p><strong>Say:</strong> "The model seems to be hallucinating - let me adjust the prompt and verify the output."</p>
+                  <p><strong>Instead of:</strong> &quot;The computer is broken.&quot;</p>
+                  <p><strong>Say:</strong> &quot;The model seems to be hallucinating - let me adjust the prompt and verify the output.&quot;</p>
                 </div>
               </div>
 
@@ -527,7 +527,7 @@ export default function AIFundamentalsPage() {
             </CardHeader>
             <CardContent className="prose max-w-none">
               <p className="text-lg text-gray-700 mb-6">
-                You likely interact with AI multiple times daily without realizing it. Recognizing these examples helps you understand AI's practical applications.
+                You likely interact with AI multiple times daily without realizing it. Recognizing these examples helps you understand AI&apos;s practical applications.
               </p>
               
               <div className="space-y-4 mb-6">
@@ -573,7 +573,7 @@ export default function AIFundamentalsPage() {
               </div>
 
               <div className="bg-yellow-50 p-4 rounded-lg mb-6">
-                <h4 className="font-semibold text-yellow-800 mb-2">🏭 Manufacturing Applications You're Already Using:</h4>
+                <h4 className="font-semibold text-yellow-800 mb-2">🏭 Manufacturing Applications You&apos;re Already Using:</h4>
                 <ul className="text-yellow-700 space-y-1 text-sm">
                   <li>• <strong>Autocorrect in documentation:</strong> Spell check and grammar suggestions</li>
                   <li>• <strong>Calendar scheduling:</strong> Smart meeting time suggestions</li>
@@ -615,7 +615,7 @@ export default function AIFundamentalsPage() {
             </CardHeader>
             <CardContent className="prose max-w-none">
               <p className="text-lg text-gray-700 mb-6">
-                Ready to take your first steps with AI? Here's your practical roadmap to getting started safely and effectively.
+                Ready to take your first steps with AI? Here&apos;s your practical roadmap to getting started safely and effectively.
               </p>
               
               <div className="bg-green-50 p-4 rounded-lg mb-6">
@@ -823,12 +823,12 @@ export default function AIFundamentalsPage() {
           </CardHeader>
           <CardContent>
             <p className="text-green-700 mb-4">
-              You've successfully completed AI Fundamentals for Business! You now have a solid foundation in AI concepts and terminology.
+              You&apos;ve successfully completed AI Fundamentals for Business! You now have a solid foundation in AI concepts and terminology.
             </p>
             
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="bg-white p-4 rounded border border-green-200">
-                <h4 className="font-semibold text-green-800 mb-2">✅ What You've Accomplished:</h4>
+                <h4 className="font-semibold text-green-800 mb-2">✅ What You&apos;ve Accomplished:</h4>
                 <ul className="text-green-700 space-y-1 text-sm">
                   <li>• Completed all 6 learning sections</li>
                   <li>• Passed the knowledge check</li>

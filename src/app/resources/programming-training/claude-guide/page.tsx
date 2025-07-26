@@ -16,7 +16,7 @@ export default function ClaudeGuidePage() {
             <Layers className="h-16 w-16 text-blue-200 mx-auto mb-6" />
             <h1 className="text-4xl font-bold mb-4">Claude for Technical Projects: Advanced Reasoning for Manufacturing</h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Leverage Claude's advanced reasoning capabilities for complex manufacturing projects, in-depth documentation, and strategic planning.
+              Leverage Claude&apos;s advanced reasoning capabilities for complex manufacturing projects, in-depth documentation, and strategic planning.
             </p>
           </div>
         </Container>
@@ -96,7 +96,7 @@ export default function ClaudeGuidePage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Claude for Manufacturing?</h2>
             <p className="text-lg text-gray-700 mb-8">
-              Claude's advanced reasoning and ability to handle complex, nuanced information make it an invaluable tool for manufacturing 
+              Claude&apos;s advanced reasoning and ability to handle complex, nuanced information make it an invaluable tool for manufacturing 
               professionals dealing with intricate technical challenges, strategic planning, and in-depth analysis. This guide focuses on practical 
               applications that deliver significant value to your operations.
             </p>
@@ -138,7 +138,7 @@ export default function ClaudeGuidePage() {
                   <h4 className="font-semibold text-gray-900 mt-4">Ethical Considerations:</h4>
                   <ul className="list-disc list-inside text-gray-700">
                     <li>• Data Privacy: Ensure sensitive manufacturing data is handled securely.</li>
-                    <li>• Bias Awareness: Be vigilant for biases in Claude's analysis, especially in strategic recommendations.</li>
+                    <li>• Bias Awareness: Be vigilant for biases in Claude&apos;s analysis, especially in strategic recommendations.</li>
                   </ul>
                 </CardContent>
               </Card>

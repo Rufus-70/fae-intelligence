@@ -5,7 +5,7 @@ import {
   CrmBlueprintActivity, Expense, NewExpenseData, RevenueItem, NewRevenueData, Invoice, NewInvoiceData, InvoiceStatus,
   FinanceSummaryViewProps, FinanceExpensesViewProps, FinanceRevenueViewProps, FinanceInvoicesViewProps,
   ProjectDashboardViewProps, ProjectListViewProps, ProjectDetailViewProps, ProjectTaskBoardViewProps,
-  MyTasksViewProps, Deal, CrmOverviewViewProps, FinanceSubViewTarget, ParsedProjectPlan, Activity,
+  MyTasksViewProps, Deal, NewDealData, CrmOverviewViewProps, FinanceSubViewTarget, ParsedProjectPlan, Activity,
   CrmLeadsViewProps, CrmProspectsViewProps // Added CrmLeadsViewProps and CrmProspectsViewProps
 } from '../types';
 
@@ -53,7 +53,7 @@ interface StructuredViewLayoutProps {
 
   // Props for Projects
   projects: Project[]; 
-  onSaveProject: (projectData: NewProjectData, idToUpdate?: string) => string; 
+  onSaveProject: (projectData: NewProjectData, idToUpdate?: string) => void; 
   onDeleteProject: (projectId: string) => void; 
   projectListFilter: ProjectFilterStatus; 
   onApplyProjectFilter?: (filter: ProjectFilterStatus) => void;
@@ -89,6 +89,8 @@ interface StructuredViewLayoutProps {
   // General & CRM
   clients: Client[]; 
   deals: Deal[];
+  onSaveDeal: (dealData: NewDealData, idToUpdate?: string) => void;
+  onDeleteDeal: (dealId: string) => void;
   crmBlueprintActivities: CrmBlueprintActivity[]; 
   blueprintActivities: Activity[]; // Added
 }
@@ -102,7 +104,7 @@ export const StructuredViewLayout: React.FC<StructuredViewLayoutProps> = (props)
     expenses, onSaveExpense, onDeleteExpense, revenueItems, onSaveRevenue, onDeleteRevenue,
     invoices, onSaveInvoice, onDeleteInvoice, onUpdateInvoiceStatus, onGenerateRevenueFromInvoice,
     invoiceListFilter, onClearInvoiceFilter, onNavigateToFinanceFilteredView,
-    clients, deals, crmBlueprintActivities, blueprintActivities
+    clients, deals, onSaveDeal, onDeleteDeal, crmBlueprintActivities, blueprintActivities
   } = props;
 
   const renderActiveSubView = () => {

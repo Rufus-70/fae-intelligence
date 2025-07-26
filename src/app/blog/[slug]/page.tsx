@@ -16,17 +16,16 @@ import ReactMarkdown from 'react-markdown' // Import ReactMarkdown
 import remarkGfm from 'remark-gfm' // Import remarkGfm for GitHub Flavored Markdown
 
 // Custom components to render Markdown elements
-const MarkdownComponents = {
-  h1: ({ node, ...props }) => <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-8 mb-4" {...props} />,
-  h2: ({ node, children, ...props }) => {
+const MarkdownComponents: any = {
+  h1: ({ ...props }: any) => <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-8 mb-4" {...props} />,
+  h2: ({ children, ...props }: any) => {
     // Custom logic to inject icons based on heading text
     const textContent = Array.isArray(children) ? children.join('') : children;
     let Icon = null;
-    if (textContent.includes('ChatGPT Data Analysis')) {
+    if (textContent.includes("ChatGPT Data Analysis")) { // Changed ' to "
       Icon = MessageSquare;
-    } else if (textContent.includes('Gemini in Google Sheets')) {
+    } else if (textContent.includes("Gemini in Google Sheets")) { // Changed ' to "
       Icon = Search; // Using Search for Google Gemini for illustrative purposes
-    
     }
 
     return (
@@ -36,16 +35,16 @@ const MarkdownComponents = {
       </h2>
     );
   },
-  h3: ({ node, ...props }) => <h3 className="text-xl lg:text-2xl font-semibold text-gray-700 mt-5 mb-2" {...props} />,
-  p: ({ node, ...props }) => <p className="text-base text-gray-700 leading-relaxed mb-4" {...props} />,
-  ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2" {...props} />,
-  ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-2" {...props} />,
-  li: ({ node, ...props }) => <li className="text-gray-700" {...props} />,
-  a: ({ node, ...props }) => <a className="text-cyan-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+  h3: ({ ...props }: any) => <h3 className="text-xl lg:text-2xl font-semibold text-gray-700 mt-5 mb-2" {...props} />,
+  p: ({ ...props }: any) => <p className="text-base text-gray-700 leading-relaxed mb-4" {...props} />,
+  ul: ({ ...props }: any) => <ul className="list-disc pl-5 mb-4 space-y-2" {...props} />,
+  ol: ({ ...props }: any) => <ol className="list-decimal pl-5 mb-4 space-y-2" {...props} />,
+  li: ({ ...props }: any) => <li className="text-gray-700" {...props} />,
+  a: ({ ...props }: any) => <a className="text-cyan-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
 
-  blockquote: ({ node, children, ...props }) => {
+  blockquote: ({ children, ...props }: any) => {
     return (
-      <blockquote className="border-l-4 pl-4 py-2 my-6 border-gray-300 bg-gray-50 text-gray-600">
+      <blockquote className="border-l-4 pl-4 py-2 my-6 border-gray-300 bg-gray-50 text-gray-600" {...props}>
         {children}
       </blockquote>
     );
@@ -94,19 +93,19 @@ export default function BlogPostPage() {
         setRelatedPosts(filteredRelated)
 
       } else {
-        setError('Post not found')
+        setError("Post not found") // Changed ' to "
       }
     } catch (error) {
       console.error('Error fetching post:', error)
-      setError('Failed to load post')
+      setError("Failed to load post") // Changed ' to "
     } finally {
       setLoading(false)
     }
   }
 
   const formatDate = (timestamp: Timestamp) => {
-    if (!timestamp?.toDate) return 'Unknown date'
-    return timestamp.toDate().toLocaleDateString('en-US', {
+    if (!timestamp?.toDate) return "Unknown date" // Changed ' to "
+    return timestamp.toDate().toLocaleDateString("en-US", { // Changed ' to "
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -121,15 +120,15 @@ export default function BlogPostPage() {
           text: post.excerpt,
           url: window.location.href
         })
-      } catch (error) {
+      } catch {
         // Fallback to copying URL
         navigator.clipboard.writeText(window.location.href)
-        alert('URL copied to clipboard!')
+        alert("URL copied to clipboard!") // Changed ' to "
       }
     } else {
       // Fallback for browsers that don't support Web Share API
       navigator.clipboard.writeText(window.location.href)
-      alert('URL copied to clipboard!')
+      alert("URL copied to clipboard!") // Changed ' to "
     }
   }
 
@@ -148,10 +147,10 @@ export default function BlogPostPage() {
       <Container>
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            {error || 'Post Not Found'}
+            {error || "Post Not Found"} {/* Changed ' to " */}
           </h1>
           <p className="text-gray-600 mb-6">
-            The blog post you're looking for doesn't exist or has been removed.
+            The blog post you&apos;re looking for doesn&apos;t exist or has been removed. {/* Changed ' to &apos; */}
           </p>
           <Link href="/blog">
             <Button>
@@ -332,7 +331,7 @@ export default function BlogPostPage() {
           <div className="mt-12 bg-cyan-500 text-white rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Manufacturing with AI?</h2>
             <p className="text-cyan-100 mb-6">
-              Let's discuss how Fae Intelligence can help your team implement practical AI solutions.
+              Let&apos;s discuss how Fae Intelligence can help your team implement practical AI solutions.
             </p>
             <Link href="/consultation">
               <Button variant="outline" size="lg" className="bg-white text-cyan-500 hover:bg-gray-100">
@@ -345,3 +344,4 @@ export default function BlogPostPage() {
     </>
   )
 }
+

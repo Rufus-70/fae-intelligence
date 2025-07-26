@@ -228,7 +228,11 @@ export class EnhancedBusinessAnalyzer {
   }
   
   private performPatternAnalysis(document: string, industry?: string) {
-    const patterns = { pain_points: [], solutions: [], tools: [] };
+    const patterns: {
+      pain_points: PainPoint[];
+      solutions: any[];
+      tools: any[];
+    } = { pain_points: [], solutions: [], tools: [] };
     const docLower = document.toLowerCase();
     
     // Universal pain point patterns
@@ -250,9 +254,14 @@ export class EnhancedBusinessAnalyzer {
       if (matchCount >= 1) {
         patterns.pain_points.push({
           name: key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          category: pattern.category,
-          severity: pattern.severity,
-          confidence: Math.min(60 + (matchCount * 15), 95)
+          category: pattern.category as 'operational' | 'financial' | 'customer' | 'compliance' | 'strategic' | 'industry_specific',
+          industry_specific: false,
+          severity: pattern.severity as 'critical' | 'high' | 'medium' | 'low',
+          symptoms: pattern.keywords,
+          cost_impact: 'To be assessed',
+          evidence: [`Found ${matchCount} relevant indicators in document`],
+          confidence: Math.min(60 + (matchCount * 15), 95),
+          urgency: pattern.severity === 'critical' ? 'immediate' : pattern.severity === 'high' ? 'short_term' : 'medium_term'
         });
       }
     }

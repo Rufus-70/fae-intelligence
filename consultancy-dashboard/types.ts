@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type ActivityStatus = 'To Do' | 'In Progress' | 'Done' | 'Blocked' | 'On Hold';
 export type ActivityPriority = 'High' | 'Medium' | 'Low';
 
@@ -67,12 +69,12 @@ export type ViewName = 'blueprint' | 'clients' | 'projects' | 'tasks' | 'crm' | 
 export interface SubViewItem {
   id: string;
   label: string;
-  icon?: string | JSX.Element; // Emoji (string) or SVG/JSX icon
+  icon?: string | React.ReactElement; // Emoji (string) or SVG/JSX icon
 }
 
 export interface ViewConfig {
   label: string;
-  icon?: string | JSX.Element; // Icon for the main view itself
+  icon?: string | React.ReactElement; // Icon for the main view itself
   defaultSubViewId?: string;
   subViews?: SubViewItem[];
 }
@@ -411,6 +413,7 @@ export interface NewInvoiceData {
   taxRate?: number;
   status: InvoiceStatus; // Default to 'Draft'
   notes?: string;
+  invoiceNumber?: string;
   // invoiceNumber, clientName, projectName, subtotal, taxAmount, totalAmount will be derived/generated
 }
 
@@ -507,7 +510,7 @@ export interface AddInvoiceFormProps {
 export interface MetricCardProps {
   title: string;
   value: string | number;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   colorClass?: string;
   isLoading?: boolean;
   subtext?: string;
