@@ -1,5 +1,6 @@
 import json
 import os
+import argparse
 
 # This script requires the neo4j library.
 # You can install it with: pip install neo4j
@@ -10,8 +11,6 @@ from neo4j import GraphDatabase
 NEO4J_URI = "bolt://localhost:7687"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "password" # Replace with your password
-
-INPUT_FILE = "/home/rosie/projects/fae-intelligence/scripts/triage_output.json"
 
 class Neo4jIngestor:
     def __init__(self, uri, user, password):
@@ -280,10 +279,14 @@ def main():
     """
     Main function to drive the knowledge ingestion process.
     """
+    parser = argparse.ArgumentParser(description="Ingest processed data into Neo4j.")
+    parser.add_argument("input_file", help="Path to the input JSON file (e.g., triage_output.json)")
+    args = parser.parse_args()
+
     print("Starting knowledge ingestion process...")
     
-    # 1. Load the processed data from triage_output.json
-    with open(INPUT_FILE, 'r') as f:
+    # 1. Load the processed data from the specified input file
+    with open(args.input_file, 'r') as f:
         processed_data = json.load(f)
     
     # 2. Extract structured data using the (simulated) LLM

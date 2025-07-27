@@ -54,6 +54,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       current: pathname === '/dashboard/knowledge'
     },
     {
+      name: 'Knowledge Graph',
+      href: '/dashboard/knowledge-graph',
+      icon: Brain,
+      current: pathname === '/dashboard/knowledge-graph'
+    },
+    {
       name: 'Categories',
       href: '/dashboard/categories',
       icon: Folder,
