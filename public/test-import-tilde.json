@@ -1,0 +1,20 @@
+Sure! Here's what you need:
+
+~~~json
+{
+  "title": "Another Test with Tilde Markers",
+  "excerpt": "Testing tilde cleanup",
+  "content": "Content with tilde formatting cleanup test.",
+  "category": "testing",
+  "tags": ["cleanup", "tilde"],
+  "status": "draft",
+  "featured": false,
+  "seo": {
+    "metaTitle": "Tilde Test",
+    "metaDescription": "Testing tilde markers",
+    "focusKeyword": "tilde test"
+  }
+}
+~~~
+
+This should also work now.

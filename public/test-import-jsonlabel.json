@@ -1,0 +1,15 @@
+json
+{
+  "title": "Test with JSON Label Issue",
+  "excerpt": "Testing JSON label cleanup",
+  "content": "Content to test the json label removal functionality.",
+  "category": "json-test",
+  "tags": ["json", "label", "cleanup"],
+  "status": "draft",
+  "featured": false,
+  "seo": {
+    "metaTitle": "JSON Label Test",
+    "metaDescription": "Testing JSON label removal",
+    "focusKeyword": "json label"
+  }
+}

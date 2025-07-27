@@ -1,22 +1,22 @@
 /* Fae Intelligence HTML Blog Styles */
 :root {
-  /* Colors */
-  --primary-color: #6366f1;
-  --primary-dark: #4f46e5;
-  --secondary-color: #10b981;
-  --accent-color: #f59e0b;
+  /* Fae Intelligence Brand Colors */
+  --primary-color: #00ACC1;
+  --primary-dark: #0097A7;
+  --secondary-color: #2C2C2C;
+  --accent-color: #1A237E;
   
-  /* Grays */
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
+  /* Grays - Fae Palette */
+  --gray-50: #ECEFF1;
+  --gray-100: #ECEFF1;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
   --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  --gray-500: #546E7A;
+  --gray-600: #546E7A;
+  --gray-700: #2C2C2C;
+  --gray-800: #2C2C2C;
+  --gray-900: #2C2C2C;
   
   /* Background & Text */
   --bg-primary: #ffffff;

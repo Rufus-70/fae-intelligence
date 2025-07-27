@@ -361,6 +361,7 @@ export interface RevenueItem {
   clientId?: string; // Optional link to a client
   clientName?: string; // Denormalized for display
   invoiceId?: string; // Optional
+  attachments?: string[]; // Array of file URLs or base64 data
 }
 
 export interface NewRevenueData {
@@ -371,6 +372,7 @@ export interface NewRevenueData {
   projectId?: string;
   clientId?: string;
   invoiceId?: string;
+  attachments?: string[];
 }
 
 // Invoice Types

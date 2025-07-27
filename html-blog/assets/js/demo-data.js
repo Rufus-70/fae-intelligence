@@ -40,7 +40,7 @@ Contact Fae Intelligence to learn how we can help you implement AI automation in
         name: 'Fae Intelligence Team',
         avatar: '/assets/images/fae-logo.png'
       },
-      featuredImage: null
+      featuredImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop&crop=center'
     },
     {
       id: 'demo-2',
@@ -83,7 +83,7 @@ Ready to implement these tools? Contact Fae Intelligence for personalized recomm
         name: 'Fae Intelligence Team',
         avatar: '/assets/images/fae-logo.png'
       },
-      featuredImage: null
+      featuredImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop&crop=center'
     },
     {
       id: 'demo-3',
@@ -128,7 +128,7 @@ Partner with Fae Intelligence to develop a customized AI strategy for your manuf
         name: 'Fae Intelligence Team',
         avatar: '/assets/images/fae-logo.png'
       },
-      featuredImage: null
+      featuredImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=400&fit=crop&crop=center'
     }
   ],
   categories: [

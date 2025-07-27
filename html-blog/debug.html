@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Fae Intelligence Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        .debug-info {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .success { color: #4ade80; }
+        .error { color: #ef4444; }
+        .warning { color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Fae Intelligence Blog Debug</h1>
+    
+    <div class="debug-info">
+        <h2>File Check</h2>
+        <div id="file-check">Checking files...</div>
+    </div>
+    
+    <div class="debug-info">
+        <h2>JavaScript Loading</h2>
+        <div id="js-check">Checking JavaScript...</div>
+    </div>
+    
+    <div class="debug-info">
+        <h2>Console Output</h2>
+        <div id="console-output"></div>
+    </div>
+
+    <script>
+        console.log('🚀 Debug page starting...');
+        
+        const fileCheck = document.getElementById('file-check');
+        const jsCheck = document.getElementById('js-check');
+        const consoleOutput = document.getElementById('console-output');
+        
+        // Check if files exist by trying to load them
+        const filesToCheck = [
+            'assets/css/blog.css',
+            'assets/js/demo-data.js',
+            'assets/js/firebase-client.js', 
+            'assets/js/blog-engine.js',
+            'assets/js/app.js'
+        ];
+        
+        async function checkFiles() {
+            let results = [];
+            
+            for (const file of filesToCheck) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        results.push(`<span class="success">✅ ${file}</span>`);
+                    } else {
+                        results.push(`<span class="error">❌ ${file} (${response.status})</span>`);
+                    }
+                } catch (error) {
+                    results.push(`<span class="error">❌ ${file} (Error: ${error.message})</span>`);
+                }
+            }
+            
+            fileCheck.innerHTML = results.join('<br>');
+        }
+        
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            consoleOutput.innerHTML += `<div class="success">[LOG] ${args.join(' ')}</div>`;
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            consoleOutput.innerHTML += `<div class="error">[ERROR] ${args.join(' ')}</div>`;
+        };
+        
+        checkFiles();
+        
+        // Try to load the actual scripts
+        jsCheck.innerHTML = 'Loading scripts...';
+        
+        // Load demo data
+        const demoScript = document.createElement('script');
+        demoScript.src = 'assets/js/demo-data.js';
+        demoScript.onload = () => {
+            jsCheck.innerHTML += '<br><span class="success">✅ Demo data loaded</span>';
+        };
+        demoScript.onerror = () => {
+            jsCheck.innerHTML += '<br><span class="error">❌ Demo data failed</span>';
+        };
+        document.head.appendChild(demoScript);
+        
+        // Load Firebase client
+        const firebaseScript = document.createElement('script');
+        firebaseScript.src = 'assets/js/firebase-client.js';
+        firebaseScript.onload = () => {
+            jsCheck.innerHTML += '<br><span class="success">✅ Firebase client loaded</span>';
+        };
+        firebaseScript.onerror = () => {
+            jsCheck.innerHTML += '<br><span class="error">❌ Firebase client failed</span>';
+        };
+        document.head.appendChild(firebaseScript);
+        
+        setTimeout(() => {
+            if (typeof window.demoData !== 'undefined') {
+                consoleOutput.innerHTML += '<div class="success">[DEBUG] Demo data available with ' + window.demoData.posts.length + ' posts</div>';
+            } else {
+                consoleOutput.innerHTML += '<div class="error">[DEBUG] Demo data NOT available</div>';
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+Of course. Here's your JSON template:
+
+```json
+{
+  "title": "Test Import with Problematic Formatting",
+  "excerpt": "This tests the import cleanup functionality",
+  "content": "This is a test post to verify that the import cleanup works properly.",
+  "category": "test",
+  "tags": ["test", "import"],
+  "status": "draft",
+  "featured": false,
+  "seo": {
+    "metaTitle": "Test Import",
+    "metaDescription": "Testing import functionality",
+    "focusKeyword": "test import"
+  }
+}
+```
+
+This should work now with the improved cleanup.

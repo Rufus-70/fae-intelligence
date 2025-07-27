@@ -13,6 +13,7 @@ interface FormErrors {
   description?: string;
   amount?: string;
   invoiceId?: string;
+  attachments?: string;
 }
 
 const getInitialFormData = (item?: RevenueItem): NewRevenueData => ({
@@ -23,6 +24,7 @@ const getInitialFormData = (item?: RevenueItem): NewRevenueData => ({
   projectId: item?.projectId || undefined,
   clientId: item?.clientId || undefined,
   invoiceId: item?.invoiceId || undefined,
+  attachments: item?.attachments || [],
 });
 
 const formatCurrency = (value?: number) => {
@@ -33,12 +35,15 @@ const formatCurrency = (value?: number) => {
 export const AddRevenueForm: React.FC<AddRevenueFormProps> = ({ projects, clients, invoices, initialData, onSave, onCancel }) => {
   const [formData, setFormData] = useState<NewRevenueData>(getInitialFormData(initialData));
   const [errors, setErrors] = useState<FormErrors>({});
+  const [imagePreview, setImagePreview] = useState<string[]>([]);
   
   const isInvoiceLinked = !!formData.invoiceId;
 
   useEffect(() => {
     const newInitialData = getInitialFormData(initialData);
     setFormData(newInitialData);
+    setImagePreview(newInitialData.attachments || []);
+    
     if (newInitialData.invoiceId) { // If initialData has an invoiceId, trigger population
         const selectedInvoice = invoices.find(inv => inv.id === newInitialData.invoiceId);
         if (selectedInvoice) {
@@ -111,12 +116,52 @@ export const AddRevenueForm: React.FC<AddRevenueFormProps> = ({ projects, client
     }
   };
 
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    Array.from(files).forEach(file => {
+      if (file.type.startsWith('image/') && file.size <= 5 * 1024 * 1024) { // 5MB limit
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64String = reader.result as string;
+          setFormData(prev => ({
+            ...prev,
+            attachments: [...(prev.attachments || []), base64String]
+          }));
+          setImagePreview(prev => [...prev, base64String]);
+        };
+        reader.readAsDataURL(file);
+      } else if (file.size > 5 * 1024 * 1024) {
+        // Show error for large files
+        setErrors(prev => ({ 
+          ...prev, 
+          attachments: `File "${file.name}" is too large. Please use images under 5MB.` 
+        }));
+      }
+    });
+  };
+
+  const removeImage = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      attachments: prev.attachments?.filter((_, i) => i !== index) || []
+    }));
+    setImagePreview(prev => prev.filter((_, i) => i !== index));
+    // Clear any attachment errors when removing images
+    if (errors.attachments) {
+      setErrors(prev => ({ ...prev, attachments: undefined }));
+    }
+  };
+
   const formatDateForInput = (dateString?: string) => {
     if (!dateString) return '';
     try {
       const date = new Date(dateString);
       return isNaN(date.getTime()) ? '' : date.toISOString().split('T')[0];
-    } catch (e) { return ''; }
+    } catch {
+      return '';
+    }
   };
 
   const validateForm = (): boolean => {
@@ -234,6 +279,108 @@ export const AddRevenueForm: React.FC<AddRevenueFormProps> = ({ projects, client
           disabled={isInvoiceLinked}
         />
         {errors.amount && <p className="mt-1 text-xs text-red-400">{errors.amount}</p>}
+      </div>
+
+      {/* Image Upload Section */}
+      <div>
+        <label htmlFor="images" className={labelBaseStyle}>
+          🎨 Attach Images <span className="text-slate-400">(Optional - Marketing Assets, Receipts, Invoices)</span>
+        </label>
+        <div className="text-xs text-slate-400 mb-2">
+          Perfect for: Stock photos, marketing materials, campaign assets, receipts, payment confirmations
+        </div>
+        <div className="space-y-3">
+          <input
+            type="file"
+            id="images"
+            accept="image/*"
+            multiple
+            onChange={handleImageUpload}
+            className="hidden"
+          />
+          <label
+            htmlFor="images"
+            className={`${inputBaseStyle} border-2 border-dashed border-slate-500 hover:border-sky-400 cursor-pointer flex items-center justify-center text-center py-8 transition-colors group`}
+          >
+            <div className="space-y-3">
+              <div className="text-sky-400 text-3xl group-hover:scale-110 transition-transform">�️</div>
+              <div className="text-sm">
+                <span className="text-sky-300 font-medium">Click to upload marketing images</span>
+                <br />
+                <span className="text-slate-400">Stock photos, designs, receipts • PNG, JPG, JPEG (max 5MB each)</span>
+                <br />
+                <span className="text-xs text-emerald-400">✨ Perfect for tracking marketing asset purchases</span>
+              </div>
+            </div>
+          </label>
+          
+          {/* Enhanced Image Preview Grid */}
+          {(formData.attachments && formData.attachments.length > 0) && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-sky-300 font-medium">
+                  📁 Attached Files ({formData.attachments.length})
+                </span>
+                <span className="text-xs text-slate-400">
+                  Hover to remove • Click to preview
+                </span>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {formData.attachments.map((attachment, index) => (
+                  <div key={index} className="relative group">
+                    <div className="relative overflow-hidden rounded-lg border-2 border-slate-600 hover:border-sky-400 transition-colors">
+                      <img
+                        src={attachment}
+                        alt={`Marketing Asset ${index + 1}`}
+                        className="w-full h-24 object-cover transition-transform group-hover:scale-105"
+                        onClick={() => window.open(attachment, '_blank')}
+                        style={{ cursor: 'pointer' }}
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+                        <span className="text-white text-xs opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 px-2 py-1 rounded">
+                          🔍 Click to view
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeImage(index)}
+                      className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg hover:shadow-red-500/25"
+                      title="Remove image"
+                    >
+                      ✕
+                    </button>
+                    {/* Image type indicator */}
+                    <div className="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                      #{index + 1}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Quick actions for multiple images */}
+              {formData.attachments.length > 1 && (
+                <div className="flex items-center gap-2 pt-2 border-t border-slate-600">
+                  <span className="text-xs text-slate-400">Quick actions:</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData(prev => ({ ...prev, attachments: [] }));
+                      setImagePreview([]);
+                    }}
+                    className="text-xs text-red-400 hover:text-red-300 transition-colors"
+                  >
+                    🗑️ Clear all
+                  </button>
+                  <span className="text-slate-600">•</span>
+                  <span className="text-xs text-emerald-400">
+                    💡 Great for marketing campaigns!
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        {errors.attachments && <p className="mt-1 text-xs text-red-400">{errors.attachments}</p>}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
