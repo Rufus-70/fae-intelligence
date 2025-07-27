@@ -1,0 +1,36 @@
+{
+  "name": "fae-intelligence-html-blog",
+  "version": "1.0.0",
+  "description": "Static HTML blog system for Fae Intelligence",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/watch.js",
+    "serve": "npx http-server . -p 8080",
+    "dev": "npm run build && npm run serve",
+    "sync": "node scripts/sync-from-firebase.js",
+    "deploy": "npm run build && npm run upload-to-cdn"
+  },
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "markdown-it": "^14.0.0",
+    "mustache": "^4.2.0",
+    "fuse.js": "^7.0.0",
+    "cssnano": "^6.0.3",
+    "html-minifier-terser": "^7.2.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "chokidar": "^3.5.3",
+    "terser": "^5.26.0"
+  },
+  "keywords": [
+    "blog",
+    "static",
+    "html",
+    "firebase",
+    "fae-intelligence"
+  ],
+  "author": "Fae Intelligence",
+  "license": "MIT"
+}

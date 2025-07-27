@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Fae Intelligence Blog</title>
+    <description>AI and automation insights for modern businesses</description>
+    <link>https://yourdomain.com/blog</link>
+    <lastBuildDate>Sun, 27 Jul 2025 08:35:25 GMT</lastBuildDate>
+    
+    <item>
+      <title>Getting Started with AI Automation</title>
+      <description>Learn the fundamentals of implementing AI automation in your business processes.</description>
+      <link>https://yourdomain.com/post/getting-started-ai-automation</link>
+      <guid>https://yourdomain.com/post/getting-started-ai-automation</guid>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>5 AI Tools Every Small Business Needs</title>
+      <description>Discover cost-effective AI solutions that can transform your small business operations.</description>
+      <link>https://yourdomain.com/post/5-ai-tools-small-business-needs</link>
+      <guid>https://yourdomain.com/post/5-ai-tools-small-business-needs</guid>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
