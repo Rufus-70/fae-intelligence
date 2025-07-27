@@ -262,6 +262,92 @@ launch_all() {
     echo -e "\n${GREEN}🎉 Full development stack launched!${NC}\n"
 }
 
+# Function: Blog Shared Components Management
+launch_blog_components() {
+    echo -e "\n${YELLOW}📝 Blog Shared Components Manager${NC}"
+    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+    
+    while true; do
+        echo -e "${CYAN}Available Options:${NC}\n"
+        echo -e "${GREEN}1)${NC} Start Option 2: JavaScript Includes (Port 8085)"
+        echo -e "${GREEN}2)${NC} Start Option 4: Server-Side Includes (Port 8086)"
+        echo -e "${GREEN}3)${NC} View Shared Components Guide"
+        echo -e "${GREEN}4)${NC} Check Server Status"
+        echo -e "${GREEN}5)${NC} Stop All Blog Servers"
+        echo -e "${GREEN}0)${NC} Back to Main Menu"
+        echo ""
+        
+        read -p "$(echo -e "${GREEN}Enter your choice [0-5]: ${NC}")" blog_choice
+        
+        case $blog_choice in
+            1)
+                echo -e "\n${YELLOW}🚀 Starting Option 2: JavaScript Includes Blog Server...${NC}"
+                cd /home/rosie/projects/fae-intelligence/html-blog
+                gnome-terminal -- bash -c "echo 'Starting JavaScript Includes Blog Server on Port 8085...'; npx serve -p 8085 .; exec bash"
+                echo -e "${GREEN}✅ Option 2 server started in new terminal${NC}"
+                echo -e "${CYAN}📄 Access URLs:${NC}"
+                echo -e "   • Main: http://localhost:8085"
+                echo -e "   • Post 1: http://localhost:8085/post/getting-started-ai-automation/"
+                echo -e "   • Post 2: http://localhost:8085/post/5-ai-tools-small-business-needs/"
+                echo ""
+                ;;
+            2)
+                echo -e "\n${YELLOW}🚀 Starting Option 4: Server-Side Includes Blog Server...${NC}"
+                cd /home/rosie/projects/fae-intelligence/html-blog
+                gnome-terminal -- bash -c "echo 'Starting SSI Blog Server on Port 8086...'; node ssi-server.js; exec bash"
+                echo -e "${GREEN}✅ Option 4 server started in new terminal${NC}"
+                echo -e "${CYAN}📄 Access URLs:${NC}"
+                echo -e "   • Post 1: http://localhost:8086/post/getting-started-ai-automation/index-ssi.html"
+                echo -e "   • Post 2: http://localhost:8086/post/5-ai-tools-small-business-needs/index-ssi.html"
+                echo ""
+                ;;
+            3)
+                echo -e "\n${YELLOW}📖 Opening Shared Components Guide...${NC}"
+                if [ -f "/home/rosie/projects/fae-intelligence/html-blog/SHARED-COMPONENTS-GUIDE.md" ]; then
+                    xdg-open "/home/rosie/projects/fae-intelligence/html-blog/SHARED-COMPONENTS-GUIDE.md"
+                    echo -e "${GREEN}✅ Guide opened in default application${NC}"
+                else
+                    echo -e "${RED}❌ Guide not found at expected location${NC}"
+                fi
+                echo ""
+                ;;
+            4)
+                echo -e "\n${YELLOW}🔍 Checking Blog Server Status...${NC}"
+                echo -e "${CYAN}Option 2 (Port 8085):${NC}"
+                if curl -s http://localhost:8085 > /dev/null 2>&1; then
+                    echo -e "   ${GREEN}✅ JavaScript Includes server is running${NC}"
+                else
+                    echo -e "   ${RED}❌ JavaScript Includes server is not running${NC}"
+                fi
+                
+                echo -e "${CYAN}Option 4 (Port 8086):${NC}"
+                if curl -s http://localhost:8086 > /dev/null 2>&1; then
+                    echo -e "   ${GREEN}✅ Server-Side Includes server is running${NC}"
+                else
+                    echo -e "   ${RED}❌ Server-Side Includes server is not running${NC}"
+                fi
+                echo ""
+                ;;
+            5)
+                echo -e "\n${YELLOW}🛑 Stopping Blog Servers...${NC}"
+                pkill -f "serve.*8085" 2>/dev/null && echo -e "   ${GREEN}✅ Stopped JavaScript Includes server (port 8085)${NC}" || echo -e "   ${YELLOW}⚠️ No JavaScript Includes server found${NC}"
+                pkill -f "node.*ssi-server" 2>/dev/null && echo -e "   ${GREEN}✅ Stopped SSI server (port 8086)${NC}" || echo -e "   ${YELLOW}⚠️ No SSI server found${NC}"
+                echo ""
+                ;;
+            0)
+                break
+                ;;
+            *)
+                echo -e "\n${RED}❌ Invalid option. Please try again.${NC}\n"
+                ;;
+        esac
+        
+        if [ "$blog_choice" != "0" ]; then
+            read -p "$(echo -e "${BLUE}Press Enter to continue...${NC}")"
+        fi
+    done
+}
+
 # Function: Display main menu
 show_menu() {
     display_header
@@ -276,6 +362,7 @@ show_menu() {
     echo -e "${BLUE}│${NC} ${GREEN}8)${NC}  Launch Everything       ${CYAN}(Full Stack)${NC}              ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}9)${NC}  View Documentation      ${CYAN}(This Guide)${NC}              ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}10)${NC} 📥 Ingest Video Analysis ${CYAN}(Original Script)${NC}         ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}11)${NC} 📝 Blog Shared Components ${CYAN}(JS + SSI Options)${NC}        ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}0)${NC}  Exit                                              ${BLUE}│${NC}"
     echo -e "${BLUE}└────────────────────────────────────────────────────────────┘${NC}"
 }
@@ -292,6 +379,7 @@ case "$1" in
     "all") launch_all; exit 0 ;;
     "docs") show_documentation; exit 0 ;;
     "ingest"|"i") ingest_video_analysis; exit 0 ;; # Kept for direct access to original video ingest
+    "blog"|"b") launch_blog_components; exit 0 ;; # Blog Shared Components Manager
     "help"|"--help"|"-h")
         echo "Fae Intelligence Tool Hub"
         echo "Usage: fae-tools [command]"
@@ -307,6 +395,7 @@ case "$1" in
         echo "  all             - Launch everything"
         echo "  docs            - View documentation"
         echo "  ingest, i       - Ingest video analysis into knowledge graph (Original Script)"
+        echo "  blog, b         - Blog Shared Components Manager (JS + SSI options)"
         echo "  help            - Show this help"
         echo ""
         echo "Without arguments: Show interactive menu"
@@ -318,7 +407,7 @@ esac
 while true; do
     show_menu
     echo ""
-    read -p "$(echo -e "${GREEN}Enter your choice [0-10]: ${NC}")" choice
+    read -p "$(echo -e "${GREEN}Enter your choice [0-11]: ${NC}")" choice
 
     case $choice in
         1) launch_knowledge ;;
@@ -331,6 +420,7 @@ while true; do
         8) launch_all ;;
         9) show_documentation ;;
         10) ingest_video_analysis ;; # Kept for direct access to original video ingest
+        11) launch_blog_components ;; # Blog Shared Components Manager
         0)
             echo -e "\n${CYAN}👋 Thanks for using Fae Intelligence Tool Hub!${NC}\n"
             exit 0
