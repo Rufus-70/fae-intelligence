@@ -6,10 +6,14 @@ import { useAuth } from '@/components/auth/AuthProvider'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { BlogService } from '@/lib/blog'
-import { BlogPost, BlogPostFormData, BlogCategory, BlogTag } from '@/types/blog'
+import { BlogPost, BlogPostFormData, BlogCategory, BlogTag, BlogBlock } from '@/types/blog'
 import { useRouter } from 'next/navigation'
-import { Save, Eye, Globe, FileText, Tag, Folder, Upload } from 'lucide-react'
+import { Save, Eye, Globe, FileText, Tag, Folder, Upload, Edit, List } from 'lucide-react'
 import MarkdownEditor from './MarkdownEditor'
+import VisualEditor from './VisualEditor'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
 
 interface BlogPostFormProps {
   initialData?: BlogPost
@@ -23,6 +27,8 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
   const [categories, setCategories] = useState<BlogCategory[]>([])
   const [tags, setTags] = useState<BlogTag[]>([])
   const [previewMode, setPreviewMode] = useState(false)
+  const [editorMode, setEditorMode] = useState<'markdown' | 'visual'>('markdown')
+  const [blocks, setBlocks] = useState<BlogBlock[]>([])
   
   const [formData, setFormData] = useState<BlogPostFormData>({
     title: initialData?.title || '',
@@ -41,6 +47,81 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
 
   const [newTag, setNewTag] = useState('')
   const [showSEO, setShowSEO] = useState(false)
+
+  const parseMarkdownToBlocks = (markdown: string): BlogBlock[] => {
+    const processor = unified().use(remarkParse).use(remarkGfm)
+    const tree = processor.parse(markdown)
+
+    return tree.children.map((node, index) => {
+      let type: BlogBlock['type'] = 'paragraph'
+      let content = ''
+      const attributes: BlogBlock['attributes'] = {}
+
+      switch (node.type) {
+        case 'heading':
+          type = 'heading'
+          attributes.level = node.depth
+          content = node.children.map((c: any) => c.value).join('')
+          break
+        case 'list':
+          type = 'list'
+          attributes.ordered = node.ordered
+          attributes.items = node.children.map((listItem: any) =>
+            listItem.children.map((p: any) => p.children.map((t: any) => t.value).join('')).join('\n')
+          )
+          content = attributes.items.join('\n')
+          break
+        case 'code':
+          type = 'code'
+          attributes.language = node.lang || undefined
+          content = node.value
+          break
+        case 'blockquote':
+          type = 'quote'
+          content = node.children.map((p: any) => p.children.map((t: any) => t.value).join('')).join('\n')
+          break
+        default:
+          type = 'paragraph'
+          content = node.children.map((c: any) => c.value).join('')
+      }
+
+      return {
+        id: `block-${index}-${new Date().getTime()}`,
+        type,
+        content,
+        attributes
+      }
+    })
+  }
+
+  const blocksToMarkdown = (blocks: BlogBlock[]): string => {
+    return blocks.map(block => {
+      switch (block.type) {
+        case 'heading':
+          return `${'#'.repeat(block.attributes?.level || 1)} ${block.content}`
+        case 'list':
+          return block.attributes?.items?.map((item, index) =>
+            `${block.attributes?.ordered ? `${index + 1}.` : '-'} ${item}`
+          ).join('\n') || ''
+        case 'code':
+          return `\`\`\`${block.attributes?.language || ''}\n${block.content}\n\`\`\``
+        case 'quote':
+          return `> ${block.content}`
+        default:
+          return block.content
+      }
+    }).join('\n\n')
+  }
+
+  const handleToggleEditor = () => {
+    if (editorMode === 'markdown') {
+      setBlocks(parseMarkdownToBlocks(formData.content))
+      setEditorMode('visual')
+    } else {
+      setFormData(prev => ({ ...prev, content: blocksToMarkdown(blocks) }))
+      setEditorMode('markdown')
+    }
+  }
 
   useEffect(() => {
     fetchCategories()
@@ -97,6 +178,11 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
       const postData = formData.featuredImage && typeof formData.featuredImage === 'string' && formData.featuredImage.trim() !== ''
         ? { ...baseData, featuredImage: formData.featuredImage }
         : baseData
+
+      if (editorMode === 'visual') {
+        postData.contentJson = JSON.stringify(blocks)
+        postData.content = blocksToMarkdown(blocks)
+      }
 
       if (mode === 'create') {
         const postId = await BlogService.createPost(postData)
@@ -387,13 +473,40 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Content *
                   </label>
-                  <MarkdownEditor
-                    value={formData.content}
-                    onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
-                    placeholder="Write your post content in Markdown..."
-                  />
+                  <div className="flex justify-end mb-2">
+                    <Button
+                      variant="outline"
+                      onClick={handleToggleEditor}
+                    >
+                      {editorMode === 'markdown' ? (
+                        <>
+                          <List className="mr-2 h-4 w-4" />
+                          Visual Editor
+                        </>
+                      ) : (
+                        <>
+                          <Edit className="mr-2 h-4 w-4" />
+                          Markdown Editor
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  {editorMode === 'markdown' ? (
+                    <MarkdownEditor
+                      value={formData.content}
+                      onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
+                      placeholder="Write your post content in Markdown..."
+                    />
+                  ) : (
+                    <VisualEditor
+                      blocks={blocks}
+                      onChange={setBlocks}
+                    />
+                  )}
                   <p className="text-sm text-gray-500 mt-1">
-                    Use Markdown for formatting. The content will be converted to styled HTML when displayed.
+                    {editorMode === 'markdown'
+                      ? 'Use Markdown for formatting. The content will be converted to styled HTML when displayed.'
+                      : 'Drag and drop blocks to reorder them.'}
                   </p>
                 </div>
               </CardContent>

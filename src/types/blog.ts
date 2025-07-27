@@ -7,6 +7,7 @@ export interface BlogPost {
   slug: string
   excerpt: string
   content: string
+  contentJson?: string
   featuredImage?: string
   author: {
     id: string
@@ -49,6 +50,7 @@ export interface BlogPostFormData {
   title: string
   excerpt: string
   content: string
+  contentJson?: string
   featuredImage?: File | string
   category: string
   tags: string[]
@@ -77,4 +79,18 @@ export interface BlogListOptions {
   orderBy?: 'createdAt' | 'publishedAt' | 'updatedAt' | 'viewCount'
   orderDirection?: 'asc' | 'desc'
   filters?: BlogFilters
+}
+
+export interface BlogBlock {
+  id: string;
+  type: 'heading' | 'paragraph' | 'image' | 'list' | 'code' | 'quote' | 'table';
+  content: string;
+  attributes?: {
+    level?: 1 | 2 | 3 | 4 | 5 | 6;
+    src?: string;
+    alt?: string;
+    language?: string;
+    ordered?: boolean;
+    items?: string[];
+  };
 }

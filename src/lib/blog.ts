@@ -45,7 +45,8 @@ export class BlogService {
         slug: this.generateSlug(data.title),
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
-        viewCount: 0
+        viewCount: 0,
+        contentJson: data.contentJson || '[]',
       }
 
       const docRef = await addDoc(collection(db, this.POSTS_COLLECTION), postData)
@@ -59,7 +60,7 @@ export class BlogService {
   // Update an existing blog post
   static async updatePost(id: string, data: Partial<BlogPost>): Promise<void> {
     try {
-      const updateData = {
+      const updateData: Partial<BlogPost> & { updatedAt: any } = {
         ...data,
         updatedAt: serverTimestamp()
       }
@@ -67,6 +68,10 @@ export class BlogService {
       // Update slug if title changed
       if (data.title) {
         updateData.slug = this.generateSlug(data.title)
+      }
+
+      if (data.contentJson) {
+        updateData.contentJson = data.contentJson
       }
 
       await updateDoc(doc(db, this.POSTS_COLLECTION, id), updateData)

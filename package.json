@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@tailwindcss/postcss": "^4.1.10",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "firebase": "^11.9.1",
     "firebase-admin": "^13.4.0",
     "gray-matter": "^4.0.3",
@@ -27,10 +29,11 @@
     "recharts": "^2.15.3",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
     "sonner": "^2.0.5",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.10",
-    "dotenv": "^16.4.5"
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
