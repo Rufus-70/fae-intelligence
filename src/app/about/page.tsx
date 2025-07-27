@@ -43,7 +43,8 @@ export default function AboutPage() {
                   <Image
                     src={RichardSnyderImage}
                     alt="Richard Snyder - Founder of Fae Intelligence"
-                    layout="fill"
+                    fill
+                    sizes="(max-width: 768px) 128px, (max-width: 1200px) 160px, 160px"
                     className="rounded-lg shadow-md object-cover object-center"
                     unoptimized={true}
                   />

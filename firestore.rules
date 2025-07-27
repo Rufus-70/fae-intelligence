@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Blog posts - public read access, authenticated write
+    match /blog-posts/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Categories - public read access, authenticated write
+    match /categories/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Tags - public read access, authenticated write
+    match /tags/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Analyses - allow read for faes-web integration, write requires auth
+    match /analyses/{document} {
+      allow read: if true; // Allow read access for integration service
+      allow write: if request.auth != null;
+    }
+    
+    // Files - authenticated access only
+    match /files/{document} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Knowledge chunks - allow read for integration, write requires auth
+    match /knowledge-chunks/{document} {
+      allow read: if true; // Allow read access for integration service
+      allow write: if request.auth != null;
+    }
+    
+    // Users - authenticated users can read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Admin collections - authenticated access only
+    match /admin/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Business intelligence - authenticated access only
+    match /business-intelligence/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

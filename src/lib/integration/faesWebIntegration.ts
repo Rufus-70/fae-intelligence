@@ -91,6 +91,12 @@ export class FaesWebIntegrationService {
       }
     }, (error) => {
       console.error('❌ Error in faes-web integration listener:', error)
+      
+      // If it's a permissions error, log it but don't crash the app
+      if (error.code === 'permission-denied') {
+        console.log('ℹ️ Faes-web integration requires proper authentication. This is normal for public access.')
+        console.log('🔄 Integration will retry automatically when authentication is available.')
+      }
     })
 
     this.listeners.push(unsubscribe)

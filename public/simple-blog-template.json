@@ -1,0 +1,14 @@
+{
+  "title": "Your Blog Post Title Here",
+  "excerpt": "A compelling excerpt that summarizes your blog post and encourages readers to continue reading. Keep it under 160 characters for SEO.",
+  "content": "# Your Blog Post Title\n\n## Introduction\nStart with a hook that grabs your reader's attention. Explain why this topic matters to your audience.\n\n## Main Content Section 1\nBreak your content into digestible sections with clear headings. Use bullet points when appropriate:\n\n- Point 1: Specific benefit or feature\n- Point 2: Another key insight\n- Point 3: Supporting evidence or example\n\n## Main Content Section 2\nContinue with your main points. Include practical examples:\n\n```javascript\n// Code example if relevant\nconst example = 'This shows how to implement the concept';\n```\n\n> **Pro Tip:** Use callout boxes like this to highlight important information.\n\n## Conclusion\nSummarize the key takeaways and provide a clear next step for your readers.\n\n---\n\n*About the Author: [Your credentials and expertise in this topic area]*",
+  "category": "general",
+  "tags": ["blog", "content", "template"],
+  "status": "draft",
+  "featured": false,
+  "seo": {
+    "metaTitle": "Your Blog Post Title | Your Company Name",
+    "metaDescription": "Brief description of your blog post for search engines and social media previews.",
+    "focusKeyword": "your main keyword"
+  }
+}

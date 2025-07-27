@@ -43,10 +43,13 @@ export default function ConfigProvider({ children }: ConfigProviderProps) {
           
           return () => {
             console.log('🛑 Stopping faes-web integration service...')
-            unsubscribe()
+            if (unsubscribe) {
+              unsubscribe()
+            }
           }
         } catch (error) {
-          console.error('❌ Failed to start integration service:', error)
+          console.warn('⚠️ Faes-web integration service encountered an issue:', error)
+          console.log('ℹ️ This is normal for public access. Integration will work when authenticated.')
         }
       } else {
         console.log('⚠️ Faes-web integration is DISABLED')

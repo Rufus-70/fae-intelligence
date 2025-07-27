@@ -12,7 +12,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-20">
-        <Container maxWidth="2xl">
+        <Container maxWidth="7xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-6">
               Practical AI Solutions for Manufacturers
@@ -34,7 +34,7 @@ export default function HomePage() {
 
       {/* Services Overview */}
       <section className="py-16 bg-gray-50">
-        <Container maxWidth="2xl">
+        <Container maxWidth="7xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Our Expertise: AI, Made Practical
@@ -68,7 +68,7 @@ export default function HomePage() {
 
       {/* Pain Points */}
       <section className="py-16 bg-white">
-        <Container maxWidth="2xl">
+        <Container maxWidth="7xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Overcome Your Business Challenges with AI
@@ -131,6 +131,7 @@ export default function HomePage() {
                 width={400}
                 height={400}
                 className="rounded-lg shadow-md object-cover object-center"
+                style={{ width: 'auto', height: 'auto' }}
                 unoptimized={true}
               />
             </div>
@@ -140,7 +141,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-16 bg-cyan-500 text-white">
-        <Container maxWidth="2xl">
+        <Container maxWidth="7xl">
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Operations with AI?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">

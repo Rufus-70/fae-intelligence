@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/components/auth/AuthProvider'
 import { businessIntelligence, type BusinessMetrics, type ClientDataProfile } from '@/lib/faes-web/businessIntelligence'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
-import { FileText, TrendingUp, Users, Activity, Brain, AlertTriangle } from 'lucide-react'
+import { FileText, TrendingUp, Activity, Brain, AlertTriangle } from 'lucide-react'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8']
 
@@ -34,6 +34,46 @@ export default function DashboardPage() {
     console.log('📋 Dashboard: Starting to load business metrics...')
     try {
       setDashboardData(prev => ({ ...prev, loading: true, error: null }))
+      
+      // Check if faes-web integration is properly configured
+      const isConfigured = process.env.NEXT_PUBLIC_FIREBASE_API_KEY !== 'your-api-key'
+      
+      if (!isConfigured) {
+        console.log('⚠️ Dashboard: Using demo data - faes-web not configured')
+        // Provide demo/fallback data
+        const demoMetrics: BusinessMetrics = {
+          totalFiles: 42,
+          totalAnalyses: 38,
+          filesByCategory: {
+            'business_strategy': 15,
+            'financial_analysis': 12,
+            'operations': 8,
+            'marketing': 7
+          },
+          filesByDocumentType: {
+            'business_plan': 18,
+            'financial_report': 12,
+            'process_documentation': 8,
+            'market_analysis': 4
+          },
+          averageFileSize: 2048000,
+          recentActivity: [],
+          businessInsights: [
+            'Strong focus on business strategy documentation',
+            'Financial analysis capabilities are well-developed',
+            'Opportunity to improve marketing documentation',
+            'Good coverage of operational processes'
+          ]
+        }
+        
+        setDashboardData({
+          businessMetrics: demoMetrics,
+          clientProfiles: [],
+          loading: false,
+          error: null
+        })
+        return
+      }
       
       console.log('🔍 Dashboard: Calling businessIntelligence.getBusinessMetrics()')
       const metrics = await businessIntelligence.getBusinessMetrics()
@@ -99,6 +139,9 @@ export default function DashboardPage() {
 
   const { businessMetrics } = dashboardData
 
+  // Check if we're using demo data
+  const isUsingDemoData = process.env.NEXT_PUBLIC_FIREBASE_API_KEY === 'your-api-key'
+
   // Prepare chart data
   const categoryChartData = businessMetrics ? Object.entries(businessMetrics.filesByCategory).map(([name, value]) => ({
     name: name.charAt(0).toUpperCase() + name.slice(1),
@@ -115,9 +158,18 @@ export default function DashboardPage() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Business Intelligence Dashboard</h1>
             <div className="flex items-center justify-between">
-              <p className="text-gray-600">Real-time insights from faes-web data processing platform</p>
+              <p className="text-gray-600">
+                {isUsingDemoData 
+                  ? "Demo insights for development (configure faes-web for live data)" 
+                  : "Real-time insights from faes-web data processing platform"
+                }
+              </p>
               <div className="flex items-center space-x-2">
-                {businessMetrics && businessMetrics.totalFiles > 0 ? (
+                {isUsingDemoData ? (
+                  <div className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                    🎯 Demo Data ({businessMetrics?.totalFiles || 0} sample files)
+                  </div>
+                ) : businessMetrics && businessMetrics.totalFiles > 0 ? (
                   <div className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">
                     ✅ Live Data ({businessMetrics.totalFiles} files)
                   </div>

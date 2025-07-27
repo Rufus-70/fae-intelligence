@@ -1,408 +1,316 @@
-// src/app/blog/page.tsx - Updated dynamic blog listing
+// src/app/dashboard/blog/page.tsx - Blog Admin Dashboard
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Container } from '@/components/layout/Container'
+import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { BlogService } from '@/lib/blog'
-import { BlogPost, BlogCategory } from '@/types/blog'
-import { Calendar, User, ArrowRight, Search, Filter, Clock } from 'lucide-react'
+import { BlogPost } from '@/types/blog'
+import { 
+  Calendar, 
+  User, 
+  Edit, 
+  Trash2, 
+  Plus, 
+  Eye, 
+  FileText,
+  Search,
+  AlertCircle,
+  CheckCircle
+} from 'lucide-react'
 import Link from 'next/link'
 
-export default function BlogPage() {
+export default function BlogDashboard() {
   const [posts, setPosts] = useState<BlogPost[]>([])
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([])
-  const [categories, setCategories] = useState<BlogCategory[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [hasMore, setHasMore] = useState(false)
+  const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all')
 
-  useEffect(() => {
-    fetchInitialData()
-  }, [])
-
-  useEffect(() => {
-    fetchPosts()
-  }, [selectedCategory])
-
-  const fetchInitialData = async () => {
+  const fetchPosts = useCallback(async () => {
     try {
       setLoading(true)
       
-      // Fetch featured posts
-      const featured = await BlogService.getFeaturedPosts(3)
-      setFeaturedPosts(featured)
-      
-      // Fetch categories
-      const categoriesData = await BlogService.getCategories()
-      setCategories(categoriesData)
-      
-      // Fetch regular posts
-      await fetchPosts()
-      
-    } catch (error) {
-      console.error('Error fetching blog data:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const fetchPosts = async () => {
-    try {
-      const filters = selectedCategory ? { category: selectedCategory } : {}
-      
-      const result = await BlogService.getPublishedPosts({
-        limit: 12,
-        orderBy: 'publishedAt',
+      // Fetch all posts (including drafts) for admin view
+      const result = await BlogService.getPosts({ 
+        limit: 50,
+        orderBy: 'updatedAt',
         orderDirection: 'desc',
-        filters
+        filters: statusFilter !== 'all' ? { status: statusFilter } : undefined
       })
       
       setPosts(result.posts)
-      setHasMore(result.hasMore)
     } catch (error) {
       console.error('Error fetching posts:', error)
+    } finally {
+      setLoading(false)
     }
-  }
+  }, [statusFilter])
 
-  const handleSearch = async () => {
-    if (!searchTerm.trim()) {
-      fetchPosts()
-      return
-    }
+  useEffect(() => {
+    fetchPosts()
+  }, [fetchPosts])
 
+  const handleDelete = async (postId: string) => {
+    if (!confirm('Are you sure you want to delete this post?')) return
+    
     try {
-      const searchResults = await BlogService.searchPosts(searchTerm)
-      setPosts(searchResults)
-      setHasMore(false)
+      await BlogService.deletePost(postId)
+      setPosts(posts.filter(post => post.id !== postId))
     } catch (error) {
-      console.error('Error searching posts:', error)
+      console.error('Error deleting post:', error)
+      alert('Failed to delete post')
     }
   }
 
-  const formatDate = (timestamp: any) => {
+  const filteredPosts = posts.filter(post =>
+    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
+  const formatDate = (timestamp: { toDate?: () => Date } | null | undefined) => {
     if (!timestamp?.toDate) return 'Unknown date'
     return timestamp.toDate().toLocaleDateString('en-US', {
       year: 'numeric',
-      month: 'long',
+      month: 'short',
       day: 'numeric'
     })
   }
 
-  const PostCard = ({ post }: { post: BlogPost }) => (
-    <Card className="h-full hover:shadow-lg transition-shadow">
-      <CardHeader>
-        <div className="flex flex-wrap gap-2 mb-3">
-          <Badge className="bg-cyan-100 text-cyan-800">
-            {post.category}
-          </Badge>
-          {post.featured && (
-            <Badge className="bg-yellow-100 text-yellow-800">
-              Featured
-            </Badge>
-          )}
-        </div>
-        <CardTitle className="text-xl hover:text-cyan-500 transition-colors">
-          <Link href={`/blog/${post.slug}`}>
-            {post.title}
-          </Link>
-        </CardTitle>
-        <div className="flex items-center gap-4 text-sm text-gray-600">
-          <div className="flex items-center gap-1">
-            <User className="h-4 w-4" />
-            <span>{post.author.name}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Calendar className="h-4 w-4" />
-            <span>{formatDate(post.publishedAt || post.createdAt)}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Clock className="h-4 w-4" />
-            <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <p className="text-gray-700 mb-4 leading-relaxed">
-          {post.excerpt}
-        </p>
-        
-        {post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mb-4">
-            {post.tags.slice(0, 3).map(tag => (
-              <Badge key={tag} variant="secondary" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
-            {post.tags.length > 3 && (
-              <Badge variant="secondary" className="text-xs">
-                +{post.tags.length - 3} more
-              </Badge>
-            )}
-          </div>
-        )}
-        
-        <Link 
-          href={`/blog/${post.slug}`}
-          className="inline-flex items-center text-cyan-500 hover:text-cyan-600 font-semibold transition-colors"
-        >
-          Read More
-          <ArrowRight className="ml-1 h-4 w-4" />
-        </Link>
-      </CardContent>
-    </Card>
-  )
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'published': return 'bg-green-100 text-green-800'
+      case 'draft': return 'bg-yellow-100 text-yellow-800'
+      default: return 'bg-gray-100 text-gray-800'
+    }
+  }
+
+  const stats = {
+    total: posts.length,
+    published: posts.filter(p => p.status === 'published').length,
+    drafts: posts.filter(p => p.status === 'draft').length,
+    featured: posts.filter(p => p.featured).length
+  }
 
   if (loading) {
     return (
-      <Container>
-        <div className="flex items-center justify-center h-64">
+      <div className="p-6">
+        <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500"></div>
         </div>
-      </Container>
+      </div>
     )
   }
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-r from-slate-900 to-slate-700 text-white">
-        <Container>
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Practical AI Insights for Manufacturing
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Real-world strategies, actionable insights, and proven approaches to implementing 
-              AI in small and medium manufacturing businesses.
-            </p>
-          </div>
-        </Container>
-      </section>
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Blog Management</h1>
+          <p className="text-gray-600 mt-1">Create and manage your blog posts</p>
+        </div>
+        <Button asChild className="bg-cyan-600 hover:bg-cyan-700">
+          <Link href="/dashboard/blog/create">
+            <Plus className="h-4 w-4 mr-2" />
+            New Post
+          </Link>
+        </Button>
+      </div>
 
-      {/* Featured Posts */}
-      {featuredPosts.length > 0 && (
-        <section className="py-16 bg-gray-50">
-          <Container>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Featured Posts
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredPosts.map(post => (
-                <PostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
-
-      {/* Search and Filter */}
-      <section className="py-8 bg-white border-b border-gray-200">
-        <Container>
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <input
-                  type="text"
-                  placeholder="Search posts..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
-                />
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Posts</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
               </div>
-              <Button onClick={handleSearch} variant="outline">
-                Search
-              </Button>
+              <FileText className="h-8 w-8 text-gray-400" />
             </div>
-            
-            <div className="flex items-center space-x-4">
-              <Filter className="h-4 w-4 text-gray-400" />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Published</p>
+                <p className="text-2xl font-bold text-green-600">{stats.published}</p>
+              </div>
+              <CheckCircle className="h-8 w-8 text-green-400" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Drafts</p>
+                <p className="text-2xl font-bold text-yellow-600">{stats.drafts}</p>
+              </div>
+              <AlertCircle className="h-8 w-8 text-yellow-400" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Featured</p>
+                <p className="text-2xl font-bold text-cyan-600">{stats.featured}</p>
+              </div>
+              <Eye className="h-8 w-8 text-cyan-400" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filters and Search */}
+      <Card>
+        <CardContent className="p-4">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search posts..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
+              />
+            </div>
+            <div className="flex gap-2">
               <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value as 'all' | 'published' | 'draft')}
+                className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
               >
-                <option value="">All Categories</option>
-                {categories.map(category => (
-                  <option key={category.id} value={category.name}>
-                    {category.name} ({category.postCount})
-                  </option>
-                ))}
+                <option value="all">All Status</option>
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
               </select>
-              
-              {(searchTerm || selectedCategory) && (
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setSearchTerm('')
-                    setSelectedCategory('')
-                    fetchPosts()
-                  }}
-                >
-                  Clear Filters
-                </Button>
-              )}
             </div>
           </div>
-        </Container>
-      </section>
+        </CardContent>
+      </Card>
 
-      {/* Blog Posts */}
-      <section className="py-16">
-        <Container>
-          {posts.length === 0 ? (
+      {/* Posts List */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Blog Posts ({filteredPosts.length})
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {filteredPosts.length === 0 ? (
             <div className="text-center py-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">No Posts Found</h2>
-              <p className="text-gray-600 mb-6">
-                {searchTerm || selectedCategory 
-                  ? "Try adjusting your search or filter criteria."
-                  : "Check back soon for new content about practical AI in manufacturing."
-                }
+              <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No blog posts found</h3>
+              <p className="text-gray-600 mb-4">
+                {searchTerm ? 'Try adjusting your search terms.' : 'Get started by creating your first blog post.'}
               </p>
-              {(searchTerm || selectedCategory) && (
-                <Button
-                  onClick={() => {
-                    setSearchTerm('')
-                    setSelectedCategory('')
-                    fetchPosts()
-                  }}
-                >
-                  View All Posts
-                </Button>
-              )}
+              <Button asChild className="bg-cyan-600 hover:bg-cyan-700">
+                <Link href="/dashboard/blog/create">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Create First Post
+                </Link>
+              </Button>
             </div>
           ) : (
-            <>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map(post => (
-                  <PostCard key={post.id} post={post} />
-                ))}
-              </div>
-              
-              {hasMore && (
-                <div className="text-center mt-12">
-                  <Button onClick={fetchPosts} variant="outline" size="lg">
-                    Load More Posts
-                  </Button>
+            <div className="space-y-4">
+              {filteredPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-lg font-semibold text-gray-900 truncate">
+                          {post.title}
+                        </h3>
+                        <Badge className={getStatusColor(post.status)}>
+                          {post.status}
+                        </Badge>
+                        {post.featured && (
+                          <Badge variant="outline" className="text-cyan-600 border-cyan-600">
+                            Featured
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      {post.excerpt && (
+                        <p className="text-gray-600 text-sm mb-2 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      )}
+                      
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          <span>{formatDate(post.createdAt)}</span>
+                        </div>
+                        {post.author && (
+                          <div className="flex items-center gap-1">
+                            <User className="h-4 w-4" />
+                            <span>{typeof post.author === 'string' ? post.author : post.author.name}</span>
+                          </div>
+                        )}
+                        {post.category && (
+                          <Badge variant="outline" className="text-xs">
+                            {post.category}
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      {post.status === 'published' && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                        >
+                          <Link href={`/blog/${post.slug}`} target="_blank">
+                            <Eye className="h-4 w-4 mr-1" />
+                            View
+                          </Link>
+                        </Button>
+                      )}
+                      
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                      >
+                        <Link href={`/dashboard/blog/edit/${post.id}`}>
+                          <Edit className="h-4 w-4 mr-1" />
+                          Edit
+                        </Link>
+                      </Button>
+                      
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleDelete(post.id)}
+                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                      >
+                        <Trash2 className="h-4 w-4 mr-1" />
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-              )}
-            </>
-          )}
-        </Container>
-      </section>
-
-      {/* Newsletter CTA */}
-      <section className="py-16 bg-cyan-500 text-white">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">
-              Stay Updated with AI Manufacturing Insights
-            </h2>
-            <p className="text-cyan-100 mb-8">
-              Get practical tips, case studies, and actionable strategies delivered to your inbox. 
-              No hype, just real-world solutions for manufacturing professionals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-cyan-300"
-              />
-              <Button className="bg-white text-cyan-500 hover:bg-gray-100">
-                Subscribe
-              </Button>
+              ))}
             </div>
-          </div>
-        </Container>
-      </section>
-    </>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   )
 }
-
-// firestore.rules - Security Rules for Blog System
-/*
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    
-    // Users collection - for storing user roles and metadata
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-      allow read: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-    }
-    
-    // Blog posts - public read for published, admin write
-    match /blog_posts/{postId} {
-      // Anyone can read published posts
-      allow read: if resource.data.status == 'published';
-      
-      // Only authenticated admins can read all posts and write
-      allow read, write: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-      
-      // Ensure required fields on create/update
-      allow create: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' &&
-        request.resource.data.keys().hasAll(['title', 'content', 'author', 'status']) &&
-        request.resource.data.author.id == request.auth.uid;
-      
-      allow update: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' &&
-        request.resource.data.author.id == resource.data.author.id;
-    }
-    
-    // Blog categories - public read, admin write
-    match /blog_categories/{categoryId} {
-      allow read: if true;
-      allow write: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-    }
-    
-    // Blog tags - public read, admin write
-    match /blog_tags/{tagId} {
-      allow read: if true;
-      allow write: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-    }
-    
-    // File uploads for blog images
-    match /uploads/{uploadId} {
-      allow read: if true;
-      allow write: if request.auth != null && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-    }
-  }
-}
-*/
-
-// firebase/storage.rules - Storage Rules for Blog Images
-/*
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    // Blog images - public read, admin write
-    match /blog_images/{imageId} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    
-    // Featured images for blog posts
-    match /blog_featured/{imageId} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    
-    // General uploads folder
-    match /uploads/{allPaths=**} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-  }
-}
-*/

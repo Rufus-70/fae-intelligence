@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { BlogService } from '@/lib/blog'
 import { BlogPost, BlogPostFormData, BlogCategory, BlogTag } from '@/types/blog'
 import { useRouter } from 'next/navigation'
-import { Save, Eye, Globe, FileText, Image as ImageIcon, Tag, Folder } from 'lucide-react'
+import { Save, Eye, Globe, FileText, Tag, Folder, Upload } from 'lucide-react'
+import MarkdownEditor from './MarkdownEditor'
 
 interface BlogPostFormProps {
   initialData?: BlogPost
@@ -73,18 +74,29 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
     setLoading(true)
     
     try {
-      const postData = {
-        ...formData,
+      // First prepare the data with proper types
+      const baseData = {
+        title: formData.title,
+        excerpt: formData.excerpt,
+        content: formData.content,
+        category: formData.category,
+        tags: formData.tags,
+        featured: formData.featured,
+        seo: formData.seo,
         status: publishNow ? 'published' as const : formData.status,
         slug: formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
         viewCount: 0,
-        featuredImage: typeof formData.featuredImage === 'string' ? formData.featuredImage : undefined,
         author: {
           id: user.uid,
           name: user.displayName || user.email?.split('@')[0] || 'Admin',
           email: user.email || ''
         }
       }
+
+      // Only include featuredImage if it has a value (Firebase doesn't allow undefined)
+      const postData = formData.featuredImage && typeof formData.featuredImage === 'string' && formData.featuredImage.trim() !== ''
+        ? { ...baseData, featuredImage: formData.featuredImage }
+        : baseData
 
       if (mode === 'create') {
         const postId = await BlogService.createPost(postData)
@@ -136,6 +148,116 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
     return BlogService.generateSlug(title)
   }
 
+  const handleImportTemplate = async () => {
+    try {
+      const response = await fetch('/blog-content-template.json')
+      const templateData = await response.json()
+      
+      // Use the main blog post template
+      const template = templateData.blogPostTemplate
+      
+      setFormData(prev => ({
+        ...prev,
+        title: template.title,
+        excerpt: template.excerpt,
+        content: template.content,
+        category: template.category,
+        tags: template.tags,
+        status: template.status,
+        featured: template.featured,
+        seo: {
+          metaTitle: template.seo.metaTitle,
+          metaDescription: template.seo.metaDescription,
+          focusKeyword: template.seo.focusKeyword
+        }
+      }))
+      
+      alert('Template imported successfully!')
+    } catch (error) {
+      console.error('Error importing template:', error)
+      alert('Failed to import template. Make sure blog-content-template.json exists in the public folder.')
+    }
+  }
+
+  const handleImportFromFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      try {
+        let rawText = e.target?.result as string
+        
+        // Comprehensive cleanup of common formatting issues
+        // Remove markdown code block markers and language identifiers
+        rawText = rawText.replace(/^```[a-zA-Z]*\s*/gm, '').replace(/\s*```$/gm, '')
+        rawText = rawText.replace(/^~~~[a-zA-Z]*\s*/gm, '').replace(/\s*~~~$/gm, '')
+        
+        // Remove standalone language identifiers like "json" on its own line
+        rawText = rawText.replace(/^(json|JSON)\s*$/gm, '')
+        rawText = rawText.replace(/^(json|JSON)\s*\n/gm, '')
+        
+        // Remove common prefixes like "Of course.", "Here's", "Sure!", etc.
+        rawText = rawText.replace(/^(Of course[.,!]?|Here's[^{]*|Sure[.,!]?|Certainly[.,!]?)\s*/gmi, '')
+        
+        // Remove any leading text before the first { (more aggressive)
+        const firstBrace = rawText.indexOf('{')
+        if (firstBrace > 0) {
+          rawText = rawText.substring(firstBrace)
+        }
+        
+        // Remove any trailing text after the last } (more aggressive)
+        const lastBrace = rawText.lastIndexOf('}')
+        if (lastBrace >= 0) {
+          rawText = rawText.substring(0, lastBrace + 1)
+        }
+        
+        // Clean up extra whitespace and newlines
+        rawText = rawText.trim()
+        
+        // Parse the cleaned JSON
+        const jsonData = JSON.parse(rawText)
+        
+        // Support multiple JSON structures
+        const template = jsonData.blogPostTemplate || jsonData
+        
+        // Handle different field name variations
+        const content = template.content || template.content_markdown || ''
+        const category = Array.isArray(template.category) ? template.category[0].toLowerCase().replace(/\s+/g, '-') : (template.category || '')
+        const tags = Array.isArray(template.tags) ? template.tags.map((tag: string) => tag.toLowerCase().replace(/\s+/g, '-')) : (template.tags || [])
+        const featured = template.featured !== undefined ? template.featured : (template.is_featured || false)
+        
+        // Handle SEO metadata variations
+        const seoData = template.seo || template.seo_metadata || {}
+        
+        setFormData(prev => ({
+          ...prev,
+          title: template.title || '',
+          excerpt: template.excerpt || '',
+          content: content,
+          category: category,
+          tags: tags,
+          status: template.status || 'draft',
+          featured: featured,
+          seo: {
+            metaTitle: seoData.metaTitle || seoData.meta_title || '',
+            metaDescription: seoData.metaDescription || seoData.meta_description || '',
+            focusKeyword: seoData.focusKeyword || seoData.focus_keyword || ''
+          }
+        }))
+        
+        alert('JSON data imported successfully!')
+      } catch (error) {
+        console.error('Error parsing JSON:', error)
+        alert('Invalid JSON file. Please check the file format.')
+      }
+    }
+    reader.readAsText(file)
+    
+    // Reset input
+    event.target.value = ''
+  }
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
@@ -157,6 +279,38 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
             <Eye className="mr-2 h-4 w-4" />
             {previewMode ? 'Edit' : 'Preview'}
           </Button>
+          
+          {mode === 'create' && (
+            <>
+              <Button
+                variant="outline"
+                onClick={handleImportTemplate}
+                disabled={loading}
+              >
+                <Upload className="mr-2 h-4 w-4" />
+                Import Template
+              </Button>
+              
+              <label className="inline-flex">
+                <Button
+                  variant="outline"
+                  disabled={loading}
+                  asChild
+                >
+                  <span>
+                    <Upload className="mr-2 h-4 w-4" />
+                    Import JSON
+                  </span>
+                </Button>
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={handleImportFromFile}
+                  className="hidden"
+                />
+              </label>
+            </>
+          )}
           
           <Button
             variant="outline"
@@ -233,16 +387,13 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Content *
                   </label>
-                  <textarea
+                  <MarkdownEditor
                     value={formData.content}
-                    onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                    placeholder="Write your post content here... (Supports HTML)"
-                    rows={20}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 font-mono text-sm"
-                    required
+                    onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
+                    placeholder="Write your post content in Markdown..."
                   />
                   <p className="text-sm text-gray-500 mt-1">
-                    You can use HTML tags for formatting. For a rich editor, consider integrating a WYSIWYG editor.
+                    Use Markdown for formatting. The content will be converted to styled HTML when displayed.
                   </p>
                 </div>
               </CardContent>

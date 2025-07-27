@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
+import ConditionalLayout from '@/components/layout/ConditionalLayout'
 import { AuthProvider } from '@/components/auth/AuthProvider'
 import ConfigProvider from '@/components/providers/ConfigProvider'
 
@@ -28,11 +27,9 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans`}>
         <ConfigProvider>
           <AuthProvider>
-            <Header />
-            <main className="min-h-screen">
+            <ConditionalLayout>
               {children}
-            </main>
-            <Footer />
+            </ConditionalLayout>
           </AuthProvider>
         </ConfigProvider>
       </body>
