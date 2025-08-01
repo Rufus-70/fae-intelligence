@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
 
 interface BlogPostClientProps {
   slug: string
@@ -64,24 +65,6 @@ export function BlogPostClient({ slug }: BlogPostClientProps) {
       month: 'long',
       day: 'numeric'
     })
-  }
-
-  // Simple markdown to HTML converter
-  const markdownToHtml = (markdown: string) => {
-    return markdown
-      // Headers
-      .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-semibold mb-4 mt-8 text-gray-900">$1</h3>')
-      .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold mb-6 mt-10 text-gray-900">$1</h2>')
-      .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold mb-8 mt-12 text-gray-900">$1</h1>')
-      // Bold and Italic
-      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-      // Code
-      .replace(/`(.*?)`/g, '<code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">$1</code>')
-      // Links
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-cyan-600 hover:text-cyan-800 underline">$1</a>')
-      // Line breaks
-      .replace(/\n/g, '<br>')
   }
 
   if (loading) {
@@ -219,12 +202,22 @@ export function BlogPostClient({ slug }: BlogPostClientProps) {
 
             {/* Content */}
             <div className="prose prose-lg max-w-none">
-              <div 
-                className="text-gray-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ 
-                  __html: markdownToHtml(post.content)
+              <ReactMarkdown
+                components={{
+                  h1: ({node, ...props}) => <h1 className="text-4xl font-bold mb-8 mt-12 text-gray-900" {...props} />,
+                  h2: ({node, ...props}) => <h2 className="text-3xl font-bold mb-6 mt-10 text-gray-900" {...props} />,
+                  h3: ({node, ...props}) => <h3 className="text-2xl font-semibold mb-4 mt-8 text-gray-900" {...props} />,
+                  p: ({node, ...props}) => <p className="text-gray-700 leading-relaxed" {...props} />,
+                  a: ({node, ...props}) => <a className="text-cyan-600 hover:text-cyan-800 underline" {...props} />,
+                  blockquote: ({ node, children, ...props }) => (
+                    <blockquote className="border-l-4 pl-4 py-2 my-6 border-gray-300 bg-gray-50 text-gray-600">
+                      {children}
+                    </blockquote>
+                  ),
                 }}
-              />
+              >
+                {post.content}
+              </ReactMarkdown>
             </div>
           </article>
         </Container>
