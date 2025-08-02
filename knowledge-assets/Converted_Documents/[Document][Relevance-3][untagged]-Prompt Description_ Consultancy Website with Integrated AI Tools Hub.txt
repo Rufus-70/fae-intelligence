@@ -1,0 +1,96 @@
+Prompt Description for "Fae Intelligence" Consultancy Website (with Integrated AI Tools Hub)
+Overall Objective: Generate the HTML, CSS (using Tailwind CSS), and JavaScript for a multi-page, visually stunning, and modern consultancy website for "Fae Intelligence." The website will showcase your passion, services, and expertise, and will include a dedicated "AI Tools Hub" page. The design should evoke "magical intelligence" – sophisticated, insightful, and professional.
+Core Website Structure & Pages:
+Homepage (Landing Page):
+Theme: "Igniting Potential: [Your Passion/Core Belief for Fae Intelligence]" & "The Urgency of Now: Why Intelligent Solutions Matter More Than Ever."
+Objective: Instantly capture attention, convey the core passion behind Fae Intelligence, and create a sense of urgency/importance around your offerings.
+Content & Features:
+Hero Section:
+Compelling Headline: Reflecting Fae Intelligence's mission (e.g., "Fae Intelligence: Weaving Insight into Innovation," "Unlocking Extraordinary Potential with Intelligent Solutions").
+Urgency Sub-headline: Impactful message (e.g., "In a world of accelerating change, intelligent adaptation isn't just an option—it's the imperative.").
+Visual: Striking, high-quality, professional image or abstract animation evoking AI, "magical intelligence," or profound insight (e.g., stylized neural network, beautifully rendered abstract data visualization, subtle animation of light particles forming intelligent patterns).
+Primary Call to Action (CTA): Clear and inviting (e.g., "Explore Our Solutions," "Discover Fae Intelligence," "Begin Your Transformation").
+"Our Passion" Snippet: Concise, heartfelt paragraphs on what drives Fae Intelligence, its core beliefs, and the impact it aims to make.
+"The Imperative" Section: Expand on the urgency message. Why is Fae Intelligence critical for clients now?
+Teasers: Visual cues or short text links guiding users to "Services," "AI Tools Hub," and "About Us."
+Services Page:
+Theme: "Tailored Intelligent Solutions, Tangible Results."
+Objective: Clearly articulate the consultancy services offered by Fae Intelligence, their benefits, and how they address client needs.
+Content & Features:
+Introductory Overview: Briefly state the range of services and Fae Intelligence's unique approach.
+Individual Service Blocks: For each distinct service (e.g., "AI Strategy Consulting," "Intelligent Automation," "Advanced Data Analytics"):
+Clear Service Title.
+Detailed Description: What the service entails, methodology, problems solved.
+Key Benefits/Value Proposition (bullet points).
+Relevant AI-themed icon/visual.
+Call to Action: (e.g., "Request a Consultation," "Discuss Your Project").
+A clear link/CTA to the "AI Tools Hub" page, positioning it as a resource or extension of services.
+AI Tools Hub Page: (This integrates the previous "tools_hub_prompt_desc")
+Theme: "Your Gateway to Advanced AI Tools & Resources by Fae Intelligence."
+Objective: Serve as a central directory, linking to various AI-related tools and resources developed or curated by Fae Intelligence, including the "Prompt Engineering Training."
+Content & Features:
+Hero/Header Section for this Page:
+Headline: (e.g., "Fae Intelligence: AI Tools & Training," "Unlock AI Potential: Resources & Applications").
+Sub-headline: Briefly explain the purpose of this hub.
+Visual: Consistent with the overall site's AI theme.
+(Optional) Introduction/Welcome Text: Brief paragraph explaining the value of the tools.
+Tools Grid/List Section:
+Layout: Responsive grid (2-3 columns on desktop, 1 on mobile).
+Each Tool Entry (Card/Item):
+Tool Name/Title (e.g., "Prompt Engineering Masterclass," "Fae Data Analysis Bot").
+Icon/Thumbnail (AI-themed, professional).
+Short Description (1-2 sentences).
+Link/Button ("Learn More," "Access Tool," "View Training") linking to the respective tool's page (e.g., prompt_engineering_website_v1.html for the training, or other dedicated pages/external links).
+Include "Prompt Engineering Training" as a key entry.
+Include placeholders for 2-3 other tools.
+(Optional) "Why These Tools?" Section: Highlight the Fae Intelligence philosophy behind these tools.
+About Us Page:
+Theme: "The Minds Behind Fae Intelligence: Our Journey & Expertise."
+Objective: Build trust and connection by sharing Fae Intelligence's story, team expertise (if applicable, or your individual expertise), and values.
+Content & Features:
+Company/Founder Bio: Background, key experience, achievements.
+Our Philosophy/Approach: Core values, work ethic, unique approach.
+(Optional) Team Section: If applicable, with professional photos and brief bios. If solo, focus on your expertise.
+(Optional) Skills/Expertise Highlights.
+Contact Page:
+Theme: "Connect with Fae Intelligence."
+Objective: Provide clear and easy ways for potential clients to get in touch.
+Content & Features:
+Contact Form.
+Direct Email Address.
+(Optional) Phone Number, Physical Address (if applicable).
+(Optional) Map integration.
+Shared Elements Across Pages:
+Header/Navigation Bar:
+Fae Intelligence Logo.
+Links to: Home, Services, AI Tools Hub, About Us, Contact.
+Sticky/Fixed header for easy navigation.
+Footer:
+Copyright Fae Intelligence & Current Year.
+(Optional) Links to Privacy Policy, Terms of Service.
+(Optional) Social media icons.
+Design & Styling (Tailwind CSS):
+Overall Feel: Modern, sophisticated, clean, innovative, trustworthy. The "magical intelligence" theme should be subtly woven in through abstract visuals, elegant animations, or a sense of depth and insight.
+Color Palette: Deep, rich colors (e.g., midnight blue, deep teal, amethyst purple) accented with metallics (silver, subtle gold) or a bright, intelligent highlight color (e.g., electric blue, vibrant magenta). High contrast for accessibility.
+Typography: Elegant, modern sans-serif fonts (e.g., Inter, Montserrat) for body. Distinctive yet readable display font for main headlines.
+Imagery: High-quality, professional, abstract representations of AI, neural networks, data flows, constellations, light patterns. No clichés. Use https://placehold.co/ for placeholders, specifying desired image type in text (e.g., ?text=Abstract+AI+Data+Flow+Purple).
+Interactivity: Subtle hover effects, smooth page transitions or scrolling.
+Responsiveness: Flawless on all devices.
+Technical Requirements:
+Multi-page HTML website (separate HTML files for each page OR a single-page application structure if explicitly preferred for smoother transitions, though separate files are simpler to start with for distinct pages).
+Tailwind CSS for all styling (via CDN).
+JavaScript for navigation, dynamic elements, smooth scrolling, form handling (basic).
+Well-commented code.
+Valid HTML and CSS.
+Consistent header and footer across all pages.
+Prompt Structure Suggestion for AI:
+"Act as an expert full-stack web developer. Create a multi-page consultancy website for 'Fae Intelligence' using HTML, Tailwind CSS, and JavaScript. The site must have a modern, sophisticated, and professional design, with visuals evoking 'magical intelligence' and AI. All images should be placeholders from https://placehold.co/ with descriptive text.
+The website will include the following pages, all sharing a common header (with logo and navigation) and footer:
+Homepage: Hero section with headline 'Fae Intelligence: Weaving Insight into Innovation,' sub-headline on urgency, AI-themed visual, and CTA. Sections for 'Our Passion' and 'The Imperative.' Teasers to other pages.
+Services Page: Overview of consultancy services, individual service blocks with titles, descriptions, benefits, and icons. Link to the 'AI Tools Hub.'
+AI Tools Hub Page: Headline 'Fae Intelligence: AI Tools & Training.' A grid of tool cards, each with an icon, title, description, and link. Include 'Prompt Engineering Masterclass' (linking to prompt_engineering_website_v1.html or placeholder) and 2-3 other placeholder tools like 'Fae Data Analyzer.'
+About Us Page: Company/Founder bio, philosophy, and expertise.
+Contact Page: Contact form and other contact details.
+Shared Navigation: Home, Services, AI Tools Hub, About Us, Contact.
+Shared Footer: Copyright Fae Intelligence & [Current Year].
+Use a color palette of deep amethyst purple, silver, and dark grays. Ensure full responsiveness and well-commented code."

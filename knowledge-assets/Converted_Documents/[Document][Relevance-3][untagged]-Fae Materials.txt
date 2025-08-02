@@ -1,0 +1,92 @@
+Search Areas
+Areas yet to search
+Genspark
+Gemini
+Perplexity
+Claude
+AI Studio
+
+Training links
+Local LLM Installation & MCP System Integration Guide 
+https://www.genspark.ai/agents?id=d58c47f3-74cc-4a4b-9024-0bb5dd648309
+file:///home/rosie/projects/fae-intelligence/src/app/resources/development-tools/llm-host/page.html
+
+MCP & Docker Desktop System Access Training Guide
+https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/toolu_01MsiF1xP16JtSAVmDjHWLrC/mcp_docker_training_guide.html
+
+AI with Lucidchart
+https://www.genspark.ai/agents?id=2a83cc40-d44c-4397-8a41-d2bcbbc7a2c4
+
+Claude Training
+https://www.genspark.ai/agents?id=456d92f6-d306-4129-80a5-2e5a8bbb67b9
+
+Implementing Best and Affordable AI Coding Assistance for Firebase Development
+https://www.genspark.ai/agents?id=a9976ce5-232f-49ab-b499-599d73bf74ed
+https://www.genspark.ai/agents?id=15b1d96f-5fe8-4b99-8669-9e96cfedd12f
+
+Using Perplexity Spaces and Gemini Gems as Project Hubs
+https://qbhmxamv.gensparkspace.com/#
+
+Engineering Alignment of Context, Prompt, and Model
+https://tbeclekg.gensparkspace.com/
+
+Top 20 AI Tools Under $20/Month
+https://vyrlyfnm.gensparkspace.com/
+
+Using Claude and ChatGPT for Projects
+https://jppampsq.gensparkspace.com/
+
+Utilizing Notebook LM
+https://jytqzykt.gensparkspace.com/
+
+Understanding Perplexity Spaces and Gemini Gems
+https://xzkesftp.gensparkspace.com/
+
+Jetson AI IMPLEMENTATION Guide (research paper and html)
+https://gemini.google.com/app/f22bf5c8a6d014a3
+
+https://docs.google.com/document/d/1LY7l0WJUVMIw3kYCMe8Z0S0MII9Hg3k7QX5kglYMgUc/edit?usp=sharing
+
+
+Firebase Training and all others critical info - HTML Page
+https://www.genspark.ai/agents?id=21ac3434-8f3c-4392-8548-0fbb7bb1a4da
+https://www.genspark.ai/agents?id=bc7c5caf-d0e5-44c4-a69f-38c3c7f2b3c1
+
+Instructor Training Plan: Mastering Your AI Assistant Claude Workshop
+https://www.genspark.ai/agents?id=456d92f6-d306-4129-80a5-2e5a8bbb67b9
+
+
+WebSites
+Initial Web Site Draft from Genspark
+/home/rosie/Documents/Tools/QMS Support AI Services Web Page.html
+
+
+Tools
+Ai Assessment
+
+
+
+Interactive AI Solopreneur Blueprint
+https://gemini.google.com/app/2c2a90ae01c703cd
+/home/rosie/Documents/Tools/Solopreneur_Blueprint.html
+https://docs.google.com/document/d/18_iLpWfR-I_AFuujNsO2WOnVrB8nrsy_J8UzzRbx8t8/edit?usp=sharing
+
+AI Automation Playbook
+
+
+AI-Powered CAPA/8D Report Generator
+https://www.genspark.ai/agents?id=b9862ac2-3329-423a-aaa1-e3ccda7ae391
+
+Blog Writer
+https://gemini.google.com/gem/e7b71e94982b
+
+Business Automation with n8n and Local AI
+
+
+AI Assessment
+https://docs.google.com/document/d/1dYuSybiNEygS3UR8v2r7KuRcziXFW0-AfgUS-b7VKeo/edit?usp=sharing
+Walkthrough tool- https://gemini.google.com/app/a5dd3bdf50a4613f
+
+RFS Orchestrating Intelligence
+https://gemini.google.com/app/c22ada124a193ed9
+

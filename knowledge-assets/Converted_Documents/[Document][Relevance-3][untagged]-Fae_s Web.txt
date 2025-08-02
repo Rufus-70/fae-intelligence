@@ -1,0 +1,42 @@
+start Up
+Navigate to your project's root directory (if you're not already there):
+
+ cd /home/rosie/projects/faes-web
+
+Navigate into the functions subdirectory:
+
+ cd functions
+
+Create a Python virtual environment named venv (if it doesn't exist or if you want to refresh it, you can remove an old one first with rm -rf venv):
+
+ python3 -m venv venv
+ (Use python3.13 if that's your specific Python version for this project)
+
+Activate this virtual environment:
+
+ source venv/bin/activate
+ Your terminal prompt should change to indicate (venv).
+
+Upgrade pip within this active virtual environment:
+
+ python3 -m pip install --upgrade pip
+ (Use python3.13 if consistent)
+
+Install the Python dependencies required by your functions:
+
+ python3 -m pip install -r requirements.txt
+ (Use python3.13 if consistent)
+
+Deactivate the functions-specific virtual environment:
+
+ deactivate
+
+Navigate back to your project's root directory:
+
+ cd ..
+
+Now, from the project root directory (/home/rosie/projects/faes-web/), start all necessary Firebase emulators:
+
+
+ firebase emulators:start --only auth,firestore,storage,functions
+
