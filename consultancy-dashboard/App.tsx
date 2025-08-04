@@ -1,7 +1,7 @@
 
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { BlueprintView } from './components/BlueprintView';
-import { blueprintData as initialBlueprintData, dummyProjects, dummyTasks, dummyExpenses, dummyRevenueItems, dummyInvoices, dummyDeals } from './constants'; // Removed dummyClients, Added dummyDeals
+import { blueprintData as initialBlueprintData, dummyProjects, dummyTasks, dummyExpenses, dummyRevenueItems, dummyInvoices, dummyDeals } from './constants';
 import { MonitoringSection } from './components/MonitoringSection';
 import { Sidebar } from './components/Sidebar';
 import { 
@@ -72,19 +72,82 @@ const viewConfigurations: Record<ViewName, ViewConfig> = {
       { id: 'revenue', label: 'Revenue', icon: '📈' },
       { id: 'expenses', label: 'Expenses', icon: '💸' }
     ]
+  },
+  blog: {
+    label: "Blog Editor",
+    icon: '📝',
+    defaultSubViewId: 'editor',
+    subViews: [
+      { id: 'editor', label: 'Visual Editor', icon: '🎨' },
+      { id: 'posts', label: 'All Posts', icon: '📚' },
+      { id: 'settings', label: 'Settings', icon: '⚙️' }
+    ]
   }
 };
 
+// Notion Integration Function
+const createNotionExpensePage = async (expense: Expense) => {
+  try {
+    // For now, we'll use a simple webhook approach or direct API call
+    // This would integrate with Notion API to create a new expense page
+    const notionData = {
+      parent: { database_id: process.env.REACT_APP_NOTION_EXPENSES_DB_ID || 'your-expenses-db-id' },
+      properties: {
+        'Name': {
+          title: [{ text: { content: `${expense.description} - $${expense.amount}` } }]
+        },
+        'Category': {
+          select: { name: expense.category }
+        },
+        'Amount': {
+          number: expense.amount
+        },
+        'Date': {
+          date: { start: expense.date.split('T')[0] }
+        },
+        'Project': {
+          rich_text: [{ text: { content: expense.projectName || 'No Project' } }]
+        },
+        'Description': {
+          rich_text: [{ text: { content: expense.description } }]
+        }
+      }
+    };
+
+    // For development - log what would be sent to Notion
+    console.log('Creating Notion expense page:', notionData);
+    
+    // Notion API integration enabled
+    const response = await fetch('https://api.notion.com/v1/pages', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_NOTION_API_KEY}`,
+        'Content-Type': 'application/json',
+        'Notion-Version': '2022-06-28'
+      },
+      body: JSON.stringify(notionData)
+    });
+    
+    if (response.ok) {
+      const result = await response.json();
+      console.log('✅ Notion expense page created:', result.url);
+    } else {
+      console.error('❌ Notion API error:', await response.text());
+    }
+  } catch (error) {
+    console.error('Error creating Notion expense page:', error);
+  }
+};
 
 const App: React.FC = () => {
   const [currentBlueprintData, setCurrentBlueprintData] = useState<BlueprintData>(initialBlueprintData);
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [projects, setProjects] = useState<Project[]>(dummyProjects);
+  const [tasks, setTasks] = useState<Task[]>(dummyTasks);
   const [clients, setClients] = useState<Client[]>([]); 
-  const [expenses, setExpenses] = useState<Expense[]>([]);
-  const [revenueItems, setRevenueItems] = useState<RevenueItem[]>([]);
-  const [invoices, setInvoices] = useState<Invoice[]>([]);
-  const [deals, setDeals] = useState<Deal[]>([]); 
+  const [expenses, setExpenses] = useState<Expense[]>(dummyExpenses);
+  const [revenueItems, setRevenueItems] = useState<RevenueItem[]>(dummyRevenueItems);
+  const [invoices, setInvoices] = useState<Invoice[]>(dummyInvoices);
+  const [deals, setDeals] = useState<Deal[]>(dummyDeals); 
 
   // Fetch data from backend on component mount
   useEffect(() => {
@@ -401,45 +464,44 @@ const App: React.FC = () => {
 
   const handleSaveExpense = useCallback(async (expenseData: NewExpenseData, idToUpdate?: string) => {
     try {
-      let response;
       if (idToUpdate) {
-        response = await fetch(`http://localhost:3001/api/expenses/${idToUpdate}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(expenseData),
-        });
+        // Update existing expense
+        setExpenses(prev => 
+          prev.map(exp => exp.id === idToUpdate ? {
+            ...exp,
+            date: expenseData.date,
+            category: expenseData.category,
+            description: expenseData.description,
+            amount: expenseData.amount,
+            projectId: expenseData.projectId,
+            projectName: expenseData.projectId ? projects.find(p => p.id === expenseData.projectId)?.projectName : undefined,
+            receiptUrl: expenseData.receiptUrl
+          } : exp)
+        );
       } else {
-        response = await fetch('http://localhost:3001/api/expenses', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(expenseData),
-        });
+        // Create new expense
+        const newExpense: Expense = {
+          id: `exp_${Date.now()}`,
+          date: expenseData.date,
+          category: expenseData.category,
+          description: expenseData.description,
+          amount: expenseData.amount,
+          projectId: expenseData.projectId,
+          projectName: expenseData.projectId ? projects.find(p => p.id === expenseData.projectId)?.projectName : undefined,
+          receiptUrl: expenseData.receiptUrl
+        };
+        setExpenses(prev => [newExpense, ...prev].sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+        
+        // Notion Integration - Create expense page
+        await createNotionExpensePage(newExpense);
       }
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const savedExpense = await response.json();
-      setExpenses(prev => {
-        if (idToUpdate) {
-          return prev.map(exp => exp.id === idToUpdate ? { ...exp, ...savedExpense } : exp);
-        } else {
-          return [savedExpense, ...prev].sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        }
-      });
     } catch (error) {
       console.error("Error saving expense:", error);
     }
-  }, []);
+  }, [projects]);
 
   const handleDeleteExpense = useCallback(async (expenseId: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/expenses/${expenseId}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
       setExpenses(prev => prev.filter(exp => exp.id !== expenseId));
     } catch (error) {
       console.error("Error deleting expense:", error);

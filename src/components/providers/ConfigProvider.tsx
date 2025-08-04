@@ -1,61 +1,64 @@
 'use client'
-// src/components/providers/ConfigProvider.tsx
-// Configuration provider for proper initialization
 
-import { useEffect } from 'react'
-import config, { validateConfig } from '@/lib/config'
-import { FaesWebIntegrationService } from '@/lib/integration/faesWebIntegration'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { appConfig, validateConfig } from '@/lib/config'
 
-interface ConfigProviderProps {
-  children: React.ReactNode
+// Fixed interface that matches our config structure
+interface ConfigContextType {
+  isDemoMode: boolean
+  enableFaesWebIntegration: boolean
+  enableRealTimeData: boolean
+  contentWorkflow: string
+  primaryBlogSystem: string
 }
 
-export default function ConfigProvider({ children }: ConfigProviderProps) {
+const ConfigContext = createContext<ConfigContextType | undefined>(undefined)
+
+export default function ConfigProvider({ children }: { children: React.ReactNode }) {
+  console.log('🔍 ConfigProvider starting...')
+  
   useEffect(() => {
-    console.log('🔍 ConfigProvider starting...')
-    
-    const warnings = validateConfig()
-    if (warnings.length > 0) {
-      console.warn('Configuration warnings:', warnings)
+    // Use our corrected config structure
+    const configValidation = validateConfig()
+    if (!configValidation) {
+      console.warn('Configuration warnings:', appConfig.environment)
     }
     
     console.log('🔧 Config values:')
-    console.log('- isDemoMode:', config.isDemoMode)
-    console.log('- enableFaesWebIntegration:', config.enableFaesWebIntegration)
+    console.log('- isDemoMode:', appConfig.demoMode)
+    console.log('- enableFaesWebIntegration:', appConfig.enableFaesWebIntegration)
+    console.log('- enableRealTimeData:', appConfig.enableRealTimeData)
     
-    if (config.isDemoMode) {
+    // Simple mode detection
+    if (appConfig.demoMode) {
       console.log('🎭 Running in DEMO MODE')
-      console.log('- Firebase integration: DISABLED')
-      console.log('- Business intelligence: DEMO DATA')
-      console.log('- Blog posts: DEMO DATA')
     } else {
       console.log('🔥 Running in PRODUCTION MODE')
-      console.log('- Firebase integration:', config.enableFaesWebIntegration ? 'ENABLED' : 'DISABLED')
-      console.log('- Business intelligence:', config.businessIntelligence.enableRealTimeData ? 'LIVE DATA' : 'DEMO DATA')
-      console.log('- Blog posts:', config.blog.enableFirestore ? 'FIRESTORE' : 'DEMO DATA')
-      
-      // Start faes-web integration service if enabled
-      if (config.enableFaesWebIntegration) {
-        console.log('🔗 Starting faes-web integration service...')
-        try {
-          const unsubscribe = FaesWebIntegrationService.startKnowledgeProcessingListener()
-          console.log('✅ Integration service started successfully')
-          
-          return () => {
-            console.log('🛑 Stopping faes-web integration service...')
-            if (unsubscribe) {
-              unsubscribe()
-            }
-          }
-        } catch (error) {
-          console.warn('⚠️ Faes-web integration service encountered an issue:', error)
-          console.log('ℹ️ This is normal for public access. Integration will work when authenticated.')
-        }
-      } else {
-        console.log('⚠️ Faes-web integration is DISABLED')
-      }
+      console.log('- Firebase integration:', appConfig.enableFaesWebIntegration ? 'ENABLED' : 'DISABLED')
+      console.log('- Real-time data:', appConfig.enableRealTimeData ? 'ENABLED' : 'DISABLED')
     }
   }, [])
 
-  return <>{children}</>
+  // Provide the config values directly from our appConfig
+  const configValue: ConfigContextType = {
+    isDemoMode: appConfig.demoMode,
+    enableFaesWebIntegration: appConfig.enableFaesWebIntegration,
+    enableRealTimeData: appConfig.enableRealTimeData,
+    contentWorkflow: appConfig.contentWorkflow,
+    primaryBlogSystem: appConfig.primaryBlogSystem
+  }
+
+  return (
+    <ConfigContext.Provider value={configValue}>
+      {children}
+    </ConfigContext.Provider>
+  )
+}
+
+export function useConfig() {
+  const context = useContext(ConfigContext)
+  if (context === undefined) {
+    throw new Error('useConfig must be used within a ConfigProvider')
+  }
+  return context
 }

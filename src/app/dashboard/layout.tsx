@@ -1,4 +1,4 @@
-import ProtectedRoute from '@/components/admin/ProtectedRoute'
+import { AuthProvider } from '@/components/auth/AuthProvider'
 import AdminLayout from '@/components/admin/AdminLayout'
 
 export default function DashboardLayout({
@@ -7,10 +7,10 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <ProtectedRoute requiredRole="admin">
+    <AuthProvider>
       <AdminLayout>
         {children}
       </AdminLayout>
-    </ProtectedRoute>
+    </AuthProvider>
   )
 }

@@ -1,0 +1,456 @@
+
+> fae-intelligence@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.3.3
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.233:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.9s
+ ○ Compiling / ...
+ ✓ Compiled / in 10.1s (1071 modules)
+ GET / 200 in 11302ms
+ ✓ Compiled in 1279ms (386 modules)
+ ✓ Compiled in 569ms (386 modules)
+ ✓ Compiled in 523ms (386 modules)
+ ✓ Compiled in 709ms (386 modules)
+ ✓ Compiled in 606ms (386 modules)
+ ✓ Compiled in 773ms (386 modules)
+ ✓ Compiled in 1048ms (386 modules)
+ ✓ Compiled in 1383ms (386 modules)
+ ✓ Compiled in 1343ms (386 modules)
+ ✓ Compiled in 369ms (386 modules)
+ ✓ Compiled in 518ms (386 modules)
+ ✓ Compiled in 360ms (386 modules)
+ GET / 200 in 417ms
+ ○ Compiling /_error ...
+ ✓ Compiled /dashboard in 15.9s (2500 modules)
+ GET /dashboard/ 200 in 13615ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 18719ms
+ GET /dashboard/ 200 in 146ms
+ GET /dashboard/ 200 in 147ms
+ GET /dashboard/ 200 in 131ms
+ GET /dashboard/ 200 in 160ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 222ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 276ms
+ ✓ Compiled in 561ms (1176 modules)
+ GET /dashboard/ 200 in 45ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 256ms
+ ○ Compiling /dashboard/blog ...
+ ✓ Compiled /dashboard/blog in 1714ms (2517 modules)
+ GET /dashboard/blog/ 200 in 1960ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 242ms
+ ✓ Compiled in 481ms (1190 modules)
+ GET /dashboard/blog/ 200 in 64ms
+ ✓ Compiled in 712ms (1190 modules)
+ GET /dashboard/blog/ 200 in 32ms
+ ✓ Compiled in 607ms (1190 modules)
+ GET /dashboard/blog/ 200 in 57ms
+ ✓ Compiled in 425ms (1190 modules)
+ GET /dashboard/blog/ 200 in 37ms
+ ✓ Compiled in 714ms (1190 modules)
+ GET /dashboard/blog/ 200 in 55ms
+ ✓ Compiled in 591ms (1190 modules)
+ GET /dashboard/blog/ 200 in 164ms
+ ✓ Compiled in 968ms (1189 modules)
+ GET /dashboard/blog/ 200 in 112ms
+ ✓ Compiled in 597ms (1189 modules)
+ GET /dashboard/blog/ 200 in 53ms
+ ✓ Compiled in 587ms (1189 modules)
+ GET /dashboard/blog/ 200 in 87ms
+ ✓ Compiled in 839ms (1189 modules)
+ GET /dashboard/blog/ 200 in 115ms
+ ✓ Compiled in 848ms (1189 modules)
+ GET /dashboard/blog/ 200 in 153ms
+ ✓ Compiled in 970ms (1189 modules)
+ GET /dashboard/blog/ 200 in 182ms
+ ✓ Compiled in 1121ms (1189 modules)
+ GET /dashboard/blog/ 200 in 174ms
+ ✓ Compiled in 3.5s (2488 modules)
+ ✓ Compiled in 1700ms (1189 modules)
+ GET /dashboard/blog/ 200 in 382ms
+ ✓ Compiled in 1324ms (1189 modules)
+ ✓ Compiled in 1579ms (1189 modules)
+ ✓ Compiled in 2.1s (1189 modules)
+ ✓ Compiled in 16.1s (2494 modules)
+ GET /dashboard/blog/ 200 in 290ms
+ ✓ Compiled in 1640ms (1192 modules)
+ ✓ Compiled in 1272ms (1192 modules)
+ ✓ Compiled in 1487ms (1192 modules)
+ ✓ Compiled in 2.5s (1192 modules)
+ ✓ Compiled in 1702ms (1192 modules)
+ ✓ Compiled in 3.3s (1192 modules)
+ ✓ Compiled in 2s (1192 modules)
+ ✓ Compiled in 1457ms (1192 modules)
+ ✓ Compiled in 1953ms (1192 modules)
+ ✓ Compiled in 1648ms (1192 modules)
+ ✓ Compiled in 1541ms (1192 modules)
+ GET /dashboard/blog/ 200 in 281ms
+ ✓ Compiled in 1483ms (1192 modules)
+ ✓ Compiled in 1428ms (1192 modules)
+ ✓ Compiled in 1578ms (1192 modules)
+ ✓ Compiled in 1886ms (1192 modules)
+ ✓ Compiled in 2.2s (1192 modules)
+ ✓ Compiled in 1808ms (1192 modules)
+ ✓ Compiled in 1637ms (1192 modules)
+ ✓ Compiled in 1669ms (1192 modules)
+ ✓ Compiled in 1418ms (1192 modules)
+ ✓ Compiled in 3.2s (2494 modules)
+ ✓ Compiled in 709ms (1192 modules)
+ ✓ Compiled in 3.5s (2494 modules)
+ ✓ Compiled in 607ms (1192 modules)
+ ✓ Compiled in 701ms (1192 modules)
+ ✓ Compiled in 918ms (1192 modules)
+✅ Business Intelligence using MAIN Firebase connection (same as Files page)
+ GET /dashboard/ 200 in 1546ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3.9s (2537 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 4489ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 233ms
+ GET /dashboard/ 200 in 259ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 224ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 235ms
+ ✓ Compiled in 973ms (1193 modules)
+ GET /dashboard/ 200 in 93ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 229ms
+ ✓ Compiled in 1698ms (1193 modules)
+ ✓ Compiled in 1900ms (1193 modules)
+ GET /dashboard/ 200 in 472ms
+ GET /dashboard/ 200 in 101ms
+ ✓ Compiled in 1185ms (1193 modules)
+ GET /dashboard/ 200 in 69ms
+ ✓ Compiled in 775ms (1193 modules)
+ ✓ Compiled in 1306ms (1193 modules)
+ ✓ Compiled in 2.4s (1193 modules)
+ ✓ Compiled in 1777ms (1193 modules)
+ GET /dashboard/ 200 in 278ms
+ GET /dashboard/ 200 in 206ms
+ GET /dashboard/ 200 in 105ms
+ GET /dashboard/ 200 in 101ms
+ ✓ Compiled in 1513ms (1192 modules)
+ GET /dashboard/ 200 in 106ms
+ ✓ Compiled in 1134ms (1192 modules)
+ GET /dashboard/ 200 in 79ms
+ ✓ Compiled in 556ms (1192 modules)
+ GET /dashboard/ 200 in 35ms
+ ✓ Compiled in 717ms (1192 modules)
+ GET /dashboard/ 200 in 116ms
+ ✓ Compiled in 656ms (1192 modules)
+ GET /dashboard/ 200 in 99ms
+ ✓ Compiled in 533ms (1192 modules)
+ GET /dashboard/ 200 in 39ms
+ ✓ Compiled in 579ms (1192 modules)
+ GET /dashboard/ 200 in 39ms
+ ✓ Compiled in 374ms (1192 modules)
+ GET /dashboard/ 200 in 34ms
+ ✓ Compiled in 685ms (1192 modules)
+ GET /dashboard/ 200 in 82ms
+ ✓ Compiled in 441ms (1192 modules)
+ GET /dashboard/ 200 in 83ms
+ ✓ Compiled in 396ms (1192 modules)
+ GET /dashboard/ 200 in 49ms
+ ✓ Compiled in 663ms (1192 modules)
+ GET /dashboard/ 200 in 66ms
+ ✓ Compiled in 503ms (1192 modules)
+ GET /dashboard/ 200 in 30ms
+ ✓ Compiled in 527ms (1192 modules)
+ GET /dashboard/ 200 in 45ms
+ ✓ Compiled in 773ms (1192 modules)
+ GET /dashboard/ 200 in 73ms
+ ✓ Compiled in 691ms (1192 modules)
+ GET /dashboard/ 200 in 39ms
+ ✓ Compiled in 681ms (1192 modules)
+ GET /dashboard/ 200 in 63ms
+ ✓ Compiled in 711ms (1192 modules)
+ GET /dashboard/ 200 in 47ms
+ ✓ Compiled in 727ms (1192 modules)
+ GET /dashboard/ 200 in 120ms
+ ✓ Compiled in 490ms (1192 modules)
+ GET /dashboard/ 200 in 29ms
+ ✓ Compiled in 390ms (1192 modules)
+ GET /dashboard/ 200 in 26ms
+ ✓ Compiled in 590ms (1192 modules)
+ GET /dashboard/ 200 in 37ms
+ ✓ Compiled in 421ms (1192 modules)
+ GET /dashboard/ 200 in 35ms
+ ✓ Compiled in 643ms (1192 modules)
+ GET /dashboard/ 200 in 98ms
+ ✓ Compiled in 484ms (1192 modules)
+ GET /dashboard/ 200 in 32ms
+ ✓ Compiled in 481ms (1192 modules)
+ GET /dashboard/ 200 in 48ms
+ ✓ Compiled in 825ms (1192 modules)
+ GET /dashboard/ 200 in 32ms
+ ✓ Compiled in 663ms (1192 modules)
+ GET /dashboard/ 200 in 35ms
+ ✓ Compiled in 528ms (1192 modules)
+ GET /dashboard/ 200 in 29ms
+ ✓ Compiled in 592ms (1192 modules)
+ GET /dashboard/ 200 in 38ms
+ ✓ Compiled in 693ms (1192 modules)
+ GET /dashboard/ 200 in 30ms
+ ✓ Compiled in 824ms (1192 modules)
+ GET /dashboard/ 200 in 93ms
+ ✓ Compiled in 646ms (1192 modules)
+ GET /dashboard/ 200 in 44ms
+ ✓ Compiled in 675ms (1192 modules)
+ GET /dashboard/ 200 in 37ms
+ ✓ Compiled in 600ms (1192 modules)
+ GET /dashboard/ 200 in 33ms
+ ✓ Compiled in 998ms (1192 modules)
+ GET /dashboard/ 200 in 1495ms
+ ✓ Compiled in 1560ms (1192 modules)
+ GET /dashboard/ 200 in 45ms
+ ✓ Compiled in 1622ms (1192 modules)
+ GET /dashboard/ 200 in 130ms
+ ✓ Compiled in 1343ms (1192 modules)
+ ✓ Compiled in 1739ms (1192 modules)
+ GET /dashboard/ 200 in 125ms
+ ✓ Compiled in 2.1s (1192 modules)
+ ✓ Compiled in 2.4s (1192 modules)
+ ✓ Compiled in 1465ms (1192 modules)
+ ✓ Compiled in 1316ms (1192 modules)
+ ✓ Compiled in 1388ms (1192 modules)
+ ✓ Compiled in 1462ms (1192 modules)
+ GET /dashboard/ 200 in 154ms
+ ✓ Compiled in 2s (1192 modules)
+ ✓ Compiled in 2.3s (1192 modules)
+ ✓ Compiled in 2.3s (1192 modules)
+ ✓ Compiled in 1312ms (1192 modules)
+ ✓ Compiled in 518ms (1192 modules)
+ ✓ Compiled in 1215ms (1192 modules)
+ ✓ Compiled in 1535ms (1192 modules)
+ ✓ Compiled in 837ms (1192 modules)
+ ✓ Compiled in 605ms (1192 modules)
+ ✓ Compiled in 1118ms (1192 modules)
+ ✓ Compiled in 778ms (1192 modules)
+ ✓ Compiled in 1115ms (1192 modules)
+ ✓ Compiled in 1467ms (1192 modules)
+ ✓ Compiled in 746ms (1192 modules)
+ ✓ Compiled in 441ms (1192 modules)
+ ✓ Compiled in 658ms (1192 modules)
+ ✓ Compiled in 1173ms (1192 modules)
+ ✓ Compiled in 519ms (1192 modules)
+ ✓ Compiled in 400ms (1192 modules)
+ ✓ Compiled in 472ms (1192 modules)
+ ✓ Compiled in 1138ms (1192 modules)
+ ✓ Compiled in 1903ms (1192 modules)
+ ✓ Compiled in 780ms (1192 modules)
+ ✓ Compiled in 367ms (1192 modules)
+ ✓ Compiled in 369ms (1192 modules)
+ ✓ Compiled in 807ms (1192 modules)
+ ✓ Compiled in 540ms (1192 modules)
+ ✓ Compiled in 407ms (1192 modules)
+ ✓ Compiled in 462ms (1192 modules)
+✅ Business Intelligence using MAIN Firebase connection (same as Files page)
+ GET /dashboard/ 200 in 991ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 915ms (2523 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 1165ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 216ms
+ ✓ Compiled in 590ms (1193 modules)
+ GET /dashboard/ 200 in 137ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 241ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 213ms
+ ✓ Compiled in 420ms (1193 modules)
+ GET /dashboard/ 200 in 30ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 257ms
+ ✓ Compiled in 494ms (1193 modules)
+ GET /dashboard/ 200 in 38ms
+ ✓ Compiled in 780ms (1193 modules)
+ GET /dashboard/ 200 in 50ms
+ ✓ Compiled in 421ms (1193 modules)
+ GET /dashboard/ 200 in 47ms
+ ✓ Compiled in 738ms (1193 modules)
+ GET /dashboard/ 200 in 50ms
+ ✓ Compiled in 562ms (1193 modules)
+ GET /dashboard/ 200 in 25ms
+ ✓ Compiled in 494ms (1193 modules)
+ GET /dashboard/ 200 in 37ms
+ ✓ Compiled in 406ms (1192 modules)
+ GET /dashboard/ 200 in 66ms
+ ✓ Compiled in 645ms (1192 modules)
+ GET /dashboard/ 200 in 112ms
+ ✓ Compiled in 445ms (1192 modules)
+ GET /dashboard/ 200 in 47ms
+ ✓ Compiled in 398ms (1192 modules)
+ GET /dashboard/ 200 in 67ms
+ ✓ Compiled in 454ms (1192 modules)
+ GET /dashboard/ 200 in 30ms
+ ✓ Compiled in 610ms (1192 modules)
+ GET /dashboard/ 200 in 140ms
+ ✓ Compiled in 763ms (1192 modules)
+ GET /dashboard/ 200 in 61ms
+ ✓ Compiled in 662ms (1192 modules)
+ GET /dashboard/ 200 in 45ms
+ ✓ Compiled in 628ms (1192 modules)
+ GET /dashboard/ 200 in 129ms
+ ✓ Compiled in 766ms (1192 modules)
+ GET /dashboard/ 200 in 31ms
+ ✓ Compiled in 826ms (1192 modules)
+ ✓ Compiled in 953ms (1192 modules)
+ GET /dashboard/ 200 in 323ms
+ GET /dashboard/ 200 in 89ms
+ ✓ Compiled in 769ms (1192 modules)
+ GET /dashboard/ 200 in 145ms
+ ✓ Compiled in 1277ms (1192 modules)
+ ✓ Compiled in 1337ms (1192 modules)
+ GET /dashboard/ 200 in 1291ms
+ GET /dashboard/ 200 in 47ms
+ ✓ Compiled in 937ms (1192 modules)
+ GET /dashboard/ 200 in 54ms
+ ✓ Compiled in 1415ms (1192 modules)
+ ✓ Compiled in 1296ms (1192 modules)
+ GET /dashboard/ 200 in 481ms
+ GET /dashboard/ 200 in 187ms
+ ✓ Compiled in 1193ms (1192 modules)
+ GET /dashboard/ 200 in 150ms
+ ✓ Compiled in 1288ms (1192 modules)
+ ✓ Compiled in 1187ms (1192 modules)
+ GET /dashboard/ 200 in 185ms
+ ✓ Compiled in 1217ms (1192 modules)
+ GET /dashboard/ 200 in 234ms
+ ✓ Compiled in 1736ms (1192 modules)
+ GET /dashboard/ 200 in 77ms
+ ✓ Compiled in 1647ms (1192 modules)
+ GET /dashboard/ 200 in 841ms
+ ✓ Compiled in 1093ms (1192 modules)
+ ✓ Compiled in 1218ms (1192 modules)
+ GET /dashboard/ 200 in 340ms
+ ✓ Compiled in 1046ms (1192 modules)
+ ✓ Compiled in 1857ms (1192 modules)
+ GET /dashboard/ 200 in 105ms
+ GET /dashboard/ 200 in 102ms
+ GET /dashboard/ 200 in 135ms
+ GET /dashboard/ 200 in 83ms
+ ✓ Compiled in 1489ms (1192 modules)
+ ✓ Compiled in 1294ms (1192 modules)
+ ✓ Compiled in 1023ms (1192 modules)
+ ✓ Compiled in 1174ms (1192 modules)
+ GET /dashboard/ 200 in 427ms
+ ✓ Compiled in 2s (1192 modules)
+ GET /dashboard/ 200 in 138ms
+ GET /dashboard/ 200 in 108ms
+ ✓ Compiled in 1554ms (1192 modules)
+ GET /dashboard/ 200 in 381ms
+ GET /dashboard/ 200 in 197ms
+ GET /dashboard/ 200 in 110ms
+ ✓ Compiled in 940ms (1192 modules)
+ ✓ Compiled in 1204ms (1192 modules)
+ ✓ Compiled in 1011ms (1192 modules)
+ ✓ Compiled in 2.1s (1192 modules)
+ ✓ Compiled in 707ms (1192 modules)
+ ✓ Compiled in 731ms (1192 modules)
+ ✓ Compiled in 416ms (1192 modules)
+ ✓ Compiled in 388ms (1192 modules)
+ ✓ Compiled in 439ms (1192 modules)
+ ✓ Compiled in 449ms (1192 modules)
+ ✓ Compiled in 498ms (1192 modules)
+ ✓ Compiled in 370ms (1192 modules)
+ ✓ Compiled in 408ms (1192 modules)
+ ✓ Compiled in 369ms (1192 modules)
+ ✓ Compiled in 1128ms (1192 modules)
+ ✓ Compiled in 735ms (1192 modules)
+ ✓ Compiled in 399ms (1192 modules)
+ ✓ Compiled in 420ms (1192 modules)
+ ✓ Compiled in 653ms (1192 modules)
+ ✓ Compiled in 448ms (1192 modules)
+ ✓ Compiled in 1043ms (1192 modules)
+ ✓ Compiled in 990ms (1192 modules)
+ ✓ Compiled in 1280ms (1192 modules)
+ ✓ Compiled in 609ms (1192 modules)
+ ✓ Compiled in 400ms (1192 modules)
+ ✓ Compiled in 447ms (1192 modules)
+ ✓ Compiled in 443ms (1192 modules)
+ ✓ Compiled in 409ms (1192 modules)
+ ✓ Compiled in 394ms (1192 modules)
+ ✓ Compiled in 609ms (1192 modules)
+ ✓ Compiled in 406ms (1192 modules)
+ ✓ Compiled in 416ms (1192 modules)
+ ✓ Compiled in 548ms (1192 modules)
+ ✓ Compiled in 547ms (1192 modules)
+ ✓ Compiled in 458ms (1192 modules)
+ ✓ Compiled in 643ms (1192 modules)
+ ✓ Compiled in 384ms (1192 modules)
+ ✓ Compiled in 483ms (1192 modules)
+ ✓ Compiled in 517ms (1192 modules)
+ ✓ Compiled in 599ms (1192 modules)
+ ✓ Compiled in 445ms (1192 modules)
+ ✓ Compiled in 561ms (1192 modules)
+ ✓ Compiled in 415ms (1192 modules)
+ ✓ Compiled in 865ms (1192 modules)
+ ✓ Compiled in 377ms (1192 modules)
+ ✓ Compiled in 347ms (1192 modules)
+ ✓ Compiled in 479ms (1192 modules)
+ ✓ Compiled in 547ms (1192 modules)
+ ✓ Compiled in 357ms (1192 modules)
+ ✓ Compiled in 421ms (1192 modules)
+ ✓ Compiled in 422ms (1192 modules)
+ ✓ Compiled in 733ms (1192 modules)
+ ✓ Compiled in 365ms (1192 modules)
+ ✓ Compiled in 458ms (1192 modules)
+ ✓ Compiled in 361ms (1192 modules)
+ ✓ Compiled in 721ms (1192 modules)
+ ✓ Compiled in 435ms (1192 modules)
+ ✓ Compiled in 393ms (1192 modules)
+ ✓ Compiled in 710ms (1192 modules)
+ ✓ Compiled in 450ms (1192 modules)
+ ✓ Compiled in 409ms (1192 modules)
+ ✓ Compiled in 412ms (1192 modules)
+ ✓ Compiled in 413ms (1192 modules)
+ ✓ Compiled in 509ms (1192 modules)
+ ✓ Compiled in 379ms (1192 modules)
+ ✓ Compiled in 661ms (1192 modules)
+ ✓ Compiled in 428ms (1192 modules)
+ ✓ Compiled in 577ms (1192 modules)
+ ✓ Compiled in 702ms (1192 modules)
+ ✓ Compiled in 635ms (1192 modules)
+ ✓ Compiled in 464ms (1192 modules)
+ ✓ Compiled in 441ms (1192 modules)
+ ✓ Compiled in 548ms (1192 modules)
+ ✓ Compiled in 448ms (1192 modules)
+ ✓ Compiled in 448ms (1192 modules)
+ ✓ Compiled in 388ms (1192 modules)
+ ✓ Compiled in 351ms (1192 modules)
+ ✓ Compiled in 517ms (1192 modules)
+ ✓ Compiled in 465ms (1192 modules)
+ ✓ Compiled in 471ms (1192 modules)
+ ✓ Compiled in 432ms (1192 modules)
+ ✓ Compiled in 363ms (1192 modules)
+ ✓ Compiled in 433ms (1192 modules)
+ ✓ Compiled in 340ms (1192 modules)
+ ✓ Compiled in 437ms (1192 modules)
+ ✓ Compiled in 426ms (1192 modules)
+ ✓ Compiled in 506ms (1192 modules)
+ ✓ Compiled in 357ms (1192 modules)
+ ✓ Compiled in 458ms (1192 modules)
+ ✓ Compiled in 376ms (1192 modules)
+ ✓ Compiled in 459ms (1192 modules)
+ ✓ Compiled in 370ms (1192 modules)
+ ✓ Compiled in 496ms (1192 modules)
+ ✓ Compiled in 426ms (1192 modules)
+ ✓ Compiled in 669ms (1192 modules)
+ ✓ Compiled in 397ms (1192 modules)
+ ✓ Compiled in 451ms (1192 modules)
+ ✓ Compiled in 393ms (1192 modules)
+ ✓ Compiled in 453ms (1192 modules)
+ ✓ Compiled in 473ms (1192 modules)
+ ✓ Compiled in 800ms (1192 modules)
+[?25h

@@ -1,79 +1,42 @@
-// src/components/auth/AuthProvider.tsx
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
-import { User, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { auth } from '@/lib/firebase'
+import { createContext, useContext, useState } from 'react'
+
+interface User {
+  uid: string
+  email: string
+}
 
 interface AuthContextType {
   user: User | null
   loading: boolean
-  signIn: (email: string, password: string) => Promise<void>
-  logOut: () => Promise<void>
+  logOut: () => void
 }
 
-const AuthContext = createContext<AuthContextType>({
-  user: null,
-  loading: true,
-  signIn: async () => {},
-  logOut: async () => {},
-})
-
-export const useAuth = () => {
-  const context = useContext(AuthContext)
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider')
-  }
-  return context
-}
+const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [user] = useState<User | null>({
+    uid: 'dev-user-123',
+    email: 'dev@example.com'
+  })
+  const [loading] = useState(false)
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user)
-      setLoading(false)
-    })
-
-    return unsubscribe
-  }, [])
-
-  const signIn = async (email: string, password: string) => {
-    setLoading(true)
-    try {
-      await signInWithEmailAndPassword(auth, email, password)
-    } catch (error) {
-      console.error('Sign in error:', error)
-      throw error
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const logOut = async () => {
-    setLoading(true)
-    try {
-      await signOut(auth)
-    } catch (error) {
-      console.error('Sign out error:', error)
-      throw error
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const value = {
-    user,
-    loading,
-    signIn,
-    logOut,
+  const logOut = () => {
+    console.log('Logout called')
   }
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, loading, logOut }}>
       {children}
     </AuthContext.Provider>
   )
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext)
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider')
+  }
+  return context
 }

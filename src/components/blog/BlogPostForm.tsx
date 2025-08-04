@@ -9,7 +9,7 @@ import { BlogService } from '@/lib/blog'
 import { BlogPost, BlogPostFormData, BlogCategory, BlogTag } from '@/types/blog'
 import { useRouter } from 'next/navigation'
 import { Save, Eye, Globe, FileText, Tag, Folder, Upload } from 'lucide-react'
-import MarkdownEditor from './MarkdownEditor'
+import VisualBlogEditor from './VisualBlogEditor'
 
 interface BlogPostFormProps {
   initialData?: BlogPost
@@ -387,13 +387,14 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Content *
                   </label>
-                  <MarkdownEditor
+                  <VisualBlogEditor
                     value={formData.content}
                     onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
                     placeholder="Write your post content in Markdown..."
+                    title={formData.title}
                   />
                   <p className="text-sm text-gray-500 mt-1">
-                    Use Markdown for formatting. The content will be converted to styled HTML when displayed.
+                    Choose between Markdown editing or Visual block editor with drag-and-drop, properties panel, and real-time preview.
                   </p>
                 </div>
               </CardContent>

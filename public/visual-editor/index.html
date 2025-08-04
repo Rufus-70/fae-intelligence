@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visual Editor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f9fafb; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .toolbar { padding: 15px; border-bottom: 1px solid #e5e7eb; background: #f8fafc; border-radius: 8px 8px 0 0; }
+        .editor { width: 100%; height: 500px; border: none; padding: 20px; font-size: 14px; line-height: 1.5; resize: vertical; }
+        .btn { padding: 8px 16px; margin-right: 8px; border: 1px solid #d1d5db; background: white; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background: #f3f4f6; }
+        .btn.primary { background: #3b82f6; color: white; border-color: #3b82f6; }
+        .btn.primary:hover { background: #2563eb; }
+        .status { padding: 10px 20px; border-top: 1px solid #e5e7eb; background: #f8fafc; color: #6b7280; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <h2 style="margin: 0 0 10px 0; color: #1f2937;">Visual Content Editor</h2>
+            <button class="btn" onclick="formatText('bold')"><strong>B</strong></button>
+            <button class="btn" onclick="formatText('italic')"><em>I</em></button>
+            <button class="btn" onclick="formatText('underline')"><u>U</u></button>
+            <button class="btn" onclick="insertHeading()">H1</button>
+            <button class="btn" onclick="insertList()">List</button>
+            <button class="btn" onclick="insertLink()">Link</button>
+            <button class="btn primary" onclick="saveContent()">Save Content</button>
+            <button class="btn" onclick="clearContent()">Clear</button>
+        </div>
+        
+        <div contenteditable="true" class="editor" id="editor" placeholder="Start writing your content here...">
+            <h1>Welcome to the Visual Editor</h1>
+            <p>You can start typing here. Use the toolbar above to format your text.</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>Rich text formatting</li>
+                <li>Headings and lists</li>
+                <li>Links and more</li>
+            </ul>
+        </div>
+        
+        <div class="status">
+            <span id="status">Ready to edit</span>
+        </div>
+    </div>
+    
+    <script>
+        function formatText(command) {
+            document.execCommand(command, false, null);
+            updateStatus('Formatted text');
+        }
+        
+        function insertHeading() {
+            document.execCommand('formatBlock', false, 'h1');
+            updateStatus('Inserted heading');
+        }
+        
+        function insertList() {
+            document.execCommand('insertUnorderedList', false, null);
+            updateStatus('Inserted list');
+        }
+        
+        function insertLink() {
+            const url = prompt('Enter URL:');
+            if (url) {
+                document.execCommand('createLink', false, url);
+                updateStatus('Inserted link');
+            }
+        }
+        
+        function saveContent() {
+            const content = document.getElementById('editor').innerHTML;
+            console.log('Saving content:', content);
+            
+            // Send message to parent window if embedded
+            if (window.parent !== window) {
+                window.parent.postMessage({
+                    type: 'content-saved',
+                    data: { html: content, text: document.getElementById('editor').innerText }
+                }, '*');
+            }
+            
+            updateStatus('Content saved successfully!');
+            setTimeout(() => updateStatus('Ready to edit'), 2000);
+        }
+        
+        function clearContent() {
+            if (confirm('Are you sure you want to clear all content?')) {
+                document.getElementById('editor').innerHTML = '<p>Start writing here...</p>';
+                updateStatus('Content cleared');
+            }
+        }
+        
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+        }
+        
+        // Auto-save every 30 seconds
+        setInterval(() => {
+            const content = document.getElementById('editor').innerHTML;
+            if (content.trim() && content !== '<p>Start writing here...</p>') {
+                localStorage.setItem('visual-editor-content', content);
+                updateStatus('Auto-saved');
+                setTimeout(() => updateStatus('Ready to edit'), 1000);
+            }
+        }, 30000);
+        
+        // Load saved content on page load
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('visual-editor-content');
+            if (saved) {
+                document.getElementById('editor').innerHTML = saved;
+                updateStatus('Loaded saved content');
+                setTimeout(() => updateStatus('Ready to edit'), 2000);
+            }
+        });
+    </script>
+</body>
+</html>

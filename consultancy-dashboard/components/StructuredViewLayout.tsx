@@ -38,6 +38,9 @@ import { FinanceInvoicesView } from './views/finance/FinanceInvoicesView';
 import { FinanceExpensesView } from './views/finance/FinanceExpensesView';
 import { FinanceRevenueView } from './views/finance/FinanceRevenueView';
 
+// Blog View Imports
+import { BlogEditorView } from './views/blog/BlogEditorView';
+
 interface StructuredViewLayoutProps {
   viewName: ViewName;
   config: ViewConfig;
@@ -271,6 +274,23 @@ export const StructuredViewLayout: React.FC<StructuredViewLayoutProps> = (props)
                     />;
           default:
             return <p className="text-slate-500">Finance sub-view not found: {activeSubViewId}</p>; // Updated text color
+        }
+      case 'blog':
+        switch (activeSubViewId) {
+          case 'editor':
+            return <BlogEditorView />;
+          case 'posts':
+            return <div className="p-6 text-center">
+              <h3 className="text-xl font-semibold mb-4">📚 All Posts</h3>
+              <p className="text-gray-600">Posts management view coming soon!</p>
+            </div>;
+          case 'settings':
+            return <div className="p-6 text-center">
+              <h3 className="text-xl font-semibold mb-4">⚙️ Blog Settings</h3>
+              <p className="text-gray-600">Blog configuration settings coming soon!</p>
+            </div>;
+          default:
+            return <p className="text-slate-500">Blog sub-view not found: {activeSubViewId}</p>;
         }
       default:
         return <p className="text-center py-10 text-slate-500">Unknown view: {viewName}.</p>; // Updated text color

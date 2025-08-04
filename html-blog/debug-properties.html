@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties Panel Debug</title>
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-block { 
+            border: 2px solid #ccc; 
+            padding: 20px; 
+            margin: 20px 0; 
+            cursor: pointer;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+        .test-block:hover { border-color: #3182ce; }
+        .test-block.selected { 
+            border-color: #3182ce; 
+            background: #ebf8ff; 
+        }
+        
+        /* Properties Panel Styles */
+        #propertiesPanel {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 300px;
+            background: white;
+            border: 2px solid #3182ce;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 9999;
+            transform: translateX(0); /* Start visible for testing */
+            transition: transform 0.3s ease;
+        }
+        
+        #propertiesPanel.hidden {
+            transform: translateX(100%);
+        }
+        
+        .debug-info {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Properties Panel Debug Test</h1>
+    <div class="debug-info" id="debugInfo">Debug info will appear here...</div>
+    
+    <p><strong>Instructions:</strong></p>
+    <ul>
+        <li>Click on test blocks below</li>
+        <li>Properties panel should appear on the right</li>
+        <li>Check browser console (F12) for debug output</li>
+        <li>Try Ctrl+click for multi-select</li>
+    </ul>
+    
+    <div class="test-block" onclick="testSelectBlock('block1', event)">
+        <h3>Test Block 1</h3>
+        <p>Click me to test properties panel</p>
+    </div>
+    
+    <div class="test-block" onclick="testSelectBlock('block2', event)">
+        <h3>Test Block 2</h3>
+        <p>Click me too! Try Ctrl+click for multi-select</p>
+    </div>
+    
+    <!-- Properties Panel -->
+    <div id="propertiesPanel">
+        <h3 style="margin-top: 0;">🎛️ Block Properties</h3>
+        <div id="propertiesContent">
+            <p>Properties will appear here when you select a block.</p>
+        </div>
+        <button onclick="closePropertiesPanel()" style="margin-top: 10px; padding: 5px 10px;">Close Panel</button>
+    </div>
+
+    <script>
+        let selectedBlocks = [];
+        let selectedBlock = null;
+        
+        // Test blocks data
+        const testBlocks = [
+            {
+                id: 'block1',
+                type: 'heading',
+                content: 'Test Block 1',
+                attributes: {
+                    alignment: 'left',
+                    color: '#2C2C2C',
+                    backgroundColor: '#FFFFFF'
+                }
+            },
+            {
+                id: 'block2', 
+                type: 'paragraph',
+                content: 'Test Block 2',
+                attributes: {
+                    alignment: 'center',
+                    color: '#333333',
+                    backgroundColor: '#F9F9F9'
+                }
+            }
+        ];
+        
+        function updateDebugInfo() {
+            const debugEl = document.getElementById('debugInfo');
+            debugEl.innerHTML = `
+                Selected blocks: [${selectedBlocks.join(', ')}]<br>
+                Selected block: ${selectedBlock ? selectedBlock.id : 'none'}<br>
+                Panel visible: ${!document.getElementById('propertiesPanel').classList.contains('hidden')}<br>
+                Timestamp: ${new Date().toLocaleTimeString()}
+            `;
+        }
+        
+        function testSelectBlock(blockId, event) {
+            console.log('🔍 testSelectBlock called:', blockId);
+            console.log('🔍 Event details:', event);
+            console.log('🔍 Ctrl key pressed:', event.ctrlKey);
+            console.log('🔍 Meta key pressed:', event.metaKey);
+            
+            const blockEl = document.querySelector(`[onclick*="${blockId}"]`);
+            const isMultiSelect = event.ctrlKey || event.metaKey;
+            
+            console.log('🔍 Block element found:', !!blockEl);
+            console.log('🔍 Multi-select mode:', isMultiSelect);
+            
+            if (isMultiSelect) {
+                // Multi-select logic
+                if (selectedBlocks.includes(blockId)) {
+                    selectedBlocks = selectedBlocks.filter(id => id !== blockId);
+                    blockEl.classList.remove('selected');
+                    console.log('🔍 Deselected block:', blockId);
+                } else {
+                    selectedBlocks.push(blockId);
+                    blockEl.classList.add('selected');
+                    console.log('🔍 Added to selection:', blockId);
+                }
+            } else {
+                // Single select - clear others
+                document.querySelectorAll('.test-block').forEach(el => el.classList.remove('selected'));
+                selectedBlocks = [blockId];
+                blockEl.classList.add('selected');
+                console.log('🔍 Single select:', blockId);
+            }
+            
+            // Set selectedBlock to the last selected
+            if (selectedBlocks.length > 0) {
+                selectedBlock = testBlocks.find(b => b.id === selectedBlocks[selectedBlocks.length - 1]);
+                console.log('🔍 Setting selectedBlock to:', selectedBlock);
+                showProperties();
+            } else {
+                selectedBlock = null;
+                console.log('🔍 No blocks selected');
+                closePropertiesPanel();
+            }
+            
+            updateDebugInfo();
+        }
+        
+        function showProperties() {
+            console.log('🎛️ showProperties called');
+            console.log('🎛️ selectedBlock:', selectedBlock);
+            
+            if (!selectedBlock) {
+                console.log('🎛️ No selected block, aborting');
+                return;
+            }
+            
+            const panel = document.getElementById('propertiesPanel');
+            const content = document.getElementById('propertiesContent');
+            
+            console.log('🎛️ Panel element:', !!panel);
+            console.log('🎛️ Content element:', !!content);
+            
+            if (!panel || !content) {
+                console.log('🎛️ ERROR: Panel or content element not found!');
+                return;
+            }
+            
+            const attrs = selectedBlock.attributes || {};
+            
+            const propertiesHtml = `
+                <div style="margin-bottom: 10px;">
+                    <strong>Block Type:</strong> ${selectedBlock.type}<br>
+                    <strong>Block ID:</strong> ${selectedBlock.id}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Alignment:</label><br>
+                    <select onchange="updateAlignment(this.value)" style="width: 100%; padding: 5px;">
+                        <option value="left" ${attrs.alignment === 'left' ? 'selected' : ''}>Left</option>
+                        <option value="center" ${attrs.alignment === 'center' ? 'selected' : ''}>Center</option>
+                        <option value="right" ${attrs.alignment === 'right' ? 'selected' : ''}>Right</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Text Color:</label><br>
+                    <input type="color" value="${attrs.color || '#2C2C2C'}" onchange="updateColor(this.value)" style="width: 100%; height: 30px;">
+                </div>
+                <div>
+                    <label>Background Color:</label><br>
+                    <input type="color" value="${attrs.backgroundColor || '#FFFFFF'}" onchange="updateBackgroundColor(this.value)" style="width: 100%; height: 30px;">
+                </div>
+            `;
+            
+            content.innerHTML = propertiesHtml;
+            panel.classList.remove('hidden');
+            
+            console.log('🎛️ Properties panel should now be visible');
+            console.log('🎛️ Panel classes:', panel.className);
+            console.log('🎛️ Panel computed transform:', window.getComputedStyle(panel).transform);
+            
+            updateDebugInfo();
+        }
+        
+        function closePropertiesPanel() {
+            console.log('🎛️ closePropertiesPanel called');
+            const panel = document.getElementById('propertiesPanel');
+            panel.classList.add('hidden');
+            updateDebugInfo();
+        }
+        
+        function updateAlignment(value) {
+            if (selectedBlock) {
+                selectedBlock.attributes.alignment = value;
+                console.log('Updated alignment to:', value);
+            }
+        }
+        
+        function updateColor(value) {
+            if (selectedBlock) {
+                selectedBlock.attributes.color = value;
+                console.log('Updated color to:', value);
+            }
+        }
+        
+        function updateBackgroundColor(value) {
+            if (selectedBlock) {
+                selectedBlock.attributes.backgroundColor = value;
+                console.log('Updated background color to:', value);
+            }
+        }
+        
+        // Initialize
+        updateDebugInfo();
+        console.log('🚀 Debug page loaded successfully');
+    </script>
+</body>
+</html>

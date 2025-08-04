@@ -178,7 +178,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
                     <Button
                       type="button"
                       size="sm"
-                      variant="destructive"
+                      variant="outline"
                       onClick={onRemove}
                     >
                       <X className="h-4 w-4" />

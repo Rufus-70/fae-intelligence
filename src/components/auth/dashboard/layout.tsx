@@ -18,6 +18,7 @@ import {
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Files', href: '/dashboard/files', icon: FileText },
+  { name: 'Visual Editor', href: '/dashboard/editor', icon: PencilSquareIcon },
   { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
 ]

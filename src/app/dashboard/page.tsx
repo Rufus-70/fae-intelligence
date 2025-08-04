@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/components/auth/AuthProvider'
 import { businessIntelligence, type BusinessMetrics, type ClientDataProfile } from '@/lib/faes-web/businessIntelligence'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
-import { FileText, TrendingUp, Activity, Brain, AlertTriangle } from 'lucide-react'
+import { FileText, TrendingUp, Activity, Brain, AlertTriangle, Palette, Building2, ExternalLink } from 'lucide-react'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8']
 
@@ -208,6 +208,64 @@ export default function DashboardPage() {
             icon={TrendingUp}
             color="bg-orange-500"
           />
+        </div>
+
+        {/* Quick Tools Section */}
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">🛠️ Content Creation Tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+              <div className="flex items-center mb-4">
+                <Palette className="h-8 w-8 text-purple-600 mr-3" />
+                <h3 className="text-lg font-semibold text-gray-900">Visual Blog Editor</h3>
+              </div>
+              <p className="text-gray-700 mb-4">
+                Advanced block-based editor with drag-and-drop, properties panel, and real-time preview. 
+                Perfect for creating rich, interactive blog content.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => window.open('http://localhost:8085/visual-editor.html', 'visual-editor', 'width=1400,height=900,scrollbars=yes,resizable=yes')}
+                  className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Open Visual Editor
+                </button>
+                <button
+                  onClick={() => window.location.href = '/dashboard/blog/create'}
+                  className="bg-white text-purple-600 border border-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition-colors"
+                >
+                  Use in Blog Form
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+              <div className="flex items-center mb-4">
+                <Building2 className="h-8 w-8 text-blue-600 mr-3" />
+                <h3 className="text-lg font-semibold text-gray-900">Consultancy Dashboard</h3>
+              </div>
+              <p className="text-gray-700 mb-4">
+                Complete business management system with CRM, project tracking, financial overview, 
+                and client management capabilities.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => window.open('http://localhost:5173', 'consultancy-dashboard', 'width=1200,height=800,scrollbars=yes,resizable=yes')}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Open Dashboard
+                </button>
+                <button
+                  onClick={() => alert('Consultancy features coming to main dashboard soon!')}
+                  className="bg-white text-blue-600 border border-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Charts Section */}

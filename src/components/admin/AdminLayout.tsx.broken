@@ -1,0 +1,37 @@
+'use client'
+
+import { useState } from 'react'
+import { useAuth } from '@/components/auth/AuthProvider'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { 
+  LayoutDashboard, 
+  Settings, 
+  BarChart3,
+  Menu,
+  X,
+  LogOut,
+  Folder,
+  Tag,
+  Upload,
+  Brain,
+  FileText,
+  Palette,
+  Building2,
+  ExternalLink
+} from 'lucide-react'
+
+interface AdminLayoutProps {
+  children: React.ReactNode
+}
+
+export default function AdminLayout({ children }: AdminLayoutProps) {
+  const { user, logOut } = useAuth()
+  const pathname = usePathname()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const navigation = [
+      icon: Upload,
+      current: pathname === '/dashboard/files'
+    },

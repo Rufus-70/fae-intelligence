@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fae Intelligence Blog - Simple Test</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #0f172a;
+            color: white;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 12px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .post-card {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+        .post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+        .post-content {
+            padding: 20px;
+        }
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+        }
+        .post-excerpt {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        .category-tag {
+            background: #6366f1;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Fae Intelligence Blog</h1>
+            <p>AI & Automation Insights for Modern Business</p>
+        </div>
+        
+        <div id="blog-content" class="loading">
+            <div style="font-size: 48px; margin-bottom: 20px;">⏳</div>
+            <p>Loading blog content...</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple demo data
+        const posts = [
+            {
+                title: "Getting Started with AI Automation",
+                excerpt: "Learn the fundamentals of implementing AI automation in your business processes for maximum efficiency.",
+                category: "AI Tools",
+                icon: "🚀",
+                readTime: "5 min read"
+            },
+            {
+                title: "5 AI Tools Every Small Business Needs",
+                excerpt: "Discover cost-effective AI solutions that can transform your small business operations today.",
+                category: "Business",
+                icon: "🛠️",
+                readTime: "7 min read"
+            },
+            {
+                title: "The Future of Manufacturing with AI",
+                excerpt: "How artificial intelligence is revolutionizing manufacturing processes and supply chain management.",
+                category: "Manufacturing",
+                icon: "🏭",
+                readTime: "8 min read"
+            }
+        ];
+        
+        // Simulate loading delay
+        setTimeout(() => {
+            const blogContent = document.getElementById('blog-content');
+            
+            const blogHtml = `
+                <div class="blog-grid">
+                    ${posts.map(post => `
+                        <article class="post-card">
+                            <div class="post-image">
+                                ${post.icon}
+                            </div>
+                            <div class="post-content">
+                                <h2 class="post-title">${post.title}</h2>
+                                <p class="post-excerpt">${post.excerpt}</p>
+                                <div class="post-meta">
+                                    <span class="category-tag">${post.category}</span>
+                                    <span>${post.readTime}</span>
+                                </div>
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>
+            `;
+            
+            blogContent.innerHTML = blogHtml;
+            console.log('✅ Simple blog loaded successfully!');
+        }, 1000);
+    </script>
+</body>
+</html>

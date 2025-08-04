@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties Panel Test</title>
+    <script src="assets/js/visual-editor.js"></script>
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-block { 
+            border: 2px solid #ccc; 
+            padding: 10px; 
+            margin: 10px 0; 
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .test-block:hover { border-color: #3182ce; }
+        .test-block.selected { 
+            border-color: #3182ce; 
+            background: #ebf8ff; 
+        }
+        #propertiesPanel {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 300px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        #propertiesPanel:not(.translate-x-full) {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <h1>Properties Panel Fix Test</h1>
+    <p>Click on any test block below to test if the properties panel appears:</p>
+    
+    <div class="test-block editable-block" data-block-id="test1" onclick="selectBlock('test1', event)">
+        <h2>Test Heading Block</h2>
+        <p>Click this block to test properties panel</p>
+    </div>
+    
+    <div class="test-block editable-block" data-block-id="test2" onclick="selectBlock('test2', event)">
+        <p>Test Paragraph Block - click to see properties</p>
+    </div>
+    
+    <!-- Properties Panel -->
+    <div id="propertiesPanel" class="translate-x-full">
+        <h3>Block Properties</h3>
+        <div id="propertiesContent">
+            <!-- Properties will be populated here -->
+        </div>
+        <button onclick="closeProperties()">Close</button>
+    </div>
+
+    <script>
+        // Initialize test blocks
+        currentBlocks = [
+            {
+                id: 'test1',
+                type: 'heading',
+                level: 'h2',
+                content: 'Test Heading Block',
+                attributes: {
+                    alignment: 'left',
+                    marginTop: '20px',
+                    marginBottom: '10px',
+                    color: '#2C2C2C',
+                    backgroundColor: '#FFFFFF'
+                }
+            },
+            {
+                id: 'test2',
+                type: 'paragraph',
+                content: 'Test Paragraph Block - click to see properties',
+                attributes: {
+                    alignment: 'left',
+                    marginTop: '10px',
+                    marginBottom: '10px',
+                    color: '#2C2C2C',
+                    backgroundColor: '#FFFFFF'
+                }
+            }
+        ];
+        
+        // Add some console logging
+        console.log('Test page loaded with blocks:', currentBlocks);
+    </script>
+</body>
+</html>

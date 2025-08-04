@@ -22,6 +22,8 @@ DASHBOARD_PORT="8080"
 PROJECT_DIR="/home/rosie/projects/fae-intelligence"
 DOCS_PATH="/home/rosie/projects/fae-intelligence/docs/unified-frontend-documentation.md"
 INGEST_SCRIPT="/home/rosie/projects/fae-intelligence/scripts/ingest_video_analysis.sh" # Original video ingest script
+RAG_SERVICE_DIR="/home/rosie/projects/fae-intelligence-rag"
+RAG_SERVICE_URL="http://127.0.0.1:8001"
 
 # Function to display header
 display_header() {
@@ -233,6 +235,10 @@ show_status() {
     echo -e "${CYAN}⚙️ Automation Platform:${NC}\n"
     curl -s --connect-timeout 3 "${N8N_URL}" > /dev/null && echo -e "  ${GREEN}✅ n8n: Running ${NC}" || echo -e "  ${RED}❌ n8n: Stopped ${NC}"
 
+    echo -e "${CYAN}🎯 RAG Service:${NC}\n"
+    curl -s --connect-timeout 3 "${RAG_SERVICE_URL}/health" > /dev/null && echo -e "  ${GREEN}✅ RAG Service: Running ${NC}" || echo -e "  ${RED}❌ RAG Service: Stopped ${NC}"
+    pgrep -x ollama > /dev/null && echo -e "  ${GREEN}✅ Ollama: Running ${NC}" || echo -e "  ${RED}❌ Ollama: Stopped ${NC}"
+
     echo -e "${CYAN}🐳 Docker Containers:${NC}\n"
     if command -v docker > /dev/null 2>&1; then
         docker ps --format "    {{.Names}}: {{.Status}}" | grep -E "(n8n|database|chroma)" || echo -e "    ${YELLOW}No relevant containers running${NC}"
@@ -262,76 +268,139 @@ launch_all() {
     echo -e "\n${GREEN}🎉 Full development stack launched!${NC}\n"
 }
 
-# Function: Blog Shared Components Management
-launch_blog_components() {
-    echo -e "\n${YELLOW}📝 Blog Shared Components Manager${NC}"
+# Function: RAG Service Management
+launch_rag_service() {
+    echo -e "\n${YELLOW}🎯 RAG Service Management Hub${NC}"
     echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
     
     while true; do
         echo -e "${CYAN}Available Options:${NC}\n"
-        echo -e "${GREEN}1)${NC} Start Option 2: JavaScript Includes (Port 8085)"
-        echo -e "${GREEN}2)${NC} Start Option 4: Server-Side Includes (Port 8086)"
-        echo -e "${GREEN}3)${NC} View Shared Components Guide"
-        echo -e "${GREEN}4)${NC} Check Server Status"
-        echo -e "${GREEN}5)${NC} Stop All Blog Servers"
+        echo -e "${GREEN}1)${NC} Start RAG Service (Optimized)"
+        echo -e "${GREEN}2)${NC} Stop RAG Service"
+        echo -e "${GREEN}3)${NC} Check RAG Service Status"
+        echo -e "${GREEN}4)${NC} Test RAG Service (Run Test Suite)"
+        echo -e "${GREEN}5)${NC} Query RAG Service (Interactive)"
+        echo -e "${GREEN}6)${NC} View RAG Service Logs"
+        echo -e "${GREEN}7)${NC} Open RAG API Documentation"
+        echo -e "${GREEN}8)${NC} Restart Ollama Service"
         echo -e "${GREEN}0)${NC} Back to Main Menu"
         echo ""
         
-        read -p "$(echo -e "${GREEN}Enter your choice [0-5]: ${NC}")" blog_choice
+        read -p "$(echo -e "${GREEN}Enter your choice [0-8]: ${NC}")" rag_choice
         
-        case $blog_choice in
+        case $rag_choice in
             1)
-                echo -e "\n${YELLOW}🚀 Starting Option 2: JavaScript Includes Blog Server...${NC}"
-                cd /home/rosie/projects/fae-intelligence/html-blog
-                gnome-terminal -- bash -c "echo 'Starting JavaScript Includes Blog Server on Port 8085...'; npx serve -p 8085 .; exec bash"
-                echo -e "${GREEN}✅ Option 2 server started in new terminal${NC}"
-                echo -e "${CYAN}📄 Access URLs:${NC}"
-                echo -e "   • Main: http://localhost:8085"
-                echo -e "   • Post 1: http://localhost:8085/post/getting-started-ai-automation/"
-                echo -e "   • Post 2: http://localhost:8085/post/5-ai-tools-small-business-needs/"
+                echo -e "\n${YELLOW}🚀 Starting RAG Service (Optimized)...${NC}"
+                if curl -s --connect-timeout 3 "${RAG_SERVICE_URL}/health" > /dev/null 2>&1; then
+                    echo -e "${YELLOW}⚠️ RAG Service is already running!${NC}"
+                    echo -e "${GREEN}✅ Service URL: ${RAG_SERVICE_URL}${NC}"
+                else
+                    echo -e "${CYAN}🔧 Checking Ollama service...${NC}"
+                    if ! pgrep -x ollama > /dev/null; then
+                        echo -e "${YELLOW}⚠️ Starting Ollama service first...${NC}"
+                        ollama serve > /dev/null 2>&1 &
+                        sleep 3
+                    fi
+                    
+                    echo -e "${CYAN}🎯 Starting optimized RAG service...${NC}"
+                    cd "${RAG_SERVICE_DIR}"
+                    gnome-terminal -- bash -c "echo 'Starting RAG Service...'; source venv/bin/activate && python3 rag_server_optimized.py; exec bash"
+                    sleep 3
+                    
+                    echo -e "${GREEN}✅ RAG Service started in new terminal${NC}"
+                    echo -e "${CYAN}📄 Access URLs:${NC}"
+                    echo -e "   • Health Check: ${RAG_SERVICE_URL}/health"
+                    echo -e "   • API Documentation: ${RAG_SERVICE_URL}/docs"
+                    echo -e "   • Service Status: ${RAG_SERVICE_URL}/"
+                fi
                 echo ""
                 ;;
             2)
-                echo -e "\n${YELLOW}🚀 Starting Option 4: Server-Side Includes Blog Server...${NC}"
-                cd /home/rosie/projects/fae-intelligence/html-blog
-                gnome-terminal -- bash -c "echo 'Starting SSI Blog Server on Port 8086...'; node ssi-server.js; exec bash"
-                echo -e "${GREEN}✅ Option 4 server started in new terminal${NC}"
-                echo -e "${CYAN}📄 Access URLs:${NC}"
-                echo -e "   • Post 1: http://localhost:8086/post/getting-started-ai-automation/index-ssi.html"
-                echo -e "   • Post 2: http://localhost:8086/post/5-ai-tools-small-business-needs/index-ssi.html"
+                echo -e "\n${YELLOW}🛑 Stopping RAG Service...${NC}"
+                pkill -f "rag_server_optimized.py" 2>/dev/null && echo -e "   ${GREEN}✅ RAG Service stopped${NC}" || echo -e "   ${YELLOW}⚠️ No RAG Service found running${NC}"
                 echo ""
                 ;;
             3)
-                echo -e "\n${YELLOW}📖 Opening Shared Components Guide...${NC}"
-                if [ -f "/home/rosie/projects/fae-intelligence/html-blog/SHARED-COMPONENTS-GUIDE.md" ]; then
-                    xdg-open "/home/rosie/projects/fae-intelligence/html-blog/SHARED-COMPONENTS-GUIDE.md"
-                    echo -e "${GREEN}✅ Guide opened in default application${NC}"
+                echo -e "\n${YELLOW}🔍 Checking RAG Service Status...${NC}"
+                echo -e "${CYAN}Service Health:${NC}"
+                if curl -s --connect-timeout 3 "${RAG_SERVICE_URL}/health" > /dev/null 2>&1; then
+                    echo -e "   ${GREEN}✅ RAG Service is running and healthy${NC}"
+                    curl -s "${RAG_SERVICE_URL}/health" | python3 -m json.tool 2>/dev/null || echo "   (Health check response received)"
                 else
-                    echo -e "${RED}❌ Guide not found at expected location${NC}"
+                    echo -e "   ${RED}❌ RAG Service is not responding${NC}"
+                fi
+                
+                echo -e "${CYAN}Process Status:${NC}"
+                if pgrep -f "rag_server_optimized.py" > /dev/null; then
+                    echo -e "   ${GREEN}✅ RAG Service process is running${NC}"
+                else
+                    echo -e "   ${RED}❌ RAG Service process not found${NC}"
+                fi
+                
+                echo -e "${CYAN}Ollama Status:${NC}"
+                if pgrep -x ollama > /dev/null; then
+                    echo -e "   ${GREEN}✅ Ollama service is running${NC}"
+                else
+                    echo -e "   ${RED}❌ Ollama service is not running${NC}"
                 fi
                 echo ""
                 ;;
             4)
-                echo -e "\n${YELLOW}🔍 Checking Blog Server Status...${NC}"
-                echo -e "${CYAN}Option 2 (Port 8085):${NC}"
-                if curl -s http://localhost:8085 > /dev/null 2>&1; then
-                    echo -e "   ${GREEN}✅ JavaScript Includes server is running${NC}"
+                echo -e "\n${YELLOW}🧪 Running RAG Service Test Suite...${NC}"
+                if [ -f "${RAG_SERVICE_DIR}/test_rag_service.sh" ]; then
+                    cd "${RAG_SERVICE_DIR}"
+                    chmod +x test_rag_service.sh
+                    ./test_rag_service.sh
                 else
-                    echo -e "   ${RED}❌ JavaScript Includes server is not running${NC}"
-                fi
-                
-                echo -e "${CYAN}Option 4 (Port 8086):${NC}"
-                if curl -s http://localhost:8086 > /dev/null 2>&1; then
-                    echo -e "   ${GREEN}✅ Server-Side Includes server is running${NC}"
-                else
-                    echo -e "   ${RED}❌ Server-Side Includes server is not running${NC}"
+                    echo -e "${RED}❌ Test script not found at ${RAG_SERVICE_DIR}/test_rag_service.sh${NC}"
                 fi
                 echo ""
                 ;;
             5)
-                echo -e "\n${YELLOW}🛑 Stopping Blog Servers...${NC}"
-                pkill -f "serve.*8085" 2>/dev/null && echo -e "   ${GREEN}✅ Stopped JavaScript Includes server (port 8085)${NC}" || echo -e "   ${YELLOW}⚠️ No JavaScript Includes server found${NC}"
-                pkill -f "node.*ssi-server" 2>/dev/null && echo -e "   ${GREEN}✅ Stopped SSI server (port 8086)${NC}" || echo -e "   ${YELLOW}⚠️ No SSI server found${NC}"
+                echo -e "\n${YELLOW}💬 Interactive RAG Query${NC}"
+                echo -e "${CYAN}Enter your query (or 'quit' to exit):${NC}"
+                read -p "> " user_query
+                if [ "$user_query" != "quit" ] && [ ! -z "$user_query" ]; then
+                    echo -e "\n${YELLOW}🔍 Querying RAG service...${NC}"
+                    curl -s -X POST "${RAG_SERVICE_URL}/query" \
+                        -H "Content-Type: application/json" \
+                        -d "{\"query\": \"$user_query\"}" | \
+                        python3 -m json.tool 2>/dev/null || echo "Query failed - check service status"
+                fi
+                echo ""
+                ;;
+            6)
+                echo -e "\n${YELLOW}📜 Viewing RAG Service Logs...${NC}"
+                if [ -f "${RAG_SERVICE_DIR}/rag_service_startup.log" ]; then
+                    echo -e "${CYAN}Recent startup logs:${NC}"
+                    tail -20 "${RAG_SERVICE_DIR}/rag_service_startup.log"
+                else
+                    echo -e "${YELLOW}⚠️ No log files found. Check terminal where service was started.${NC}"
+                fi
+                echo ""
+                ;;
+            7)
+                echo -e "\n${YELLOW}📖 Opening RAG API Documentation...${NC}"
+                if curl -s --connect-timeout 3 "${RAG_SERVICE_URL}/health" > /dev/null 2>&1; then
+                    xdg-open "${RAG_SERVICE_URL}/docs" > /dev/null 2>&1 &
+                    echo -e "${GREEN}✅ API documentation opened in browser${NC}"
+                    echo -e "${CYAN}URL: ${RAG_SERVICE_URL}/docs${NC}"
+                else
+                    echo -e "${RED}❌ RAG Service is not running. Start it first with option 1.${NC}"
+                fi
+                echo ""
+                ;;
+            8)
+                echo -e "\n${YELLOW}🔄 Restarting Ollama Service...${NC}"
+                pkill -x ollama 2>/dev/null
+                sleep 2
+                ollama serve > /dev/null 2>&1 &
+                sleep 3
+                if pgrep -x ollama > /dev/null; then
+                    echo -e "${GREEN}✅ Ollama service restarted successfully${NC}"
+                else
+                    echo -e "${RED}❌ Failed to restart Ollama service${NC}"
+                fi
                 echo ""
                 ;;
             0)
@@ -342,7 +411,140 @@ launch_blog_components() {
                 ;;
         esac
         
-        if [ "$blog_choice" != "0" ]; then
+        if [ "$rag_choice" != "0" ]; then
+            read -p "$(echo -e "${BLUE}Press Enter to continue...${NC}")"
+        fi
+    done
+}
+
+# Function: Visual Content Editors Management
+launch_visual_editors() {
+    echo -e "\n${YELLOW}🎨 Visual Content Editors Hub${NC}"
+    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+    
+    while true; do
+        echo -e "${CYAN}Available Options:${NC}\n"
+        echo -e "${GREEN}1)${NC} Start JavaScript Content Editor Server (Port 8085)"
+        echo -e "${GREEN}2)${NC} Start Server-Side Includes Editor Server (Port 8086)"
+        echo -e "${GREEN}3)${NC} Visual Content Editor (Markdown to Visual Layout)"
+        echo -e "${GREEN}4)${NC} View Shared Components Guide"
+        echo -e "${GREEN}5)${NC} Check Server Status"
+        echo -e "${GREEN}6)${NC} Stop All Editor Servers"
+        echo -e "${GREEN}0)${NC} Back to Main Menu"
+        echo ""
+        
+        read -p "$(echo -e "${GREEN}Enter your choice [0-6]: ${NC}")" editor_choice
+        
+        case $editor_choice in
+            1)
+                echo -e "\n${YELLOW}🚀 Starting JavaScript Content Editor Server...${NC}"
+                if lsof -Pi :8085 -sTCP:LISTEN -t >/dev/null; then
+                    echo -e "${YELLOW}⚠️ Server already running on port 8085${NC}"
+                else
+                    cd /home/rosie/projects/fae-intelligence/html-blog
+                    echo -e "${CYAN}Starting npx serve on port 8085...${NC}"
+                    nohup npx serve -p 8085 . > /tmp/serve-8085.log 2>&1 &
+                    sleep 3
+                    if lsof -Pi :8085 -sTCP:LISTEN -t >/dev/null; then
+                        echo -e "${GREEN}✅ JavaScript Content Editor server started successfully${NC}"
+                        echo -e "${CYAN}📄 Access URLs:${NC}"
+                        echo -e "   • Visual Editor: http://localhost:8085/visual-editor.html"
+                        echo -e "   • Sample Content: http://localhost:8085/post/getting-started-ai-automation/"
+                        echo -e "   • Server logs: tail -f /tmp/serve-8085.log"
+                    else
+                        echo -e "${RED}❌ Failed to start server. Check logs: cat /tmp/serve-8085.log${NC}"
+                    fi
+                fi
+                echo ""
+                ;;
+            2)
+                echo -e "\n${YELLOW}🚀 Starting Server-Side Includes Content Editor...${NC}"
+                if lsof -Pi :8086 -sTCP:LISTEN -t >/dev/null; then
+                    echo -e "${YELLOW}⚠️ Server already running on port 8086${NC}"
+                else
+                    cd /home/rosie/projects/fae-intelligence/html-blog
+                    echo -e "${CYAN}Starting SSI server on port 8086...${NC}"
+                    nohup node ssi-server.js > /tmp/ssi-8086.log 2>&1 &
+                    sleep 3
+                    if lsof -Pi :8086 -sTCP:LISTEN -t >/dev/null; then
+                        echo -e "${GREEN}✅ Server-Side Includes server started successfully${NC}"
+                        echo -e "${CYAN}📄 Access URLs:${NC}"
+                        echo -e "   • Visual Editor: http://localhost:8086/visual-editor.html"
+                        echo -e "   • Sample Content: http://localhost:8086/post/getting-started-ai-automation/index-ssi.html"
+                        echo -e "   • Server logs: tail -f /tmp/ssi-8086.log"
+                    else
+                        echo -e "${RED}❌ Failed to start server. Check logs: cat /tmp/ssi-8086.log${NC}"
+                    fi
+                fi
+                echo ""
+                ;;
+            3)
+                echo -e "\n${YELLOW}🎨 Opening Visual Content Editor...${NC}"
+                xdg-open "http://localhost:8085/visual-editor.html"
+                echo -e "${GREEN}✅ Visual Content Editor opened${NC}"
+                echo -e "${CYAN}📝 Features:${NC}"
+                echo -e "   • Parse Markdown into editable blocks"
+                echo -e "   • Change block types (paragraph ↔ heading ↔ image)"
+                echo -e "   • Drag & drop to reorder content"
+                echo -e "   • Side-by-side layouts with ratio controls"
+                echo -e "   • Upload local images or use URLs"
+                echo -e "   • Export clean HTML for any content"
+                echo ""
+                ;;
+            4)
+                echo -e "\n${YELLOW}📖 Opening Shared Components Guide...${NC}"
+                if [ -f "/home/rosie/projects/fae-intelligence/html-blog/SHARED-COMPONENTS-GUIDE.md" ]; then
+                    xdg-open "/home/rosie/projects/fae-intelligence/html-blog/SHARED-COMPONENTS-GUIDE.md"
+                    echo -e "${GREEN}✅ Guide opened in default application${NC}"
+                else
+                    echo -e "${RED}❌ Guide not found at expected location${NC}"
+                fi
+                echo ""
+                ;;
+            5)
+                echo -e "\n${YELLOW}🔍 Checking Editor Server Status...${NC}"
+                echo -e "${CYAN}Option 1 (Port 8085):${NC}"
+                if curl -s http://localhost:8085 > /dev/null 2>&1; then
+                    echo -e "   ${GREEN}✅ JavaScript Includes server is running${NC}"
+                else
+                    echo -e "   ${RED}❌ JavaScript Includes server is not running${NC}"
+                fi
+                
+                echo -e "${CYAN}Option 2 (Port 8086):${NC}"
+                if curl -s http://localhost:8086 > /dev/null 2>&1; then
+                    echo -e "   ${GREEN}✅ Server-Side Includes server is running${NC}"
+                else
+                    echo -e "   ${RED}❌ Server-Side Includes server is not running${NC}"
+                fi
+                echo ""
+                ;;
+            6)
+                echo -e "\n${YELLOW}🛑 Stopping Editor Servers...${NC}"
+                # Stop JavaScript server
+                if lsof -Pi :8085 -sTCP:LISTEN -t >/dev/null; then
+                    pkill -f "serve.*8085" 2>/dev/null && echo -e "   ${GREEN}✅ Stopped JavaScript Includes server (port 8085)${NC}"
+                    rm -f /tmp/serve-8085.log
+                else
+                    echo -e "   ${YELLOW}⚠️ No JavaScript Includes server found${NC}"
+                fi
+                # Stop SSI server  
+                if lsof -Pi :8086 -sTCP:LISTEN -t >/dev/null; then
+                    pkill -f "node.*ssi-server" 2>/dev/null && echo -e "   ${GREEN}✅ Stopped SSI server (port 8086)${NC}"
+                    rm -f /tmp/ssi-8086.log
+                else
+                    echo -e "   ${YELLOW}⚠️ No SSI server found${NC}"
+                fi
+                echo ""
+                ;;
+            0)
+                break
+                ;;
+            *)
+                echo -e "\n${RED}❌ Invalid option. Please try again.${NC}\n"
+                ;;
+        esac
+        
+        if [ "$editor_choice" != "0" ]; then
             read -p "$(echo -e "${BLUE}Press Enter to continue...${NC}")"
         fi
     done
@@ -362,7 +564,8 @@ show_menu() {
     echo -e "${BLUE}│${NC} ${GREEN}8)${NC}  Launch Everything       ${CYAN}(Full Stack)${NC}              ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}9)${NC}  View Documentation      ${CYAN}(This Guide)${NC}              ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}10)${NC} 📥 Ingest Video Analysis ${CYAN}(Original Script)${NC}         ${BLUE}│${NC}"
-    echo -e "${BLUE}│${NC} ${GREEN}11)${NC} 📝 Blog Shared Components ${CYAN}(JS + SSI Options)${NC}        ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}11)${NC} 🎨 Visual Content Editors ${CYAN}(JS + SSI Options)${NC}        ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}12)${NC} 🎯 RAG Service Management ${CYAN}(AI Query System)${NC}          ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}0)${NC}  Exit                                              ${BLUE}│${NC}"
     echo -e "${BLUE}└────────────────────────────────────────────────────────────┘${NC}"
 }
@@ -379,7 +582,8 @@ case "$1" in
     "all") launch_all; exit 0 ;;
     "docs") show_documentation; exit 0 ;;
     "ingest"|"i") ingest_video_analysis; exit 0 ;; # Kept for direct access to original video ingest
-    "blog"|"b") launch_blog_components; exit 0 ;; # Blog Shared Components Manager
+    "editors"|"edit"|"e") launch_visual_editors; exit 0 ;; # Visual Content Editors Hub
+    "rag"|"r") launch_rag_service; exit 0 ;; # RAG Service Management Hub
     "help"|"--help"|"-h")
         echo "Fae Intelligence Tool Hub"
         echo "Usage: fae-tools [command]"
@@ -395,7 +599,8 @@ case "$1" in
         echo "  all             - Launch everything"
         echo "  docs            - View documentation"
         echo "  ingest, i       - Ingest video analysis into knowledge graph (Original Script)"
-        echo "  blog, b         - Blog Shared Components Manager (JS + SSI options)"
+        echo "  editors, edit, e - Visual Content Editors Hub (JS + SSI options)"
+        echo "  rag, r          - RAG Service Management Hub (AI Query System)"
         echo "  help            - Show this help"
         echo ""
         echo "Without arguments: Show interactive menu"
@@ -407,7 +612,7 @@ esac
 while true; do
     show_menu
     echo ""
-    read -p "$(echo -e "${GREEN}Enter your choice [0-11]: ${NC}")" choice
+    read -p "$(echo -e "${GREEN}Enter your choice [0-12]: ${NC}")" choice
 
     case $choice in
         1) launch_knowledge ;;
@@ -420,7 +625,8 @@ while true; do
         8) launch_all ;;
         9) show_documentation ;;
         10) ingest_video_analysis ;; # Kept for direct access to original video ingest
-        11) launch_blog_components ;; # Blog Shared Components Manager
+        11) launch_visual_editors ;; # Visual Content Editors Hub
+        12) launch_rag_service ;; # RAG Service Management Hub
         0)
             echo -e "\n${CYAN}👋 Thanks for using Fae Intelligence Tool Hub!${NC}\n"
             exit 0

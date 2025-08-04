@@ -64,7 +64,7 @@ export interface BlueprintData {
 }
 
 // New and/or updated types for view and sub-view management
-export type ViewName = 'blueprint' | 'clients' | 'projects' | 'tasks' | 'crm' | 'finance'; 
+export type ViewName = 'blueprint' | 'clients' | 'projects' | 'tasks' | 'crm' | 'finance' | 'blog'; 
 
 export interface SubViewItem {
   id: string;

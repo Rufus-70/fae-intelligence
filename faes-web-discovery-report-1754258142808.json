@@ -1,0 +1,980 @@
+{
+  "timestamp": "2025-08-03T21:55:41.090Z",
+  "firestore": {
+    "advisory_analyses": {
+      "totalDocs": 1,
+      "sampleDocs": [
+        {
+          "id": "XTMMdtygRjf9AcoEni17",
+          "data": {
+            "fileId": "FR5PAKjMLQPml7QVFn3B",
+            "fileName": "Fae Intelligence - AI Made Practical for Manufacturing.pdf",
+            "advisoryData": {
+              "pain_points": [],
+              "solutions": [],
+              "tools": [],
+              "industry": "manufacturing",
+              "overall_confidence": 60
+            },
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "createdAt": {
+              "_seconds": 1750480235,
+              "_nanoseconds": 661000000
+            }
+          },
+          "fields": [
+            "fileId",
+            "fileName",
+            "advisoryData",
+            "userId",
+            "createdAt"
+          ]
+        }
+      ],
+      "fields": [
+        "fileId",
+        "fileName",
+        "advisoryData",
+        "userId",
+        "createdAt"
+      ]
+    },
+    "analyses": {
+      "totalDocs": 4,
+      "sampleDocs": [
+        {
+          "id": "7YSILksm6CvL014yyh5K",
+          "data": {
+            "fileId": "9D93CR5RdZE1lzrKKAJT",
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "completed",
+            "analysisType": "gemini_document_analysis",
+            "data": {
+              "summary": "The document 'Use Cases and Resistance to AI.docx' analyzes the implementation of AI in businesses, focusing on strategies, productivity improvements, change management, resistance patterns, and business process optimization.  It likely contains detailed case studies, quantitative data, implementation guidelines, and strategic recommendations for successful AI adoption. The substantial size suggests a comprehensive analysis of AI's impact on business operations.",
+              "file_name_processed": "Use Cases and Resistance to AI.docx",
+              "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "size_bytes": 24286,
+              "document_type": "Business Intelligence Report",
+              "business_category": "operations",
+              "smb_relevance": "high",
+              "full_text_annotation": "\n            Document: Use Cases and Resistance to AI.docx\n            Type: Microsoft Word Document\n            Size: 24286 bytes\n            Upload Date: 2025-06-20T03:39:11.096Z\n            \n            CONTENT ANALYSIS PLACEHOLDER:\n            This document contains business intelligence content related to:\n            - AI implementation strategies\n            - Productivity improvements\n            - Change management\n            - Resistance patterns\n            - Business process optimization\n            \n            Document appears to contain structured business content with:\n            - Multiple sections and subsections\n            - Quantitative data and metrics\n            - Case studies and examples\n            - Implementation guidelines\n            - Strategic recommendations\n            \n            Key themes likely include:\n            - Technology adoption\n            - Organizational change\n            - Process improvement\n            - Knowledge management\n            - Operational efficiency\n            \n            Size indicates substantial content (~24KB) suggesting\n            comprehensive documentation with detailed analysis.\n            \n            NEXT STEP: Implement mammoth.js for full Word document text extraction.\n            ",
+              "key_topics": [
+                "AI Implementation Strategies",
+                "Productivity Improvements",
+                "Change Management",
+                "Resistance to AI",
+                "Business Process Optimization",
+                "Technology Adoption",
+                "Organizational Change",
+                "Process Improvement",
+                "Knowledge Management",
+                "Operational Efficiency"
+              ],
+              "word_count": "Unknown (requires text extraction)",
+              "readability_score": "Unknown (requires text extraction)",
+              "business_value": "The document offers significant value to manufacturing SMBs by providing insights into how to successfully implement AI, overcome resistance, and improve operational efficiency.  This can lead to cost savings, increased productivity, and a competitive advantage.",
+              "actionable_insights": [
+                "Identify and address potential sources of resistance to AI adoption within the organization.",
+                "Develop a comprehensive change management plan to support AI implementation.",
+                "Prioritize AI use cases that offer the greatest potential for productivity improvements and operational efficiency.",
+                "Invest in training and development to equip employees with the skills needed to work effectively with AI.",
+                "Establish clear metrics to track the success of AI initiatives and make data-driven adjustments as needed."
+              ],
+              "knowledge_highlights": [
+                "AI use cases in manufacturing",
+                "Overcoming resistance to AI",
+                "Change management strategies for AI implementation",
+                "Measuring the ROI of AI initiatives",
+                "Best practices for AI adoption in SMBs"
+              ]
+            },
+            "metadata": {
+              "processingTime": 1287,
+              "chunked": false,
+              "chunkCount": 1,
+              "uploadTriggered": true,
+              "geminiProcessed": true,
+              "aiModel": "gemini-1.5-flash"
+            },
+            "generatedAt": {
+              "_seconds": 1750390754,
+              "_nanoseconds": 311000000
+            }
+          },
+          "fields": [
+            "fileId",
+            "userId",
+            "status",
+            "analysisType",
+            "data",
+            "metadata",
+            "generatedAt"
+          ]
+        },
+        {
+          "id": "QEuOMtDGfVy7YL1ZyOyZ",
+          "data": {
+            "fileId": "nz82zWn9AMP0ZQvFhjpB",
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "completed",
+            "analysisType": "gemini_document_analysis",
+            "data": {
+              "summary": "Unable to provide a summary, key topics, business category, document type, SMB relevance, actionable insights, business value, readability score, or knowledge highlights because the provided document content is only a description of a JSON file (2t-z3r1nsls.json) and not the actual JSON file content itself.  The analysis requires access to the content of the JSON file to extract meaningful insights.",
+              "file_name_processed": "2t-z3r1nsls.json",
+              "content_type": "application/json",
+              "size_bytes": 16247,
+              "document_type": "Unknown",
+              "business_category": "Unknown",
+              "smb_relevance": "Unknown",
+              "full_text_annotation": "Document: 2t-z3r1nsls.json. Type: application/json. Size: 16247 bytes.",
+              "key_topics": [],
+              "word_count": 28,
+              "readability_score": 100,
+              "business_value": "Cannot be assessed without file content",
+              "actionable_insights": [],
+              "knowledge_highlights": []
+            },
+            "metadata": {
+              "processingTime": 1847,
+              "chunked": false,
+              "chunkCount": 1,
+              "uploadTriggered": true,
+              "geminiProcessed": true,
+              "aiModel": "gemini-1.5-flash"
+            },
+            "generatedAt": {
+              "_seconds": 1750391346,
+              "_nanoseconds": 870000000
+            }
+          },
+          "fields": [
+            "fileId",
+            "userId",
+            "status",
+            "analysisType",
+            "data",
+            "metadata",
+            "generatedAt"
+          ]
+        },
+        {
+          "id": "WoUDborINJKG6boLIJGz",
+          "data": {
+            "fileId": "FR5PAKjMLQPml7QVFn3B",
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "completed",
+            "analysisType": "gemini_document_analysis",
+            "data": {
+              "summary": "The document \"Fae Intelligence - AI Made Practical for Manufacturing.pdf\" likely showcases Fae Intelligence's AI-powered solutions tailored for manufacturing SMBs.  It probably details how their AI can improve efficiency, reduce costs, and enhance decision-making within manufacturing processes. The business value proposition centers around leveraging AI to address common challenges faced by smaller manufacturers, such as optimizing production, predicting maintenance needs, and improving quality control.  Without access to the PDF's content, this summary is based on the title and file information.",
+              "file_name_processed": "Fae Intelligence - AI Made Practical for Manufacturing.pdf",
+              "content_type": "application/pdf",
+              "size_bytes": 390819,
+              "document_type": "Marketing Brochure/Case Study/White Paper",
+              "business_category": "Operations",
+              "smb_relevance": "High.  The title explicitly targets manufacturing, and the focus on making AI practical suggests solutions scalable and affordable for SMBs, addressing their resource constraints.",
+              "full_text_annotation": "PDF document analysis needed. File: Fae Intelligence - AI Made Practical for Manufacturing.pdf, Size: 390819 bytes.",
+              "key_topics": [
+                "AI in Manufacturing",
+                "Predictive Maintenance",
+                "Production Optimization",
+                "Quality Control",
+                "Cost Reduction",
+                "Data Analytics",
+                "Smart Manufacturing",
+                "Industry 4.0"
+              ],
+              "word_count": "Unknown (requires PDF analysis)",
+              "readability_score": "Unknown (requires PDF analysis)",
+              "business_value": "High potential for improved efficiency, reduced operational costs, enhanced product quality, and better decision-making through data-driven insights.  The actual value depends on the specific features and capabilities of Fae Intelligence's AI solutions and their successful implementation.",
+              "actionable_insights": [
+                "Assess Fae Intelligence's AI solutions for potential integration into existing workflows.",
+                "Evaluate the ROI of implementing AI-driven solutions to address specific operational challenges (e.g., downtime, quality defects).",
+                "Investigate Fae Intelligence's pricing and support models to determine feasibility for the SMB.",
+                "Compare Fae Intelligence's offerings with other AI solutions available to manufacturing SMBs."
+              ],
+              "knowledge_highlights": [
+                "Fae Intelligence",
+                "AI-powered manufacturing solutions",
+                "Predictive maintenance",
+                "Production optimization",
+                "Quality control",
+                "SMB manufacturing challenges",
+                "AI implementation in manufacturing"
+              ]
+            },
+            "metadata": {
+              "processingTime": 1036,
+              "chunked": false,
+              "chunkCount": 1,
+              "uploadTriggered": true,
+              "geminiProcessed": true,
+              "aiModel": "gemini-1.5-flash"
+            },
+            "generatedAt": {
+              "_seconds": 1750480235,
+              "_nanoseconds": 510000000
+            }
+          },
+          "fields": [
+            "fileId",
+            "userId",
+            "status",
+            "analysisType",
+            "data",
+            "metadata",
+            "generatedAt"
+          ]
+        },
+        {
+          "id": "g9bSFDHy8MuXphlhHXLs",
+          "data": {
+            "fileId": "Gso7Etb9xrD0VTPxjcON",
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "completed",
+            "analysisType": "gemini_document_analysis",
+            "data": {
+              "summary": "The provided document, FqS-9nF48mI.json, is a JSON file and its content is not accessible to me.  Therefore, I cannot provide a detailed summary, key topics, or actionable insights.  To perform the analysis, please provide the actual content of the JSON file.",
+              "file_name_processed": "FqS-9nF48mI.json",
+              "content_type": "application/json",
+              "size_bytes": 17647,
+              "document_type": "JSON File",
+              "business_category": "Unknown",
+              "smb_relevance": "Unknown",
+              "full_text_annotation": "Document: FqS-9nF48mI.json. Type: application/json. Size: 17647 bytes.",
+              "key_topics": [],
+              "word_count": 0,
+              "readability_score": 0,
+              "business_value": "Cannot be assessed without document content",
+              "actionable_insights": [],
+              "knowledge_highlights": []
+            },
+            "metadata": {
+              "processingTime": 1907,
+              "chunked": false,
+              "chunkCount": 1,
+              "uploadTriggered": true,
+              "geminiProcessed": true,
+              "aiModel": "gemini-1.5-flash"
+            },
+            "generatedAt": {
+              "_seconds": 1750391330,
+              "_nanoseconds": 932000000
+            }
+          },
+          "fields": [
+            "fileId",
+            "userId",
+            "status",
+            "analysisType",
+            "data",
+            "metadata",
+            "generatedAt"
+          ]
+        }
+      ],
+      "fields": [
+        "fileId",
+        "userId",
+        "status",
+        "analysisType",
+        "data",
+        "metadata",
+        "generatedAt"
+      ]
+    },
+    "blog_categories": {
+      "totalDocs": 4,
+      "sampleDocs": [
+        {
+          "id": "3pEULkTKeanNGyVgshUq",
+          "data": {
+            "postCount": 0,
+            "name": "AI Strategy",
+            "slug": "ai-strategy",
+            "description": "Strategic AI implementation for manufacturing",
+            "createdAt": {
+              "_seconds": 1749837271,
+              "_nanoseconds": 527000000
+            }
+          },
+          "fields": [
+            "postCount",
+            "name",
+            "slug",
+            "description",
+            "createdAt"
+          ]
+        },
+        {
+          "id": "5hPJmsec5AFn1j9tgJGV",
+          "data": {
+            "slug": "training",
+            "name": "Training",
+            "postCount": 0,
+            "description": "AI training and skill development",
+            "createdAt": {
+              "_seconds": 1749837851,
+              "_nanoseconds": 930000000
+            }
+          },
+          "fields": [
+            "slug",
+            "name",
+            "postCount",
+            "description",
+            "createdAt"
+          ]
+        },
+        {
+          "id": "AB4eofffXCnOvfJ2yyUa",
+          "data": {
+            "postCount": 0,
+            "slug": "practical-tools",
+            "description": "Hands-on AI tools and applications",
+            "name": "Practical Tools",
+            "createdAt": {
+              "_seconds": 1749837271,
+              "_nanoseconds": 643000000
+            }
+          },
+          "fields": [
+            "postCount",
+            "slug",
+            "description",
+            "name",
+            "createdAt"
+          ]
+        },
+        {
+          "id": "aY4g3nb6jfuv2LM0vqTP",
+          "data": {
+            "name": "Case Studies",
+            "slug": "case-studies",
+            "description": "Real-world AI success stories",
+            "postCount": 0,
+            "createdAt": {
+              "_seconds": 1749837851,
+              "_nanoseconds": 834000000
+            }
+          },
+          "fields": [
+            "name",
+            "slug",
+            "description",
+            "postCount",
+            "createdAt"
+          ]
+        }
+      ],
+      "fields": [
+        "postCount",
+        "name",
+        "slug",
+        "description",
+        "createdAt"
+      ]
+    },
+    "blog_posts": {
+      "totalDocs": 4,
+      "sampleDocs": [
+        {
+          "id": "QGpfO74LnAKb2C2S0CfY",
+          "data": {
+            "title": "Taming the To-Do List: How AI Automation Frees Your Team for High-Value Work",
+            "excerpt": "Discover how low-cost AI tools like ChatGPT, Gemini in Sheets, and Power Automate can eliminate repetitive administrative tasks, freeing your team to focus on growth and high-value work. Learn how to implement these solutions for maximum ROI.",
+            "content": "For leaders in any growing business, the daily to-do list often feels like a battle against time. Buried beneath strategic goals are the repetitive tasks that drain energy and hours: sifting through emails, manually compiling reports, and shuttling data between systems. These small \"time wasters\" accumulate, hindering productivity and distracting skilled teams from the high-value work they were hired to do.\n\nThe solution isn’t a massive, expensive software overhaul. Instead, it’s about strategically applying simple, low-cost AI tools to automate the noise and reclaim your team's focus. Applying principles from a broad continuous improvement toolbox, Fae Intelligence views AI not as a singular fix, but as a powerful, versatile addition to your operational toolkit. The real victory isn't just finding a tool; it's implementing it in a way that creates lasting change and empowers your existing workforce.\n\n## Reclaim Your Day with Three Practical Automation Tools\n\nMoving from manual processes to automated workflows is more accessible than ever. For less than the cost of a few weekly coffees, you can deploy powerful solutions that tackle the most common operational bottlenecks.\n\n### 1. The Intelligent Assistant: ChatGPT and Claude ($20/month)\n\n*   **The Challenge:** Your team invests significant time drafting routine emails, summarizing long meetings, and creating process documentation from scratch.\n*   **The AI Solution:** Large Language Models like ChatGPT and Claude act as powerful assistants. Instead of staring at a blank page, your team can generate first drafts of standard operating procedures (SOPs), distill dense transcripts into clear action items, or create professional responses to common customer inquiries in seconds.\n    *   **Operations Use Case:** Paste a raw transcript from a production meeting and receive a summary, a list of decisions made, and a table of action items assigned to team members.\n    *   **Sales Use Case:** Create a template to instantly generate personalized follow-up emails, incorporating key details from call notes to ensure consistency and speed.\n    *   **HR Use Case:** Draft job descriptions, employee announcements, and training material outlines, dramatically cutting down on administrative overhead.\n\n### 2. The Data Workhorse: Gemini in Google Sheets (Free - $20/month)\n\n*   **The Challenge:** Key business data resides within spreadsheets, and uncovering deep insights requires time-consuming manual analysis from your skilled staff.\n*   **The AI Solution:** Gemini’s integration with Google Sheets transforms your spreadsheet into an interactive data analyst. It augments your team's work by allowing them to use plain-language prompts to sort, analyze, and visualize data without complex formulas. This automates the kind of data-driven decision-making that was once time-prohibitive for lean teams.\n    *   **Inventory Use Case:** Automatically categorize new stock entries and configure alerts when levels fall below a set threshold, enabling proactive inventory management.\n    *   **Finance Use Case:** Analyze expense reports to identify spending patterns and instantly create visual charts for budget meetings.\n    *   **Marketing Use Case:** Convert a long list of customer feedback into a categorized report of common themes and overall sentiment.\n\n### 3. The Digital Connector: Microsoft Power Automate (Starts at $15/month)\n\n*   **The Challenge:** Your team manually moves information between different applications—a new sales lead needs to be entered into the CRM, an order requires a task to be created for the warehouse, and so on. This repetitive work is prone to error and delay.\n*   **The AI Solution:** Power Automate builds digital bridges between the apps your business already uses. It creates \"if this, then that\" workflows that handle these tasks automatically. This ensures consistency, reduces human error, and accelerates processes without manual intervention.\n    *   **Cross-Functional Use Case:** When a customer submits a support ticket via a website form, a workflow can automatically create a task in your project management system, save any attachments to a specific folder, and send a notification to the support channel in Microsoft Teams.\n\n## The Key to Success: Guiding Your Team Through Change\n\nAcquiring these tools is simple. The true challenge—and the key to unlocking their ROI—is ensuring they are adopted effectively. A core lesson consistently emerges from leading organizational transformations across diverse departments: **technology is only as good as the team’s ability and willingness to use it.**\n\nTrue implementation involves more than a software license. It requires standardizing new workflows, training teams to trust and leverage automated outputs, and redefining roles to focus on the higher-value tasks that have been unlocked. This is where a systematic, quality-focused approach to AI implementation ensures that these tools don't just get introduced, but become deeply integrated into your company’s culture of continuous improvement.\n\nExpert change leadership proactively addresses the human dynamics of transformation, turning potential resistance into confident adoption and guaranteeing your investment delivers sustainable, long-term results.\n\n## Move from ‘Busy’ to ‘Productive’\n\nYour team’s time is your most valuable asset. Stop letting it be consumed by tasks that a simple AI tool can handle. By starting with specific, low-cost solutions for your biggest time wasters, you can begin building a more efficient, resilient, and focused operation today.\n\n---\n**Call to Action:**\n\nReady to turn operational bottlenecks into automated efficiencies? **Schedule a free discovery call with Fae Intelligence.** We’ll help you identify your top automation opportunities and build a practical implementation plan that ensures your team successfully adopts these powerful new tools.",
+            "category": "ai-tools",
+            "tags": [
+              "ai-automation",
+              "productivity",
+              "chatgpt",
+              "power-automate",
+              "gemini",
+              "small-business",
+              "smb",
+              "change-management"
+            ],
+            "featured": false,
+            "seo": {
+              "metaTitle": "AI Automation for SMBs: Tame Your To-Do List & Boost Productivity",
+              "metaDescription": "Learn how to use low-cost AI tools to automate repetitive tasks, save time, and free your team for high-value work. Practical tips for growing businesses.",
+              "focusKeyword": "AI Automation for SMBs"
+            },
+            "slug": "taming-the-to-do-list-how-ai-automation-frees-your-team-for-high-value-work",
+            "author": {
+              "id": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+              "name": "admin",
+              "email": "admin@faeintelligence.com"
+            },
+            "createdAt": {
+              "_seconds": 1753597045,
+              "_nanoseconds": 421000000
+            },
+            "status": "published",
+            "updatedAt": {
+              "_seconds": 1753598819,
+              "_nanoseconds": 236000000
+            },
+            "viewCount": 5
+          },
+          "fields": [
+            "title",
+            "excerpt",
+            "content",
+            "category",
+            "tags",
+            "featured",
+            "seo",
+            "slug",
+            "author",
+            "createdAt",
+            "status",
+            "updatedAt",
+            "viewCount"
+          ]
+        },
+        {
+          "id": "RJPMwJPDWzB67eG2BBxc",
+          "data": {
+            "title": "Test 2",
+            "excerpt": "",
+            "content": "{\"title\": \"The True ROI Impact of Enterprise AI: Real-World Data on Microsoft Copilot, Google Workspace AI, Notion AI, Monday.com AI, and Power Platform AI Builder\",\\n\"content\": \"<p><strong>Artificial intelligence</strong> tools have rapidly moved from hype to must-have in the modern digital workplace. While promises of productivity and efficiency abound, leaders demand real, measured <strong>ROI impact</strong> before making strategic investments. Here, we examine the current, evidence-based benefits reported by organizations deploying <strong>Microsoft Copilot</strong>, <strong>Google Workspace AI</strong>, <strong>Notion AI</strong>, <strong>Monday.com’s AI</strong>, and <strong>Power Platform’s AI Builder</strong>.</p> <h2>Microsoft Copilot: ROI and Efficiency Gains</h2> <ul> <li><strong>Return on Investment</strong>: Independent studies commissioned by Microsoft and conducted by Forrester project a <strong>132% to 353% ROI over three years for small and medium businesses (SMBs)</strong> using Microsoft 365 Copilot (Microsoft/Forrester, 2024-2025). For large enterprises, projected three-year ROI is 116%, with a net present value of $19.7 million for a 25,000-employee organization (Baytech Consulting, 2025) [1][2].</li> <li><strong>Time Savings</strong>: The Forrester study found that Copilot users saved an average of <strong>9 hours per month</strong> (Baytech Consulting, 2025) [1]. Additional reporting shows organizations measured a <strong>40% reduction in email composition time</strong> and a <strong>43% improvement in meeting effectiveness</strong> (Virteva, 2025) [3]. For a mid-market organization, these gains have translated into fewer unnecessary meetings and significantly less meeting preparation time. In one example, a 500-person company equated Copilot-driven productivity recovery to adding 65 full-time employees, saving $2.4 million annually on a $180,000 investment [3].</li> <li><strong>Operational Improvement</strong>: Copilot deployment has been linked with a <strong>20% reduction in operating costs</strong>, a 6% increase in net revenue, and a 25% acceleration in new-hire onboarding (Microsoft/Forrester, 2024) [2].</li> <li><strong>Adoption Realities</strong>: Despite these results, Gartner research indicates that full-scale adoption is still evolving, with many organizations piloting Copilot and reporting “some value, shows promise,” but with impact and value measurements still emerging (Gartner, 2025) [4].</li> </ul> <h2>Google Workspace AI: Productivity in Practice</h2> <ul> <li><strong>Productivity Gains</strong>: According to Google, Workspace AI tools such as Duet AI have enabled users to draft documents, summarize emails, and automate repetitive workflow steps. While data specific to ROI percentages are less widely published, many organizations report that Workspace AI “significantly reduces manual workload” and “accelerates document turnaround.” For instance, Google shared that Duet AI users save substantial time on document formatting, email drafting, and scheduling, though concrete numbers may vary across use cases (Google Cloud, 2024).</li> <li><strong>Collaboration Impact</strong>: Organizations highlight improved team collaboration and faster information sharing, echoing increased user satisfaction in internal case studies (Google Cloud, 2024).</li> </ul> <h2>Notion AI: Writing, Research, and Organization</h2> <ul> <li><strong>Content Generation</strong>: Notion AI claims to automate meeting notes, summarize large sets of information, and generate task lists from recorded conversations. In surveys and user testimonials, “many teams” report faster project documentation and easier information retrieval (Notion, 2024).</li> <li><strong>Documentation Efficiency</strong>: Third-party reviews and aggregated user data suggest teams save “hours per week” on documentation and ideation, though quantified ROI figures are not broadly published. An example: one marketing agency reported reducing research and drafting time by one-third after implementing Notion AI (Notion blog, 2024).</li> </ul> <h2>Monday.com’s AI: Workflow Optimization</h2> <ul> <li><strong>Process Automation</strong>: Monday.com’s AI features, including automated data extraction, workflow triggers, and auto-summarization, have helped customers “streamline repetitive processes.” Case studies shared by Monday.com highlight customers reporting up to 20% faster project delivery times and reduced administrative workload for project managers (Monday.com, 2024).</li> <li><strong>Cross-team Coordination</strong>: Users note improved visibility across departments, which “reduces task duplication” and accelerates decision-making (Monday.com, 2024).</li> </ul> <h2>Power Platform’s AI Builder: No-Code AI for Business</h2> <ul> <li><strong>Custom Automation</strong>: AI Builder lets organizations create no-code AI models for document processing, forecasting, and customer support bots. Microsoft reports that Power Platform adopters “see up to a 50% reduction in manual data entry tasks” after deployment (Microsoft Power Platform, 2024).</li> <li><strong>Operational Agility</strong>: Many companies cite reduced need for IT intervention, allowing non-technical teams to automate repetitive business processes and “bring new solutions to market faster” (Microsoft Power Platform, 2024).</li> </ul> <h2>Conclusion: The Measurable Business Impact of Enterprise AI</h2> <p>Across the AI landscape, real-world data confirms measurable <strong>ROI impact</strong>, significant <strong>time savings</strong>, and notable improvements in operational efficiency, though the extent varies by tool, organizational readiness, and implementation quality. For business leaders, the evidence points to clear strategic advantage when AI is deployed thoughtfully, aligned with real workflows, and continuously measured for impact.</p>\",\\n\"keywords\": \"ROI impact,enterprise AI,Microsoft Copilot ROI,Google Workspace AI benefits,Notion AI case study,Monday.com AI productivity,Power Platform AI Builder automation,AI in workplace efficiency,Microsoft 365 Copilot time savings,AI workflow automation,AI productivity tools comparison,AI business value,AI adoption statistics,Forrester Microsoft Copilot,AI for SMBs,enterprise AI adoption trends,AI tool ROI data,AI-powered collaboration,AI meeting effectiveness,data-backed AI benefits,AI-driven time savings\"\\n}",
+            "category": "",
+            "tags": [],
+            "featured": false,
+            "seo": {
+              "metaTitle": "",
+              "metaDescription": "",
+              "focusKeyword": ""
+            },
+            "status": "draft",
+            "slug": "test-2",
+            "viewCount": 0,
+            "author": {
+              "id": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+              "name": "admin",
+              "email": "admin@faeintelligence.com"
+            },
+            "createdAt": {
+              "_seconds": 1753944426,
+              "_nanoseconds": 109000000
+            },
+            "updatedAt": {
+              "_seconds": 1753944426,
+              "_nanoseconds": 109000000
+            }
+          },
+          "fields": [
+            "title",
+            "excerpt",
+            "content",
+            "category",
+            "tags",
+            "featured",
+            "seo",
+            "status",
+            "slug",
+            "viewCount",
+            "author",
+            "createdAt",
+            "updatedAt"
+          ]
+        },
+        {
+          "id": "Sm1FzFmd9dNTBU25lvsS",
+          "data": {
+            "status": "published",
+            "tags": [
+              "AI",
+              "Manufacturing",
+              "Tools",
+              "Productivity",
+              "ROI"
+            ],
+            "title": "5 Free AI Tools Every Small Manufacturer Should Use Today",
+            "seo": {
+              "metaTitle": "5 Free AI Tools for Small Manufacturers - Immediate ROI",
+              "metaDescription": "Discover 5 practical, free AI tools that small manufacturers can implement today for immediate productivity gains and ROI.",
+              "focusKeyword": "AI tools for small manufacturers"
+            },
+            "excerpt": "Discover practical, no-cost AI tools that can immediately improve your manufacturing operations. From predictive maintenance to quality control, these accessible solutions deliver real ROI without breaking the budget.",
+            "author": {
+              "name": "Richard Snyder",
+              "email": "admin@faeintelligence.com",
+              "id": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3"
+            },
+            "featured": true,
+            "slug": "5-free-ai-tools-small-manufacturers",
+            "createdAt": {
+              "_seconds": 1749837852,
+              "_nanoseconds": 759000000
+            },
+            "publishedAt": {
+              "_seconds": 1749837852,
+              "_nanoseconds": 759000000
+            },
+            "updatedAt": {
+              "_seconds": 1749837852,
+              "_nanoseconds": 759000000
+            },
+            "category": "Practical Tools - DOES THIS APPEAR",
+            "content": "---\n## The Reality of AI in Small Manufacturing\nWhen most manufacturers hear \"AI,\" they think of million-dollar implementations and tech giants. But here's the truth I've learned after 30+ years in manufacturing: the most impactful AI tools are often the simplest ones.\n\nSmall and medium manufacturers don't need complex systems. You need **practical tools that solve real problems today**.\n\n---\n## 5 Game-Changing Free AI Tools\n\n### 1. Orange Data Mining - Equipment Pattern Analysis\n**What it does:** Analyzes your equipment data to predict when machines need maintenance.\n\n**Real impact:** One client reduced unplanned downtime by 23% in just 3 months.\n\n**Time to implement:** 2-3 hours\n\n### 2. Teachable Machine - Visual Quality Control\n**What it does:** Train AI to spot defects in your products using just your smartphone camera.\n\n**Real impact:** Automated 80% of visual inspections, freeing up quality control staff for complex issues.\n\n**Time to implement:** 1 day\n\n### 3. Microsoft Power Automate - Workflow Optimization\n**What it does:** Automates repetitive tasks across your systems without coding.\n\n**Real impact:** Eliminated 4 hours of daily manual data entry.\n\n**Time to implement:** 2-4 hours\n\n### 4. Spreadsheet AI (Claude/ChatGPT) - Production Planning\n**What it does:** Analyzes your production data to optimize scheduling and resource allocation.\n\n**Real impact:** Improved on-time delivery from 85% to 96%.\n\n**Time to implement:** 30 minutes\n\n### 5. Google's NotebookLM - Knowledge Management\n**What it does:** Instantly finds answers from your technical documentation and procedures.\n\n**Real impact:** Reduced training time for new operators by 40%.\n\n**Time to implement:** 1 hour\n\n---\n## Implementation Strategy\nDon't try to implement all five at once. Here's my recommended approach:\n\n1.  **Week 1:** Start with Spreadsheet AI for immediate wins\n2.  **Week 2:** Add Teachable Machine for quality control\n3.  **Week 3:** Implement Orange for predictive maintenance\n4.  **Month 2:** Add workflow automation and knowledge management\n\n---\n## The Bottom Line\nAI doesn't have to be complicated or expensive. These five tools can transform your operations starting today. The key is to **start small, prove value, then scale**.\n\nRemember: every hour these tools save your team is an hour they can spend on higher-value work. In my experience, even a conservative 5% efficiency gain pays for itself within weeks.",
+            "viewCount": 28
+          },
+          "fields": [
+            "status",
+            "tags",
+            "title",
+            "seo",
+            "excerpt",
+            "author",
+            "featured",
+            "slug",
+            "createdAt",
+            "publishedAt",
+            "updatedAt",
+            "category",
+            "content",
+            "viewCount"
+          ]
+        },
+        {
+          "id": "tH3cUY8e0ojLnPnLcG4d",
+          "data": {
+            "title": "From Gut Feel to Smart Moves: AI Transforms Business Decision",
+            "excerpt": "In today's competitive manufacturing landscape, moving from intuition-based decisions to data-driven insights is crucial. AI tools can help bridge this gap, enhancing operational expertise.",
+            "author": {
+              "name": "Fae Intelligence"
+            },
+            "category": "AI in Manufacturing",
+            "tags": [
+              "AI",
+              "Decision Making",
+              "Manufacturing",
+              "Data Analysis",
+              "Operational Efficiency"
+            ],
+            "publishedAt": {
+              "_seconds": 1721952000,
+              "_nanoseconds": 0
+            },
+            "createdAt": {
+              "_seconds": 1753405190,
+              "_nanoseconds": 477000000
+            },
+            "slug": "from-gut-feel-to-smart-moves",
+            "status": "published",
+            "featured": false,
+            "featuredImage": null,
+            "content": "\nIn today's competitive manufacturing landscape, the difference between thriving and merely surviving often comes down to one critical factor: how you make decisions. Many experienced business leaders have built successful operations by trusting their instincts, but even the most seasoned professionals recognize that intuition has its limits—especially when operating in increasingly complex markets.\n\n## The Challenge of Experience-Based Decision Making\n\nConsider this common scenario: A growing manufacturing company consistently makes staffing decisions based on \"how busy things feel\" rather than analyzing actual production data and workflow patterns. While this approach may have worked during simpler times, it can become costly as operations scale and market pressures intensify.\n\nRecently, a mid-sized manufacturing operation discovered they were overstaffing certain shifts by 20% based on perceived activity levels rather than data-driven analysis. With today's labor costs and competitive pressures, this intuition-based approach was costing them approximately $15,000 annually in unnecessary expenses—money that could have been reinvested in growth initiatives or operational improvements.\n\n## AI Tools That Transform Decision-Making\n\nThe good news is that bridging the gap between operational experience and data-driven insights has never been more accessible. Modern AI tools can analyze patterns in your existing data, surfacing insights that complement and enhance your operational expertise.\n\n### ChatGPT Data Analysis\n\nUpload your customer feedback or quality control data and ask specific questions like \"Analyze complaint trends and identify the top three operational issues.\" Within minutes, you'll discover patterns that might take hours to identify manually, allowing you to address systemic issues before they impact customer satisfaction.\n\n### Gemini in Google Sheets\n\nTransform your existing spreadsheets into powerful analytical tools. Simply ask questions like \"Which product lines showed the highest profit margins last quarter?\" and watch as AI sorts through your production and sales data to surface actionable insights that inform strategic decisions.\n\n### Microsoft Copilot\n\nIntegrate AI directly into your existing workflow tools to analyze scheduling patterns, identify bottlenecks, and optimize resource allocation based on historical performance data.\n\n## Starting Your AI Journey: Small Steps, Significant Impact\n\nThe key to successful AI implementation is starting with decisions you make regularly and have existing data to support. Rather than overhauling entire systems, focus on enhancing one critical decision-making process at a time.\n\nIf inventory management feels like guesswork, upload last quarter's sales and production data to AI tools and ask for demand pattern analysis. If production scheduling relies heavily on experience alone, use AI to analyze your historical throughput data and identify optimal staffing patterns.\n\nThis approach allows you to maintain your operational expertise while gaining data-driven insights that enhance decision quality and reduce costly assumptions.\n\n## Building Competitive Advantage Through Informed Decisions\n\nManufacturing businesses that successfully combine operational experience with AI-driven insights consistently outperform competitors who rely solely on traditional decision-making methods. The integration of artificial intelligence doesn't replace experienced judgment—it amplifies it with concrete data and pattern recognition.\n\nCompanies that embrace this hybrid approach report improved efficiency, reduced waste, and better resource allocation, all while maintaining the operational wisdom that built their success.\n\n## Your Next Strategic Move\n\nSelect one recurring decision in your operation where you currently rely primarily on experience or intuition. This week, gather the relevant data you already have and experiment with AI-powered analysis. You'll likely discover that concrete insights can validate your instincts while revealing opportunities you hadn't considered.\n\nThe goal isn't to replace your operational expertise—it's to enhance it with the analytical power of modern AI tools, creating a decision-making framework that leverages both experience and data.\n\nReady to transform your decision-making process? Fae Intelligence's **Data-Driven Operations Workshop** demonstrates exactly how to implement these AI tools for immediate operational impact, combining three decades of manufacturing leadership experience with cutting-edge AI capabilities to help your team make smarter, more profitable decisions. Schedule Your Workshop Consultation.\n\n---\n\n*Fae Intelligence bridges the gap between traditional manufacturing wisdom and modern AI capabilities, helping operational teams implement practical, accessible AI solutions that drive measurable improvements in efficiency, productivity, and profitability. Learn more at [FaeIntelligence.com](https://faeintelligence.com).*\n",
+            "updatedAt": {
+              "_seconds": 1753409981,
+              "_nanoseconds": 138000000
+            },
+            "viewCount": 19
+          },
+          "fields": [
+            "title",
+            "excerpt",
+            "author",
+            "category",
+            "tags",
+            "publishedAt",
+            "createdAt",
+            "slug",
+            "status",
+            "featured",
+            "featuredImage",
+            "content",
+            "updatedAt",
+            "viewCount"
+          ]
+        }
+      ],
+      "fields": [
+        "title",
+        "excerpt",
+        "content",
+        "category",
+        "tags",
+        "featured",
+        "seo",
+        "slug",
+        "author",
+        "createdAt",
+        "status",
+        "updatedAt",
+        "viewCount",
+        "publishedAt",
+        "featuredImage"
+      ]
+    },
+    "blog_tags": {
+      "totalDocs": 1,
+      "sampleDocs": [
+        {
+          "id": "tags",
+          "data": {
+            "description": "Tes"
+          },
+          "fields": [
+            "description"
+          ]
+        }
+      ],
+      "fields": [
+        "description"
+      ]
+    },
+    "categories": {
+      "totalDocs": 2,
+      "sampleDocs": [
+        {
+          "id": "1zEgofv7tYP9YEf3gcqC",
+          "data": {
+            "name": "Tools",
+            "description": "Different AI tools.  How they can be used, the process steps, savings and use cases",
+            "color": "bg-green-100 text-green-800",
+            "createdAt": {
+              "_seconds": 1750359881,
+              "_nanoseconds": 199000000
+            }
+          },
+          "fields": [
+            "name",
+            "description",
+            "color",
+            "createdAt"
+          ]
+        },
+        {
+          "id": "kTtRGxujkfQ3St2NUxrP",
+          "data": {
+            "name": "Marketing",
+            "description": "Marketing related information: market research, customer research, pain points",
+            "color": "bg-blue-100 text-blue-800",
+            "createdAt": {
+              "_seconds": 1750359734,
+              "_nanoseconds": 671000000
+            }
+          },
+          "fields": [
+            "name",
+            "description",
+            "color",
+            "createdAt"
+          ]
+        }
+      ],
+      "fields": [
+        "name",
+        "description",
+        "color",
+        "createdAt"
+      ]
+    },
+    "files": {
+      "totalDocs": 4,
+      "sampleDocs": [
+        {
+          "id": "9D93CR5RdZE1lzrKKAJT",
+          "data": {
+            "fileName": "Use Cases and Resistance to AI.docx",
+            "fileUrl": "https://firebasestorage.googleapis.com/v0/b/faes-web.firebasestorage.app/o/files%2FLWaKvcAFzrg13WHiDMkO8Y6FZ3C3%2Ffile_1750390750400_aggjiio3b%2FUse%20Cases%20and%20Resistance%20to%20AI.docx?alt=media&token=a3ac7f03-aba8-4dd6-ae06-b0d70f624129",
+            "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "size": 24286,
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "uploaded",
+            "category": null,
+            "tags": [],
+            "description": null,
+            "priority": "medium",
+            "businessCategory": "operations",
+            "smb_relevance": "high",
+            "extractedText": "\n            Document: Use Cases and Resistance to AI.docx\n            Type: Microsoft Word Document\n            Size: 24286 bytes\n            Upload Date: 2025-06-20T03:39:11.096Z\n            \n            CONTENT ANALYSIS PLACEHOLDER:\n            This document contains business intelligence content related to:\n            - AI implementation strategies\n            - Productivity improvements\n            - Change management\n            - Resistance patterns\n            - Business process optimization\n            \n            Document appears to contain structured business content with:\n            - Multiple sections and subsections\n            - Quantitative data and metrics\n            - Case studies and examples\n            - Implementation guidelines\n            - Strategic recommendations\n            \n            Key themes likely include:\n            - Technology adoption\n            - Organizational change\n            - Process improvement\n            - Knowledge management\n            - Operational efficiency\n            \n            Size indicates substantial content (~24KB) suggesting\n            comprehensive documentation with detailed analysis.\n            \n            NEXT STEP: Implement mammoth.js for full Word document text extraction.\n            ",
+            "createdAt": {
+              "_seconds": 1750390754,
+              "_nanoseconds": 251000000
+            },
+            "uploadedAt": {
+              "_seconds": 1750390754,
+              "_nanoseconds": 251000000
+            },
+            "updatedAt": {
+              "_seconds": 1750390754,
+              "_nanoseconds": 251000000
+            },
+            "knowledgeProcessing": true
+          },
+          "fields": [
+            "fileName",
+            "fileUrl",
+            "contentType",
+            "size",
+            "userId",
+            "status",
+            "category",
+            "tags",
+            "description",
+            "priority",
+            "businessCategory",
+            "smb_relevance",
+            "extractedText",
+            "createdAt",
+            "uploadedAt",
+            "updatedAt",
+            "knowledgeProcessing"
+          ]
+        },
+        {
+          "id": "FR5PAKjMLQPml7QVFn3B",
+          "data": {
+            "fileName": "Fae Intelligence - AI Made Practical for Manufacturing.pdf",
+            "fileUrl": "https://firebasestorage.googleapis.com/v0/b/faes-web.firebasestorage.app/o/files%2FLWaKvcAFzrg13WHiDMkO8Y6FZ3C3%2Ffile_1750480229513_fqlogmg4g%2FFae%20Intelligence%20-%20AI%20Made%20Practical%20for%20Manufacturing.pdf?alt=media&token=eb5090f6-3e0b-47f6-8b3a-4d7648f5f7b3",
+            "contentType": "application/pdf",
+            "size": 390819,
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "uploaded",
+            "category": null,
+            "tags": [],
+            "description": null,
+            "priority": "medium",
+            "businessCategory": "Operations",
+            "smb_relevance": "High.  The title explicitly targets manufacturing, and the focus on making AI practical suggests solutions scalable and affordable for SMBs, addressing their resource constraints.",
+            "extractedText": "PDF document analysis needed. File: Fae Intelligence - AI Made Practical for Manufacturing.pdf, Size: 390819 bytes.",
+            "advisoryPainPoints": 0,
+            "advisorySolutions": 0,
+            "advisoryTools": 0,
+            "advisoryIndustry": "manufacturing",
+            "advisoryConfidence": 60,
+            "createdAt": {
+              "_seconds": 1750480235,
+              "_nanoseconds": 419000000
+            },
+            "uploadedAt": {
+              "_seconds": 1750480235,
+              "_nanoseconds": 419000000
+            },
+            "updatedAt": {
+              "_seconds": 1750480235,
+              "_nanoseconds": 419000000
+            },
+            "knowledgeProcessing": true
+          },
+          "fields": [
+            "fileName",
+            "fileUrl",
+            "contentType",
+            "size",
+            "userId",
+            "status",
+            "category",
+            "tags",
+            "description",
+            "priority",
+            "businessCategory",
+            "smb_relevance",
+            "extractedText",
+            "advisoryPainPoints",
+            "advisorySolutions",
+            "advisoryTools",
+            "advisoryIndustry",
+            "advisoryConfidence",
+            "createdAt",
+            "uploadedAt",
+            "updatedAt",
+            "knowledgeProcessing"
+          ]
+        },
+        {
+          "id": "Gso7Etb9xrD0VTPxjcON",
+          "data": {
+            "fileName": "FqS-9nF48mI.json",
+            "fileUrl": "https://firebasestorage.googleapis.com/v0/b/faes-web.firebasestorage.app/o/files%2FLWaKvcAFzrg13WHiDMkO8Y6FZ3C3%2Ffile_1750391328677_9hk82pe4q%2FFqS-9nF48mI.json?alt=media&token=590f7b5e-4ce1-4196-8017-73e388dceb40",
+            "contentType": "application/json",
+            "size": 17647,
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "uploaded",
+            "category": null,
+            "tags": [],
+            "description": null,
+            "priority": "medium",
+            "businessCategory": "Unknown",
+            "smb_relevance": "Unknown",
+            "extractedText": "Document: FqS-9nF48mI.json. Type: application/json. Size: 17647 bytes.",
+            "createdAt": {
+              "_seconds": 1750391330,
+              "_nanoseconds": 860000000
+            },
+            "uploadedAt": {
+              "_seconds": 1750391330,
+              "_nanoseconds": 860000000
+            },
+            "updatedAt": {
+              "_seconds": 1750391330,
+              "_nanoseconds": 860000000
+            },
+            "knowledgeProcessing": true
+          },
+          "fields": [
+            "fileName",
+            "fileUrl",
+            "contentType",
+            "size",
+            "userId",
+            "status",
+            "category",
+            "tags",
+            "description",
+            "priority",
+            "businessCategory",
+            "smb_relevance",
+            "extractedText",
+            "createdAt",
+            "uploadedAt",
+            "updatedAt",
+            "knowledgeProcessing"
+          ]
+        },
+        {
+          "id": "nz82zWn9AMP0ZQvFhjpB",
+          "data": {
+            "fileName": "2t-z3r1nsls.json",
+            "fileUrl": "https://firebasestorage.googleapis.com/v0/b/faes-web.firebasestorage.app/o/files%2FLWaKvcAFzrg13WHiDMkO8Y6FZ3C3%2Ffile_1750391344819_bbd7jfe76%2F2t-z3r1nsls.json?alt=media&token=df77bbd3-5384-4aa1-8868-4903ebd6b94e",
+            "contentType": "application/json",
+            "size": 16247,
+            "userId": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+            "status": "uploaded",
+            "category": null,
+            "tags": [],
+            "description": null,
+            "priority": "medium",
+            "businessCategory": "Unknown",
+            "smb_relevance": "Unknown",
+            "extractedText": "Document: 2t-z3r1nsls.json. Type: application/json. Size: 16247 bytes.",
+            "createdAt": {
+              "_seconds": 1750391346,
+              "_nanoseconds": 759000000
+            },
+            "uploadedAt": {
+              "_seconds": 1750391346,
+              "_nanoseconds": 759000000
+            },
+            "updatedAt": {
+              "_seconds": 1750391346,
+              "_nanoseconds": 759000000
+            },
+            "knowledgeProcessing": true
+          },
+          "fields": [
+            "fileName",
+            "fileUrl",
+            "contentType",
+            "size",
+            "userId",
+            "status",
+            "category",
+            "tags",
+            "description",
+            "priority",
+            "businessCategory",
+            "smb_relevance",
+            "extractedText",
+            "createdAt",
+            "uploadedAt",
+            "updatedAt",
+            "knowledgeProcessing"
+          ]
+        }
+      ],
+      "fields": [
+        "fileName",
+        "fileUrl",
+        "contentType",
+        "size",
+        "userId",
+        "status",
+        "category",
+        "tags",
+        "description",
+        "priority",
+        "businessCategory",
+        "smb_relevance",
+        "extractedText",
+        "createdAt",
+        "uploadedAt",
+        "updatedAt",
+        "knowledgeProcessing",
+        "advisoryPainPoints",
+        "advisorySolutions",
+        "advisoryTools",
+        "advisoryIndustry",
+        "advisoryConfidence"
+      ]
+    },
+    "users": {
+      "totalDocs": 1,
+      "sampleDocs": [
+        {
+          "id": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+          "data": {
+            "name": "Richard Snyder",
+            "email": "admin@faeintelligence.com",
+            "role": "admin",
+            "createdAt": {
+              "_seconds": 1749840179,
+              "_nanoseconds": 778000000
+            }
+          },
+          "fields": [
+            "name",
+            "email",
+            "role",
+            "createdAt"
+          ]
+        }
+      ],
+      "fields": [
+        "name",
+        "email",
+        "role",
+        "createdAt"
+      ]
+    }
+  },
+  "auth": {
+    "totalUsers": 3,
+    "sampleUsers": [
+      {
+        "uid": "LWaKvcAFzrg13WHiDMkO8Y6FZ3C3",
+        "email": "admin@faeintelligence.com",
+        "creationTime": "Thu, 12 Jun 2025 23:08:10 GMT",
+        "providers": [
+          "password"
+        ]
+      },
+      {
+        "uid": "c60ygvYf2mMEfm8fCUh12cUYqCq1",
+        "email": "rsnyder@faeintelligence.com",
+        "creationTime": "Sun, 27 Jul 2025 04:27:38 GMT",
+        "providers": [
+          "password"
+        ]
+      },
+      {
+        "uid": "cYvlzN3iD8XbXUDtD3mj12q1Svx1",
+        "email": "snyder.r.f@gmail.com",
+        "displayName": "Richard Snyder",
+        "creationTime": "Sun, 08 Jun 2025 23:54:16 GMT",
+        "providers": [
+          "google.com"
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "totalCollections": 8,
+    "totalUsers": 3,
+    "estimatedComplexity": "MEDIUM"
+  }
+}
