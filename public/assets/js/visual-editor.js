@@ -545,6 +545,40 @@ let currentBlocks = [];
             }
         }
 
+        function uploadImage() {
+            if (!selectedBlock || selectedBlock.type !== 'image') return;
+
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch('/api/images/upload', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Upload failed');
+                    }
+
+                    const data = await response.json();
+                    updateBlockProperty('src', data.url);
+                    showProperties(); // Refresh properties panel
+                } catch (error) {
+                    console.error('Error uploading image:', error);
+                    alert('Image upload failed.');
+                }
+            };
+            input.click();
+        }
+
         function showProperties() {
             if (!selectedBlock) {
                 console.log('showProperties: No selected block');
@@ -614,7 +648,10 @@ let currentBlocks = [];
                         <h4 class="text-md font-semibold text-gray-800 mb-2">Image Settings</h4>
                         <div class="property-group">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Image Source</label>
-                            <input type="text" value="${selectedBlock.src}" onchange="updateBlockProperty('src', this.value)" class="w-full p-2 border border-gray-300 rounded-md">
+                            <div class="flex items-center space-x-2">
+                                <input type="text" value="${selectedBlock.src}" onchange="updateBlockProperty('src', this.value)" class="w-full p-2 border border-gray-300 rounded-md">
+                                <button onclick="uploadImage()" class="bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600">Upload</button>
+                            </div>
                         </div>
                         <div class="property-group">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Alt Text</label>

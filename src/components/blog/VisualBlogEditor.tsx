@@ -27,7 +27,7 @@ export default function VisualBlogEditor({
   const openVisualEditor = () => {
     // Construct the visual editor URL
     const baseUrl = window.location.origin
-    const editorPort = '8086' // Visual editor runs on this port
+    const editorPort = '8085' // Visual editor runs on this port
     const editorUrl = `${baseUrl.replace(/:\d+/, '')}:${editorPort}/visual-editor.html`
     
     console.log('🚀 Opening visual editor at:', editorUrl)
