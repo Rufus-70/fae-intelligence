@@ -642,26 +642,6 @@ let currentBlocks = [];
 
             content.innerHTML = propertiesHtml;
             panel.classList.remove('translate-x-full');
-            
-            // Enhanced debugging
-            console.log('🎛️ showProperties: Panel should now be visible');
-            console.log('🎛️ showProperties: Panel classes:', panel.className);
-            console.log('🎛️ showProperties: Panel style.transform:', panel.style.transform);
-            console.log('🎛️ showProperties: Panel computed transform:', window.getComputedStyle(panel).transform);
-            console.log('🎛️ showProperties: Panel position:', {
-                top: panel.offsetTop,
-                left: panel.offsetLeft,
-                width: panel.offsetWidth,
-                height: panel.offsetHeight
-            });
-            
-            // Force visibility for debugging
-            panel.style.backgroundColor = 'red';
-            panel.style.border = '5px solid yellow';
-            setTimeout(() => {
-                panel.style.backgroundColor = 'white';
-                panel.style.border = '2px solid #3182ce';
-            }, 1000);
         }
 
         function updateBlockContent(blockId, newContent) {
@@ -937,16 +917,16 @@ let currentBlocks = [];
         function togglePropertiesPanel() {
             const panel = document.getElementById('propertiesPanel');
             const btn = document.getElementById('minimizeBtn');
-            panel.classList.toggle('minimized');
-            if (panel.classList.contains('minimized')) {
-                btn.innerHTML = '[+]';
+            panel.classList.toggle('translate-x-full'); // Toggle visibility
+            if (panel.classList.contains('translate-x-full')) {
+                btn.innerHTML = '[+]'; // Panel is hidden
             } else {
-                btn.innerHTML = '—';
+                btn.innerHTML = '—'; // Panel is visible
             }
         }
 
         function closeProperties(event) {
-            document.getElementById('propertiesPanel').classList.remove('active');
+            document.getElementById('propertiesPanel').classList.add('translate-x-full'); // Hide the panel
             document.querySelectorAll('.editable-block').forEach(el => el.classList.remove('selected'));
             selectedBlock = null;
             if (event) event.stopPropagation();
