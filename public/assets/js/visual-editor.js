@@ -378,16 +378,6 @@ let currentBlocks = [];
             
             preview.innerHTML = html;
             
-            // Add event listeners as backup (in case inline onclick doesn't work)
-            document.querySelectorAll('.editable-block[data-block-id]').forEach(blockEl => {
-                const blockId = blockEl.getAttribute('data-block-id');
-                console.log('Adding click listener to block:', blockId);
-                
-                blockEl.addEventListener('click', function(event) {
-                    console.log('Block clicked via event listener:', blockId);
-                    selectBlock(blockId, event);
-                });
-            });
             
             // Test that functions are globally accessible
             console.log('Global functions check:', {
@@ -408,13 +398,6 @@ let currentBlocks = [];
             }
 
             // Margins
-            if (attrs.marginTop) {
-                classes += ` mt-[${attrs.marginTop}]`;
-            }
-            if (attrs.marginBottom) {
-                classes += ` mb-[${attrs.marginBottom}]`;
-            }
-
             // Background and Border
             if (attrs.backgroundColor && attrs.backgroundColor !== '#FFFFFF') {
                 classes += ` p-6 rounded-lg`;
@@ -426,6 +409,12 @@ let currentBlocks = [];
             let style = ``;
             if (attrs.backgroundColor) {
                 style += `background-color: ${attrs.backgroundColor};`;
+            }
+            if (attrs.marginTop) {
+                style += `margin-top: ${attrs.marginTop};`;
+            }
+            if (attrs.marginBottom) {
+                style += `margin-bottom: ${attrs.marginBottom};`;
             }
             if (attrs.border && attrs.border !== 'none') {
                 style += ` border: ${attrs.border};`;
@@ -1008,6 +997,20 @@ let currentBlocks = [];
                 .then(data => {
                     document.getElementById('live-preview-footer').innerHTML = data;
                 });
+
+            // Event delegation for block selection
+            const preview = document.getElementById('blogPreview');
+            if (preview) {
+                preview.addEventListener('click', function(event) {
+                    const blockEl = event.target.closest('.editable-block');
+                    if (blockEl) {
+                        const blockId = blockEl.dataset.blockId;
+                        if (blockId) {
+                            selectBlock(blockId, event);
+                        }
+                    }
+                });
+            }
         });
 
         document.addEventListener('selectionchange', () => {
