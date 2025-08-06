@@ -337,7 +337,7 @@ let currentBlocks = [];
                     
                     html += `
                         <div class="block-row ${layoutClass}">
-                            <div class="editable-block" data-block-id="${block.id}">
+                            <div class="editable-block" data-block-id="${block.id}" onclick="selectBlock('${block.id}', event)">
                                 ${blockHtml1}
                                 <div class="block-controls">
                                     <span>${block.type}</span>
@@ -346,7 +346,7 @@ let currentBlocks = [];
                                     <button onclick="deleteBlock('${block.id}')">✕</button>
                                 </div>
                             </div>
-                            <div class="editable-block" data-block-id="${nextBlock.id}">
+                            <div class="editable-block" data-block-id="${nextBlock.id}" onclick="selectBlock('${nextBlock.id}', event)">
                                 ${blockHtml2}
                                 <div class="block-controls">
                                     <span>${nextBlock.type}</span>
@@ -362,7 +362,7 @@ let currentBlocks = [];
                     // Regular single block
                     const blockHtml = renderBlock(block);
                     html += `
-                        <div class="editable-block" data-block-id="${block.id}">
+                        <div class="editable-block" data-block-id="${block.id}" onclick="selectBlock('${block.id}', event)">
                             ${blockHtml}
                             <div class="block-controls">
                                 <span>${block.type}</span>
@@ -378,6 +378,16 @@ let currentBlocks = [];
             
             preview.innerHTML = html;
             
+            // Add event listeners as backup (in case inline onclick doesn't work)
+            document.querySelectorAll('.editable-block[data-block-id]').forEach(blockEl => {
+                const blockId = blockEl.getAttribute('data-block-id');
+                console.log('Adding click listener to block:', blockId);
+
+                blockEl.addEventListener('click', function(event) {
+                    console.log('Block clicked via event listener:', blockId);
+                    selectBlock(blockId, event);
+                });
+            });
             
             // Test that functions are globally accessible
             console.log('Global functions check:', {
@@ -484,43 +494,46 @@ let currentBlocks = [];
 
         // Make selectBlock globally accessible
         window.selectBlock = function selectBlock(blockId, event) {
-            console.log('🖱️ selectBlock called with blockId:', blockId);
-            console.log('🖱️ selectBlock: Event object:', event);
-            console.log('🖱️ selectBlock: Event type:', event ? event.type : 'no event');
-            console.log('🖱️ selectBlock: Ctrl key:', event ? event.ctrlKey : 'no event');
-            console.log('🖱️ selectBlock: Meta key:', event ? event.metaKey : 'no event');
+            console.log('--- Multi-select Debug ---');
+            console.log(`Block ID: ${blockId}`);
+            if (event) {
+                console.log(`Event type: ${event.type}`);
+                console.log(`event.ctrlKey: ${event.ctrlKey}`);
+                console.log(`event.metaKey: ${event.metaKey}`);
+            } else {
+                console.log('Event object is missing!');
+            }
             
             const blockEl = document.querySelector(`[data-block-id="${blockId}"]`);
             if (!blockEl) {
-                console.error('❌ selectBlock: Block element not found for ID:', blockId);
+                console.error('Block element not found for ID:', blockId);
                 return;
             }
             
-            console.log('✅ selectBlock: Block element found, proceeding with selection');
-            console.log('📋 selectBlock: Current selected blocks before:', selectedBlocks);
+            console.log('Selected blocks BEFORE:', JSON.stringify(selectedBlocks));
 
-            const isMultiSelect = event && (event.ctrlKey || event.metaKey); // Ctrl or Cmd key
-            console.log('🔀 selectBlock: Multi-select mode:', isMultiSelect);
+            const isMultiSelect = event && (event.ctrlKey || event.metaKey);
+            console.log(`isMultiSelect: ${isMultiSelect}`);
 
             if (isMultiSelect) {
                 if (selectedBlocks.includes(blockId)) {
-                    // Deselect if already selected
+                    console.log('Deselecting block.');
                     selectedBlocks = selectedBlocks.filter(id => id !== blockId);
                     blockEl.classList.remove('selected');
                 } else {
-                    // Add to selection
+                    console.log('Adding block to selection.');
                     selectedBlocks.push(blockId);
                     blockEl.classList.add('selected');
                 }
             } else {
-                // Single selection
+                console.log('Single selection.');
                 document.querySelectorAll('.editable-block.selected').forEach(el => el.classList.remove('selected'));
                 selectedBlocks = [blockId];
                 blockEl.classList.add('selected');
             }
 
-            console.log('📋 selectBlock: Selected blocks after:', selectedBlocks);
-            console.log('📋 selectBlock: Total selected count:', selectedBlocks.length);
+            console.log('Selected blocks AFTER:', JSON.stringify(selectedBlocks));
+            console.log('--------------------------');
 
             // For the properties panel, we only show properties for the *last* selected block
             if (selectedBlocks.length > 0) {
@@ -997,20 +1010,6 @@ let currentBlocks = [];
                 .then(data => {
                     document.getElementById('live-preview-footer').innerHTML = data;
                 });
-
-            // Event delegation for block selection
-            const preview = document.getElementById('blogPreview');
-            if (preview) {
-                preview.addEventListener('click', function(event) {
-                    const blockEl = event.target.closest('.editable-block');
-                    if (blockEl) {
-                        const blockId = blockEl.dataset.blockId;
-                        if (blockId) {
-                            selectBlock(blockId, event);
-                        }
-                    }
-                });
-            }
         });
 
         document.addEventListener('selectionchange', () => {
