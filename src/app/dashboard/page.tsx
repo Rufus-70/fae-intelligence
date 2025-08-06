@@ -1,7 +1,7 @@
 // src/app/dashboard/page.tsx
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 import { useAuth } from '@/components/auth/AuthProvider'
 import { businessIntelligence, type BusinessMetrics, type ClientDataProfile } from '@/lib/faes-web/businessIntelligence'
@@ -29,11 +29,12 @@ export default function DashboardPage() {
     loading: true,
     error: null
   })
+
   const [title, setTitle] = useState('My Awesome Blog Post')
   const [content, setContent] = useState('')
   const [postId, setPostId] = useState<string | null>(null)
 
-  const handleSave = async () => {
+  const handleSave = useCallback(async () => {
     try {
       const response = await fetch('/api/blog/save', {
         method: 'POST',
@@ -54,11 +55,24 @@ export default function DashboardPage() {
       console.error('Error saving post:', error);
       alert('Failed to save post.');
     }
-  };
+  }, [postId, title, content]);
 
   useEffect(() => {
     loadDashboardData()
-  }, [])
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.type === 'SAVE_CONTENT') {
+        setContent(event.data.content);
+        handleSave();
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, [handleSave])
 
   const loadDashboardData = async () => {
     console.log('📋 Dashboard: Starting to load business metrics...')
