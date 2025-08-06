@@ -408,6 +408,13 @@ let currentBlocks = [];
             }
 
             // Margins
+            if (attrs.marginTop) {
+                classes += ` mt-[${attrs.marginTop}]`;
+            }
+            if (attrs.marginBottom) {
+                classes += ` mb-[${attrs.marginBottom}]`;
+            }
+
             // Background and Border
             if (attrs.backgroundColor && attrs.backgroundColor !== '#FFFFFF') {
                 classes += ` p-6 rounded-lg`;
@@ -419,12 +426,6 @@ let currentBlocks = [];
             let style = ``;
             if (attrs.backgroundColor) {
                 style += `background-color: ${attrs.backgroundColor};`;
-            }
-            if (attrs.marginTop) {
-                style += `margin-top: ${attrs.marginTop};`;
-            }
-            if (attrs.marginBottom) {
-                style += `margin-bottom: ${attrs.marginBottom};`;
             }
             if (attrs.border && attrs.border !== 'none') {
                 style += ` border: ${attrs.border};`;
@@ -494,46 +495,43 @@ let currentBlocks = [];
 
         // Make selectBlock globally accessible
         window.selectBlock = function selectBlock(blockId, event) {
-            console.log('--- Multi-select Debug ---');
-            console.log(`Block ID: ${blockId}`);
-            if (event) {
-                console.log(`Event type: ${event.type}`);
-                console.log(`event.ctrlKey: ${event.ctrlKey}`);
-                console.log(`event.metaKey: ${event.metaKey}`);
-            } else {
-                console.log('Event object is missing!');
-            }
+            console.log('🖱️ selectBlock called with blockId:', blockId);
+            console.log('🖱️ selectBlock: Event object:', event);
+            console.log('🖱️ selectBlock: Event type:', event ? event.type : 'no event');
+            console.log('🖱️ selectBlock: Ctrl key:', event ? event.ctrlKey : 'no event');
+            console.log('🖱️ selectBlock: Meta key:', event ? event.metaKey : 'no event');
             
             const blockEl = document.querySelector(`[data-block-id="${blockId}"]`);
             if (!blockEl) {
-                console.error('Block element not found for ID:', blockId);
+                console.error('❌ selectBlock: Block element not found for ID:', blockId);
                 return;
             }
             
-            console.log('Selected blocks BEFORE:', JSON.stringify(selectedBlocks));
+            console.log('✅ selectBlock: Block element found, proceeding with selection');
+            console.log('📋 selectBlock: Current selected blocks before:', selectedBlocks);
 
-            const isMultiSelect = event && (event.ctrlKey || event.metaKey);
-            console.log(`isMultiSelect: ${isMultiSelect}`);
+            const isMultiSelect = event && (event.ctrlKey || event.metaKey); // Ctrl or Cmd key
+            console.log('🔀 selectBlock: Multi-select mode:', isMultiSelect);
 
             if (isMultiSelect) {
                 if (selectedBlocks.includes(blockId)) {
-                    console.log('Deselecting block.');
+                    // Deselect if already selected
                     selectedBlocks = selectedBlocks.filter(id => id !== blockId);
                     blockEl.classList.remove('selected');
                 } else {
-                    console.log('Adding block to selection.');
+                    // Add to selection
                     selectedBlocks.push(blockId);
                     blockEl.classList.add('selected');
                 }
             } else {
-                console.log('Single selection.');
+                // Single selection
                 document.querySelectorAll('.editable-block.selected').forEach(el => el.classList.remove('selected'));
                 selectedBlocks = [blockId];
                 blockEl.classList.add('selected');
             }
 
-            console.log('Selected blocks AFTER:', JSON.stringify(selectedBlocks));
-            console.log('--------------------------');
+            console.log('📋 selectBlock: Selected blocks after:', selectedBlocks);
+            console.log('📋 selectBlock: Total selected count:', selectedBlocks.length);
 
             // For the properties panel, we only show properties for the *last* selected block
             if (selectedBlocks.length > 0) {
