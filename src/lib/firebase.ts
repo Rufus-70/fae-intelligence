@@ -12,7 +12,8 @@ import { getAnalytics } from 'firebase/analytics'
 // Production Firebase Configuration - faeintelligence project
 // Using direct values from .env.local (which contains perfect configuration)
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || 'AIzaSyCNKHt-4F_QNUpIBby5SayvvsGnRPEushM',
+  // IMPORTANT: Replace this with your actual API key, preferably from environment variables
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || 'your-api-key',
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || 'faeintelligence.firebaseapp.com',
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'faeintelligence',
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'faeintelligence.firebasestorage.app',

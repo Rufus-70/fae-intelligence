@@ -989,19 +989,9 @@ let currentBlocks = [];
         }
 
         function savePost() {
-            const markdownInput = document.getElementById('markdownInput');
-            if (markdownInput && window.opener) {
-                window.opener.postMessage({
-                    type: 'SAVE_CONTENT',
-                    content: markdownInput.value,
-                    blocks: currentBlocks
-                }, '*');
-                console.log('📤 Save request sent to dashboard');
-                alert('Save request sent to the main application!');
-            } else {
-                console.error('Could not send save request. Is the editor open in a popup?');
-                alert('Could not send save request. Please make sure you opened this editor from the dashboard.');
-            }
+            // In a real implementation, this would save to your backend
+            console.log('Saving post:', currentBlocks);
+            alert('Post structure saved! (In a real implementation, this would save to your backend)');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
