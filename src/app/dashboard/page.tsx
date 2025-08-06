@@ -35,11 +35,18 @@ export default function DashboardPage() {
   const [postId, setPostId] = useState<string | null>(null)
 
   const handleSave = useCallback(async () => {
+    if (!user) {
+      alert('You must be logged in to save a post.');
+      return;
+    }
+
     try {
+      const token = await user.getIdToken();
       const response = await fetch('/api/blog/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({ id: postId, title, content }),
       });
@@ -55,7 +62,7 @@ export default function DashboardPage() {
       console.error('Error saving post:', error);
       alert('Failed to save post.');
     }
-  }, [postId, title, content]);
+  }, [user, postId, title, content]);
 
   useEffect(() => {
     loadDashboardData()

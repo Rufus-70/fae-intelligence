@@ -5,6 +5,19 @@ import { auth } from '@/lib/firebase-admin'
 
 export async function POST(request: Request) {
   try {
+    const authToken = request.headers.get('Authorization')?.split('Bearer ')[1]
+
+    if (!authToken) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    try {
+      await auth.verifyIdToken(authToken)
+    } catch (error) {
+      console.error('Error verifying auth token:', error)
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const body = await request.json()
     const { id, title, content } = body
 
