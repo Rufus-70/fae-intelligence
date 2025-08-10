@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  neo4j:
+    image: neo4j:5
+    container_name: fae-neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/password
+      - NEO4J_dbms_security_auth__minimum__password__length=4
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+volumes:
+  neo4j_data:

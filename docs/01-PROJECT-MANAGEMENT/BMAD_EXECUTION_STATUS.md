@@ -1,6 +1,6 @@
 # BMAD Full Execution Status Tracker
 
-Last updated: {today}
+Last updated: 2025-08-10
 
 ## Scope
 Tracks execution readiness and actions across Fae Intelligence’s 12 systems [[memory:5632863]].
@@ -16,7 +16,7 @@ Tracks execution readiness and actions across Fae Intelligence’s 12 systems [[
   - Status: Not detected in this workspace
   - Next: Bring `fae-intelligence-rag` service into monorepo or disable for now
 - 4) Consultancy Dashboard (React)
-  - Status: Present in `consultancy-dashboard/` (will be launched on :5173)
+  - Status: Present in `consultancy-dashboard/` (run on :5173)
   - Next: Install deps; run dev server; connect to blog/editor links
 - 5) Notion Backend Integration
   - Status: Present in `notion-dashboard-backend/`
@@ -44,7 +44,7 @@ Tracks execution readiness and actions across Fae Intelligence’s 12 systems [[
   - Next: Use orchestrator and role agents to drive sprint planning
 
 ## Integration Highlights
-- Blog + Visual Editor: Integrated docs indicate dashboard/editor linkage and flows (`DASHBOARD_INTEGRATION_COMPLETE.md`).
+- Blog + Visual Editor: Docs indicate dashboard/editor linkage and flows (`html-blog/DASHBOARD_INTEGRATION_COMPLETE.md`).
 
 ## Immediate Actions
 - [ ] Start consultancy dashboard (:5173)
