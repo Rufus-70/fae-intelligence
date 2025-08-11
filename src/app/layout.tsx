@@ -12,9 +12,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Fae Intelligence - AI Made Practical for Manufacturing',
-  description: 'Empowering manufacturing teams with practical AI solutions. Over 30 years of operational excellence meets cutting-edge AI technology.',
-  keywords: 'AI, Manufacturing, Artificial Intelligence, Process Optimization, Predictive Maintenance, Training',
+  title: 'Fae Intelligence - AI Made Practical for Business',
+  description: 'Empowering business and operations leaders across all industries with practical AI solutions. Over 30 years of operational excellence meets cutting-edge AI technology.',
+  keywords: 'AI, Business Intelligence, Artificial Intelligence, Process Optimization, Automation, Training, Cross-Industry Solutions',
 }
 
 export default function RootLayout({

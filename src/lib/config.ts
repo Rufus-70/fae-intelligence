@@ -24,6 +24,15 @@ export const appConfig = {
   enableRealTimeData: true // Fix for ConfigProvider error
 }
 
+// Blog configuration
+export const blogConfig = {
+  enableDemoData: false, // Disable demo data to use real Firebase data
+  enableFirestoreFallback: true, // Fallback to demo data if Firestore fails
+  defaultPostLimit: 12,
+  featuredPostLimit: 3,
+  searchResultLimit: 10
+}
+
 // Configuration validation function
 export const validateConfig = () => {
   const isValid = firebaseConfig.projectId === 'faeintelligence' && 
@@ -47,8 +56,9 @@ if (typeof window !== 'undefined') {
     primaryBlogSystem: appConfig.primaryBlogSystem,
     faesWebIntegration: appConfig.enableFaesWebIntegration,
     demoMode: appConfig.demoMode,
-    enableRealTimeData: appConfig.enableRealTimeData
+    enableRealTimeData: appConfig.enableRealTimeData,
+    blogDemoData: blogConfig.enableDemoData
   })
 }
 
-export default { firebaseConfig, appConfig, validateConfig }
+export default { firebaseConfig, appConfig, blogConfig, validateConfig }

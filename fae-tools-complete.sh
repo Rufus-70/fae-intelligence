@@ -25,6 +25,47 @@ INGEST_SCRIPT="/home/rosie/projects/fae-intelligence/scripts/ingest_video_analys
 RAG_SERVICE_DIR="/home/rosie/projects/fae-intelligence-rag"
 RAG_SERVICE_URL="http://127.0.0.1:8001"
 
+# Repo-relative root (directory of this script)
+LOCAL_ROOT="$(cd "$(dirname "$0")" && pwd)"
+
+# Local service launcher functions
+launch_local_dashboard() {
+    echo -e "\n${YELLOW}🚀 Starting Dashboard (Vite :5173)...${NC}"
+    (cd "$LOCAL_ROOT/consultancy-dashboard" && { [ -f package-lock.json ] && npm ci || npm install; } && npm run dev -- --host 0.0.0.0 --port 5173 >/dev/null 2>&1 &)
+    echo -e "${GREEN}✅ Dashboard: http://localhost:5173${NC}"
+}
+
+launch_local_backend() {
+    echo -e "\n${YELLOW}🚀 Starting Backend (Express :5050)...${NC}"
+    (cd "$LOCAL_ROOT/notion-dashboard-backend" && npm install && PORT=5050 node index.js >/dev/null 2>&1 &)
+    echo -e "${GREEN}✅ Backend:   http://localhost:5050/${NC}"
+}
+
+launch_local_visual_editor() {
+    echo -e "\n${YELLOW}🚀 Starting Visual Editor (:8085)...${NC}"
+    npx http-server "$LOCAL_ROOT/public/visual-editor" -p 8085 -c-1 >/dev/null 2>&1 &
+    echo -e "${GREEN}✅ Editor:    http://localhost:8085/index.html${NC}"
+}
+
+launch_local_blog() {
+    echo -e "\n${YELLOW}🚀 Starting Static Blog (:8086)...${NC}"
+    npx http-server "$LOCAL_ROOT/html-blog" -p 8086 -c-1 >/dev/null 2>&1 &
+    echo -e "${GREEN}✅ Blog 1:    http://localhost:8086/post/5-ai-tools-small-business-needs/index.html${NC}"
+    echo -e "${GREEN}✅ Blog 2:    http://localhost:8086/post/getting-started-ai-automation/index.html${NC}"
+}
+
+launch_local_stack() {
+    echo -e "\n${YELLOW}🚀 Launching Complete Local Stack...${NC}"
+    launch_local_dashboard
+    sleep 2
+    launch_local_backend
+    sleep 1
+    launch_local_visual_editor
+    sleep 1
+    launch_local_blog
+    echo -e "\n${GREEN}🎉 All local services launched!${NC}"
+}
+
 # Function to display header
 display_header() {
     clear
@@ -566,6 +607,11 @@ show_menu() {
     echo -e "${BLUE}│${NC} ${GREEN}10)${NC} 📥 Ingest Video Analysis ${CYAN}(Original Script)${NC}         ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}11)${NC} 🎨 Visual Content Editors ${CYAN}(JS + SSI Options)${NC}        ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}12)${NC} 🎯 RAG Service Management ${CYAN}(AI Query System)${NC}          ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}13)${NC} ▶ Local: Dashboard (:5173)                         ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}14)${NC} ▶ Local: Backend (:5050)                            ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}15)${NC} ▶ Local: Visual Editor (:8085)                      ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}16)${NC} ▶ Local: Static Blog (:8086)                        ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC} ${GREEN}17)${NC} ▶ Local: Launch All                                  ${BLUE}│${NC}"
     echo -e "${BLUE}│${NC} ${GREEN}0)${NC}  Exit                                              ${BLUE}│${NC}"
     echo -e "${BLUE}└────────────────────────────────────────────────────────────┘${NC}"
 }
@@ -584,6 +630,12 @@ case "$1" in
     "ingest"|"i") ingest_video_analysis; exit 0 ;; # Kept for direct access to original video ingest
     "editors"|"edit"|"e") launch_visual_editors; exit 0 ;; # Visual Content Editors Hub
     "rag"|"r") launch_rag_service; exit 0 ;; # RAG Service Management Hub
+    "local-dashboard") launch_local_dashboard; exit 0 ;;
+    "local-backend") launch_local_backend; exit 0 ;;
+    "local-editor") launch_local_visual_editor; exit 0 ;;
+    "local-blog") launch_local_blog; exit 0 ;;
+    "local-all") launch_local_stack; exit 0 ;;
+    "local") launch_local_stack; exit 0 ;; # Launch complete local stack
     "help"|"--help"|"-h")
         echo "Fae Intelligence Tool Hub"
         echo "Usage: fae-tools [command]"
@@ -601,6 +653,12 @@ case "$1" in
         echo "  ingest, i       - Ingest video analysis into knowledge graph (Original Script)"
         echo "  editors, edit, e - Visual Content Editors Hub (JS + SSI options)"
         echo "  rag, r          - RAG Service Management Hub (AI Query System)"
+        echo "  local           - Launch complete local stack (Vite, Express, Editors)"
+        echo "  local-dashboard - Launch local Vite dashboard (:5173)"
+        echo "  local-backend   - Launch local Express backend (:5050)"
+        echo "  local-editor    - Launch local visual editor (:8085)"
+        echo "  local-blog      - Launch local static blog (:8086)"
+        echo "  local-all       - Launch all local services"
         echo "  help            - Show this help"
         echo ""
         echo "Without arguments: Show interactive menu"
@@ -612,7 +670,7 @@ esac
 while true; do
     show_menu
     echo ""
-    read -p "$(echo -e "${GREEN}Enter your choice [0-12]: ${NC}")" choice
+    read -p "$(echo -e "${GREEN}Enter your choice [0-17]: ${NC}")" choice
 
     case $choice in
         1) launch_knowledge ;;
@@ -627,6 +685,11 @@ while true; do
         10) ingest_video_analysis ;; # Kept for direct access to original video ingest
         11) launch_visual_editors ;; # Visual Content Editors Hub
         12) launch_rag_service ;; # RAG Service Management Hub
+        13) launch_local_dashboard ;;
+        14) launch_local_backend ;;
+        15) launch_local_visual_editor ;;
+        16) launch_local_blog ;;
+        17) launch_local_stack ;;
         0)
             echo -e "\n${CYAN}👋 Thanks for using Fae Intelligence Tool Hub!${NC}\n"
             exit 0

@@ -26,6 +26,8 @@ if (process.env.NODE_ENV === 'development' || typeof window !== 'undefined') {
   console.log('🔥 Firebase Configuration Status:')
   console.log('- Project ID:', firebaseConfig.projectId)
   console.log('- Environment loading:', process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ? 'SUCCESS' : 'USING FALLBACK')
+  console.log('- API Key exists:', !!firebaseConfig.apiKey)
+  console.log('- Auth Domain exists:', !!firebaseConfig.authDomain)
   
   // Verify we're using the correct project
   if (firebaseConfig.projectId === 'faeintelligence') {
@@ -42,6 +44,13 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
 export const db = getFirestore(app)
 export const auth = getAuth(app)
 export const storage = getStorage(app)
+
+// Debug Firestore initialization
+if (typeof window !== 'undefined') {
+  console.log('🔥 Firestore initialized:', !!db)
+  console.log('🔥 Auth initialized:', !!auth)
+  console.log('🔥 Storage initialized:', !!storage)
+}
 
 // Analytics (only in browser)
 let analytics: any = null
