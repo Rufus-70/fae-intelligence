@@ -21,7 +21,8 @@ export default function Header() {
               alt="Fae Intelligence Hub Logo" 
               width={48} 
               height={48}
-              className="rounded flex-none w-12 h-12"
+              className="rounded flex-none"
+              style={{ width: 'auto', height: 'auto' }}
               priority
             />
             <div className="text-xl font-bold text-gray-900">Fae Intelligence</div>

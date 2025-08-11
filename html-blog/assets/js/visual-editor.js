@@ -855,7 +855,7 @@ let currentBlocks = [];
                 
             } else if (newType === 'image') {
                 selectedBlock.type = 'image';
-                selectedBlock.src = selectedBlock.src || 'https://via.placeholder.com/600x300/00ACC1/FFFFFF?text=New+Image';
+                selectedBlock.src = selectedBlock.src || '/assets/placeholder-image.svg';
                 selectedBlock.alt = selectedBlock.alt || 'New Image';
                 // Ensure proper attributes for image
                 if (!selectedBlock.attributes) selectedBlock.attributes = {};
@@ -907,7 +907,7 @@ let currentBlocks = [];
 
         function removeImage() {
             if (selectedBlock && selectedBlock.type === 'image') {
-                selectedBlock.src = 'https://via.placeholder.com/600x300/E0E0E0/BDBDBD?text=Image+Removed';
+                selectedBlock.src = '/assets/generic-placeholder.svg';
                 selectedBlock.alt = 'Image removed';
                 renderBlocks();
                 showProperties();
@@ -1041,4 +1041,4 @@ let currentBlocks = [];
         }
 
         // Initialize with sample content
-        document.getElementById('markdownInput').value = `# Welcome to AI-Powered Content Creation\n\nArtificial intelligence is revolutionizing how we create, edit, and optimize content across all industries.\n\n## The Power of Visual Editing\n\n![AI Workspace](https://via.placeholder.com/600x300/00ACC1/FFFFFF?text=AI+Content+Creation)\n\nWith our new visual blog editor, you can:\n\n### Key Features\n\n- Parse Markdown into editable blocks\n- Adjust spacing, alignment, and colors\n- Drag and drop to reorder content\n- Export clean HTML for your blog\n\n## Getting Started\n\nSimply paste your Markdown content and start customizing the visual layout to match your brand perfectly.\n\nReady to transform your content creation workflow?`;
+        document.getElementById('markdownInput').value = `# Welcome to AI-Powered Content Creation\n\nArtificial intelligence is revolutionizing how we create, edit, and optimize content across all industries.\n\n## The Power of Visual Editing\n\n![AI Workspace](/assets/placeholder-image.svg)\n\nWith our new visual blog editor, you can:\n\n### Key Features\n\n- Parse Markdown into editable blocks\n- Adjust spacing, alignment, and colors\n- Drag and drop to reorder content\n- Export clean HTML for your blog\n\n## Getting Started\n\nSimply paste your Markdown content and start customizing the visual layout to match your brand perfectly.\n\nReady to transform your content creation workflow?`;

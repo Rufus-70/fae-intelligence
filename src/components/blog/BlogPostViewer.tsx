@@ -106,6 +106,7 @@ export default function BlogPostViewer({ post, format = 'html' }: BlogPostViewer
                 width={32} 
                 height={32}
                 className="rounded-lg mr-3"
+                style={{ width: 'auto', height: 'auto' }}
               />
               <div>
                 <div className="text-sm font-bold text-gray-900">Fae Intelligence</div>
@@ -183,15 +184,16 @@ export default function BlogPostViewer({ post, format = 'html' }: BlogPostViewer
               width={48} 
               height={48}
               className="rounded-lg mr-4"
+              style={{ width: 'auto', height: 'auto' }}
             />
             <div className="text-left">
               <h3 className="text-xl font-bold text-gray-900">Fae Intelligence</h3>
-              <p className="text-gray-600">AI Made Practical for Manufacturing</p>
+              <p className="text-gray-600">AI Made Practical for All Industries</p>
             </div>
           </div>
           
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-            Empowering manufacturing teams with practical AI solutions. Over 30 years of operational 
+            Empowering business and operations leaders across all industries with practical AI solutions. Over 30 years of operational 
             excellence meets cutting-edge AI technology to transform your business operations.
           </p>
           

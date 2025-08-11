@@ -157,6 +157,7 @@ export function BlogPostClient({ slug }: BlogPostClientProps) {
                       width={32} 
                       height={32}
                       className="rounded-lg mr-3"
+                      style={{ width: 'auto', height: 'auto' }}
                     />
                     <div>
                       <div className="text-sm font-bold text-gray-900">Fae Intelligence</div>
