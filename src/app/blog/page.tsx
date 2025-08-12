@@ -1,188 +1,55 @@
 // src/app/blog/page.tsx
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
-import { BlogService } from '@/lib/blog'
-import { BlogPost, BlogCategory } from '@/types/blog'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Search, Calendar, User, Eye, Tag, ArrowRight, BookOpen, TrendingUp, Star } from 'lucide-react'
+import { ArrowRight, Star, BookOpen } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { Timestamp } from 'firebase/firestore'
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([])
-  const [categories, setCategories] = useState<BlogCategory[]>([])
-  const [loading, setLoading] = useState(true)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState<string>('')
-
-  const fetchBlogData = useCallback(async () => {
-    try {
-      console.log('🚀 Starting to fetch blog data...')
-      
-      // Fetch published posts
-      console.log('📝 Fetching published posts...')
-      const publishedResult = await BlogService.getPublishedPosts({ limit: 20 })
-      setPosts(publishedResult.posts)
-      console.log('✅ Published posts fetched:', publishedResult.posts.length)
-      
-      // Fetch featured posts
-      console.log('📝 Fetching featured posts...')
-      const featured = await BlogService.getFeaturedPosts(6)
-      setFeaturedPosts(featured)
-      console.log('✅ Featured posts fetched:', featured.length)
-      
-      // Fetch categories
-      console.log('📝 Fetching categories...')
-      const cats = await BlogService.getCategories()
-      setCategories(cats)
-      console.log('✅ Categories fetched:', cats.length)
-      
-    } catch (error) {
-      console.error('❌ Error fetching blog data:', error)
-      // Fallback to demo data on error
-      console.log('🔄 Using fallback demo data due to error')
-      const demoPosts = [
-        {
-          id: 'demo-1',
-          title: 'Getting Started with AI in Manufacturing',
-          slug: 'getting-started-ai-manufacturing',
-          excerpt: 'Learn the fundamentals of implementing AI solutions in manufacturing environments with practical examples and real-world case studies.',
-          content: '',
-          status: 'published' as const,
-          featured: true,
-          author: { id: 'richard-snyder', name: 'Richard Snyder', email: 'richard@faeintelligence.com' },
-          category: 'AI Fundamentals',
-          tags: ['AI', 'Manufacturing', 'Getting Started'],
-          seo: { metaTitle: '', metaDescription: '', focusKeyword: '' },
-          publishedAt: Timestamp.fromDate(new Date('2025-06-15')),
-          createdAt: Timestamp.fromDate(new Date('2025-06-10')),
-          updatedAt: Timestamp.fromDate(new Date('2025-06-15')),
-          viewCount: 245
-        },
-        {
-          id: 'demo-2',
-          title: 'Predictive Maintenance with Low-Cost AI Tools',
-          slug: 'predictive-maintenance-low-cost-ai',
-          excerpt: 'Discover how to implement predictive maintenance using accessible AI tools without breaking the budget.',
-          content: '',
-          status: 'published' as const,
-          featured: true,
-          author: { id: 'richard-snyder', name: 'Richard Snyder', email: 'richard@faeintelligence.com' },
-          category: 'Predictive Maintenance',
-          tags: ['Predictive Maintenance', 'AI Tools', 'Cost-Effective'],
-          seo: { metaTitle: '', metaDescription: '', focusKeyword: '' },
-          publishedAt: Timestamp.fromDate(new Date('2025-06-12')),
-          createdAt: Timestamp.fromDate(new Date('2025-06-08')),
-          updatedAt: Timestamp.fromDate(new Date('2025-06-12')),
-          viewCount: 189
-        },
-        {
-          id: 'demo-3',
-          title: 'Quality Control Automation: A Step-by-Step Guide',
-          slug: 'quality-control-automation-guide',
-          excerpt: 'Transform your quality control processes with automated inspection systems using computer vision and machine learning.',
-          content: '',
-          status: 'published' as const,
-          featured: true,
-          author: { id: 'richard-snyder', name: 'Richard Snyder', email: 'richard@faeintelligence.com' },
-          category: 'Quality Control',
-          tags: ['Quality Control', 'Automation', 'Computer Vision'],
-          seo: { metaTitle: '', metaDescription: '', focusKeyword: '' },
-          publishedAt: Timestamp.fromDate(new Date('2025-06-10')),
-          createdAt: Timestamp.fromDate(new Date('2025-06-05')),
-          updatedAt: Timestamp.fromDate(new Date('2025-06-10')),
-          viewCount: 167
-        }
-      ]
-      setPosts(demoPosts)
-      setFeaturedPosts(demoPosts)
-      setCategories([
-        { 
-          id: 'ai-fundamentals', 
-          name: 'AI Fundamentals', 
-          slug: 'ai-fundamentals',
-          description: 'Core concepts and getting started guides', 
-          postCount: 5,
-          createdAt: Timestamp.fromDate(new Date('2025-06-01'))
-        },
-        { 
-          id: 'predictive-maintenance', 
-          name: 'Predictive Maintenance', 
-          slug: 'predictive-maintenance',
-          description: 'AI-powered maintenance strategies', 
-          postCount: 3,
-          createdAt: Timestamp.fromDate(new Date('2025-06-01'))
-        },
-        { 
-          id: 'quality-control', 
-          name: 'Quality Control', 
-          slug: 'quality-control',
-          description: 'Automation and inspection solutions', 
-          postCount: 2,
-          createdAt: Timestamp.fromDate(new Date('2025-06-01'))
-        }
-      ])
-    } finally {
-      console.log('🏁 Setting loading to false')
-      setLoading(false)
+  // Static blog posts for testing
+  const posts = [
+    {
+      id: 'ai-readiness-assessment-guide',
+      title: 'AI Readiness Assessment: Your Complete Guide to Digital Transformation',
+      slug: 'ai-readiness-assessment-guide',
+      excerpt: 'Evaluate your organization\'s readiness for AI implementation with our comprehensive assessment framework. Identify gaps, opportunities, and create a roadmap for success.',
+      category: 'AI Strategy',
+      tags: ['AI Readiness', 'Digital Transformation', 'Assessment'],
+      author: { name: 'Richard Snyder' },
+      viewCount: 0,
+      featured: true
+    },
+    {
+      id: 'practical-ai-implementation-guide',
+      title: 'Practical AI Implementation: From Theory to Real-World Results',
+      slug: 'practical-ai-implementation-guide',
+      excerpt: 'Learn the proven strategies for implementing AI solutions that deliver measurable business results. Avoid common pitfalls and accelerate your AI journey with practical, actionable guidance.',
+      category: 'AI Implementation',
+      tags: ['AI Implementation', 'Practical Guide', 'Best Practices'],
+      author: { name: 'Richard Snyder' },
+      viewCount: 0,
+      featured: true
     }
-  }, [])
+  ]
 
-  useEffect(() => {
-    fetchBlogData()
-  }, [fetchBlogData])
-
-  const handleSearch = async () => {
-    if (!searchTerm.trim()) return
-    
-    try {
-      const searchResults = await BlogService.searchPosts(searchTerm)
-      setPosts(searchResults)
-    } catch (error) {
-      console.error('Search error:', error)
+  const categories = [
+    { 
+      id: 'ai-strategy', 
+      name: 'AI Strategy', 
+      description: 'Strategic planning and assessment for AI initiatives',
+      postCount: 1
+    },
+    { 
+      id: 'ai-implementation', 
+      name: 'AI Implementation', 
+      description: 'Practical implementation guides and best practices',
+      postCount: 1
     }
-  }
-
-  const handleCategoryFilter = (categoryId: string) => {
-    if (selectedCategory === categoryId) {
-      setSelectedCategory('')
-    } else {
-      setSelectedCategory(categoryId)
-    }
-  }
-
-  const filteredPosts = selectedCategory 
-    ? posts.filter(post => post.category.toLowerCase().includes(selectedCategory.toLowerCase()))
-    : posts
-
-  const formatDate = (timestamp: { toDate?: () => Date } | null | undefined) => {
-    if (!timestamp?.toDate) return 'Unknown date'
-    return timestamp.toDate().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    })
-  }
-
-  if (loading) {
-    return (
-      <Section className="py-20">
-        <Container>
-          <div className="flex justify-center items-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500"></div>
-          </div>
-        </Container>
-      </Section>
-    )
-  }
+  ]
 
   return (
     <>
@@ -194,22 +61,8 @@ export default function BlogPage() {
               AI Intelligence Blog
             </h1>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Discover practical insights, real-world case studies, and actionable strategies for implementing AI in your manufacturing operations. Learn from 30+ years of operational excellence.
+              Discover practical insights, real-world case studies, and actionable strategies for implementing AI across all industries. Learn from 30+ years of operational excellence.
             </p>
-            <div className="max-w-md mx-auto">
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Search articles..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  className="flex-1 text-gray-900"
-                />
-                <Button onClick={handleSearch} variant="primary">
-                  <Search className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
           </div>
         </Container>
       </section>
@@ -227,7 +80,7 @@ export default function BlogPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {featuredPosts.slice(0, 3).map((post) => (
+            {posts.slice(0, 3).map((post) => (
               <Card key={post.id} className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-3">
@@ -248,11 +101,9 @@ export default function BlogPage() {
                   </p>
                   <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                     <div className="flex items-center gap-2">
-                      <User className="h-4 w-4" />
                       <span>{post.author.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Eye className="h-4 w-4" />
                       <span>{post.viewCount}</span>
                     </div>
                   </div>
@@ -283,13 +134,7 @@ export default function BlogPage() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {categories.map((category) => (
-              <div 
-                key={category.id} 
-                className={`h-full cursor-pointer transition-all hover:shadow-lg ${
-                  selectedCategory === category.id ? 'ring-2 ring-cyan-500' : ''
-                }`}
-                onClick={() => handleCategoryFilter(category.id)}
-              >
+              <div key={category.id} className="h-full">
                 <Card className="h-full">
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -299,11 +144,6 @@ export default function BlogPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700 mb-4">{category.description}</p>
-                    <div className="text-sm text-gray-500">
-                      {posts.filter(post => 
-                        post.category.toLowerCase().includes(category.name.toLowerCase())
-                      ).length} posts available
-                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -325,7 +165,7 @@ export default function BlogPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
+            {posts.map((post) => (
               <Card key={post.id} className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-3">
@@ -348,21 +188,9 @@ export default function BlogPage() {
                   <div className="flex flex-wrap gap-2 mb-4">
                     {post.tags.slice(0, 3).map((tag) => (
                       <Badge key={tag} variant="outline" className="text-xs">
-                        <Tag className="h-3 w-3 mr-1" />
                         {tag}
                       </Badge>
                     ))}
-                  </div>
-
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      <span>{formatDate(post.publishedAt || post.createdAt)}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Eye className="h-4 w-4" />
-                      <span>{post.viewCount}</span>
-                    </div>
                   </div>
 
                   <Button asChild variant="outline" size="sm" className="w-full">
@@ -375,19 +203,6 @@ export default function BlogPage() {
               </Card>
             ))}
           </div>
-
-          {filteredPosts.length === 0 && (
-            <div className="text-center py-12">
-              <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
-              <p className="text-gray-500 mb-4">
-                {searchTerm ? `No articles match "${searchTerm}"` : 'No articles in this category'}
-              </p>
-              <Button onClick={() => { setSearchTerm(''); setSelectedCategory(''); }} variant="outline">
-                View All Articles
-              </Button>
-            </div>
-          )}
         </Container>
       </section>
 
@@ -397,7 +212,7 @@ export default function BlogPage() {
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Implement AI in Your Operations?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Get personalized guidance and hands-on support to transform your manufacturing processes with practical AI solutions.
+              Get personalized guidance and hands-on support to transform your business processes with practical AI solutions.
             </p>
             <div className="space-x-4">
               <Button href="/consultation" variant="outline" size="lg" className="bg-white text-cyan-500 hover:bg-gray-100">

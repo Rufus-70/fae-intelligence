@@ -39,6 +39,12 @@ export default function Header() {
             <Link href="/services" className="text-gray-700 hover:text-cyan-500 transition-colors">
               Services
             </Link>
+            <Link href="/blog" className="text-gray-700 hover:text-cyan-500 transition-colors">
+              Blog
+            </Link>
+            <Link href="/ai-readiness-assessment" className="text-gray-700 hover:text-cyan-500 transition-colors">
+              AI Assessment
+            </Link>
             
             <Link href="/consultation" className="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600 transition-colors">
               Get Started
@@ -79,6 +85,12 @@ export default function Header() {
               </Link>
               <Link href="/services" className="text-gray-700 hover:text-cyan-500 py-2">
                 Services
+              </Link>
+              <Link href="/blog" className="text-gray-700 hover:text-cyan-500 py-2">
+                Blog
+              </Link>
+              <Link href="/ai-readiness-assessment" className="text-gray-700 hover:text-cyan-500 py-2">
+                AI Assessment
               </Link>
               
               <Link href="/consultation" className="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600 transition-colors inline-block text-center mt-2">

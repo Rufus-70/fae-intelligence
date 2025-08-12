@@ -1000,26 +1000,229 @@ let currentBlocks = [];
             URL.revokeObjectURL(url);
         }
 
-        function savePost() {
-            // In a real implementation, this would save to your backend
-            console.log('Saving post:', currentBlocks);
-            alert('Post structure saved! (In a real implementation, this would save to your backend)');
+        // Helper functions for post data
+        function extractTitleFromContent(content) {
+            const lines = content.split('\n');
+            for (let line of lines) {
+                if (line.startsWith('# ')) {
+                    return line.replace('# ', '').trim();
+                }
+            }
+            return 'Untitled Post';
+        }
+        
+        function extractExcerptFromContent(content) {
+            const lines = content.split('\n');
+            for (let line of lines) {
+                if (line.trim() && !line.startsWith('#') && !line.startsWith('!')) {
+                    return line.trim().substring(0, 150) + (line.length > 150 ? '...' : '');
+                }
+            }
+            return 'AI-powered content creation with Fae Intelligence';
+        }
+        
+        function extractTagsFromContent(content) {
+            const tags = [];
+            if (content.toLowerCase().includes('ai') || content.toLowerCase().includes('artificial intelligence')) {
+                tags.push('ai');
+            }
+            if (content.toLowerCase().includes('automation')) {
+                tags.push('automation');
+            }
+            if (content.toLowerCase().includes('business')) {
+                tags.push('business');
+            }
+            if (content.toLowerCase().includes('technology')) {
+                tags.push('technology');
+            }
+            return tags.length > 0 ? tags : ['ai', 'automation'];
         }
 
+        // Initialize with sample content - COMPLETELY REWRITTEN
+        document.getElementById('markdownInput').value = `# Welcome to AI-Powered Content Creation
+
+Artificial intelligence is revolutionizing how we create, edit, and optimize content across all industries.
+
+## The Power of Visual Editing
+
+![AI Workspace](/assets/placeholder-image.svg)
+
+With our new visual blog editor, you can:
+
+### Key Features
+
+- Parse Markdown into editable blocks
+- Adjust spacing, alignment, and colors
+- Drag and drop to reorder content
+- Export clean HTML for your blog
+
+## Getting Started
+
+Simply paste your Markdown content and start customizing the visual layout to match your brand perfectly.
+
+Ready to transform your content creation workflow?`;
+
+        // GLOBAL SAVE FUNCTION - This is what the Save button calls
+        window.savePost = async function() {
+            console.log('🚀 REAL savePost function called!');
+            
+            try {
+                // Get current content
+                const markdownInput = document.getElementById('markdownInput');
+                const content = markdownInput.value;
+                
+                console.log('📤 Content to save:', content);
+                
+                // Prepare post data
+                const postData = {
+                    title: extractTitleFromContent(content),
+                    content: content,
+                    htmlContent: content, // For now, same as markdown
+                    status: 'draft',
+                    featured: false,
+                    author: 'Fae Intelligence',
+                    excerpt: extractExcerptFromContent(content),
+                    tags: extractTagsFromContent(content),
+                    category: 'ai-automation',
+                    viewCount: 0
+                };
+                
+                console.log('📊 Post data prepared:', postData);
+                
+                // Send to dashboard for Firebase save
+                if (window.opener && window.opener.postMessage) {
+                    window.opener.postMessage({
+                        type: 'SAVE_POST_TO_FIREBASE',
+                        postData: postData
+                    }, '*');
+                    
+                    console.log('📤 Post data sent to dashboard for Firebase save');
+                    
+                    // Update button text to show saving
+                    const saveBtn = document.querySelector('button[onclick="savePost()"]');
+                    if (saveBtn) {
+                        saveBtn.textContent = '💾 Saving...';
+                        saveBtn.disabled = true;
+                    }
+                    
+                    // Save to local storage as backup
+                    localStorage.setItem('visualEditorContent', content);
+                    localStorage.setItem('visualEditorBlocks', JSON.stringify(currentBlocks));
+                    
+                    console.log('💾 Content saved to local storage as backup');
+                    
+                } else {
+                    console.error('❌ Cannot communicate with dashboard');
+                    alert('Save failed: Cannot communicate with dashboard');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error in savePost:', error);
+                alert('Save failed: ' + error.message);
+            }
+        };
+
+        // Listen for save response from dashboard
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'SAVE_SUCCESS') {
+                console.log('✅ Save successful!');
+                
+                // Update button text
+                const saveBtn = document.querySelector('button[onclick="savePost()"]');
+                if (saveBtn) {
+                    saveBtn.textContent = '✓ Saved to Firebase!';
+                    saveBtn.disabled = false;
+                    
+                    // Reset button text after 3 seconds
+                    setTimeout(() => {
+                        saveBtn.textContent = 'Save Post';
+                    }, 3000);
+                }
+                
+            } else if (event.data.type === 'SAVE_ERROR') {
+                console.error('❌ Save failed:', event.data.error);
+                
+                // Update button text
+                const saveBtn = document.querySelector('button[onclick="savePost()"]');
+                if (saveBtn) {
+                    saveBtn.textContent = '❌ Save Failed';
+                    saveBtn.disabled = false;
+                    
+                    // Reset button text after 3 seconds
+                    setTimeout(() => {
+                        saveBtn.textContent = 'Save Post';
+                    }, 3000);
+                }
+                
+                alert('Save failed: ' + event.data.error);
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 DOMContentLoaded: Visual Editor initializing...');
+            
             // Fetch and inject header
-            fetch('/includes/header.html')
-                .then(response => response.text())
+            fetch('./includes/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header fetch failed');
+                    return response.text();
+                })
                 .then(data => {
-                    document.getElementById('live-preview-header').innerHTML = data;
+                    const headerElement = document.getElementById('live-preview-header');
+                    if (headerElement) {
+                        headerElement.innerHTML = data;
+                        console.log('✅ Header loaded successfully');
+                    }
+                })
+                .catch(error => {
+                    console.warn('⚠️ Header fetch failed:', error);
                 });
 
             // Fetch and inject footer
-            fetch('/includes/footer.html')
-                .then(response => response.text())
+            fetch('./includes/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer fetch failed');
+                    return response.text();
+                })
                 .then(data => {
-                    document.getElementById('live-preview-footer').innerHTML = data;
+                    const footerElement = document.getElementById('live-preview-footer');
+                    if (footerElement) {
+                        footerElement.innerHTML = data;
+                        console.log('✅ Footer loaded successfully');
+                    }
+                })
+                .catch(error => {
+                    console.warn('⚠️ Footer fetch failed:', error);
                 });
+            
+            // Load saved content from local storage if available
+            const savedContent = localStorage.getItem('visualEditorContent');
+            const savedBlocks = localStorage.getItem('visualEditorBlocks');
+            
+            if (savedContent && savedBlocks) {
+                try {
+                    const markdownInput = document.getElementById('markdownInput');
+                    if (markdownInput) {
+                        markdownInput.value = savedContent;
+                        currentBlocks = JSON.parse(savedBlocks);
+                        renderBlocks();
+                        console.log('📂 Loaded saved content from local storage');
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading saved content:', error);
+                }
+            }
+            
+            // Mark Visual Editor as fully loaded
+            console.log('🎉 Visual Editor fully loaded and ready!');
+            
+            // Notify dashboard that we're ready
+            if (window.opener && window.opener.postMessage) {
+                window.opener.postMessage({
+                    type: 'VISUAL_EDITOR_READY',
+                    message: 'Visual Editor is ready for use'
+                }, '*');
+            }
         });
 
         document.addEventListener('selectionchange', () => {
@@ -1040,5 +1243,26 @@ let currentBlocks = [];
             document.execCommand(command, false, null);
         }
 
-        // Initialize with sample content
-        document.getElementById('markdownInput').value = `# Welcome to AI-Powered Content Creation\n\nArtificial intelligence is revolutionizing how we create, edit, and optimize content across all industries.\n\n## The Power of Visual Editing\n\n![AI Workspace](/assets/placeholder-image.svg)\n\nWith our new visual blog editor, you can:\n\n### Key Features\n\n- Parse Markdown into editable blocks\n- Adjust spacing, alignment, and colors\n- Drag and drop to reorder content\n- Export clean HTML for your blog\n\n## Getting Started\n\nSimply paste your Markdown content and start customizing the visual layout to match your brand perfectly.\n\nReady to transform your content creation workflow?`;
+        // Initialize with sample content - COMPLETELY REWRITTEN
+        document.getElementById('markdownInput').value = `# Welcome to AI-Powered Content Creation
+
+Artificial intelligence is revolutionizing how we create, edit, and optimize content across all industries.
+
+## The Power of Visual Editing
+
+![AI Workspace](/assets/placeholder-image.svg)
+
+With our new visual blog editor, you can:
+
+### Key Features
+
+- Parse Markdown into editable blocks
+- Adjust spacing, alignment, and colors
+- Drag and drop to reorder content
+- Export clean HTML for your blog
+
+## Getting Started
+
+Simply paste your Markdown content and start customizing the visual layout to match your brand perfectly.
+
+Ready to transform your content creation workflow?`;

@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
-import { BlogService } from '@/lib/blog'
-import { BlogPost } from '@/types/blog'
+import { MarkdownBlogService } from '@/lib/markdown-blog'
+import { MarkdownBlogPost } from '@/lib/markdown-blog'
 import { ArrowLeft, Calendar, User, Eye, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -16,7 +16,7 @@ interface BlogPostClientProps {
 }
 
 export function BlogPostClient({ slug }: BlogPostClientProps) {
-  const [post, setPost] = useState<BlogPost | null>(null)
+  const [post, setPost] = useState<MarkdownBlogPost | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -31,7 +31,7 @@ export function BlogPostClient({ slug }: BlogPostClientProps) {
         console.log('Fetching post with slug:', slug)
         
         // Get post by slug
-        const postData = await BlogService.getPostBySlug(slug)
+        const postData = await MarkdownBlogService.getPostBySlug(slug)
         
         console.log('Post data received:', postData)
         
@@ -43,8 +43,8 @@ export function BlogPostClient({ slug }: BlogPostClientProps) {
 
         setPost(postData)
         
-        // Increment view count
-        await BlogService.incrementViewCount(postData.id)
+        // Note: View count increment not implemented for markdown posts
+        // Could be implemented with local storage or simple file updates
         
       } catch (err) {
         console.error('Error fetching post:', err)
@@ -57,9 +57,9 @@ export function BlogPostClient({ slug }: BlogPostClientProps) {
     fetchPost()
   }, [slug])
 
-  const formatDate = (timestamp: { toDate?: () => Date } | null | undefined) => {
-    if (!timestamp?.toDate) return 'Unknown date'
-    return timestamp.toDate().toLocaleDateString('en-US', {
+  const formatDate = (date: Date | null | undefined) => {
+    if (!date) return 'Unknown date'
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

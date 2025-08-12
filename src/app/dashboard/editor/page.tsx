@@ -61,6 +61,48 @@ export default function EditorPage() {
         console.log('Image upload requested message received.');
         const { file } = data.payload;
         handleImageUpload(file);
+      } else if (data.type === 'SAVE_POST_TO_FIREBASE') {
+        console.log('🔥 Firebase save requested:', data.postData);
+        setIsSaving(true);
+        
+        try {
+          // Save to Firebase via API
+          const response = await axios.post('/api/posts/save', {
+            title: data.postData.title,
+            content: data.postData.content,
+            htmlContent: data.postData.htmlContent,
+            blocks: data.postData.blocks,
+            status: data.postData.status,
+            featured: data.postData.featured,
+            author: data.postData.author,
+            excerpt: data.postData.excerpt,
+            tags: data.postData.tags,
+            category: data.postData.category
+          });
+          
+          console.log('✅ Post saved to Firebase successfully:', response.data);
+          
+          // Send success message back to visual editor
+          if (iframeRef.current) {
+            iframeRef.current.contentWindow?.postMessage({ 
+              type: 'SAVE_SUCCESS', 
+              postId: response.data.id 
+            }, '*');
+          }
+          
+        } catch (error) {
+          console.error('❌ Error saving to Firebase:', error);
+          
+          // Send error message back to visual editor
+          if (iframeRef.current) {
+            iframeRef.current.contentWindow?.postMessage({ 
+              type: 'SAVE_ERROR', 
+              error: error.message 
+            }, '*');
+          }
+        } finally {
+          setIsSaving(false);
+        }
       }
     };
 
