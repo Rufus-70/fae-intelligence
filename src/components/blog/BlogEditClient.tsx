@@ -4,15 +4,14 @@
 import { useEffect, useState } from 'react'
 import BlogPostForm from './BlogPostForm'
 import { Container } from '@/components/layout/Container'
-import { BlogService } from '@/lib/blog'
-import { BlogPost } from '@/types/blog'
+import { MarkdownBlogService, MarkdownBlogPost } from '@/lib/markdown-blog-service'
 
 interface BlogEditClientProps {
   postId: string
 }
 
 export default function BlogEditClient({ postId }: BlogEditClientProps) {
-  const [post, setPost] = useState<BlogPost | null>(null)
+  const [post, setPost] = useState<MarkdownBlogPost | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -20,8 +19,12 @@ export default function BlogEditClient({ postId }: BlogEditClientProps) {
     const fetchPost = async () => {
       try {
         setLoading(true)
-        const fetchedPost = await BlogService.getPost(postId)
-        setPost(fetchedPost)
+        const fetchedPost = await MarkdownBlogService.getPost(postId)
+        if (fetchedPost) {
+          setPost(fetchedPost)
+        } else {
+          setError('Blog post not found')
+        }
       } catch (err) {
         console.error('Error fetching post:', err)
         setError('Failed to load blog post')
