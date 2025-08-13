@@ -46,10 +46,72 @@ function generateSlug(filename) {
     .trim();
 }
 
+function extractBlogContent(markdownContent) {
+  // Method 1: Look for content boundary markers
+  const startMarker = '<!-- BLOG_CONTENT_START -->';
+  const endMarker = '<!-- BLOG_CONTENT_END -->';
+  
+  if (markdownContent.includes(startMarker) && markdownContent.includes(endMarker)) {
+    const startIndex = markdownContent.indexOf(startMarker) + startMarker.length;
+    const endIndex = markdownContent.indexOf(endMarker);
+    return markdownContent.substring(startIndex, endIndex).trim();
+  }
+  
+  // Method 2: Look for "(Start of Blog Post Content)" and "(End of Blog Post Content)" markers  
+  const startPattern = /\*\*\(Start of Blog Post Content\)\*\*/;
+  const endPattern = /\*\*\(End of Blog Post Content\)\*\*/;
+  
+  const startMatch = markdownContent.match(startPattern);
+  const endMatch = markdownContent.match(endPattern);
+  
+  // Debug: Let's also try simpler string search
+  const simpleStart = markdownContent.indexOf('**(Start of Blog Post Content)**');
+  const simpleEnd = markdownContent.indexOf('**(End of Blog Post Content)**');
+  
+  if (simpleStart !== -1 && simpleEnd !== -1) {
+    const startIndex = simpleStart + '**(Start of Blog Post Content)**'.length;
+    const endIndex = simpleEnd;
+    return markdownContent.substring(startIndex, endIndex).trim();
+  }
+  
+  if (startMatch && endMatch) {
+    const startIndex = startMatch.index + startMatch[0].length;
+    const endIndex = endMatch.index;
+    return markdownContent.substring(startIndex, endIndex).trim();
+  }
+  
+  // Method 3: Stop at first major section break (for existing content)
+  const sectionBreaks = [
+    /\*\*\*[\s]*\n/,
+    /###[\s]*\*\*Internal Notes/i,
+    /###[\s]*\*\*SEO & Content Strategy/i,
+    /###[\s]*\*\*Editor's Summary/i,
+    /PROMPT\s+\d+\s*#+/i
+  ];
+  
+  for (const breakPattern of sectionBreaks) {
+    const match = markdownContent.match(breakPattern);
+    if (match) {
+      return markdownContent.substring(0, match.index).trim();
+    }
+  }
+  
+  // Fallback: Return first 2000 characters if no markers found
+  if (markdownContent.length > 2000) {
+    console.log(`⚠️  No content boundaries found, truncating to 2000 characters`);
+    return markdownContent.substring(0, 2000) + '...';
+  }
+  
+  return markdownContent;
+}
+
 function extractMetadata(filePath, content, status) {
   const { data, content: markdownContent } = matter(content);
   const filename = path.basename(filePath, '.md');
   const slug = generateSlug(filename);
+  
+  // Extract only the blog content (not metadata, notes, etc.)
+  const blogContent = extractBlogContent(markdownContent);
   
   // Get file stats for dates
   const stats = fs.statSync(filePath);
@@ -58,8 +120,8 @@ function extractMetadata(filePath, content, status) {
     id: slug,
     title: data.title || filename.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
     slug: slug,
-    excerpt: data.excerpt || data.description || markdownContent.substring(0, 200) + '...',
-    content: markdownContent,
+    excerpt: data.excerpt || data.description || blogContent.substring(0, 200) + '...',
+    content: blogContent,
     status: status,
     featured: data.featured || false,
     author: {
