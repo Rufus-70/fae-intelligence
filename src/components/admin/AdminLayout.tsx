@@ -39,16 +39,46 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       current: pathname === '/dashboard'
     },
     {
-      name: 'Files', 
-      href: '/dashboard/files',
-      icon: Upload,
-      current: pathname === '/dashboard/files'
+      name: 'Blog Management', 
+      href: '/dashboard/blog',
+      icon: FileText,
+      current: pathname.startsWith('/dashboard/blog')
+    },
+    {
+      name: 'BlogCraft Editor',
+      href: '/blogcraft',
+      icon: Palette,
+      current: pathname === '/blogcraft'
     },
     {
       name: 'Visual Editor',
       href: '/dashboard/editor',
       icon: Edit,
       current: pathname === '/dashboard/editor'
+    },
+    {
+      name: 'AI Assessment',
+      href: '/ai-readiness-assessment',
+      icon: Brain,
+      current: pathname === '/ai-readiness-assessment'
+    },
+    {
+      name: 'Files', 
+      href: '/dashboard/files',
+      icon: Upload,
+      current: pathname === '/dashboard/files'
+    },
+    {
+      name: 'Analytics',
+      href: '/dashboard/analytics',
+      icon: BarChart3,
+      current: pathname === '/dashboard/analytics'
+    },
+    {
+      name: 'Settings',
+      href: '/dashboard/settings',
+      icon: Settings,
+      current: pathname === '/dashboard/settings'
     }
   ]
 
@@ -59,7 +89,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
+                <h1 className="text-xl font-bold text-gray-900">Fae Intelligence Admin</h1>
               </div>
               <div className="hidden md:ml-6 md:flex md:space-x-8">
                 {navigation.map((item) => (
@@ -77,6 +107,16 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   </Link>
                 ))}
               </div>
+            </div>
+            <div className="hidden md:ml-6 md:flex md:items-center">
+              <span className="text-sm text-gray-500 mr-4">{user?.email}</span>
+              <button
+                onClick={() => logOut()}
+                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition"
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </button>
             </div>
           </div>
         </div>
