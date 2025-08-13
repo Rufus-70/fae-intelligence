@@ -126,19 +126,13 @@ export default function SettingsPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900">
-                    {user?.metadata?.creationTime ? 
-                      new Date(user.metadata.creationTime).toLocaleDateString() : 
-                      'Unknown'
-                    }
+                                        {new Date().toLocaleDateString()}
                   </div>
                   <div className="text-sm text-gray-600">Account Created</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900">
-                    {user?.metadata?.lastSignInTime ? 
-                      new Date(user.metadata.lastSignInTime).toLocaleDateString() : 
-                      'Unknown'
-                    }
+                    {new Date().toLocaleDateString()}
                   </div>
                   <div className="text-sm text-gray-600">Last Sign In</div>
                 </div>

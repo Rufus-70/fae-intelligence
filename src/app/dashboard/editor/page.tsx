@@ -95,9 +95,9 @@ export default function EditorPage() {
           
           // Send error message back to visual editor
           if (iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage({ 
+                        iframeRef.current.contentWindow?.postMessage({
               type: 'SAVE_ERROR', 
-              error: error.message 
+              error: error instanceof Error ? error.message : 'Unknown error'
             }, '*');
           }
         } finally {

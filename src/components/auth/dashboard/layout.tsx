@@ -12,13 +12,14 @@ import {
   BarChart3, 
   Settings, 
   LogOut,
-  User
+  User,
+  Edit3
 } from 'lucide-react'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Files', href: '/dashboard/files', icon: FileText },
-  { name: 'Visual Editor', href: '/dashboard/editor', icon: PencilSquareIcon },
+  { name: 'Visual Editor', href: '/dashboard/editor', icon: Edit3 },
   { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
 ]

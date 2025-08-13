@@ -22,24 +22,24 @@ export default function TestUploadPage() {
           
           {/* Configuration Status */}
           <div className="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className={`p-4 rounded-lg border ${config.isDemoMode ? 'bg-yellow-50 border-yellow-200' : 'bg-green-50 border-green-200'}`}>
+            <div className={`p-4 rounded-lg border ${config.appConfig?.demoMode ? 'bg-yellow-50 border-yellow-200' : 'bg-green-50 border-green-200'}`}>
               <h3 className="font-medium text-sm mb-1">Mode</h3>
-              <p className={`text-xs ${config.isDemoMode ? 'text-yellow-800' : 'text-green-800'}`}>
-                {config.isDemoMode ? '🎭 Demo Mode' : '🔥 Production Mode'}
+              <p className={`text-xs ${config.appConfig?.demoMode ? 'text-yellow-800' : 'text-green-800'}`}>
+                {config.appConfig?.demoMode ? '🎭 Demo Mode' : '🔥 Production Mode'}
               </p>
             </div>
             
             <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
               <h3 className="font-medium text-sm mb-1">Target Project</h3>
               <p className="text-xs text-blue-800 font-mono">
-                {config.faesWeb.projectId}
+                N/A
               </p>
             </div>
             
-            <div className={`p-4 rounded-lg border ${config.enableFaesWebIntegration ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+            <div className={`p-4 rounded-lg border ${config.appConfig?.enableFaesWebIntegration ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
               <h3 className="font-medium text-sm mb-1">Integration</h3>
-              <p className={`text-xs ${config.enableFaesWebIntegration ? 'text-green-800' : 'text-red-800'}`}>
-                {config.enableFaesWebIntegration ? '✅ Enabled' : '❌ Disabled'}
+              <p className={`text-xs ${config.appConfig?.enableFaesWebIntegration ? 'text-green-800' : 'text-red-800'}`}>
+                {config.appConfig?.enableFaesWebIntegration ? '✅ Enabled' : '❌ Disabled'}
               </p>
             </div>
             

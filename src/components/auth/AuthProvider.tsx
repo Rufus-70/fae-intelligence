@@ -11,6 +11,7 @@ interface AuthContextType {
   user: User | null
   loading: boolean
   logOut: () => void
+  signIn: (email: string, password: string) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -26,8 +27,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     console.log('Logout called')
   }
 
+  const signIn = async (email: string, password: string) => {
+    console.log('Sign in called with:', email, password)
+    // Mock authentication - always succeeds in dev mode
+    return Promise.resolve()
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, logOut }}>
+    <AuthContext.Provider value={{ user, loading, logOut, signIn }}>
       {children}
     </AuthContext.Provider>
   )

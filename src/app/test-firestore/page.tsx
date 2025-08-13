@@ -23,9 +23,9 @@ export default function TestFirestorePage() {
     try {
       // First, check the configuration
       const configInfo = {
-        isDemoMode: config.isDemoMode,
-        enableFaesWebIntegration: config.enableFaesWebIntegration,
-        faesWebProjectId: config.faesWeb.projectId,
+        isDemoMode: config.appConfig?.demoMode || false,
+        enableFaesWebIntegration: config.appConfig.enableFaesWebIntegration,
+        faesWebProjectId: 'N/A',
         mainFirebaseProject: db.app.options.projectId
       }
       

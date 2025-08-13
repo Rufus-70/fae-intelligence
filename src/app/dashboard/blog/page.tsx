@@ -5,8 +5,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { BlogService } from '@/lib/blog'
-import { BlogPost } from '@/types/blog'
+import { MarkdownBlogService, MarkdownBlogPost } from '@/lib/markdown-blog-service'
 import { 
   Calendar, 
   User, 
@@ -22,7 +21,7 @@ import {
 import Link from 'next/link'
 
 export default function BlogDashboard() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
+  const [posts, setPosts] = useState<MarkdownBlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all')
@@ -32,7 +31,7 @@ export default function BlogDashboard() {
       setLoading(true)
       
       // Fetch all posts (including drafts) for admin view
-      const result = await BlogService.getPosts({ 
+      const result = await MarkdownBlogService.getPosts({ 
         limit: 50,
         orderBy: 'updatedAt',
         orderDirection: 'desc',
@@ -55,7 +54,7 @@ export default function BlogDashboard() {
     if (!confirm('Are you sure you want to delete this post?')) return
     
     try {
-      await BlogService.deletePost(postId)
+      await MarkdownBlogService.deletePost(postId)
       setPosts(posts.filter(post => post.id !== postId))
     } catch (error) {
       console.error('Error deleting post:', error)
@@ -68,9 +67,9 @@ export default function BlogDashboard() {
     post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  const formatDate = (timestamp: { toDate?: () => Date } | null | undefined) => {
-    if (!timestamp?.toDate) return 'Unknown date'
-    return timestamp.toDate().toLocaleDateString('en-US', {
+  const formatDate = (date: Date | null | undefined) => {
+    if (!date) return 'Unknown date'
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric'

@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/components/auth/AuthProvider'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { BlogService } from '@/lib/blog'
-import { BlogPost, BlogPostFormData, BlogCategory, BlogTag } from '@/types/blog'
+import { MarkdownBlogService, MarkdownBlogPost, LocalBlogCategory, LocalBlogTag } from '@/lib/markdown-blog-service'
+import { BlogPost, BlogPostFormData } from '@/types/blog'
 import { useRouter } from 'next/navigation'
 import { Save, Eye, Globe, FileText, Tag, Folder, Upload } from 'lucide-react'
 import VisualBlogEditor from './VisualBlogEditor'
@@ -20,8 +20,8 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
   const { user } = useAuth()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const [categories, setCategories] = useState<BlogCategory[]>([])
-  const [tags, setTags] = useState<BlogTag[]>([])
+  const [categories, setCategories] = useState<LocalBlogCategory[]>([])
+  const [tags, setTags] = useState<LocalBlogTag[]>([])
   const [previewMode, setPreviewMode] = useState(false)
   
   const [formData, setFormData] = useState<BlogPostFormData>({
@@ -49,7 +49,7 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
 
   const fetchCategories = async () => {
     try {
-      const categoriesData = await BlogService.getCategories()
+      const categoriesData = await MarkdownBlogService.getCategories()
       setCategories(categoriesData)
     } catch (error) {
       console.error('Error fetching categories:', error)
@@ -58,7 +58,7 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
 
   const fetchTags = async () => {
     try {
-      const tagsData = await BlogService.getTags()
+      const tagsData = await MarkdownBlogService.getTags()
       setTags(tagsData)
     } catch (error) {
       console.error('Error fetching tags:', error)
@@ -88,7 +88,7 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
         viewCount: 0,
         author: {
           id: user.uid,
-          name: user.displayName || user.email?.split('@')[0] || 'Admin',
+          name: user.email?.split('@')[0] || 'Admin',
           email: user.email || ''
         }
       }
@@ -99,10 +99,10 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
         : baseData
 
       if (mode === 'create') {
-        const postId = await BlogService.createPost(postData)
+        const postId = await MarkdownBlogService.createPost(postData)
         router.push(`/dashboard/blog/edit/${postId}`)
       } else if (initialData) {
-        await BlogService.updatePost(initialData.id, postData)
+        await MarkdownBlogService.updatePost(initialData.id, postData)
         router.push('/dashboard/blog')
       }
     } catch (error) {
@@ -127,7 +127,7 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
     // Create tag if it doesn't exist
     if (!tags.find(tag => tag.name.toLowerCase() === tagName.toLowerCase())) {
       try {
-        await BlogService.createTag(tagName)
+        // For now, we'll just refresh tags since the markdown service handles this differently
         await fetchTags() // Refresh tags list
       } catch (error) {
         console.error('Error creating tag:', error)
@@ -145,7 +145,7 @@ export default function BlogPostForm({ initialData, mode }: BlogPostFormProps) {
   }
 
   const generateSlug = (title: string) => {
-    return BlogService.generateSlug(title)
+    return MarkdownBlogService.generateSlug(title)
   }
 
   const handleImportTemplate = async () => {

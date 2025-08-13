@@ -57,9 +57,9 @@ export default function FileUpload({
     if (isUploading) return
     
     console.log('🔧 Upload Debug Info:')
-    console.log('- Demo mode:', config.isDemoMode)
-    console.log('- Faes-web integration:', config.enableFaesWebIntegration)
-    console.log('- Firebase config:', config.faesWeb)
+    console.log('- Demo mode:', config.appConfig?.demoMode)
+    console.log('- Faes-web integration:', config.appConfig?.enableFaesWebIntegration)
+    console.log('- Firebase config:', config.firebaseConfig)
     
     // Check file limits
     if (files.length + fileList.length > maxFiles) {

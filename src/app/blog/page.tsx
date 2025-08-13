@@ -8,48 +8,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, Star, BookOpen } from 'lucide-react'
 import Link from 'next/link'
+import blogContent from '@/lib/blog-content.json'
 
 export default function BlogPage() {
-  // Static blog posts for testing
-  const posts = [
-    {
-      id: 'ai-readiness-assessment-guide',
-      title: 'AI Readiness Assessment: Your Complete Guide to Digital Transformation',
-      slug: 'ai-readiness-assessment-guide',
-      excerpt: 'Evaluate your organization\'s readiness for AI implementation with our comprehensive assessment framework. Identify gaps, opportunities, and create a roadmap for success.',
-      category: 'AI Strategy',
-      tags: ['AI Readiness', 'Digital Transformation', 'Assessment'],
-      author: { name: 'Richard Snyder' },
-      viewCount: 0,
-      featured: true
-    },
-    {
-      id: 'practical-ai-implementation-guide',
-      title: 'Practical AI Implementation: From Theory to Real-World Results',
-      slug: 'practical-ai-implementation-guide',
-      excerpt: 'Learn the proven strategies for implementing AI solutions that deliver measurable business results. Avoid common pitfalls and accelerate your AI journey with practical, actionable guidance.',
-      category: 'AI Implementation',
-      tags: ['AI Implementation', 'Practical Guide', 'Best Practices'],
-      author: { name: 'Richard Snyder' },
-      viewCount: 0,
-      featured: true
-    }
-  ]
-
-  const categories = [
-    { 
-      id: 'ai-strategy', 
-      name: 'AI Strategy', 
-      description: 'Strategic planning and assessment for AI initiatives',
-      postCount: 1
-    },
-    { 
-      id: 'ai-implementation', 
-      name: 'AI Implementation', 
-      description: 'Practical implementation guides and best practices',
-      postCount: 1
-    }
-  ]
+  // Get published posts only
+  const posts = blogContent.posts.filter((post: any) => post.status === 'published')
+  
+  // Get categories from generated content
+  const categories = blogContent.categories
 
   return (
     <>

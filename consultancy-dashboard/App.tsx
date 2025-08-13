@@ -841,7 +841,7 @@ const App: React.FC = () => {
     switch (activeView) {
       case 'blueprint':
         return (<><BlueprintView phases={currentBlueprintData.phases} onUpdateActivity={handleUpdateActivity} /><MonitoringSection title="Monitoring Your Progress & Fighting Squirrels" tips={currentBlueprintData.monitoringTips} /></>);
-      case 'clients': case 'projects': case 'tasks': case 'crm': case 'finance':
+      case 'clients': case 'projects': case 'tasks': case 'crm': case 'finance': case 'blog':
         if (!currentViewConfig) return <p className="text-center py-10 text-slate-400">Configuration missing for {activeView}.</p>;
         return (
           <StructuredViewLayout

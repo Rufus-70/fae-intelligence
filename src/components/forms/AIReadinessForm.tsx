@@ -305,7 +305,7 @@ This assessment is the first step in your AI journey. Our team can help you deve
                     <Button
                       key={score}
                       type="button"
-                      variant={formData[item.key as keyof AssessmentData] === score ? 'default' : 'outline'}
+                      variant={formData[item.key as keyof AssessmentData] === score ? 'primary' : 'outline'}
                       size="sm"
                       onClick={() => handleInputChange(item.key as keyof AssessmentData, score)}
                       className="w-12 h-12"

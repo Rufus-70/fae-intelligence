@@ -22,7 +22,7 @@ export default function VisualBlogEditor({
   const [editorMode, setEditorMode] = useState<'markdown' | 'visual'>('markdown')
   const [visualEditorWindow, setVisualEditorWindow] = useState<Window | null>(null)
   const [isVisualEditorOpen, setIsVisualEditorOpen] = useState(false)
-  const editorCheckInterval = useRef<NodeJS.Timeout>()
+  const editorCheckInterval = useRef<NodeJS.Timeout | null>(null)
 
   const openVisualEditor = () => {
     // Construct the visual editor URL
@@ -140,7 +140,7 @@ export default function VisualBlogEditor({
             <div className="flex items-center gap-2">
               <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                 <Button
-                  variant={editorMode === 'markdown' ? 'default' : 'ghost'}
+                  variant={editorMode === 'markdown' ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => setEditorMode('markdown')}
                   className="rounded-none"
@@ -149,7 +149,7 @@ export default function VisualBlogEditor({
                   Markdown
                 </Button>
                 <Button
-                  variant={editorMode === 'visual' ? 'default' : 'ghost'}
+                  variant={editorMode === 'visual' ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => setEditorMode('visual')}
                   className="rounded-none"

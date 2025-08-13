@@ -19,15 +19,25 @@ export async function POST(request: NextRequest) {
     // Prepare post data for Firebase
     const postData = {
       title: body.title,
+      slug: body.title.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''),
       content: body.content,
       htmlContent: body.htmlContent || body.content,
       status: body.status || 'draft',
       featured: body.featured || false,
-      author: body.author || 'Fae Intelligence',
+      author: {
+        id: 'fae-intelligence',
+        name: body.author || 'Fae Intelligence',
+        email: 'admin@faeintelligence.com'
+      },
       excerpt: body.excerpt || body.content.substring(0, 150) + '...',
       tags: body.tags || ['ai', 'automation'],
       category: body.category || 'ai-automation',
-      viewCount: 0
+      viewCount: 0,
+      seo: {
+        metaTitle: body.title,
+        metaDescription: body.excerpt || body.content.substring(0, 150) + '...',
+        focusKeyword: 'ai automation'
+      }
     };
     
     console.log('📊 API: Prepared post data:', postData);

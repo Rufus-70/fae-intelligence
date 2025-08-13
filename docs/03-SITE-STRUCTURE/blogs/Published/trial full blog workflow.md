@@ -1,9 +1,3 @@
-PROMPT 1 ##########################  apply prompt 1 to Taming the To-Do List: Simple AI Automation for SMB Time Wasters ##############################################
-
-Here is the blog post, "Taming the To-Do List: Simple AI Automation for SMB Time Wasters," created according to the Fae Intelligence Blog Assistant prompt.
-
-***
-
 ### **Blog Post: Taming the To-Do List: Simple AI Automation for SMB Time Wasters**
 
 **Target Industry:** General SMBs
