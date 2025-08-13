@@ -13,13 +13,17 @@ import {
   Settings, 
   LogOut,
   User,
-  Edit3
+  Edit3,
+  PenTool,
+  Target
 } from 'lucide-react'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Files', href: '/dashboard/files', icon: FileText },
+  { name: 'Blog Management', href: '/dashboard/blog', icon: FileText },
+  { name: 'BlogCraft Editor', href: '/blogcraft', icon: PenTool },
   { name: 'Visual Editor', href: '/dashboard/editor', icon: Edit3 },
+  { name: 'AI Assessment', href: '/ai-readiness-assessment', icon: Target },
   { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
 ]
