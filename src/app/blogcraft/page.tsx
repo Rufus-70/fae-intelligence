@@ -4,30 +4,51 @@ import { useEffect } from 'react';
 
 export default function BlogCraftPage() {
   useEffect(() => {
+    console.log('🚀 BlogCraft page mounting, loading resources...');
+    
     // Load the BlogCraft scripts and styles
     const loadScript = (src: string) => {
       return new Promise((resolve, reject) => {
+        console.log(`📦 Loading script: ${src}`);
         const script = document.createElement('script');
         script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
+        script.onload = () => {
+          console.log(`✅ Script loaded: ${src}`);
+          resolve(src);
+        };
+        script.onerror = (error) => {
+          console.error(`❌ Script failed to load: ${src}`, error);
+          reject(error);
+        };
         document.head.appendChild(script);
       });
     };
 
     const loadStyle = (href: string) => {
+      console.log(`🎨 Loading stylesheet: ${href}`);
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = href;
+      link.onload = () => console.log(`✅ Stylesheet loaded: ${href}`);
+      link.onerror = (error) => console.error(`❌ Stylesheet failed: ${href}`, error);
       document.head.appendChild(link);
     };
 
     // Load BlogCraft resources
     loadStyle('/blogcraft/style.css');
-    loadScript('/blogcraft/app.js').then(() => {
-      // Load the Fae Intelligence integration after BlogCraft loads
-      return loadScript('/blogcraft/fae-integration.js');
-    }).catch(console.error);
+    
+    loadScript('/blogcraft/app.js')
+      .then(() => {
+        console.log('📋 BlogCraft app.js loaded, now loading integration...');
+        // Load the Fae Intelligence integration after BlogCraft loads
+        return loadScript('/blogcraft/fae-integration.js');
+      })
+      .then(() => {
+        console.log('🔗 Integration script loaded successfully');
+      })
+      .catch((error) => {
+        console.error('💥 Error loading BlogCraft resources:', error);
+      });
   }, []);
 
   return (
