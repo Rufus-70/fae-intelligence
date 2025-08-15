@@ -1104,3 +1104,115 @@
 .notion-link:hover {
   border-bottom-color: #0066cc;
 }
+
+/* Posts Table Styling */
+.posts-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.table-header {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.table-header .table-row {
+  font-weight: 600;
+  color: #374151;
+  background: #f9fafb;
+}
+
+.table-body .table-row:hover {
+  background: #f9fafb;
+}
+
+.table-cell {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+}
+
+.post-title {
+  line-height: 1.4;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.published {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.archived {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.seo-score {
+  font-weight: 600;
+  color: #059669;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn--small {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.btn--outline:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* Ensure buttons are clickable */
+.action-buttons button {
+  cursor: pointer;
+  border: none;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.action-buttons button:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
