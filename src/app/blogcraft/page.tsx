@@ -472,10 +472,6 @@ export default function BlogCraftPage() {
               <span className="nav-icon">📄</span>
               Templates
             </button>
-            <button className="nav-item" data-view="themes" id="nav-themes">
-              <span className="nav-icon">🎨</span>
-              Themes
-            </button>
             <button className="nav-item" data-view="seo" id="nav-seo">
               <span className="nav-icon">🔍</span>
               SEO
@@ -719,92 +715,10 @@ export default function BlogCraftPage() {
                   <h2>Quick Actions</h2>
                   <p className="text-sm text-gray-600">Choose how you want to create your next blog post</p>
                 </div>
-                <div className="quick-actions" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', padding: '1rem' }}>
-                  <button className="quick-action-btn" data-action="newPost" style={{ border: '2px solid #e5e7eb', borderRadius: '8px', padding: '1rem', textAlign: 'left', transition: 'all 0.2s' }}>
-                    <div className="action-icon" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✏️</div>
-                    <div className="action-content">
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>Create New Post</h4>
-                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>Start writing a new blog post</p>
-                    </div>
-                  </button>
-                  
-                  <button 
-                    className="quick-action-btn" 
-                    data-action="notionEditor" 
-                    style={{ 
-                      border: '2px solid #3b82f6', 
-                      borderRadius: '8px', 
-                      padding: '1rem', 
-                      textAlign: 'left', 
-                      transition: 'all 0.2s',
-                      backgroundColor: '#eff6ff',
-                      position: 'relative'
-                    }}
-                    onClick={() => {
-                      console.log('🎯 Notion button clicked!');
-                      setShowNotionSetup(true);
-                    }}
-                  >
-                    <div className="action-icon" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📝</div>
-                    <div className="action-content">
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem', color: '#1e40af' }}>Notion Editor</h4>
-                      <p style={{ fontSize: '0.9rem', color: '#1e40af' }}>Create blogs in Notion (Recommended)</p>
-                      <div style={{ 
-                        position: 'absolute', 
-                        top: '0.5rem', 
-                        right: '0.5rem', 
-                        backgroundColor: '#3b82f6', 
-                        color: 'white', 
-                        padding: '0.25rem 0.5rem', 
-                        borderRadius: '4px', 
-                        fontSize: '0.75rem',
-                        fontWeight: '600'
-                      }}>
-                        NEW
-                      </div>
-                    </div>
-                  </button>
-                  
-                  <button className="quick-action-btn" data-action="importContent" style={{ border: '2px solid #e5e7eb', borderRadius: '8px', padding: '1rem', textAlign: 'left', transition: 'all 0.2s' }}>
-                    <div className="action-icon" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📥</div>
-                    <div className="action-content">
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>Import Content</h4>
-                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>Import from markdown or other sources</p>
-                    </div>
-                  </button>
-                  
-                  <button className="quick-action-btn" data-action="manageSeo" style={{ border: '2px solid #e5e7eb', borderRadius: '8px', padding: '1rem', textAlign: 'left', transition: 'all 0.2s' }}>
-                    <div className="action-icon" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔍</div>
-                    <div className="action-content">
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>SEO Optimization</h4>
-                      <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>Optimize your content for search</p>
-                    </div>
-                  </button>
-                  
-                  <button className="quick-action-btn" data-action="syncMarkdown" style={{ border: '2px solid #e5e7eb', borderRadius: '8px', padding: '1rem', textAlign: 'left', transition: 'all 0.2s' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <span style={{ fontSize: '1.5rem' }}>🔄</span>
-                      <div>
-                        <div style={{ fontWeight: '600', color: '#374151' }}>Sync Posts</div>
-                        <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>Sync content from Notion</div>
-                      </div>
-                    </div>
-                  </button>
-                  
-                  <button className="quick-action-btn" data-action="notionLayout" style={{ border: '2px solid #e5e7eb', borderRadius: '8px', padding: '1rem', textAlign: 'left', transition: 'all 0.2s' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <span style={{ fontSize: '1.5rem' }}>🎨</span>
-                      <div>
-                        <div style={{ fontWeight: '600', color: '#374151' }}>Notion Layout</div>
-                        <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>See rich formatting preview</div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-                
-                {/* Debug Info */}
-                <div style={{ marginTop: '1rem', padding: '0.5rem', backgroundColor: '#f3f4f6', borderRadius: '4px', fontSize: '0.8rem' }}>
-                  <p><strong>Debug:</strong> Notion button should be visible above. If you can't see it, check the browser console for errors.</p>
+                <div className="quick-actions">
+                  <button className="btn btn--primary" data-action="newPost">🚀 Quick Start</button>
+                  <button className="btn btn--outline" data-action="preview">👁️ Preview</button>
+                  <button className="btn btn--outline" data-action="syncMarkdown">🔄 Sync Markdown</button>
                 </div>
               </section>
 
@@ -1098,6 +1012,7 @@ The most successful AI implementations don't come from programmers trying to und
           </div>
         </div>
 
+        {/* Templates View */}
         <div id="templates" className="view">
           <div className="templates-container">
             <div className="templates-header">
@@ -1407,215 +1322,9 @@ Summary of success and future recommendations.
           </div>
         </div>
 
-        <div id="themes" className="view">
-          <div className="themes-container">
-            <div className="themes-header">
-              <h2>🎨 Blog Themes</h2>
-              <p>Customize the look and feel of your blog with professional themes</p>
-              <div className="themes-nav-links">
-                <a href="/" className="nav-link-main">🏠 Main Site</a>
-                <a href="/blog" className="nav-link-main">📝 Blog</a>
-                <a href="/dashboard" className="nav-link-main">⚙️ Dashboard</a>
-                <a href="/resources" className="nav-link-main">📚 Resources</a>
-              </div>
-            </div>
-            
-            <div className="themes-grid">
-              <div className="theme-card active">
-                <div className="theme-preview">
-                  <div className="theme-thumbnail">🏢</div>
-                  <div className="theme-status">Active</div>
-                </div>
-                <div className="theme-info">
-                  <h3>Professional Business</h3>
-                  <p>Clean, corporate design perfect for business blogs</p>
-                  <div className="theme-features">
-                    <span className="feature">Responsive</span>
-                    <span className="feature">SEO Optimized</span>
-                    <span className="feature">Fast Loading</span>
-                  </div>
-                  <button 
-                    className="btn btn--outline"
-                    onClick={() => {
-                      alert('🎨 Professional Business theme is already active!');
-                    }}
-                  >
-                    Customize
-                  </button>
-                </div>
-              </div>
-              
-              <div className="theme-card">
-                <div className="theme-preview">
-                  <div className="theme-thumbnail">🚀</div>
-                </div>
-                <div className="theme-info">
-                  <h3>Modern Tech</h3>
-                  <p>Contemporary design for technology and innovation blogs</p>
-                  <div className="theme-features">
-                    <span className="feature">Dark Mode</span>
-                    <span className="feature">Code Highlighting</span>
-                    <span className="feature">Interactive</span>
-                  </div>
-                  <button 
-                    className="btn btn--primary"
-                    onClick={() => {
-                      console.log('🎨 Activating Modern Tech theme...');
-                      
-                      // Update active theme
-                      document.querySelectorAll('.theme-card').forEach(card => {
-                        card.classList.remove('active');
-                      });
-                      const themeCard = document.querySelector('.theme-card:nth-child(2)');
-                      if (themeCard) themeCard.classList.add('active');
-                      
-                      // Update theme status
-                      const statusElement = themeCard?.querySelector('.theme-status');
-                      if (statusElement) statusElement.textContent = 'Active';
-                      
-                      // Update button text
-                      const button = themeCard?.querySelector('button');
-                      if (button) {
-                        button.textContent = 'Customize';
-                        button.className = 'btn btn--outline';
-                      }
-                      
-                      // Update previous active theme
-                      const previousActive = document.querySelector('.theme-card:first-child');
-                      if (previousActive) {
-                        previousActive.classList.remove('active');
-                        const prevStatus = previousActive.querySelector('.theme-status');
-                        if (prevStatus) prevStatus.textContent = '';
-                        const prevButton = previousActive.querySelector('button');
-                        if (prevButton) {
-                          prevButton.textContent = 'Activate';
-                          prevButton.className = 'btn btn--primary';
-                        }
-                      }
-                      
-                      alert('✅ Modern Tech theme activated! Your blog now has a contemporary tech-focused design.');
-                    }}
-                  >
-                    Activate
-                  </button>
-                </div>
-              </div>
-              
-              <div className="theme-card">
-                <div className="theme-preview">
-                  <div className="theme-thumbnail">🌱</div>
-                </div>
-                <div className="theme-info">
-                  <h3>Minimalist</h3>
-                  <p>Simple, elegant design focused on content</p>
-                  <div className="theme-features">
-                    <span className="feature">Clean Typography</span>
-                    <span className="feature">White Space</span>
-                    <span className="feature">Fast</span>
-                  </div>
-                  <button 
-                    className="btn btn--primary"
-                    onClick={() => {
-                      console.log('🎨 Activating Minimalist theme...');
-                      
-                      // Update active theme
-                      document.querySelectorAll('.theme-card').forEach(card => {
-                        card.classList.remove('active');
-                      });
-                      const themeCard = document.querySelector('.theme-card:nth-child(3)');
-                      if (themeCard) themeCard.classList.add('active');
-                      
-                      // Update theme status
-                      const statusElement = themeCard?.querySelector('.theme-status');
-                      if (statusElement) statusElement.textContent = 'Active';
-                      
-                      // Update button text
-                      const button = themeCard?.querySelector('button');
-                      if (button) {
-                        button.textContent = 'Customize';
-                        button.className = 'btn btn--outline';
-                      }
-                      
-                      // Update previous active theme
-                      const previousActive = document.querySelector('.theme-card.active:not(:nth-child(3))');
-                      if (previousActive) {
-                        previousActive.classList.remove('active');
-                        const prevStatus = previousActive.querySelector('.theme-status');
-                        if (prevStatus) prevStatus.textContent = '';
-                        const prevButton = previousActive.querySelector('button');
-                        if (prevButton) {
-                          prevButton.textContent = 'Activate';
-                          prevButton.className = 'btn btn--primary';
-                        }
-                      }
-                      
-                      alert('✅ Minimalist theme activated! Your blog now has a clean, content-focused design.');
-                    }}
-                  >
-                    Activate
-                  </button>
-                </div>
-              </div>
-              
-              <div className="theme-card">
-                <div className="theme-preview">
-                  <div className="theme-thumbnail">🎭</div>
-                </div>
-                <div className="theme-info">
-                  <h3>Creative Portfolio</h3>
-                  <p>Artistic design for creative professionals</p>
-                  <div className="theme-features">
-                    <span className="feature">Visual Focus</span>
-                    <span className="feature">Gallery Support</span>
-                    <span className="feature">Creative</span>
-                  </div>
-                  <button 
-                    className="btn btn--primary"
-                    onClick={() => {
-                      console.log('🎨 Activating Creative Portfolio theme...');
-                      
-                      // Update active theme
-                      document.querySelectorAll('.theme-card').forEach(card => {
-                        card.classList.remove('active');
-                      });
-                      const themeCard = document.querySelector('.theme-card:nth-child(4)');
-                      if (themeCard) themeCard.classList.add('active');
-                      
-                      // Update theme status
-                      const statusElement = themeCard?.querySelector('.theme-status');
-                      if (statusElement) statusElement.textContent = 'Active';
-                      
-                      // Update button text
-                      const button = themeCard?.querySelector('button');
-                      if (button) {
-                        button.textContent = 'Customize';
-                        button.className = 'btn btn--outline';
-                      }
-                      
-                      // Update previous active theme
-                      const previousActive = document.querySelector('.theme-card.active:not(:nth-child(4))');
-                      if (previousActive) {
-                        previousActive.classList.remove('active');
-                        const prevStatus = previousActive.querySelector('.theme-status');
-                        if (prevStatus) prevStatus.textContent = '';
-                        const prevButton = previousActive.querySelector('button');
-                        if (prevButton) {
-                          prevButton.textContent = 'Activate';
-                          prevButton.className = 'btn btn--primary';
-                        }
-                      }
-                      
-                      alert('✅ Creative Portfolio theme activated! Your blog now has an artistic, creative design.');
-                    }}
-                  >
-                    Activate
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Themes section removed - not functional */}
 
+        {/* SEO View */}
         <div id="seo" className="view">
           <div className="seo-container">
             <div className="seo-header">
@@ -1909,15 +1618,15 @@ Summary of success and future recommendations.
       {/* Modals and overlays will be added by JavaScript */}
       <div id="modalContainer"></div>
 
-      {/* Enhanced Preview Modal with Notion-Style View */}
+      {/* Enhanced Preview Modal with Blog Post Style */}
       {showPreview && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">📝 Preview: {previewTitle}</h2>
-                <p className="text-sm text-gray-600 mt-1">Notion-style preview of your blog post</p>
+                <h2 className="text-2xl font-bold text-gray-900">👁️ Blog Post Preview</h2>
+                <p className="text-sm text-gray-600 mt-1">See how your post will look to readers</p>
               </div>
               <button
                 onClick={() => setShowPreview(false)}
@@ -1927,22 +1636,38 @@ Summary of success and future recommendations.
               </button>
             </div>
             
-            {/* Modal Content - Notion-Style Blog View */}
+            {/* Modal Content - Clean Blog Post View (No BlogCraft Header) */}
             <div className="overflow-y-auto max-h-[calc(90vh-140px)]">
-              <div className="notion-container p-8">
-                <div className="notion-content">
-                  {/* Title */}
-                  <div className="notion-block notion-heading-1">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-6">{previewTitle}</h1>
+              <div className="p-8">
+                <div className="max-w-3xl mx-auto">
+                  {/* Blog Post Header */}
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                    {previewTitle || 'Your Blog Post Title'}
+                  </h1>
+                  
+                  {/* Blog Post Meta */}
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-8 pb-4 border-b border-gray-200">
+                    <span>📅 {new Date().toLocaleDateString()}</span>
+                    <span>📝 Author</span>
+                    <span>🏷️ General</span>
                   </div>
                   
-                  {/* Content with Markdown Rendering */}
-                  <div 
-                    className="notion-content prose prose-lg max-w-none"
-                    dangerouslySetInnerHTML={{
-                      __html: renderMarkdownToHTML(previewContent)
-                    }}
-                  />
+                  {/* Blog Post Content */}
+                  <div className="prose prose-lg max-w-none">
+                    <div 
+                      dangerouslySetInnerHTML={{
+                        __html: renderMarkdownToHTML(previewContent)
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Blog Post Footer */}
+                  <div className="mt-12 pt-6 border-t border-gray-200">
+                    <div className="flex items-center justify-between text-sm text-gray-500">
+                      <span>📊 Reading time: {Math.ceil((previewContent || '').split(/\s+/).filter(word => word.length > 0).length / 200)} min</span>
+                      <span>👁️ Views: 0</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
