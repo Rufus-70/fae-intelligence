@@ -1314,3 +1314,56 @@
   margin-bottom: 1rem;
   display: block;
 }
+
+/* Notion Integration Section */
+.notion-setup-prompt, .notion-status {
+  transition: all 0.2s;
+}
+
+.notion-setup-prompt:hover {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.notion-status:hover {
+  background-color: #dcfce7;
+  border-color: #16a34a;
+}
+
+.notion-setup-prompt h3,
+.notion-status h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.notion-setup-prompt p,
+.notion-status p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Dashboard Section Enhancements */
+.dashboard-section {
+  margin-bottom: 2rem;
+}
+
+.dashboard-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  margin: 0 0 0.5rem 0;
+  color: #111827;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.section-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+}

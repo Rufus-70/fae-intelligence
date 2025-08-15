@@ -696,9 +696,6 @@ export default function BlogCraftPage() {
               <section className="dashboard-section">
                 <div className="section-header">
                   <h2>Recent Posts</h2>
-                  <div className="section-actions">
-                    <button className="btn btn--small btn--outline" id="newPostBtn">+ New Post</button>
-                  </div>
                 </div>
                 <div className="posts-table">
                   <div className="table-header">
@@ -809,6 +806,59 @@ export default function BlogCraftPage() {
                 <div style={{ marginTop: '1rem', padding: '0.5rem', backgroundColor: '#f3f4f6', borderRadius: '4px', fontSize: '0.8rem' }}>
                   <p><strong>Debug:</strong> Notion button should be visible above. If you can't see it, check the browser console for errors.</p>
                 </div>
+              </section>
+
+              <section className="dashboard-section">
+                <div className="section-header">
+                  <h2>Notion Integration</h2>
+                  <p className="text-sm text-gray-600">Connect and sync with your Notion database</p>
+                </div>
+                
+                {!notionSetupComplete ? (
+                  <div className="notion-setup-prompt p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-2xl">📝</span>
+                      <div>
+                        <h3 className="font-semibold text-blue-800">Set up Notion Integration</h3>
+                        <p className="text-sm text-blue-700">Connect your Notion database to sync blog posts</p>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={() => setShowNotionSetup(true)}
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      🔗 Connect Notion
+                    </button>
+                  </div>
+                ) : (
+                  <div className="notion-status p-6 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-2xl">✅</span>
+                      <div>
+                        <h3 className="font-semibold text-green-800">Notion Connected!</h3>
+                        <p className="text-sm text-green-700">Your Notion database is connected and ready to sync</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-3">
+                      <button 
+                        onClick={() => {
+                          // Trigger Notion sync
+                          const event = new CustomEvent('syncNotionPosts');
+                          document.dispatchEvent(event);
+                        }}
+                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      >
+                        🔄 Sync Posts
+                      </button>
+                      <button 
+                        onClick={() => setShowNotionSetup(true)}
+                        className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                      >
+                        ⚙️ Settings
+                      </button>
+                    </div>
+                  </div>
+                )}
               </section>
             </div>
           </div>
