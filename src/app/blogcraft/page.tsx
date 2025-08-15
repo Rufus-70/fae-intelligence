@@ -442,6 +442,20 @@ export default function BlogCraftPage() {
       .replace(/<p class="text-gray-700 leading-relaxed mb-4">\s*<\/p>/g, '');
   };
 
+  // Add/remove preview-open class to body for CSS styling
+  useEffect(() => {
+    if (showPreview) {
+      document.body.classList.add('preview-open');
+    } else {
+      document.body.classList.remove('preview-open');
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('preview-open');
+    };
+  }, [showPreview]);
+
   return (
     <div id="blogcraft-container">
       {/* Header Navigation - Fixed to stay visible */}
@@ -1621,6 +1635,14 @@ Summary of success and future recommendations.
       {/* Enhanced Preview Modal with Blog Post Style */}
       {showPreview && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          {/* Hide BlogCraft header when preview is open */}
+          <style jsx>{`
+            .preview-open #blogcraftHeader,
+            .preview-open .header {
+              display: none !important;
+            }
+          `}</style>
+          
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
