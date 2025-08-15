@@ -96,10 +96,11 @@ function extractBlogContent(markdownContent) {
     }
   }
   
-  // Fallback: Return first 2000 characters if no markers found
-  if (markdownContent.length > 2000) {
-    console.log(`⚠️  No content boundaries found, truncating to 2000 characters`);
-    return markdownContent.substring(0, 2000) + '...';
+  // Fallback: For standard blog posts, return the full content
+  // Only truncate if it's extremely long (more than 20,000 characters)
+  if (markdownContent.length > 20000) {
+    console.log(`⚠️  Content very long, truncating to 20,000 characters`);
+    return markdownContent.substring(0, 20000) + '...';
   }
   
   return markdownContent;

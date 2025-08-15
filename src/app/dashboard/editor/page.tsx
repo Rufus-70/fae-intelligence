@@ -1,171 +1,54 @@
-'use client';
+// src/app/dashboard/editor/page.tsx - ARCHIVED: Use BlogCraft instead
+'use client'
 
-import { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { AlertTriangle, ArrowRight, FileText } from 'lucide-react'
+import Link from 'next/link'
 
-export default function EditorPage() {
-  const [isEditorLoaded, setIsEditorLoaded] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
-  const [title, setTitle] = useState('');
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  const handleIframeLoad = () => {
-    console.log('✅ Visual editor loaded from /visual-editor.html');
-    setIsEditorLoaded(true);
-  };
-
-  const handleSave = () => {
-    if (iframeRef.current) {
-      setIsSaving(true);
-      iframeRef.current.contentWindow?.postMessage({ action: 'getContent' }, '*');
-    }
-  };
-
-  const handleImageUpload = async (file: File) => {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await axios.post('/api/images/upload', formData);
-      const { url } = response.data;
-
-      if (iframeRef.current) {
-        iframeRef.current.contentWindow?.postMessage({ action: 'insertImage', payload: { url } }, '*');
-      }
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      // Handle error display to user
-    }
-  };
-
-  useEffect(() => {
-    const handleMessage = async (event: MessageEvent) => {
-      console.log('Parent received message:', event.data);
-      const { data } = event;
-
-      if (data.event === 'editorLoaded') {
-        console.log('Editor loaded message received.');
-        setIsEditorLoaded(true);
-      } else if (data.event === 'contentReady') {
-        console.log('Content ready message received. Saving post...');
-        const { html } = data.payload;
-        try {
-          await axios.post('/api/posts/save', { title, content: html });
-          console.log('Post saved successfully.');
-        } catch (error) {
-          console.error('Error saving post:', error);
-        } finally {
-          setIsSaving(false);
-        }
-      } else if (data.event === 'imageUploadRequested') {
-        console.log('Image upload requested message received.');
-        const { file } = data.payload;
-        handleImageUpload(file);
-      } else if (data.type === 'SAVE_POST_TO_FIREBASE') {
-        console.log('🔥 Firebase save requested:', data.postData);
-        setIsSaving(true);
-        
-        try {
-          // Save to Firebase via API
-          const response = await axios.post('/api/posts/save', {
-            title: data.postData.title,
-            content: data.postData.content,
-            htmlContent: data.postData.htmlContent,
-            blocks: data.postData.blocks,
-            status: data.postData.status,
-            featured: data.postData.featured,
-            author: data.postData.author,
-            excerpt: data.postData.excerpt,
-            tags: data.postData.tags,
-            category: data.postData.category
-          });
-          
-          console.log('✅ Post saved to Firebase successfully:', response.data);
-          
-          // Send success message back to visual editor
-          if (iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage({ 
-              type: 'SAVE_SUCCESS', 
-              postId: response.data.id 
-            }, '*');
-          }
-          
-        } catch (error) {
-          console.error('❌ Error saving to Firebase:', error);
-          
-          // Send error message back to visual editor
-          if (iframeRef.current) {
-                        iframeRef.current.contentWindow?.postMessage({
-              type: 'SAVE_ERROR', 
-              error: error instanceof Error ? error.message : 'Unknown error'
-            }, '*');
-          }
-        } finally {
-          setIsSaving(false);
-        }
-      }
-    };
-
-    window.addEventListener('message', handleMessage);
-
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
-  }, [title]); // Add title to dependency array to ensure it's up-to-date
-
+export default function DashboardEditor() {
   return (
-    <div className="h-screen flex flex-col">
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <input 
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Blog Post Title"
-              className="text-2xl font-bold text-gray-900 border-none focus:ring-0 p-0"
-            />
-            <p className="text-sm text-gray-600">Professional visual and markdown editing</p>
+    <div className="p-6">
+      <Card className="max-w-2xl mx-auto">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 p-3 bg-yellow-100 rounded-full w-fit">
+            <AlertTriangle className="h-8 w-8 text-yellow-600" />
           </div>
-          <div className="flex items-center space-x-3">
-            <button 
-              onClick={handleSave}
-              className={`px-4 py-2 rounded-lg ${isSaving ? 'bg-gray-400' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
-              disabled={isSaving}
-            >
-              {isSaving ? 'Saving...' : 'Save Post'}
-            </button>
-            <button 
-              onClick={() => window.open('/visual-editor.html', '_blank')}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-            >
-              🚀 Open Full Editor
-            </button>
+          <CardTitle className="text-2xl font-bold text-gray-900">
+            Editor Archived
+          </CardTitle>
+          <p className="text-gray-600 mt-2">
+            This editor has been replaced with BlogCraft - our new professional blog creation platform.
+          </p>
+        </CardHeader>
+        
+        <CardContent className="space-y-6">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 className="font-semibold text-blue-900 mb-2">✨ What's New in BlogCraft:</h3>
+            <ul className="text-blue-800 space-y-1 text-sm">
+              <li>• Professional templates and themes</li>
+              <li>• Real-time preview functionality</li>
+              <li>• Advanced SEO optimization tools</li>
+              <li>• Media library management</li>
+              <li>• Markdown sync with your existing content</li>
+            </ul>
           </div>
-        </div>
-      </div>
-
-      <div className="flex-1">
-        {!isEditorLoaded && (
-          <div className="flex-1 flex items-center justify-center bg-gray-50">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-              <p className="mt-4 text-gray-600">Loading Visual Editor from /visual-editor.html...</p>
+          
+          <div className="text-center space-y-4">
+            <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700">
+              <Link href="/blogcraft">
+                <FileText className="h-5 w-5 mr-2" />
+                Open BlogCraft
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Link>
+            </Button>
+            
+            <div className="text-sm text-gray-500">
+              <p>Your existing blog posts and content are automatically available in BlogCraft.</p>
             </div>
           </div>
-        )}
-
-        <div className={`h-full ${!isEditorLoaded ? 'hidden' : ''}`}>
-          <iframe 
-            ref={iframeRef}
-            src="/visual-editor.html"
-            className="w-full h-full border-0"
-            title="FAE Intelligence Visual Editor"
-            onLoad={handleIframeLoad}
-            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads allow-top-navigation"
-          />
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
-  );
+  )
 }

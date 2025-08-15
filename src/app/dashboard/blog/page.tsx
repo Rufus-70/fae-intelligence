@@ -110,9 +110,9 @@ export default function BlogDashboard() {
           <p className="text-gray-600 mt-1">Create and manage your blog posts</p>
         </div>
         <Button asChild className="bg-cyan-600 hover:bg-cyan-700">
-          <Link href="/dashboard/blog/create">
+          <Link href="/blogcraft">
             <Plus className="h-4 w-4 mr-2" />
-            New Post
+            New Post (BlogCraft)
           </Link>
         </Button>
       </div>
@@ -214,9 +214,9 @@ export default function BlogDashboard() {
                 {searchTerm ? 'Try adjusting your search terms.' : 'Get started by creating your first blog post.'}
               </p>
               <Button asChild className="bg-cyan-600 hover:bg-cyan-700">
-                <Link href="/dashboard/blog/create">
+                <Link href="/blogcraft">
                   <Plus className="h-4 w-4 mr-2" />
-                  Create First Post
+                  Create First Post (BlogCraft)
                 </Link>
               </Button>
             </div>
@@ -287,9 +287,9 @@ export default function BlogDashboard() {
                         size="sm"
                         asChild
                       >
-                        <Link href={`/dashboard/blog/edit/${post.id}`}>
+                        <Link href="/blogcraft">
                           <Edit className="h-4 w-4 mr-1" />
-                          Edit
+                          Edit (BlogCraft)
                         </Link>
                       </Button>
                       

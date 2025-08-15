@@ -22,7 +22,7 @@ export default function Header() {
               width={48} 
               height={48}
               className="rounded flex-none"
-              style={{ width: 'auto', height: 'auto' }}
+              style={{ width: '96px', height: '96px' }}
               priority
             />
             <div className="text-xl font-bold text-gray-900">Fae Intelligence</div>

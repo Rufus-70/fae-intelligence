@@ -21,8 +21,7 @@ import {
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Blog Management', href: '/dashboard/blog', icon: FileText },
-  { name: 'BlogCraft Editor', href: '/blogcraft', icon: PenTool },
-  { name: 'Visual Editor', href: '/dashboard/editor', icon: Edit3 },
+  { name: 'BlogCraft Editor', href: '/blogcraft', icon: Edit3 },
   { name: 'AI Assessment', href: '/ai-readiness-assessment', icon: Target },
   { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },

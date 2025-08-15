@@ -47,14 +47,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     {
       name: 'BlogCraft Editor',
       href: '/blogcraft',
-      icon: Palette,
-      current: pathname === '/blogcraft'
-    },
-    {
-      name: 'Visual Editor',
-      href: '/dashboard/editor',
       icon: Edit,
-      current: pathname === '/dashboard/editor'
+      current: pathname === '/blogcraft'
     },
     {
       name: 'AI Assessment',

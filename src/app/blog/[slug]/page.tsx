@@ -141,6 +141,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   .replace(/^\- (.+)$/gm, '<li class="text-gray-700 mb-2">$1</li>')
                   .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold">$1</strong>')
                   .replace(/\*(.+?)\*/g, '<em class="italic">$1</em>')
+                  .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="w-full h-auto rounded-lg shadow-md my-6" />')
                   .replace(/\n\n/g, '</p><p class="text-gray-700 mb-4">')
                   .replace(/^(.+)$/gm, '<p class="text-gray-700 mb-4">$1</p>')
               }} />
