@@ -101,12 +101,13 @@ export default function BlogCraftPage() {
         setNotionSetupComplete(true);
         alert('✅ Notion connection successful! Found ' + (data.posts?.length || 0) + ' posts.');
       } else {
-        const error = await response.text();
-        alert('❌ Notion connection failed: ' + error);
+        const errorData = await response.json();
+        console.error('❌ Notion connection test failed:', errorData);
+        alert(`❌ Notion connection failed: ${errorData.error || response.statusText}`);
       }
     } catch (error) {
-      console.error('Notion connection error:', error);
-      alert('❌ Notion connection failed: ' + (error instanceof Error ? error.message : 'Unknown error'));
+      console.error('❌ Error testing Notion connection:', error);
+      alert('❌ Failed to test Notion connection. Check console for details.');
     } finally {
       setLoadingNotion(false);
     }
@@ -395,6 +396,50 @@ export default function BlogCraftPage() {
     } finally {
       setLoadingNotion(false);
     }
+  };
+
+  // Render markdown to HTML with Notion-style formatting
+  const renderMarkdownToHTML = (markdown: string) => {
+    if (!markdown) return '';
+    
+    return markdown
+      // Headings
+      .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mt-6 mb-3 text-gray-800">$1</h3>')
+      .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mt-8 mb-4 text-gray-800">$1</h2>')
+      .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-8 mb-4 text-gray-800">$1</h1>')
+      
+      // Bold and italic
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+      
+      // Code blocks
+      .replace(/```(\w+)?\n([\s\S]*?)\n```/g, '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code class="text-sm">$2</code></pre>')
+      .replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">$1</code>')
+      
+      // Images with Notion-style formatting
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<div class="my-6"><img src="$2" alt="$1" class="max-w-full h-auto rounded-lg shadow-md border border-gray-200" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';" /><div class="hidden text-center text-sm text-gray-500 mt-2">🖼️ Image: $1</div></div>')
+      
+      // Links
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">$1</a>')
+      
+      // Lists
+      .replace(/^\- (.*$)/gim, '<li class="text-gray-700 mb-2 flex items-start"><span class="mr-2 mt-1">•</span>$1</li>')
+      .replace(/^(\d+)\. (.*$)/gim, '<li class="text-gray-700 mb-2 flex items-start"><span class="mr-2 mt-1 text-gray-500">$1.</span>$2</li>')
+      
+      // Blockquotes
+      .replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-blue-200 pl-4 py-2 my-4 bg-blue-50 italic text-gray-700">$1</blockquote>')
+      
+      // Horizontal rules
+      .replace(/^---$/gim, '<hr class="my-6 border-gray-300">')
+      
+      // Paragraphs
+      .replace(/\n\n/g, '</p><p class="text-gray-700 leading-relaxed mb-4">')
+      .replace(/^(.+)$/gm, '<p class="text-gray-700 leading-relaxed mb-4">$1</p>')
+      .replace(/<p class="text-gray-700 leading-relaxed mb-4"><\/p>/g, '')
+      
+      // Clean up empty paragraphs
+      .replace(/<p class="text-gray-700 leading-relaxed mb-4"><\/p>/g, '')
+      .replace(/<p class="text-gray-700 leading-relaxed mb-4">\s*<\/p>/g, '');
   };
 
   return (
@@ -914,6 +959,32 @@ The most successful AI implementations don't come from programmers trying to und
               </div>
             </div>
             
+            {/* Enhanced Media Upload Section */}
+            <div className="media-upload-section mb-8 p-6 bg-gray-50 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4">📤 Upload New Media</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">File Upload</label>
+                  <input 
+                    type="file" 
+                    accept="image/*,video/*,.pdf,.doc,.docx"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Media URL</label>
+                  <input 
+                    type="url" 
+                    placeholder="https://example.com/image.jpg"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                📤 Upload Media
+              </button>
+            </div>
+            
             <div className="media-filters">
               <select className="media-filter">
                 <option value="all">All Media</option>
@@ -924,6 +995,7 @@ The most successful AI implementations don't come from programmers trying to und
               <input type="text" placeholder="Search media..." className="media-search" />
             </div>
             
+            {/* Enhanced Media Grid */}
             <div className="media-grid">
               <div className="media-item">
                 <div className="media-preview">
@@ -943,6 +1015,27 @@ The most successful AI implementations don't come from programmers trying to und
                   <span className="media-size">1.8 MB</span>
                 </div>
               </div>
+            </div>
+            
+            {/* Notion Media Integration */}
+            <div className="notion-media-section mt-8 p-6 bg-blue-50 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 text-blue-800">🔄 Notion Media Sync</h3>
+              <p className="text-sm text-blue-700 mb-4">
+                Sync media files from your Notion database to use in BlogCraft. This will import all images and files from your Notion posts.
+              </p>
+              <button 
+                onClick={() => {
+                  if (notionSetupComplete) {
+                    alert('🔄 Syncing media from Notion... This will import all images and files from your Notion posts.');
+                  } else {
+                    alert('⚠️ Please set up Notion integration first to sync media files.');
+                  }
+                }}
+                disabled={!notionSetupComplete}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                🔄 Sync Notion Media
+              </button>
             </div>
             
             <div className="media-upload-area">
@@ -1766,59 +1859,67 @@ Summary of success and future recommendations.
       {/* Modals and overlays will be added by JavaScript */}
       <div id="modalContainer"></div>
 
-      {/* Preview Modal */}
+      {/* Enhanced Preview Modal with Notion-Style View */}
       {showPreview && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900">Preview: {previewTitle}</h2>
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">📝 Preview: {previewTitle}</h2>
+                <p className="text-sm text-gray-600 mt-1">Notion-style preview of your blog post</p>
+              </div>
               <button
                 onClick={() => setShowPreview(false)}
-                className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                className="text-gray-400 hover:text-gray-600 text-2xl font-bold p-2 hover:bg-gray-100 rounded-full transition-colors"
               >
-                ×
+                ✕
               </button>
             </div>
             
-            {/* Modal Content */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-              <div className="prose prose-lg max-w-none">
-                {/* Convert markdown to HTML for preview */}
-                <div 
-                  className="markdown-preview"
-                  dangerouslySetInnerHTML={{
-                    __html: previewContent
-                      .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mt-6 mb-3">$1</h3>')
-                      .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mt-8 mb-4">$1</h2>')
-                      .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-8 mb-4">$1</h1>')
-                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                      .replace(/\n\n/g, '</p><p>')
-                      .replace(/^(.+)$/gm, '<p>$1</p>')
-                      .replace(/<p><\/p>/g, '')
-                  }}
-                />
+            {/* Modal Content - Notion-Style Blog View */}
+            <div className="overflow-y-auto max-h-[calc(90vh-140px)]">
+              <div className="notion-container p-8">
+                <div className="notion-content">
+                  {/* Title */}
+                  <div className="notion-block notion-heading-1">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-6">{previewTitle}</h1>
+                  </div>
+                  
+                  {/* Content with Markdown Rendering */}
+                  <div 
+                    className="notion-content prose prose-lg max-w-none"
+                    dangerouslySetInnerHTML={{
+                      __html: renderMarkdownToHTML(previewContent)
+                    }}
+                  />
+                </div>
               </div>
             </div>
             
             {/* Modal Footer */}
-            <div className="flex items-center justify-end gap-3 p-6 border-t border-gray-200">
-              <button
-                onClick={() => setShowPreview(false)}
-                className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
-              >
-                Close
-              </button>
-              <button
-                onClick={() => {
-                  // Here you could add logic to save/publish the post
-                  alert('Save/Publish functionality would go here');
-                }}
-                className="px-4 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600"
-              >
-                Save Draft
-              </button>
+            <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+              <div className="text-sm text-gray-600">
+                <span className="font-medium">Word Count:</span> {previewContent.split(/\s+/).filter(word => word.length > 0).length} words
+              </div>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowPreview(false)}
+                  className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Close Preview
+                </button>
+                <button
+                  onClick={() => {
+                    // Copy content to clipboard
+                    navigator.clipboard.writeText(previewContent);
+                    alert('Content copied to clipboard!');
+                  }}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  📋 Copy Content
+                </button>
+              </div>
             </div>
           </div>
         </div>

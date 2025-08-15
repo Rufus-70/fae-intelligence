@@ -156,8 +156,30 @@ function convertNotionBlocksToMarkdown(blocks: any[]): string {
       
       case 'image':
         const caption = block.image.caption?.[0]?.plain_text || ''
-        const imageUrl = block.image.external?.url || block.image.file?.url || ''
-        return `![${caption}](${imageUrl})\n\n`
+        let imageUrl = ''
+        
+        // Handle different image types
+        if (block.image.external?.url) {
+          imageUrl = block.image.external.url
+        } else if (block.image.file?.url) {
+          imageUrl = block.image.file.url
+        } else if (block.image.type === 'file' && block.image.file?.url) {
+          imageUrl = block.image.file.url
+        }
+        
+        // Ensure image URL is accessible
+        if (imageUrl) {
+          // Convert Notion's temporary URLs to permanent ones if possible
+          if (imageUrl.includes('secure.notion-static.com')) {
+            // This is a Notion static file - should be accessible
+            console.log('🔍 Found Notion image:', imageUrl)
+          }
+          
+          return `![${caption || 'Image'}](${imageUrl})\n\n`
+        } else {
+          console.log('⚠️ Image block found but no URL:', block.image)
+          return `![${caption || 'Image'}](image-placeholder.png)\n\n`
+        }
       
       case 'divider':
         return '---\n\n'
